@@ -4,4 +4,4 @@ Note my technical article for solving problem or tutorial.
 
 # Building Tools
 Language: Python
-Static Website Generator : Pelican
+Static Website Generator: Pelican
