@@ -16,7 +16,7 @@ Summary: 在 Mac 上使用 Python 的靜態網站產生器套件 Pelican 製作�
 
 <hr/>
 
-# 一、使用 Pelican 架設簡單的靜態網站
+# 使用 Pelican 架設簡單的靜態網站
 目前靜態網站產生器的選擇上非常多樣化，參考 [StaticGen](https://www.staticgen.com/) 可以看到許多使用不同程式語言開發的產生器，並且每個產生器都有特別的特色。
 
 而自己則是使用熟悉的 Python 語言所開發的 Pelican 作為個人的網誌，同時該產生器提供的樣式主題豐富外，在設定上也只需要編輯 `pelicanconf.py` 與 `publishconf.py` 即可，能夠自己定義新的頁面（如 About Me, 作品集...等)，擁有標籤與分類目錄的工能，並能安插 Google Analystic、 Twitter, Facebook 、留言版、RSS 等外部功能，非常豐富，也只要透過一個 `Makefile` 檔案就可以生成靜態網站，或是在自己的本機電腦產生預覽模式觀看。
@@ -197,4 +197,6 @@ Summary: 在 Mac 上使用 Python 的靜態網站產生器套件 Pelican 製作�
 
 至此變完成的安裝 Pelican > 撰寫 Markdown 文章 > 產生 HTML 與預覽 的過程。
 
-不過這些使用 Pelican 所編寫的 Markdown 與產生的 HTML網頁，都是在自己的電腦本機端。
+# 後記
+---
+雖然上述使用 Pelican 所編寫的 Markdown 與產生的 HTML網頁，但是這一切都是在自己的電腦本機端，我們仍然需要真的伺服器空間，來把我們的網誌與文章放上去才行，因此接下來我們會介紹，此篇文章中，在回答 `pelican-quickstart` 時，選擇使用 **Github Page** 的架設步驟。
