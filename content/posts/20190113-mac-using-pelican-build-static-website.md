@@ -33,6 +33,7 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 ```bash
 > mkdir kokokuo-note
 > cd kokokuo-note
+kokokuo-note/>
 ```
 
 當進入目錄後，我們便可以安裝虛擬環境，並且裝載 Pelican ，以下的安裝步驟會分別紀錄採用 `virtualenv` 與 `pipenv` 兩種不同的虛擬環境工具。
@@ -42,11 +43,11 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 如果你採用 `virtualenv` 作為虛擬環境，那麼首先我們要透過 `virtualenv` 的指令建立虛擬環境的目錄，並進入虛擬環境中，才能 `pip` 指令安裝 Pelican，若對 Python 的虛擬環境 virtualenv 有更多想要知道的部分可以參考此篇 TODO [Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv]()
 
 ```bash
-> virtualenv venv # 採用 virtualenv 建立虛擬環境目錄
-> source venv/bin/activate  # 進入虛擬環境
-(venv)> pip install pelican # 當顯示 (venv) 後表示我們已經在許你環境中，安裝 Pelican 
-(venv)> pip install markdown # 安裝 markdowan ，使 Pelican 的 markdown 語法作用，務必安裝
-(venv)> pip install typogrify # 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的排版，務必安裝
+kokokuo-note/> virtualenv venv # 採用 virtualenv 建立虛擬環境目錄
+kokokuo-note/> source venv/bin/activate  # 進入虛擬環境
+(venv)kokokuo-note/> pip install pelican # 當顯示 (venv) 後表示我們已經在許你環境中，安裝 Pelican 
+(venv)kokokuo-note/> pip install markdown # 安裝 markdowan ，使 Pelican 的 markdown 語法作用，務必安裝
+(venv)kokokuo-note/> pip install typogrify # 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的排版，務必安裝
 ```
 如下圖：
 
@@ -54,15 +55,15 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 
 如果你採用 `pipenv` 作為操作虛擬環境指令工具，則採用以下步驟：
 ```bash
-> mkdir .venv # 建立等等 Pipenv 安裝虛擬環境時所存放的目錄
+kokokuo-note/> mkdir .venv # 建立等等 Pipenv 安裝虛擬環境時所存放的目錄
 ```
 
 ![pipenv-create-virtualenv](../images/20190113-how-to-start-pelican/pipenv-create-virtualenv.png)
 
 
 ```bash
-> pipenv shell # 進入虛擬環境
-(kokokuo-note)> pipenv install pelican # 當顯示 (kokokuo-note) 後表示我們已經在 kokokuo-note 這個專案目錄的虛擬環境中，安裝 Pelican 
+kokokuo-note/> pipenv shell # 進入虛擬環境
+(kokokuo-note)kokokuo-note/> pipenv install pelican # 當顯示 (kokokuo-note) 後表示我們已經在 kokokuo-note 這個專案目錄的虛擬環境中，安裝 Pelican 
 ```
 
 ![pipenv-install-pelican](../images/20190113-how-to-start-pelican/pipenv-install-pelican.png)
@@ -70,8 +71,8 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 再來還需要安裝 markdown 與 typogrify：
 
 ```bash
-(kokokuo-note)> pipenv install markdown # 安裝 markdowan ，使 Pelican 的 markdown 語法作用，務必安裝，務必安裝
-(kokokuo-note)> pipenv install typogrify  # 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的，務必安裝排版
+(kokokuo-note)kokokuo-note/> pipenv install markdown # 安裝 markdowan ，使 Pelican 的 markdown 語法作用，務必安裝，務必安裝
+(kokokuo-note)kokokuo-note/> pipenv install typogrify  # 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的，務必安裝排版
 ```
 
 ![pipenv-install-markdown](../images/20190113-how-to-start-pelican/pipenv-install-markdown.png)
@@ -84,7 +85,7 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 當我們安裝好 Pelican 與所需要的套件後，再來便可以透過 Pelican 提供的指令 `pelican-quickstart` 來產生後續我們要的靜態網站範本：
 
 ```bash
-(kokokuo-note)> pelican-quickstart
+(kokokuo-note)kokokuo-note/> pelican-quickstart
 ```
 
 之後 Pelican 會如下圖，依序詢問幾個問題，來幫忙建立屬於你要的範本：
@@ -149,7 +150,7 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 當寫好我們的第一個範例後，我們便可以開始來預覽我們寫的文章了，這個步驟很容易，只要在我們所建立的專案目錄下，如我是 `kokokuo-note` 輸入以下指令：
 
 ```bash
-(kokokuo-note)> make html # 產生 HTML 檔案
+(kokokuo-note)kokokuo-note/> make html # 產生 HTML 檔案
 ```
 
 透過上述的指令 `make html`  會幫助我們把剛剛所寫完的 markdown 文章，轉換並生出成 HTML 網頁，如下圖：
@@ -172,7 +173,7 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 
 
 ```bash
-(kokokuo-note)> make  # 顯示 Help 功能，所有的指令與用途。
+(kokokuo-note)kokokuo-note/> make  # 顯示 Help 功能，所有的指令與用途。
 ```
 
 ![pelican-make-commands](../images/20190113-how-to-start-pelican/pelican-make-commands.png)

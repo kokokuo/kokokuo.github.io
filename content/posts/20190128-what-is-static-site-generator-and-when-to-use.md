@@ -1,6 +1,6 @@
 Title: 什麼是靜態網站產生器 (Static Site Generator) 與何時使用
 Date: 2019-01-28 22:40
-Category: Web Service
+Category: Web
 Tags: Static Site Generator
 Slug: why-use-static-site-generator
 Authors: kokokuo

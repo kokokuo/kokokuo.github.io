@@ -1,23 +1,22 @@
-
-Title: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
-Date: 2019-02-05 01:40
-Category: Python
-Tags: Python, Pelican, Github
-Slug: deploy-pelican-static-webiste-to-github-page
+Title: 透過 Github Page 上傳靜態網站
+Date: 2019-02-28
+Category: Web
+Tags: Static Site Generator
+Slug: why-use-static-site-generator
 Authors: kokokuo
-Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
+Summary: 透過 Github Page 上傳靜態網站
 
 # 前言
 ---
-在前一篇 TODO [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]() 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。
+如同在此篇 TODO [什麼是靜態網站產生器 (Static Site Generator) 與何時使用]() 提到的，由於靜態網站並不需要做到與資料庫的互動或是更複雜的行為，因此對於單純呈現內容的靜態網站而言其實只有 HTML/CSS/JS 這類檔案。
 
-而如同在前一篇一開始的 `pelican-quickstart` 中提問的問題，其實只有 HTML/CSS/JS 這類的靜態網誌，能夠架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可，所以會我們可以透過架設一台自己的伺服器電腦，透過 SSH 或 FTP 上傳，又或是使用 Dropbox 空間，雲端 AWS 與 Google Cloud, Azure 提供的服務。
+所以夠架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可，所以會我們可以透過架設一台自己的伺服器電腦，透過 SSH 或 FTP 上傳，又或是使用 Dropbox 空間，雲端 AWS 與 Google Cloud, Azure 提供的服務。
 
 但是上述中，要自己架設主機花時間也需要一些專業知識，使用 Dropbox、雲端服務的空間或多或少會需要收取一些費用，如果我們希望簡單又能夠不花費的話，要怎麼辦呢？
 
 是的，這就是在這裡我介紹 **Github Page** 的原因，因為當只要把檔案上傳即可，並且還不用花費任何半毛錢，以及因為 **Github Page** 是 **Github** 的服務之一，因此支援版本控制系統，簡單來說就是能夠幫你記錄每一次上傳更新的所有紀錄，能方便你還原上一版。
 
-# 二、透過 Github Page 作為網誌空間並上傳
+# 什麼是 Github Page
 ---
 [Github Page](https://pages.github.com/) 是全球最多開發者使用的版本控管程式碼託管服務 - Github 旗下的產品服務。
 
@@ -29,13 +28,12 @@ Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 
 希望提供一個可以簡單架設介紹網頁的服務，讓這些程式碼都有自己的網頁介紹，除了這些程式碼專案外，Github 也提供了給每個用戶或是組織企業，架設自己的簡易介紹網頁。也因為只要作為介紹網頁用，所以只有 HTML/CSS/JS 等靜態網站的檔案可以作用。
 
-並且要把我們的靜態網站檔案放到 Github Page 非常容易，只要三個步驟即可。
+FIXME 並且要把我們的靜態網站檔案放到 Github Page 非常容易，只要三個步驟即可。
 
+# 一、創建一個存放靜態網站的 Github 倉儲庫 (Repository)
+首先我們需要在 Github 建立一個 Github Page 用的 Repository ，第一次使用 Github 的朋友可以先去註冊一個。
 
-### (1.) 創建一個存放靜態網站的 Github 倉儲庫 (Repository)
-再來我們需要在 Github 建立一個 Repository ，第一次使用 Github 的朋友可以先去註冊一個。
-
-這個 Repository 是專門用來放我們網誌的靜態檔案的空間， Github Page 的網誌檔案也是放在 Github 的 Repository 中：
+這個 Github Page 用的 Repository 會專門用來放置的靜態網誌的檔：
 
 ![build-github-page-repository](../images/20190205-deploy-static-website-to-github-page/build-github-page-repository.png)
 
@@ -73,17 +71,19 @@ Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 
 ![test-github-page](../images/20190205-deploy-static-website-to-github-page/test-github-page.png)
 
-那麼再來我們就要認真的把 Pelican 的靜態網誌上傳了。
+不過上述的方式只是單純在 Github Page 的 Repository 上做一個簡單的測試而已，以下我們來結合在自己電腦本機端的檔案，並上傳到 Github Page 的 Repository 上。
 
-### (2.) 透過 Git 版本控管上傳你的靜態網誌檔案
+# 二、透過 Git 版本控管上傳靜態網站的檔案
 再來就是第二部步驟，上傳檔案，而 Github 提供了兩種方式，第一種是透過 **終端機(Terminal)** 下指令，另外一種是下載他們提供的工具 **Github Desktop**，以視窗介面的形式上傳。
 
 不管是使用 Terminal 或是 **Github Desktop**，都需要安裝 Git 指令工具，但只有使用 Terminal 需要手動下載一下，至於 **Github Desktop** 會順便安裝進去，以下我們分別介紹：
 
-#### (2.1) 透過終端機 Terminal 指令上傳檔案
+## 1. 透過終端機 Terminal 指令上傳檔案
 由於本人使用的是 Mac ，所以我們採用 **Homebrew** 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 TODO [Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具]()
 
 ```bash
 > brew install git
 ```
 
+
+## 2. 透過 Github Desktop 軟體上傳靜態網站的檔案
