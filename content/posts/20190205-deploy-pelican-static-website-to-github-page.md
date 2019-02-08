@@ -51,35 +51,36 @@ Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 
 不過在操作上，由於 Pelican 有提供一些指令的部署工具，因此在此部分我們統一使用 Terminal 以指令的方式操作。
 
+開始之前我們先確認是否有進到靜態網誌的專案目錄下，並且透過 Pipenv 或 Virtualenv 進入到虛擬環境下（這裡以 Pipenv 為例子），同時確認是否有執行或把 **output** 目錄中的 HTML 檔更新到最新，如果沒有則再次執行 `make html`，可以參考前一篇 TODO [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]()：
+
+```bash
+> cd kokokuo-note
+kokokuo-note> pipenv shell
+(kokokuo-note)kokokuo-note> make html
+```
+
 ## 1. 安裝 Git 指令工具
-由於本人使用的是 Mac ，所以我們採用 **Homebrew** 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 TODO [Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具]()
+首先我們要安裝 Git  指令工具，由於本人使用的是 Mac ，所以我們採用 **Homebrew** 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 TODO [Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具]()
 
 ```bash
 > brew install git
 ```
 
 ## 2. 設定 Github Page Repository 的來源位置至 Git 中
-
-再來依照前一篇 TODO [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]() 進到靜態網誌的專案目錄下，並且透過 Pipenv 或 Virtualenv 進入到虛擬環境下（這裡以 Pipenv 為例子），同時確認是否有執行或把 **output** 目錄中的 HTML 檔更新到最新，如果沒有則再次執行 `make html`：
-
-```bash
-> cd kokokuo-note
-kokokuo-note/> pipenv shell
-(kokokuo-note)kokokuo-note/> make html
-```
-
-確認更新到最新的 HTML 檔案後，再來我們要把在 Github 上我們剛建立好的 Github Page Repository 與我們的 Pelican 網誌做一個繫結。
+再來我們要把在 Github 上我們剛建立好的 Github Page Repository 與我們的 Pelican 網誌做一個繫結。
 
 首先點選建立的 Repository 的 **Clone or Download**，並複製顯示的 URL:
 
 ![clone-repository-url](../images/20190205-deploy-pelican-static-website-to-github-page/clone-repository-url.png)
 
-再來回到 Terminal 下，輸入以下指令，先在自己的 Pelican 網誌目錄下透過 `git init` 建立 Git 版本控管功能，並把剛剛的 URL 透過 `git remote add origin` 把網誌專案與 Repository 完成繫結：
+回到 Terminal 下，輸入以下指令，先在自己的 Pelican 網誌目錄下透過 `git init` 建立 Git 版本控管功能，Git 會預設幫我們建立一個 `master` 分支並在此分支下工作。
+
+之後把剛剛的 URL 透過 `git remote add origin` 把網誌專案與 Repository 完成繫結：
 
 ```bash
-(kokokuo-note)kokokuo-note/> git init
-(kokokuo-note)kokokuo-note/> git remote add origin https://github.com/kokokuo/kokokuo.github.io.git
-(kokokuo-note)kokokuo-note/> git status # 確認是否有新增修改編輯刪除的檔案動作還沒被提交
+(kokokuo-note)kokokuo-note> git init
+(kokokuo-note)kokokuo-note(master)> git remote add origin https://github.com/kokokuo/kokokuo.github.io.git
+(kokokuo-note)kokokuo-note(master)> git status # 確認是否有新增修改編輯刪除的檔案動作還沒被提交
 ```
 
 如下圖，其中我們透過 `git status` 確認是否 `git init` 有無作用，或是來確認此次的變動修改有哪些檔案： 
@@ -109,8 +110,8 @@ kokokuo-note/> pipenv shell
 另外如果這個作者的信箱有註冊在 Github 中，那麼後續上傳到 Github 上時也能看到這個使用者。
 
 ```bash
-(kokokuo-note)kokokuo-note/> git config local --email "你註冊的 Github 信箱"
-(kokokuo-note)kokokuo-note/> git config local --name "你註冊的 Github 用戶名稱 Username"
+(kokokuo-note)kokokuo-note(master)> git config local --email "你註冊的 Github 信箱"
+(kokokuo-note)kokokuo-note(master)> git config local --name "你註冊的 Github 用戶名稱 Username"
 ```
 
 接下來我們就要接著提交，並且發布上傳到 Github Page 上。
@@ -139,41 +140,70 @@ kokokuo-note/> pipenv shell
 首先透過 `git checkout -b` 建立 `develop` 分支：
 
 ```bash
-(kokokuo-note)kokokuo-note/> git checkout -b develop # 建立一個新的分支 develop，並把現在的檔案都遷移到此分支下。
-(kokokuo-note)kokokuo-note/> git status # 查看現在狀態
+(kokokuo-note)kokokuo-note(master)> git checkout -b develop # 建立一個新的分支 develop，並把現在的檔案都遷移到此分支下。
+(kokokuo-note)kokokuo-note(develop)> git status # 查看現在狀態
 ```
 
 如下圖會看到我們已經搬移到 `develop` 中了：
 
 ![checkout-develop](../images/20190205-deploy-pelican-static-website-to-github-page/checkout-develop.png)
 
-再來我們要把這些檔案 Commit 到此分支上：
+再來我們要把這些檔案 Commit 到此 `develop` 分支上：
 
 ```bash
-(kokokuo-note)kokokuo-note/> git add . # 告訴 Git 這個目錄下所有的檔案將要被上傳到 Repository 上
-(kokokuo-note)kokokuo-note/> git commit -m "生成所有 Pelican 網誌的檔案" # 準備提交所有的編輯動作完成存擋，透過 -m 給予此次提交的訊息內容
+(kokokuo-note)kokokuo-note(develop)> git add . # 告訴 Git 這個目錄下所有的檔案將要被上傳到 Repository 上
+(kokokuo-note)kokokuo-note(develop)> git commit -m "生成所有 Pelican 網誌的檔案" # 準備提交所有的編輯動作完成存擋，透過 -m 給予此次提交的訊息內容
 ```
-
-![develop-commit-pelican-content](../images/20190205-deploy-pelican-static-website-to-github-page/develop-commit-pelican-content.png)
 
 提交完後，上傳這個 `develop` 分支與存檔到 Repository 上，來保存我們的來源內容：
 
 ```bash
-(kokokuo-note)kokokuo-note/> git push origin develop
+(kokokuo-note)kokokuo-note(develop)> git push origin develop
 ```
 
 ### (2.) 使用 make github 指令把 output 靜態檔案上傳到 master
-在我們建立了 develop 分支保存好我們的 Pelican 專案來源檔案後，再來我們就要使用到 Pelican 提供的 Makefile 檔案中的一個指令 `make github`，透過這個 `make github` 可以幫我們把 `make html` 產生在 **output** 目錄下的靜態 HTML 檔案區獨立推送上傳到 `master` 分支中。
+當我們建立了 develop 分支保存好我們的 Pelican 專案來源檔案後，再來我們就要使用到 Pelican 提供的 Makefile 檔案中的一個指令 `make github`。透過這個 `make github` 可以幫我們把 `make html` 產生在 **output** 目錄下的靜態 HTML 檔案，獨立推送上傳到 `master` 分支中。
 
-這個 `make github` 會自己檢查有無設定 git config 並且讀取 Makefile 設定好的預設上傳分支，而預設就是 `master`：
+不過為何會是推送到 `master` 呢？ 是這個 `make github` 是讀取 Makefile 中設定好的預設上傳分支參數 `GITHUB_PAGES_BRANCH`，而預設就是 `master`：
 
 ![makefile-content](../images/20190205-deploy-pelican-static-website-to-github-page/makefile-content.png)
+
+
+接下來在正式使用 `make github` 指令前，我們需要先安裝這個 Makefile 在執行 `make github` 所使用到的一個套件，叫做 `ghp-import` ，這個套件需要用到 `pip` 安裝，而因為我使用 Pipenv 所以如下執行：
+
+```bash
+(kokokuo-note)kokokuo-note(develop)> pipenv install ghp-import
+```
+
+![pipenv-install-ghp-import](../images/20190205-deploy-pelican-static-website-to-github-page/pipenv-install-ghp-import.png)
+
+安裝完後我們再次更新 Commit 提交：
+
+```bash
+(kokokuo-note)kokokuo-note(develop)> git add .
+(kokokuo-note)kokokuo-note(develop)> git commit -m "安裝 ghp-import"
+```
+
+![add-ghp-import-and-commit](../images/20190205-deploy-pelican-static-website-to-github-page/add-ghp-import-and-commit.png)
+
+提交完後，我們便可以開始執行 `make github` 了（如果還沒更新 **output** 中的檔案要記得執行 `make html`)：
+
+```bash
+(kokokuo-note)kokokuo-note(develop)> make github
+```
+
+![pelican-develop-make-github-push](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-develop-make-github-push.png)
+
+你會看到 `make github` 自己幫我們把輸出的 **output** 檔案推送到 Makefile 中指定的 `master` 分支上。
+
+
+
 
 
 TODO 繼續撰寫
 
 
-
+## 3. 使用 gh-pages 作為發布分支的設定
 
 完成上述的 Commit 提交儲存後，才能把檔案上傳推送到 Repository 上面：
 
