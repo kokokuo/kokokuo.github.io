@@ -204,8 +204,10 @@ kokokuo-note> pipenv shell
 
 到此大功告成囉！
 
+*補充一下：在執行 `make github` 指令時，會在本機端建立 `master` 分支並提交推送，如果在 Github Page 的 Repository 有較早推送的檔案，會一併刪除舊檔案請注意。*
 
-<br/>
+
+
 
 
 
