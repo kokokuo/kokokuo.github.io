@@ -1,4 +1,3 @@
-
 Title: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 Date: 2019-02-05 01:40
 Category: Python
@@ -118,25 +117,24 @@ kokokuo-note> pipenv shell
 
 <br/>
 
-# 三、發布的分支設定
+# 三、Github Page 發布的分支設定
 
-## 1. Github Page 的分支建立順序
 之所以我們的 Github Page 能顯示 `README` 檔案的內容，是因為 Github Page Repository 預設會去尋找 `master` 或 `gh-pages` 分支底下的 `index.html` 檔案，作為 https://username.github.io 呈現的內容。
 
-不過因為剛開始建立的 Repository 都只有 `master`，因此會先以 `master` 為主，若未來想要改用 `gh-pages`，則可以建立並作設定。
+不過對於個用戶或組織的帳戶建立的 Github Page 網頁，只能在 `master` 分支生效 (e.g: `username.github.io` 這種格式），而 `gh-pages`，則針對在程式碼專案的部分
 
 另外若是都沒有 `index.html` 的話，則會優先顯示 `README` 這個檔案的內容。
 
-而接下來我們分別介紹 `master` 與 `gh-pages` 兩種方式。
+而在此篇我們介紹個人用戶的靜態網站，所以會以 `master` 為主，至於專案的 `gh-pages` 以後會再介紹。
 
-## 2. 使用 master 作為發布分支的設定
+## 使用 master 作為發布分支的設定
 由於 Pelican 產生出來的 HTML/CSS 這些靜態檔案是放在 **output** 目錄中的，因此如果整個 Pelican 專案上傳到預設的 `master` 分支 時，因為靜態檔案被放在 **output** ，所以會無法讀取顯示成功。
 
 因此我們需要把這些 **output** 中的靜態檔案放到 `master` 中，而原本包含了 **content** 目錄、Makefile 與 pelicanconf.py 等的這些建立 Pelican 檔案時的來源檔案，我們要放到另外一個分支作為網存與記錄用。
 
 在這邊我們會以 `develop` 作為我們 Pelican 靜態網站的來源檔案：
 
-### (1.) 使用 develop 作為 Pelican 來源檔案
+### (1.) 建立 Pelican 來源檔案變動與保存的分支 - 以 `develop` 分支為例
 首先透過 `git checkout -b` 建立 `develop` 分支：
 
 ```bash
@@ -161,10 +159,10 @@ kokokuo-note> pipenv shell
 (kokokuo-note)kokokuo-note(develop)> git push origin develop
 ```
 
-### (2.) 使用 make github 指令把 output 靜態檔案上傳到 master
-當我們建立了 develop 分支保存好我們的 Pelican 專案來源檔案後，再來我們就要使用到 Pelican 提供的 Makefile 檔案中的一個指令 `make github`。透過這個 `make github` 可以幫我們把 `make html` 產生在 **output** 目錄下的靜態 HTML 檔案，獨立推送上傳到 `master` 分支中。
+### (2.) 使用 `make github` 指令把 output 靜態檔案上傳到 `master`
+當我們建立了 develop 分支並提交到 Repository 保存好我們的 Pelican 專案來源檔案後，再來我們就要使用到 Pelican 提供的 Makefile 檔案中的一個指令 `make github`。透過這個 `make github` 會自動執行 `make html` 產生在 **output** 目錄下的靜態 HTML 檔案，獨立推送上傳到 `master` 分支中。
 
-不過為何會是推送到 `master` 呢？ 是這個 `make github` 是讀取 Makefile 中設定好的預設上傳分支參數 `GITHUB_PAGES_BRANCH`，而預設就是 `master`：
+不過為何會是推送到 `master` 呢？ 因為這個 `make github` 是讀取 Makefile 中設定好的預設上傳分支參數 `GITHUB_PAGES_BRANCH`，而預設就是 `master`：
 
 ![makefile-content](../images/20190205-deploy-pelican-static-website-to-github-page/makefile-content.png)
 
@@ -186,7 +184,7 @@ kokokuo-note> pipenv shell
 
 ![add-ghp-import-and-commit](../images/20190205-deploy-pelican-static-website-to-github-page/add-ghp-import-and-commit.png)
 
-提交完後，我們便可以開始執行 `make github` 了（如果還沒更新 **output** 中的檔案要記得執行 `make html`)：
+提交完後，我們便可以開始執行 `make github` ：
 
 ```bash
 (kokokuo-note)kokokuo-note(develop)> make github
@@ -194,42 +192,24 @@ kokokuo-note> pipenv shell
 
 ![pelican-develop-make-github-push](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-develop-make-github-push.png)
 
-你會看到 `make github` 自己幫我們把輸出的 **output** 檔案推送到 Makefile 中指定的 `master` 分支上。
+你會看到 `make github` 以 Makefile 中指定的 `master` 作為分支參數，自己幫我們把輸出的 **output** 檔案推送到 Makefile 中指定的 `master` 分支上。
+
+之後切換到 Github Page 的 Repository 查看，如下圖你會看到 **output** 目錄下的 HTML 等靜態檔案都已在此 `master` 的 Repository 中：
+
+![pelican-make-push-master-files](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-make-push-master-files.png)
+
+同時輸入網址，會看到我們的網頁內容，例如我是 https://kokokuo.github.io：
+
+![final-finish-deploy-pelican](../images/20190205-deploy-pelican-static-website-to-github-page/final-finish-deploy-pelican.png)
+
+到此大功告成囉！
 
 
-
+<br/>
 
-
-TODO 繼續撰寫
-
-
-## 3. 使用 gh-pages 作為發布分支的設定
-
-完成上述的 Commit 提交儲存後，才能把檔案上傳推送到 Repository 上面：
-
-![git-push-master-refuse](../images/20190205-deploy-pelican-static-website-to-github-page/git-push-master-refuse.png)
-
-但是在推送上去後你會看到一個拒絕的資訊：*「error: failed to push some refs to 'https://github.com/kokokuo/kokokuo.github.io.git'」* ...
-
-這個原因不用擔心，這是 Git 在 2.9 版本時出現的，主要是告訴你這個要放到 Github Repository 的目錄檔案與原先在 Github 上的 Repository 是兩個不同的專案，因為沒有關聯所以才會拒絕你。
-
-如果要解決這個問題，只要輸入 `git pull origin master` 並在後面加入 `--allow-unrelated-histories` 這個指令就好，如下：
-
-```bash
-> git pull origin master --allow-unrelated-histories
-```
-
-這個指令表示，我要把在 Github Repository 上的這些檔案先抓下來跟我本機上的 Pelican 專案先合併一版，但是因為彼此不相關，所以補上 `--allow-unrelated-histories` 表示我允許你們不相關沒關係，給我合併就對了。
-
-如此就會看到在 Github Repository 上我們原先建立好的 README 與 index.html 與我們的 Pelican 專案合再一起放到 Pelican 網誌專案的目錄中，之後我們再次執行 `git push origin master` 就可以了，如下圖：
-
-![pull-remote-file-and-push-again](../images/20190205-deploy-pelican-static-website-to-github-page/pull-remote-file-and-push-again.png)
-
-完成後讓我們移動到 Github Page 所放的 Repository 上，你會看到剛剛在自己電腦上的 Pelican 專案中所有的檔案被放上去了：
-
-![github-push-pelican-files](../images/20190205-deploy-pelican-static-website-to-github-page/github-push-pelican-files.png)
 
 
 # 參考來源
 ---
 [1. Configuring a publishing source for GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/)
+[2. PUBLIC Stack Overflow Tags Users Jobs Teams Q&A for work Learn More Unable to change source branch in GitHub Pages](https://stackoverflow.com/questions/39978856/unable-to-change-source-branch-in-github-pages)
