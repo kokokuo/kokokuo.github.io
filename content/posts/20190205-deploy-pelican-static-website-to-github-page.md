@@ -204,14 +204,13 @@ kokokuo-note> pipenv shell
 
 到此大功告成囉！
 
-*補充一下：在執行 `make github` 指令時，會在本機端建立 `master` 分支並提交推送，如果在 Github Page 的 Repository 有較早推送的檔案，會一併刪除舊檔案請注意。*
-
-
-
-
+*補充：在執行 `make github` 指令時，會在本機端建立 `master` 分支並提交推送，如果在 Github Page 的 Repository 有較早推送的檔案，會一併刪除舊檔案請注意。*
 
 
 # 參考來源
 ---
 [1. Configuring a publishing source for GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/)
 [2. PUBLIC Stack Overflow Tags Users Jobs Teams Q&A for work Learn More Unable to change source branch in GitHub Pages](https://stackoverflow.com/questions/39978856/unable-to-change-source-branch-in-github-pages)
+[3. Pelican入门指南](http://chenjiee815.github.io/pelicanru-men-zhi-nan.html)
+[4. 使用Pelican和GitHub Pages搭建个人博客 —— 基础篇](http://www.xycoding.com/articles/2013/11/21/blog-create/)
+[5. Pelican Tutorial](https://docs.getpelican.com/en/stable/content.html)
