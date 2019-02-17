@@ -61,9 +61,11 @@ TODO 在[什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static S
 
 如上所述，我們建立一個簡單的 HTML 檔案，並且輸入要 Commit 的描述與內容，來完成建立。
 
-這邊稍微提一下，所謂的 Commit 表示提交，也就是提交此次新增、編輯或刪除的動作，而 Git 版本控管會記錄你每一次的 Commit，換句話說就是紀錄你每次的修改，有點像是遊戲的存擋，或是 Google 文件與 Word 會記錄你每次的新增、編輯或刪除的動作，因此未來你也可以讀取回到原先的動作與紀錄。
+這邊稍微提一下，所謂的 Commit 表示提交，也就是提交此次新增、編輯或刪除的動作，而 Git 版本控管會記錄你每一次的 Commit，換句話說就是紀錄你每次的修改，有點像是遊戲的存擋，或是 Google 文件與 Word 會記錄你每次的新增、編輯或刪除的動作，因此未來你也可以讀取回到原先的動作與紀錄，這又稱作 **「版本控制系統」**。
 
-至於想要深入了解的人可以查一查 **Git 版本控管系統** 的用途。
+而整個 Github 的服務都是以 **Git** 這套版本控制系統為核心的，所以不管是架設 Github Page 還是把程式碼放到 Repository 上都需要稍微了解一下 **Git 版本控制系統** ，而同時 **Git 版本控制系統** 也是目前全世界最多人用的版本控制系統。
+
+若想要深入了解的人可以查一查 **Git 版本控管系統** 的用途。
 
 上傳完後，會看到以下的檔案內容：
 
@@ -83,6 +85,10 @@ TODO 在[什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static S
 ## 1. 透過終端機 Terminal 指令上傳檔案
 由於本人使用的是 Mac ，所以我們採用 **Homebrew** 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 TODO [Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具]()
 
+首先我們要安裝 `git` 這個指令工具，`git` 也就是前面提到的「版本控制系統」，而由於在 Github 上其網站的核心與提供的功能都已經包含，所以不用特別安裝。
+
+但是在我們自己的電腦上，為了可以跟 Github 溝通並上傳檔案，所以需要安裝，不過因為 `git` 這套系統其實只需要指令就可以執行，所以在 Mac 上我們可以直接以指令工具的形式安裝即可。
+
 ```bash
 > brew install git
 ```
@@ -100,7 +106,7 @@ Desktop/> git clone https://github.com/kokokuo/kokokuo.github.io.git
 
 ![git-clone-repository](../images/20190208-build-static-website-to-github-page/git-clone-repository.png)
 
-此時你便可以發下  `koko.github.io` 這個目錄與檔案被抓下來：
+此時你便可以發現  `koko.github.io` 這個目錄與檔案被抓下來：
 
 ![show-clone-repository](../images/20190208-build-static-website-to-github-page/show-clone-repository.png)
 
@@ -112,13 +118,45 @@ Desktop/> git clone https://github.com/kokokuo/kokokuo.github.io.git
 設定 `about.html` 的連結：
 ![add-about-link](../images/20190208-build-static-website-to-github-page/add-about-link.png)
 
-再來我們把修改過的結果往 `kokokuo.github.io` 的 Repository 丟上去。
+再來我們把修改過的結果往 `kokokuo.github.io` 的 Repository 丟上去，透過以下幾個指令：
+
 
 ```bash
-Desktop/(master)> add .
+Desktop/(master)> git status
+Desktop/(master)> git add .
 Desktop/(master)> git config local --email "你註冊的 Github 信箱"
 Desktop/(master)> git config local --name "你註冊的 Github 用戶名稱 Username"
 Desktop/(master)> commit -m "加入 about.html 並從 inde.html 建立 Link 到 about.html"
+Desktop/(master)> push origin master
 ```
+
+這邊來稍微介紹一下上述這些指令的用途，首先是 `git status` ，這個可以透來檢查目前你做了哪些修改，所以他你輸入後，你會看到如下圖，紀錄了我們修改一個檔案 `index.html` ，另外有一個是新加入還沒有被紀錄追蹤的檔案 `about.html`：
+
+![git-status](../images/20190208-build-static-website-to-github-page/git-status.png)
+
+然後 `git add` 就可以用來告訴 Git 哪些變更的動作要被放到暫存區準備提交保存的，其中 `git add .` 表示所有變更的動作都要保存：
+
+![git-check-add-statue](../images/20190208-build-static-website-to-github-page/git-check-add-statue.png)
+
+接著透過 `git config local --email` 與 `git config local --name` 來設定在我們這個本機上對這個專案變更的用戶是誰，另外若設定的用戶名稱與 Email 是 Github 上註冊過的帳戶，上傳後還會顯示這個帳號在 Github 的資訊與連結哦！
+
+設定完後再透過 `git commit` 把剛剛因為 `git add` 指令，放到暫存區的所有變更動作提交保存，這樣未來要是出了什麼問題，只要本機上的整個專案目錄不刪除，都能回到之前的版本哦。
+
+最後我們以 `git push origin master` 指令把這些提交變更上傳到我們剛剛抓下來的 Github Repository 上傳回去 Github Repository：
+
+![git-push-master](../images/20190208-build-static-website-to-github-page/git-push-master.png)
+
+接著我們回到 Github Page 存放的 Repository ，此時修改與新的檔案已經在此，輸入 https://kokokuo.github.io 也能看到新的內容出現了！
+
+![updated-repository](../images/20190208-build-static-website-to-github-page/updated-repository.png)
+
+![new-index-html](../images/20190208-build-static-website-to-github-page/new-index-html.png)
+
+![new-about-html](../images/20190208-build-static-website-to-github-page/new-about-html.png)
+
+而且使用 `git push` 指令上傳到 Github Repository 還能幫忙備份檔案，讓你在本機上刪除專案目錄後，也能再次下載還原，一舉數得。
+
+好的，到此完成使用 **Terminal 終端機與指令** 上傳與架設靜態 Github Page 網站囉，再來我們要介紹比較簡單的 **Github Desktop** ，讓不熟悉或懼怕指令的朋友們也能輕鬆上手。
+
 
 ## 2. 透過 Github Desktop 軟體上傳靜態網站的檔案
