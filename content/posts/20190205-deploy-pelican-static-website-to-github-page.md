@@ -48,7 +48,7 @@ Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 
 不過在操作上，由於 Pelican 有提供一些指令的部署工具，因此在此部分我們統一使用 Terminal 以指令的方式操作。
 
-開始之前我們先確認是否有進到靜態網誌的專案目錄下，並且透過 Pipenv 或 Virtualenv 進入到虛擬環境下（這裡以 Pipenv 為例子），同時確認是否有執行或把 **output** 目錄中的 HTML 檔更新到最新，如果沒有則再次執行 `make html`，可以參考前一篇 TODO [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]()：
+開始之前我們先確認是否有進到靜態網誌的專案目錄下，並且透過 Pipenv 或 Virtualenv 進入到虛擬環境下（這裡以 Pipenv 為例子），同時確認是否有執行或把 **output** 目錄中的 HTML 檔更新到最新，如果沒有則再次執行 `make html`：
 
 ```bash
 > cd kokokuo-note
