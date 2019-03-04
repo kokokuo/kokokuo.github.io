@@ -8,9 +8,13 @@ Summary: 透過 Github Page 架設個人靜態網站
 
 # 前言
 ---
-TODO 在[什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)]() 中，我們提到了要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡，以及什麼是 **靜態網站 (Static Site)** 與 **靜態網站產生器 (Static Site Generator)**。
+我們提到了要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。
 
-**靜態網站 (Static Site)** 也因為檔案結構單純( 只有 HTML/CSS/JS 這類檔案 )，架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可。
+如果你要架設的網站功能會比較複雜，例如你需要會員註冊、一些預約功能、購物車下單、線上刷卡、即時訊息、編輯檔案並保存等功能，那麼就會需要有資料庫，此外需要透過後端的網頁語言，專門的伺服器來處理，本篇無法為你解決困擾。
+
+但若你只要單純的呈現訊息，例如個人網頁、部落格、公司官網，那麼也許你只需要架設一個 **靜態網站 (Static Site)** ，此時你可以繼續往下閱讀。
+
+**靜態網站 (Static Site)** 因為檔案結構單純( 只有 HTML/CSS/JS 這類檔案 )，架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可。
 
 我們可以架設一台自己的伺服器電腦並透過 SSH 或 FTP 上傳檔案架設完成，又或是使用 Dropbox 空間，雲端 AWS 與 Google Cloud, Azure 提供的服務完成架設。
 
@@ -29,10 +33,8 @@ TODO 在[什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static S
 因此有了 Github Page - 希望提供一個可以簡單架設靜態網站的服務，不僅讓這些程式碼專案都有自己的網頁介紹外，Github Page 也提供給每個用戶或是組織企業的帳號可以架設一個自己帳號用的的靜態網站，來分享自己在做的事情或是想法、經歷，而且不用自己架設架設伺服器維護，只要把想放上去呈現的檔案上傳就好，也不用花錢不是該來試試看嗎？
 
 
-在本篇我們會以介紹如何架設個人帳號的靜態網站為主，專案用的靜態網站會在下一篇 []() 中介紹。
-
-
 # 一、創建一個存放靜態網站的 Github 倉儲庫 (Repository)
+---
 首先我們需要在 Github 建立一個 Github Page 用的 Repository ，第一次使用 Github 的朋友可以先去註冊一個。
 
 這個 Github Page 用的 Repository 會專門用來放置的靜態網誌的檔案：
@@ -78,6 +80,7 @@ TODO 在[什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static S
 不過上述的方式只是單純在 Github Page 的 Repository 上做一個簡單的測試而已，接下來我們要在自己電腦本機上建立與編輯的檔案，並上傳到 Github Page 的 Repository 上。
 
 # 二、透過 Git 版本控管上傳靜態網站的檔案
+---
 在 Github 中提供了兩種方式，第一種是透過 **終端機(Terminal)** 下指令，另外一種是下載他們提供的工具 **Github Desktop**，以視窗介面的形式上傳。
 
 不管是使用 Terminal 或是 **Github Desktop**，都需要安裝 Git 指令工具，但只有使用 Terminal 需要手動下載一下，至於 **Github Desktop** 會順便安裝進去，以下我們分別介紹：
@@ -160,3 +163,54 @@ Desktop/(master)> push origin master
 
 
 ## 2. 透過 Github Desktop 軟體上傳靜態網站的檔案
+在上半部我們講完了如何使用 **Terminal 終端機與指令** 上傳與架設靜態 Github Page 網站，接下來我們要介紹如何使用 **Github Desktop** 軟體一樣做到上傳檔案與架設靜態的 Github Page 網站。
+
+不使用指令的人可以在 **一、創建一個存放靜態網站的 Github 倉儲庫 (Repository)** 完成後，不於電腦上安裝 `git` ，而是選擇安裝 Github 提供的一個圖形化的版本控制軟體，叫做 **Github Desktop** 來加入檔案、 Commit 提交或是推送到 Github Respository 上。( 如果你對這類工具很熟悉，你也可以選擇其他類的工具，例如： SourceTree )。
+
+首先開始搜尋 Github Desktop 會進入下載的連結頁面，如下圖你會看到一個 Mac OS 的版本可以下載。
+
+![github-desktop-website](../images/20190208-build-static-website-to-github-page/github-desktop-website.png)
+
+安裝後開啟程式，會需要你登入自己的 Github 帳戶，如下圖：
+
+![signin-github-account](../images/20190208-build-static-website-to-github-page/signin-github-account.png)
+
+再來選擇你放在 Github 上要 Clone 抓下來的 Repository，在這邊我們選擇自己 Github Page 所存放的 Repository：
+
+![clone-repo-desktop](../images/20190208-build-static-website-to-github-page/clone-repo-desktop.png)
+
+選擇後可以設定抓下來放在本機端的位置：
+
+![clone-local-path-desktop](../images/20190208-build-static-website-to-github-page/clone-local-path-desktop.png)
+
+抓下來後 Github Desktop 會進入工作畫面（如下圖），此頁面會告知若專案更改時，會有哪些變動的檔案，我們可以點選 **Show in Finder** 直接找到下載下來的 Repository 目錄並接著編輯：
+
+![dashboard-click-show-finder](../images/20190208-build-static-website-to-github-page/dashboard-click-show-finder.png)
+
+
+我們繼續編輯 **1. 透過終端機 Terminal 指令上傳檔案** 之後的檔案內容：
+
+加入一個 `profolio.html` 並且在 `index.html` 頁面加入一個作品集的連結，在更新一下 `README.md` 檔案
+
+![add-profolio-html](../images/20190208-build-static-website-to-github-page/add-profolio-html.png)
+
+回到 Github Desktop，你會看到更動的檔案與結果會被呈現出來，接著在左下角輸入要 Commit 的訊息並 Commit 提交此次的變更：
+
+![commit-new-action-desktop](../images/20190208-build-static-website-to-github-page/commit-new-action-desktop.png)
+
+提交後再按下 **Push Origin** 送出到 Repository 上就大功告成囉。
+
+![push-in-desktop](../images/20190208-build-static-website-to-github-page/push-in-desktop.png)
+
+最後輸入 Github Page 的網址，例如我的是 https://kokokuo.github.io 就會看到更新的結果：
+
+![desktop-page-result](../images/20190208-build-static-website-to-github-page/desktop-page-result.png)
+
+
+# 後記
+---
+透過 Github Page 你可以快速且免費的搭建簡易的靜態網站，不過上述自己撰寫 HTML/CSS 等網頁是比較費時間的，此時你不妨可以考慮使用 **態網站產生器 (Static Site Generator)** 來快速搭建你的靜態網站，在直接上傳到 Github Page 上。
+
+而且目前靜態網站產生器的選擇上非常多樣化，如果你想要知道哪裡可以選擇靜態網站，以及更加認識什麼是靜態網站，可以接著閱讀 TODO [什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)]() 來了解更多。
+
+
