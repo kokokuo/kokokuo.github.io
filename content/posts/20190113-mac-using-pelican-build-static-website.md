@@ -1,10 +1,10 @@
-Title: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
+Title: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 Date: 2019-01-13 12:40
 Category: Python
 Tags: Python, Pelican
 Slug: mac-using-pelican-build-static-website
 Authors: kokokuo
-Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
+Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 
 # 前言
 ---
@@ -19,7 +19,7 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 # 使用 Pelican 靜態網站產生器架設靜態網站
 目前靜態網站產生器的選擇上非常多樣化，參考 [StaticGen](https://www.staticgen.com/) 可以看到許多使用不同程式語言開發的產生器，並且每個產生器都有特別的特色。
 
-而自己則是使用熟悉的 Python 語言所開發的 Pelican 作為個人的網誌，同時該產生器提供的樣式主題豐富外，在設定上也只需要編輯 `pelicanconf.py` 與 `publishconf.py` 即可，能夠自己定義新的頁面（如 About Me, 作品集...等)，擁有標籤與分類目錄的工能，並能安插 Google Analystic、 Twitter, Facebook 、留言版、RSS 等外部功能，非常豐富，也只要透過一個 `Makefile` 檔案就可以生成靜態網站，或是在自己的本機電腦產生預覽模式觀看。
+而自己則是使用熟悉的 Python 語言所開發的 Pelican 作為個人的網誌，同時該產生器提供的樣式主題豐富外，在設定上也只需要編輯 `pelicanconf.py` 與 `publishconf.py` 即可，能夠自己定義新的頁面（如 About Me, 作品集...等)，擁有標籤與分類目錄的工能，並能安插 Google Analystic、 Twitter, Facebook 、留言版、RSS 等外部功能，非常豐富，也只要透過一個 `Makefile` 檔案就可以生成靜態網站，或是在自己的本機電腦產生預覽模式觀看。
 
 那麼以下來介紹安裝與使用步驟：
 
@@ -36,11 +36,11 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 kokokuo-note/>
 ```
 
-當進入目錄後，我們便可以安裝虛擬環境，並且裝載 Pelican ，以下的安裝步驟會分別紀錄採用 `virtualenv` 與 `pipenv` 兩種不同的虛擬環境工具。
+當進入目錄後，我們便可以安裝虛擬環境，並且裝載 Pelican ，以下的安裝步驟會分別紀錄採用 `virtualenv` 與 `pipenv` 兩種不同的虛擬環境工具。
 
-### (2.1) 建立虛擬環境 Virtualenv 安裝 Pelican
+### (2.1) 建立虛擬環境 Virtualenv 安裝 Pelican
 
-如果你採用 `virtualenv` 作為虛擬環境，那麼首先我們要透過 `virtualenv` 的指令建立虛擬環境的目錄，並進入虛擬環境中，才能 `pip` 指令安裝 Pelican，若對 Python 的虛擬環境 virtualenv 有更多想要知道的部分可以參考此篇 TODO [Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv]()
+如果你採用 `virtualenv` 作為虛擬環境，那麼首先我們要透過 `virtualenv` 的指令建立虛擬環境的目錄，並進入虛擬環境中，才能 `pip` 指令安裝 Pelican，若對 Python 的虛擬環境 virtualenv 有更多想要知道的部分可以參考此篇 [Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv]({filename}/posts/20190307-python-virtualenv-install-and-usage.md)
 
 ```bash
 kokokuo-note/> virtualenv venv # 採用 virtualenv 建立虛擬環境目錄
@@ -51,7 +51,7 @@ kokokuo-note/> source venv/bin/activate  # 進入虛擬環境
 ```
 如下圖：
 
-### (2.2) 建立虛擬環境 Pipenv 安裝 Pelican
+### (2.2) 建立虛擬環境 Pipenv 安裝 Pelican
 
 如果你採用 `pipenv` 作為操作虛擬環境指令工具，則採用以下步驟：
 ```bash
@@ -78,11 +78,11 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 ![pipenv-install-markdown](../images/20190113-how-to-start-pelican/pipenv-install-markdown.png)
 
 
-若是想要更多了解 `pipenv`，可以參考此篇 TODO [Python - 整合 pip 與 virtualenv 虛擬環境並提供更強大的環境管理利器 Pipenv]()
+若是想要更多了解 `pipenv`，可以參考此篇 TODO [Python - 使用 Pipenv 建立虛擬環境與安裝套件]()
 
 
-### (3.) 透過 Pelican 指定產生靜態網站檔案
-當我們安裝好 Pelican 與所需要的套件後，再來便可以透過 Pelican 提供的指令 `pelican-quickstart` 來產生後續我們要的靜態網站範本：
+### (3.) 透過 Pelican 指定產生靜態網站檔案
+當我們安裝好 Pelican 與所需要的套件後，再來便可以透過 Pelican 提供的指令 `pelican-quickstart` 來產生後續我們要的靜態網站範本：
 
 ```bash
 (kokokuo-note)kokokuo-note/> pelican-quickstart
@@ -92,8 +92,8 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 ![pipenv-pelican-to-generate](../images/20190113-how-to-start-pelican/pipenv-pelican-to-generate.png)
 
-上圖中的幾個問題分別是解說如下：
-
+上圖中的幾個問題分別是解說如下：
+
 ```bash
 > What will be the title of this web site?  # 輸入你的網站名稱，未來也可以再改
 > Who will be the author of this web site? # 輸入網站的作者名稱，未來也可以再改
@@ -113,17 +113,17 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 ```
 上述關於時區的部分，可以參考 [wikipedia 的 List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)，裡面詳列的各國的時區碼供設定參考。
 
-完成後便會看到產生的檔案：
+完成後便會看到產生的檔案：
 
 ![pelican-defult-files](../images/20190113-how-to-start-pelican/pelican-default-files.png)
 
 
-### (4.) Pelican 目錄檔案功用介紹
+### (4.) Pelican 目錄檔案功用介紹
 在上圖中，會看到 `pelican-quickstart` 執行並回答完問題後，會產生一些檔案與目錄，這些檔案與目錄便是之後這個網誌的架構，以下分別介紹每個目錄與檔案的作用：
 
 - **content** : 此目錄為 Pelican 預設提供給我們用來存放 markdown 邊寫完的網誌，因為是預設，也代表我們可以額外更改擺放位置。
-- **output** : 因為靜態網站產生器的構造是透過 markdown 撰寫我們的網誌內容後，在透過一些功能，產生具有 HTML/CSS/JS 的網頁呈現，因此會需要有一個目錄擺放這些 HTML/CSS/JS 檔案，而在 Pelican 便是 `output` 這個目錄。
-- **task.py 與 Makefile** : 則是剛剛在回答 `pelican-quickstart` 的問題中詢問的問題，這兩個檔案很有用，Pelican 提供他們來協助我們寫完每篇網誌後，可以用來產生 HTML/CSS/JS 這些靜態檔案，除此之外還能在自己的本機電腦跑出類似預覽功能觀看與檢查的**本機端伺服器**作測試，也能協助我們把完成並測試預覽後的網誌直接的以 FTP, SSH, 或是 Github Page 等方式放上去。
+- **output** : 因為靜態網站產生器的構造是透過 markdown 撰寫我們的網誌內容後，在透過一些功能，產生具有 HTML/CSS/JS 的網頁呈現，因此會需要有一個目錄擺放這些 HTML/CSS/JS 檔案，而在 Pelican 便是 `output` 這個目錄。
+- **task.py 與 Makefile** : 則是剛剛在回答 `pelican-quickstart` 的問題中詢問的問題，這兩個檔案很有用，Pelican 提供他們來協助我們寫完每篇網誌後，可以用來產生 HTML/CSS/JS 這些靜態檔案，除此之外還能在自己的本機電腦跑出類似預覽功能觀看與檢查的**本機端伺服器**作測試，也能協助我們把完成並測試預覽後的網誌直接的以 FTP, SSH, 或是 Github Page 等方式放上去。
 - **pelicanconf.py** : 這也是一個很重要的檔案，該檔案是 `.py` 結尾，也就是 Python 的程式碼。剛剛在回答 `pelican-quickstart` 中的問題如設定網站名稱、作者、語言、時區、分頁等等功能，包含未來其他的更換網誌樣板，或是設定網址要擺放的目錄，都會在此設定。
 - **publishconf.py** : 這個檔案會作用在我們要把網誌擺到伺服器上時，如剛剛問題中提問的  FTP, SSH, 或是 Github Page 等方式，因此只有在部署時會需要。
 
@@ -157,15 +157,15 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 ![pelican-make-html](../images/20190113-how-to-start-pelican/pelican-make-html.png)
 
-而產生後，我們可以進一步到 **output** 目錄下，會看到生出了許多的子目錄與檔案，包含 HTML/CSS 與 圖像檔案。
+而產生後，我們可以進一步到 **output** 目錄下，會看到生出了許多的子目錄與檔案，包含 HTML/CSS 與 圖像檔案。
 
 ![pelican-output-html](../images/20190113-how-to-start-pelican/pelican-output-html.png)
 
-在 `output` 目錄中，會看到一個檔案是 `mac-using-pelican-build-static-website.html` ，這個檔案便是我們剛剛在寫 `hello-pelican` 第一篇網誌時，所設定的 `Slug` 網址名稱，而 Pelican 會幫我們以此為檔名產生出來。
+在 `output` 目錄中，會看到一個檔案是 `mac-using-pelican-build-static-website.html` ，這個檔案便是我們剛剛在寫 `hello-pelican` 第一篇網誌時，所設定的 `Slug` 網址名稱，而 Pelican 會幫我們以此為檔名產生出來。
 
 ![pelican-html-sample](../images/20190113-how-to-start-pelican/pelican-html-sample.png)
 
-而這個 `make html` 實際上便是最早在回答 `pelican-quickstart` 問題時其中提到的 *Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n)*，由於回答了 Yes，所以 `Pelican` 協助我們提供了 `task.py` 與 `Makefile` 。
+而這個 `make html` 實際上便是最早在回答 `pelican-quickstart` 問題時其中提到的 *Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n)*，由於回答了 Yes，所以 `Pelican` 協助我們提供了 `task.py` 與 `Makefile` 。
 
 而上述的這兩個檔案是相輔相成的，核心功能寫在 `task.py`，並再透過 `Makefile` 來產生 `make html` 的功能。
 
@@ -178,14 +178,14 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 ![pelican-make-commands](../images/20190113-how-to-start-pelican/pelican-make-commands.png)
 
-
+
 以下介紹最常用的有幾個：
 
-* **make html** : 把 **content** 下所有的 Markdown 檔案轉為 HTML 網頁。
+* **make html** : 把 **content** 下所有的 Markdown 檔案轉為 HTML 網頁。
 * **make clean** : 清除掉 **output** 目錄下的所有內容。
-* **make regenerate** : 若是使用 `make html` ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 `make html` 才能產生看到的 HTML 內容並被看到。
-* **make serve** : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:8000 來預覽與測試文章有無格式或排版問提。
-* **make devserver** : 啟動開發用的本機伺服器，`與 make serve` 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 `make regenerate` 與 `make serve`。
+* **make regenerate** : 若是使用 `make html` ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 `make html` 才能產生看到的 HTML 內容並被看到。
+* **make serve** : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:8000 來預覽與測試文章有無格式或排版問提。
+* **make devserver** : 啟動開發用的本機伺服器，`與 make serve` 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 `make regenerate` 與 `make serve`。
 
 ### (7.) 預覽編寫完的 Markdown 網誌
 當完成 `make html` 產生網頁後，再來只要輸入 `make serve` 便可以預覽寫完的網頁：
@@ -204,4 +204,4 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 但是這一切都是在自己的電腦本機端，我們仍然需要真的伺服器空間，來把我們的網誌與文章放上去才行。
 
-因此接下來我們會介紹一開始在執行 `pelican-quickstart` 時，選擇使用 **Github Page** 的後續部署網誌步驟，請參考 TODO [使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例]()。
+因此接下來我們會介紹一開始在執行 `pelican-quickstart` 時，選擇使用 **Github Page** 的後續部署網誌步驟，請參考 [使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例]({filename}/posts/20190205-deploy-pelican-static-website-to-github-page.md)。

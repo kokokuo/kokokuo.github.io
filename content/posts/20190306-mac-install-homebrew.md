@@ -1,15 +1,15 @@
 Title: Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具
 Date: 2019-03-06
-Category: Plugins
 Tags: Mac, Homebrew
-Slug: install-homebrew-on-mac
+Slug: mac-install-homebrew
 Authors: kokokuo
-Summary: Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具
+Summary: Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具
 
 # 前言
 ---
 Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 apt 或是 yum 工具，許多的套件工具都可以透過 Homebrew 安裝，並且管理（如列出安裝的套件、更新套件、修正套件、移除套件等等）上非常方便，即便要尋找也都會放在相同的目錄下。
 
+<br/>
 
 # 安裝步驟
 ---
@@ -26,7 +26,7 @@ $> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/ins
 
 安裝過程如下圖：
 
-![](../images/20190306-mac-install-homebrew/terminal-install-message.png)
+![terminal-install-message](../images/20190306-mac-install-homebrew/terminal-install-message.png)
 
 ## 步驟二：建立環境變數
 
@@ -86,6 +86,8 @@ $> brew install wget
 ```
 
 ![brew-install-sample](../images/20190306-mac-install-homebrew/brew-install-sample.png)
+
+<br/>
 
 # Homebrew 資料夾目錄介紹
 ---

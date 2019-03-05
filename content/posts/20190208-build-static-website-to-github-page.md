@@ -1,10 +1,9 @@
 Title: 透過 Github Page 上傳靜態網站
 Date: 2019-02-28
-Category: Web
-Tags: Static Site Generator
-Slug: why-use-static-site-generator
+Tags: 靜態網站產生器
+Slug: build-static-website-to-github-page
 Authors: kokokuo
-Summary: 透過 Github Page 架設個人靜態網站
+Summary: 透過 Github Page 架設個人靜態網站
 
 # 前言
 ---
@@ -86,7 +85,7 @@ Summary: 透過 Github Page 架設個人靜態網站
 不管是使用 Terminal 或是 **Github Desktop**，都需要安裝 Git 指令工具，但只有使用 Terminal 需要手動下載一下，至於 **Github Desktop** 會順便安裝進去，以下我們分別介紹：
 
 ## 1. 透過終端機 Terminal 指令上傳檔案
-由於本人使用的是 Mac ，所以我們採用 **Homebrew** 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 TODO [Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具]()
+由於本人使用的是 Mac ，所以我們採用 **Homebrew** 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 [Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具]({filename}/posts/20190306-mac-install-homebrew.md)
 
 首先我們要安裝 `git` 這個指令工具，`git` 也就是前面提到的「版本控制系統」，而由於在 Github 上其網站的核心與提供的功能都已經包含，所以不用特別安裝。
 
