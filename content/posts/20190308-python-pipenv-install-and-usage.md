@@ -31,6 +31,34 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 
 # 什麼是 Pipenv
 ---
-`Pipenv` 是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，`Pipenv` 整合了 `pip` 與 `virtualenv`
+`Pipenv` 是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，`Pipenv` 整合了 `pip` 與 `virtualenv`，是一套具備了建立虛擬環境同時能管理件的利器，他能做到：
 
- 
+1. 只需要 `pipenv` 指令，不在需要分別使用 `pip` 與 `virtualenv`
+2. 改透過 `Pipfile` 與 `Pipfile.lock` 來自動更新並維護安裝的套件，完全取代原先不完善的 `requirements.txt`
+3. 透過對套件做 hash 來做安全性檢查確認，當 hash 的結果不相同，跳出錯誤，防止惡意套件透過安裝侵入你的程式碼。
+4. 可以透過建立一份 `.env` 檔案在專案目錄下，來自動載入不同環境變數為你的專案直接使用。
+5. 你所安裝的套件都會標明出相依的套件是哪些，移除套件時也會連帶移除相依套件
+6. 你安裝的套件 `A` 與套件 `B` 即便都相依了套件 `C` 的 `1.1` 版，這個套件 `C` 也會被隔離成兩份，即便套件 `B` 的更新連帶更新了套件 `C`，也不會影響套件 `A` 所相依安裝的套件 `C`。
+
+不過上述的感動都沒有親自看到來的高潮，所以讓我們接著來安裝與使用 `Pipenv` 套件吧！
+
+
+#安裝 Pipenv
+---
+
+讓我們先在 Python 系統環境下安裝 `pipenv`:
+
+```bash
+$> pip install pipenv
+```
+
+由於 `pipenv` 會依賴 `virtualenv` 與 `pip` 套件，所以若是你沒有安裝 `virtualenv` 也會一併安裝下來（ `pip` 是原本已經內建在 Python 的套件 )
+
+# 使用 Pipenv
+---
+
+
+# 參考文章
+---
+1. [用 pipenv 來管理 Python 開發環境](https://codinganimal.info/%E7%94%A8-pipenv-%E4%BE%86%E7%AE%A1%E7%90%86-python-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-ce9f619825a2)
+2. [Pipenv 更簡單、更快速的 Python 套件管理工具](https://medium.com/@chihsuan/pipenv-%E6%9B%B4%E7%B0%A1%E5%96%AE-%E6%9B%B4%E5%BF%AB%E9%80%9F%E7%9A%84-python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-135a47e504f4)
