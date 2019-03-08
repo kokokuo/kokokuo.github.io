@@ -15,7 +15,7 @@ Summary: Python - 隔離開發環境的利器，安裝虛擬環境工具 virtual
 ---
 虛擬環境的目的使我們可以依據我們每個專案為一個單位，建立出不同虛擬的 Python 環境，來隔離系統的主 Python 環境以及其他專案的 Python 環境。因此當我們在開發不同的專案時，只要進入每個專案所屬的虛擬環境中，接下來所有安裝的插件都會只裝在這個環境中並且被作用，下圖為示意圖：
 
-TODO 缺圖片
+![python-virtualenv-diagram](../images/20190307-python-virtualenv-install-and-usage/python-virtualenv-diagram.png)
 
 我的主系統 Python 環境中只有安裝 `pip` 與 `virtualenv` 這個虛擬環境工具套件，而透過 `virtualenv` 所分別在這三個專案產生的 `env1`, `env2`, `env3` 除了都有各自獨立的 Python 環境與各自的 `pip` 套件外，也都安裝彼此所屬專案在開發上所需要的插件。
 
@@ -108,6 +108,45 @@ parser/> pip list
 (venv)parser/> deactivate
 parser/> rm -rf venv
 ```
+
+<br/>
+
+# 紀錄專案在 virtualenv 中所安裝的所有套件
+---
+安裝了 Python 的套件在虛擬環境中雖然很好，但是如果要做版本控制放到 Github, Bitbucket, GitLab 上，又或是專案的檔案要攜帶著走、分享給別人，那麼這些安裝好的環境要如何也攜帶走呢？ 可能你會說，那我們把剛剛建立放置虛擬環境的目錄 `venv` 也一起丟到版本控管空間呀，轉移專案目錄時也是一起帶著走就好了，但是這是不行的，因為兩個原因：
+
+1. **虛擬環境目錄認「絕對路徑」**：換句話說，即便你有一起把 `venv` 帶著走，但若你的專案目錄改名了、把自己的目錄檔案放到別的位置下或複製傳給別人，都會因為絕對位置跑掉，導致下次再透過 `source` 進入虛擬環境時找不到路徑而失敗！
+
+2. **虛擬環境目錄檔案太大**：虛擬環境目錄因為要保存隔離 Python 的整個核心檔案以及未來安裝的 Python 套件，會導致目錄的檔案越來越多，所以一般來說就算路徑都不改，我們也不會攜帶走或丟到版本控管空間，因為會很大很肥。
+
+那麼不帶著虛擬環境的目錄走，要怎麼保有這些安裝套件的紀錄呢？ 這裡就要仰賴到 `pip freeze` 這個指令了！ 透過 `pip freeze > 保存的檔名` 來建立一份所有該虛擬環境所安裝的套件：
+
+```bash
+(venv)parser/> pip freeze > requirements.txt
+```
+
+![pip-freeze-requirements](../images/20190307-python-virtualenv-install-and-usage/pip-freeze-requirements.png)
+
+如上圖，會建立了 `requriements.txt` 檔案，這個檔名可以隨意命名，不過一般在使用 `virtualenv` 中，使用 `requriements.txt` 已經變成 Python 的一種 Convention ，所以若是去瀏覽大多是 Github 的 Reposiotry 都會看到。
+
+當我們產生了 `requriements.txt` 後，專案變只要帶著這個 `requriements.txt` 即可，上傳版控也一樣，並可以用 `.gitignore` 過濾掉 `venv` 目錄。
+
+<br/>
+
+# 使用 `requirements.txt` 
+---
+當該專案來到新的環境下或從 Github 上 Clone 下來時，要使用虛擬環境並再次安裝套件的話，就只要再次把虛擬環境的目錄建立，進入後，透過以下指令，就可以還原該專案原先所以用的 Python 套件囉，以下再次以乾淨的 `parser` 專案為例：
+
+```bash
+# 假設目前在新的環境下，先建立虛擬環境，在安裝套件
+parser/> virtualenv venv
+parser/> source venv/bin/activate
+(venv)parser/> pip install -r requirements.txt
+```
+
+![pip-install-by-requirments](../images/20190307-python-virtualenv-install-and-usage/pip-install-by-requirments.png)
+
+如上圖，再次安裝 Python 套件完成囉。
 
 <br/>
 

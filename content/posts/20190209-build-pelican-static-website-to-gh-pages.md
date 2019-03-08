@@ -1,10 +1,10 @@
 Title: 建立 Repository 專案的 Github Page 靜態網頁
-Date: 2019-03-06
+Date: 2019-02-09
 Tags: Github Page
 Slug: use-github-page-to-deploy-by-gh-pages
 Authors: kokokuo
 Summary: 建立 Repository 專案的 Github Page 靜態網頁
-
+Status: draft
 
 
 ## 方式二：使用 `gh-pages` 作為發布分支的設定
