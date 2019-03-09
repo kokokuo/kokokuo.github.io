@@ -63,7 +63,7 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 以下我們透過一個 `parser` 專案做來例子來介紹 Pipenv 中常用的指令，以及觀察 Pipenv 為我們做了什麼神奇的現象。
 
 ## 1. 為你的專案建立虛擬環境
-首先讓我們為 `parser` 專案建立許虛擬環境，進入該專案後，只要透過 `pipenv install` 來建立虛擬環境，
+進入要開發並準備建立虛擬環境的專案，再來透過 `pipenv install` 來建立虛擬環境，此時 `pipenv install` 會偵測你系統預設的 Python 環境版本，並且依照此版本建立虛擬環境：
 
 ```bash
 ~/> cd parser
@@ -72,10 +72,50 @@ parser/> pipenv install
 
 ![1-create-virtualenv-by-pipenv](../images/20190308-python-pipenv-install-and-usage/1-create-virtualenv-by-pipenv.png)
 
+在建置虛擬環境的過程中，你會看見他所生成的路徑，只不過與 `virtualenv` 不同的是，`pipenv` 會自動產生一個 `.local/share/ virtualenvs/`  在你的家目錄下，並且把該專案的虛擬環境募放置在其中，如上圖你會看到該目錄名是  `parser-hvDw_3KS` 。
+
+### 查詢虛擬環境所在位置
+如果你忘了你的虛擬目錄所在位置，可以透過 `--venv` 指令查詢哦，進到該目錄看，裡面放了從系統中複製過來 Python 的核心。
+
+![2-virtualenv-path-by-pipenv](../images/20190308-python-pipenv-install-and-usage/2-virtualenv-path-by-pipenv.png)
+
+<br/>
+
+當虛擬環境完成後，你會接著發現，`pipenv install` 這個指令自動產生了兩個檔案在你的專案中，分別是 `Pipfile` 與 `Pipfile.lock`，這兩個檔案是圍繞著 `pipenv` 的整個核心，以下分別來看看：
+
+### Pipfile 
+
+`Pipfile` 取代了過去的 `requirements.txt`，採用 [TOML](https://zh.wikipedia.org/zh-tw/TOML) 語法格式，讓紀錄安裝過的套件資訊可以更豐富。
+
+開頭的 `[source]` 記錄了套件安裝的網路來源位置，預設為 PyPI 官網來源，但是也意味著你可以取代成你團隊自己的私有 PyPI 位置，並且可以設定是否使用 SSL 加密協定。下方的 `[dev-packages]` 紀錄了只有開發才會用到的安裝套件。 `[packages]` 則如同過去我們開發與部署都需要用到的套件，並且紀錄的版本號。最後 `[requires]` 紀錄了 Python 的版本號，因此 `Pipfile` 的主要目的是用來幫助 `pipenv` 紀錄套件的來源與下載的套件版本資訊以及 Python 的環境等設置檔案。
+
+![3-pipenv-create-pipfile](../images/20190308-python-pipenv-install-and-usage/3-pipenv-create-pipfile.png)
+
+
+### Pipfile.lock 
+一般而言當 `Pipfile` 產生或是更新後，`pipenv` 也會自動也更新 `Pipfile.lock`，這是因為 `Pipfile.lock` 會依據 `Pipfile` 紀錄的套件來源來抓取套件下來，並計算 Hash 值保存和記錄目前的版本號，同時也會把相依而下載的套件一併記錄在此，作為往後再次建立環境抓取套件安裝的依據。
+
+透過 Hash 計算紀錄作為安全性驗證，避免未來再次下載時，因遠端來源被竄改下載使用入侵系統，同時也能作為往後是否下載新版本的比較依據。
+
+![4-pipenv-create-pipfile-lock](../images/20190308-python-pipenv-install-and-usage/4-pipenv-create-pipfile-lock.png)
+
+透過 `pipenv` 讀取這些檔案下載套件會參考的依據。
 
 
 
+![5-pipenv-auto-install-plugin-if-pipfile-exist](../images/20190308-python-pipenv-install-and-usage/5-pipenv-auto-install-plugin-if-pipfile-exist.png)
+
+![6-pipenv-install-indicate-python-version](../images/20190308-python-pipenv-install-and-usage/6-pipenv-install-indicate-python-version.png)
+
+![7-pipenv-install-indicate-python-version-by-two](../images/20190308-python-pipenv-install-and-usage/7-pipenv-install-indicate-python-version-by-two.png)
+
+![8-pipenv-install-indicate-python-version-by-three](../images/20190308-python-pipenv-install-and-usage/8-pipenv-install-indicate-python-version-by-three.png)
+
+![9-pipenv-install-indicate-python-version-by-python-para](../images/20190308-python-pipenv-install-and-usage/9-pipenv-install-indicate-python-version-by-python-para.png)
+
+![]()
 # 參考文章
 ---
-1. [用 pipenv 來管理 Python 開發環境](https://codinganimal.info/%E7%94%A8-pipenv-%E4%BE%86%E7%AE%A1%E7%90%86-python-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-ce9f619825a2)
-2. [Pipenv 更簡單、更快速的 Python 套件管理工具](https://medium.com/@chihsuan/pipenv-%E6%9B%B4%E7%B0%A1%E5%96%AE-%E6%9B%B4%E5%BF%AB%E9%80%9F%E7%9A%84-python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-135a47e504f4)
+1. [Pipenv: A Guide to the New Python Packaging Tool](https://realpython.com/pipenv-guide/)
+2. [用 pipenv 來管理 Python 開發環境](https://codinganimal.info/%E7%94%A8-pipenv-%E4%BE%86%E7%AE%A1%E7%90%86-python-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-ce9f619825a2)
+3. [Pipenv 更簡單、更快速的 Python 套件管理工具](https://medium.com/@chihsuan/pipenv-%E6%9B%B4%E7%B0%A1%E5%96%AE-%E6%9B%B4%E5%BF%AB%E9%80%9F%E7%9A%84-python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-135a47e504f4)
