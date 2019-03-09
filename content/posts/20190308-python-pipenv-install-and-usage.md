@@ -31,7 +31,11 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 
 # 什麼是 Pipenv
 ---
-`Pipenv` 是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，`Pipenv` 整合了 `pip` 與 `virtualenv`，是一套具備了建立虛擬環境同時能管理件的利器，他能做到：
+![pipenv-icon](../images/20190308-python-pipenv-install-and-usage/pipenv-icon.png)
+
+`Pipenv` 是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，`Pipenv` 整合了 `pip` 與 `virtualenv`，是一套具備了建立虛擬環境同時能管理件的利器，他能做到並解決原本存在的問題：
+
+
 
 1. 只需要 `pipenv` 指令，不在需要分別使用 `pip` 與 `virtualenv`
 2. 改透過 `Pipfile` 與 `Pipfile.lock` 來自動更新並維護安裝的套件，完全取代原先不完善的 `requirements.txt`
@@ -43,19 +47,32 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 不過上述的感動都沒有親自看到來的高潮，所以讓我們接著來安裝與使用 `Pipenv` 套件吧！
 
 
-#安裝 Pipenv
+# 安裝 Pipenv
 ---
 
 讓我們先在 Python 系統環境下安裝 `pipenv`:
 
 ```bash
-$> pip install pipenv
+~/> pip install pipenv
 ```
 
 由於 `pipenv` 會依賴 `virtualenv` 與 `pip` 套件，所以若是你沒有安裝 `virtualenv` 也會一併安裝下來（ `pip` 是原本已經內建在 Python 的套件 )
 
 # 使用 Pipenv
 ---
+以下我們透過一個 `parser` 專案做來例子來介紹 Pipenv 中常用的指令，以及觀察 Pipenv 為我們做了什麼神奇的現象。
+
+## 1. 為你的專案建立虛擬環境
+首先讓我們為 `parser` 專案建立許虛擬環境，進入該專案後，只要透過 `pipenv install` 來建立虛擬環境，
+
+```bash
+~/> cd parser
+parser/> pipenv install
+```
+
+![1-create-virtualenv-by-pipenv](../images/20190308-python-pipenv-install-and-usage/1-create-virtualenv-by-pipenv.png)
+
+
 
 
 # 參考文章
