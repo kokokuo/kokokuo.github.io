@@ -20,10 +20,8 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 2. 你安裝的套件 `A` 與套件 `B` 都相依了套件 `C` 的 `1.1` 版，但某一天你更新了套件 `B` ，因為套件 `B` 需要套件 `C` 的 `1.2` 版，所以一併更新了相依的套件 `C` 到 `1.2` 版，但是你的套件 `A` 卻仍相依套件 `C` 的 `1.1` 版，導致套件 `A` 反而無法使用。
 <br/>
 3. 你透過 `pip` 所安裝的套件，並不會特別紀錄哪些是屬於該套件的相依套件，例如今天你下載了一個套件 `D` ，而套件 `D` 因為相依所以也下載安裝了套件 `E` 與 `F`，但是當你透過 `pip list` 查閱時，`pip` 卻不會告知你他是相依套件，所以若是此套件的相依一多就無法整理。
-<br>
-4. 承接上述的情況，若之後當你想移除套件 `D` 時，套件 `E` 與 `F` 也不會連帶移除，導致套件安裝的套件越來越多也越髒。
 <br/>
-1. 因此同事協作開發時，同事若想要查詢你所安裝的套件的文件與手冊，也會因為無法知道你所用的主要套件是哪些，因此難以查尋該套件的相關文章協助開發。
+4. 因此同事協作開發時，同事若想要查詢你所安裝的套件的文件與手冊，也會因為無法知道你所用的主要套件是哪些，因此難以查尋該套件的相關文章協助開發。
 
 因此雖然 `virtualenv` 是一個可以幫助我們在開發 Python 專案時，隔離主系統與其他專案環境的好工具，但是 `virtualenv` 依然不夠好用。
 
@@ -41,8 +39,7 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 2. 改透過 `Pipfile` 與 `Pipfile.lock` 來自動更新並維護安裝的套件，完全取代原先不完善的 `requirements.txt`
 3. 透過對套件做 hash 來做安全性檢查確認，當 hash 的結果不相同，跳出錯誤，防止惡意套件透過安裝侵入你的程式碼。
 4. 可以透過建立一份 `.env` 檔案在專案目錄下，來自動載入不同環境變數為你的專案直接使用。
-5. 你所安裝的套件都會標明出相依的套件是哪些，移除套件時也會連帶移除相依套件
-6. 你安裝的套件 `A` 與套件 `B` 即便都相依了套件 `C` 的 `1.1` 版，這個套件 `C` 也會被隔離成兩份，即便套件 `B` 的更新連帶更新了套件 `C`，也不會影響套件 `A` 所相依安裝的套件 `C`。
+5. 你安裝的套件 `A` 與套件 `B` 即便都相依了套件 `C` 的 `1.1` 版，這個套件 `C` 也會被隔離成兩份，即便套件 `B` 的更新連帶更新了套件 `C`，也不會影響套件 `A` 所相依安裝的套件 `C`。
 
 不過上述的感動都沒有親自看到來的高潮，所以讓我們接著來安裝與使用 `Pipenv` 套件吧！
 
@@ -142,7 +139,6 @@ parser/> pipenv install
 <br/>
 
 ## 2. 啟動虛擬環境
----
 當建立好虛擬環境以及 `Pipfile`, `Pipfile.lock` 後，接著就是要進入虛擬環境中來在環境之下操作，在 `pipenv` 中提供了 `shell` 這個指令能使用我進入環境中：
 
 ```bash
@@ -200,7 +196,7 @@ Pipenv 也能夠一次對多個操件做相同的行爲，如下一次對多個�
 
 ![14-pipenv-install-dev-package](../images/20190308-python-pipenv-install-and-usage/14-pipenv-install-dev-package.png)
 
-只要透過 `pipenv install [套件名稱] --dev` 就可以告訴 Pipenv 這個套件我只會在開發時使用，因此安裝後，該套件也會被記錄在 `Pipfile` 中的 `[dev-package]` 區塊：
+只要透過 `pipenv install [套件名稱] --dev` 就可以告訴 Pipenv 這個套件我只會在開發時使用，因此安裝後，該套件也會被記錄在 `Pipfile` 中的 `[dev-packages]` 區塊：
 
 ![15-pipfile-dev-package-update](../images/20190308-python-pipenv-install-and-usage/15-pipfile-dev-package-update.png)
 
@@ -241,17 +237,64 @@ parser/> pipenv install # 讀取 Pipfile 並且安裝套件還原虛擬環境
 parser/> pipenv install --dev
 ```
 
-### 還原虛擬環境 - 執行 `Pipfile` 與 `Pipfile.lock` 的順序
-建立虛擬環境時，如果有 `Pipfile` 或 `Pipfile.lock` ，那麼 Pipenv 會有一個讀取與執行的順序：
+### 還原時執行 `Pipfile` 與 `Pipfile.lock` 的過程
+建立虛擬環境時，如果有 `Pipfile` 、 `Pipfile.lock` ，那麼 Pipenv 會有一個讀取與執行的順序：
 
 1. 如果沒有 `Pipfile` 而只有 `Pipfile.lock`，那麼建立虛擬環境時，會因為沒有 `Pipfile` 產生了新的 `Pipfile` 並把沒有安裝套件的 `Pipfile` 資訊更新覆蓋掉原本有安裝套件資訊的 `Pipfile.lock`
    
 2. 如果有 `Pipfile` 卻沒有 `Pipfile.lock`，那麼建立虛擬環境時，會從 `Pipfile` 的資訊中讀取下載套件產生 Pipfile.lock ，所以資訊會保留。
 
+<br/>
+
+
+## 5. 查看安裝的套件
+在 Pipenv 中查看安裝的套件很簡單，只要透過 `pipenv graph` 即可，而且還會顯示套件以及相依套件的關聯：
+
+```bash
+(parser)parser/> pipenv graph
+```
+
+![16-pipenv-graph](../images/20190308-python-pipenv-install-and-usage/16-pipenv-graph.png)
+
+而且你會看到 `Flask-SQLAlchemy` 與 `Flask-Restful` 都有依賴 `Flask`，但是他們安裝的 `Flask` 是彼此獨立的，因此這也是開頭提到的，`Pipenv` 幾絕了套件彼此相依所產生的版本升級時困擾。
 
 <br/>
 
-## 5. 指定 Python 版本建立虛擬環境
+## 7. 解除安裝的套件
+如果今天想要解除安裝過的套件怎麼辦？ 我們可以透過 `pipenv uninstall [套件名稱]` 來做：
+
+```bash
+(parser)parser/> pipenv uninstall Flask-SQLAlchemy 
+```
+
+你也可以一次解安裝多個：
+```bash
+(parser)parser/> pipenv uninstall Flask-SQLAlchemy Flask-Restful
+```
+
+不過相依的套件並不會一併被移除，所以需要一個一個解掉。
+
+### 移除 `--dev` 的套件
+如果你想要移除從 `Pipfile` 中的 `[dev-packages]` 區塊的套件，可以輸入 `pipenv uninstall [套件名稱] --dev`：
+
+```bash
+(parser)parser/> pipenv uninstall pytest --dev
+```
+
+![17-pipenv-uninstall-dev-packages](../images/20190308-python-pipenv-install-and-usage/17-pipenv-uninstall-dev-packages.png)
+
+<br/>
+
+## 8. 更新套件
+如果你要檢查有無新的套件並更新，可以輸入 `pipenv update`，若是有新的套件，那麼 `Pipfile` 與 `Pipfile.lock` 都會更新為新的套件紀錄，並且下載新套件：
+
+```bash
+(parser)parser/> pipenv update
+```
+
+<br/>
+
+## 9. 指定 Python 版本建立虛擬環境
 如果你的系統中有安裝了多個 Python 版本，例如 `Python 2.7.10`, `Python 2.7.15`, `Python 3.7.1`，如下圖：
 
 ![7-pipenv-install-indicate-python-version](../images/20190308-python-pipenv-install-and-usage/7-pipenv-install-indicate-python-version.png)
@@ -294,10 +337,13 @@ parser> pipenv --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
 ```
 
 ### Pipenv 對虛擬環境的建立法則
-到了這裡可能有些人為疑惑，這樣子指令的功用不就有些重複了嗎？ 為何不使每個指令的行為明確職責分一呢？ 這也就是我在一開頭提到的， Pipenv 很強大，但是對於剛上手的人會在使用中容易混淆。
+看到了這裡可能有些人為疑惑，這樣子指令的功用不就有些重複了嗎？ 前面的 `pipenv install` 與 `pipenv shell` 也是。
 
-對於建立虛擬環境而言，在 Pipenv 中，***除了 `pipenv graph` 這個指令外，所有其他的指令在執行時，都會檢查現有的專案目錄下有沒有虛擬環境存在，如果沒有就會為你建立。***
+為何不使每個指令的行為明確職責分一呢？ 這也就是我在一開頭提到的，Pipenv 很強大，但是對於剛上手的人會在使用中容易混淆。
 
+其實建立虛擬環境而言，在 Pipenv 中，***除了 `pipenv graph` 這個指令外，所有其他的指令在執行時，都會檢查現有的專案目錄下有沒有虛擬環境存在，如果沒有就會為你建立。***
+
+所以指定版本號也是，除了 `pipenv graph` 這個指令外，所有其他的指令在執行時也能指定版本號，那麼沒有虛擬環境時，就會為你建立這個版本的虛擬環境。
 
 # 參考文章
 ---
