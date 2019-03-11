@@ -260,7 +260,7 @@ parser/> pipenv install --dev
 
 <br/>
 
-## 7. 解除安裝的套件
+## 6. 解除安裝的套件
 如果今天想要解除安裝過的套件怎麼辦？ 我們可以透過 `pipenv uninstall [套件名稱]` 來做：
 
 ```bash
@@ -285,14 +285,34 @@ parser/> pipenv install --dev
 
 <br/>
 
-## 8. 更新套件
-如果你要檢查有無新的套件並更新，可以輸入 `pipenv update`，若是有新的套件，那麼 `Pipfile` 與 `Pipfile.lock` 都會更新為新的套件紀錄，並且下載新套件：
+## 7. 更新套件
+如果你要檢查有無新的套件並更新，可以輸入 `pipenv update`，`pipenv update` 會先執行 `lock` 指令，檢查是否有新的套件，如果有那麼 `Pipfile` 與 `Pipfile.lock` 都會更新為新的套件紀錄，並且接著透過 `sync` 同步下載新套件到虛擬環境中：
 
 ```bash
 (parser)parser/> pipenv update
 ```
 
 <br/>
+
+## 8. 直接根據虛擬環境執行 Python 指令
+如果想要測試專案的某個檔案，或是直接進入虛擬環境的 Python 中測試，可以使用 `pipenv run [指令]` 來執行。
+
+例如我要進入虛擬環境中的 Ｐython 下：
+
+```bash
+(parser)parser/> pipenv run python
+```
+
+我要查看虛擬環境中的 Python 版本：
+
+```bash
+(parser)parser/> pipenv run python # 進入虛擬環境中的 Python
+(parser)parser/> pipenv --py # Pipenv 提供的方式
+```
+
+![18-pipenv-run-python-sample](../images/20190308-python-pipenv-install-and-usage/18-pipenv-run-python-sample.png)
+
+
 
 ## 9. 指定 Python 版本建立虛擬環境
 如果你的系統中有安裝了多個 Python 版本，例如 `Python 2.7.10`, `Python 2.7.15`, `Python 3.7.1`，如下圖：
@@ -336,14 +356,31 @@ parser> pipenv --three # 指定系統有安裝，優先使用的 Python 3
 parser> pipenv --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
 ```
 
-### Pipenv 對虛擬環境的建立法則
-看到了這裡可能有些人為疑惑，這樣子指令的功用不就有些重複了嗎？ 前面的 `pipenv install` 與 `pipenv shell` 也是。
+<br/>
 
-為何不使每個指令的行為明確職責分一呢？ 這也就是我在一開頭提到的，Pipenv 很強大，但是對於剛上手的人會在使用中容易混淆。
+## 虛擬環境 和 `Pipfile`, `Pipfile.lock` 的建立法則
+看到了這裡可能有些人為疑惑，這樣子指令的功用不就有些重複了嗎？ 前面的 `pipenv install` 與 `pipenv shell` 也是，甚至指定版本的部分不需要有 `install` 與 `shell`，只要直接帶版本號也行？
+
+這樣的感覺對我當初來說，每個指令的行為非常沒有職責分一的感覺。
+
+這也就是我在一開頭提到的，Pipenv 很強大，但是對於剛上手的人會在使用中容易混淆。
+
 
 其實建立虛擬環境而言，在 Pipenv 中，***除了 `pipenv graph` 這個指令外，所有其他的指令在執行時，都會檢查現有的專案目錄下有沒有虛擬環境存在，如果沒有就會為你建立。***
 
 所以指定版本號也是，除了 `pipenv graph` 這個指令外，所有其他的指令在執行時也能指定版本號，那麼沒有虛擬環境時，就會為你建立這個版本的虛擬環境。
+
+而且呢，對於建立虛擬環境（或是還原虛擬環境），每個指令也不會都產生 `Pipfile.lock` 就像 `pipenv shell` 的情況一樣。
+
+- 會更新與產生 `Pipfile`,  `Pipfile.lock` 的指令有 `install`, `update`, `uninstall`, `lock`, `clean` 。
+- 只會產生 `Pipfile` 的有 `shell`, `check`, `run`, `open` , `sync` 。
+
+
+# 後記
+---
+寫這篇文章真的花了很多心思 ＠＠ ，因為 **Pipenv** 雖然貼心與強大，但是也因為指令中很多相似的行為都能做到，導致在思考文章結構與流程上花了很多心思，因為彷彿從任何地方都能切入說，但是很容易迷失在其中，如果有一個順序，又會因為許多方式都能做到，導致越看越模糊。
+
+雖然還是完成了，但很美中不足啊，不過也希望或多或少能幫助到他人或是未來忘記的自己，對了一但使用 **Pipenv** 後，建議不要在使用 `pip` 指令又在 **Pipenv** 建立好的虛擬環境下安裝或移除套件，那會讓 Pipenv 的環境管理與 `pip` 不同步，也混淆自己哦。
 
 # 參考文章
 ---
@@ -352,5 +389,6 @@ parser> pipenv --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
 3. [Pipenv 更簡單、更快速的 Python 套件管理工具](https://medium.com/@chihsuan/pipenv-%E6%9B%B4%E7%B0%A1%E5%96%AE-%E6%9B%B4%E5%BF%AB%E9%80%9F%E7%9A%84-python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-135a47e504f4)
 4. [Pipfile.lock Security Features](https://pipenv.readthedocs.io/en/latest/basics/#pipfile-lock-security-features)
 5. [Hash-Checking Mode in pip](https://pip.pypa.io/en/stable/reference/pip_install/#hash-checking-mode)
-
-[Windows + Python 3.6 + PipEnv + Visual Studio Code でPython開発環境](https://qiita.com/youkidkk/items/b6a6e39ee3a109001c75)
+6. [pipenv的高级用法了解一下](https://www.jianshu.com/p/8c6ae288ba48)
+7. [pipenv使用指南](https://crazygit.wiseturtles.com/2018/01/08/pipenv-tour/)
+8. [pip 与 Pipfile](https://blog.windrunner.me/python/pip.html)

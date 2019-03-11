@@ -78,7 +78,7 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 ![pipenv-install-markdown](../images/20190113-how-to-start-pelican/pipenv-install-markdown.png)
 
 
-若是想要更多了解 `pipenv`，可以參考此篇 TODO [Python - 使用 Pipenv 建立虛擬環境與安裝套件]()
+若是想要更多了解 `pipenv`，可以參考此篇 [Python - 使用 Pipenv 建立虛擬環境與安裝套件]({filename}/posts/20190308-python-pipenv-install-and-usage.md)
 
 
 ### (3.) 透過 Pelican 指定產生靜態網站檔案
