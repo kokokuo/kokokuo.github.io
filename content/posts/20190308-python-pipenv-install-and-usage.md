@@ -438,6 +438,6 @@ parser> pipenv --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
 3. [Pipenv 更簡單、更快速的 Python 套件管理工具](https://medium.com/@chihsuan/pipenv-%E6%9B%B4%E7%B0%A1%E5%96%AE-%E6%9B%B4%E5%BF%AB%E9%80%9F%E7%9A%84-python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-135a47e504f4)
 4. [Pipfile.lock Security Features](https://pipenv.readthedocs.io/en/latest/basics/#pipfile-lock-security-features)
 5. [Hash-Checking Mode in pip](https://pip.pypa.io/en/stable/reference/pip_install/#hash-checking-mode)
-6. [pipenv的高级用法了解一下](https://www.jianshu.com/p/8c6ae288ba48)
-7. [pipenv使用指南](https://crazygit.wiseturtles.com/2018/01/08/pipenv-tour/)
+6. [pipenv 的高级用法了解一下](https://www.jianshu.com/p/8c6ae288ba48)
+7. [pipenv 使用指南](https://crazygit.wiseturtles.com/2018/01/08/pipenv-tour/)
 8. [pip 与 Pipfile](https://blog.windrunner.me/python/pip.html)

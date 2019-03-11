@@ -108,5 +108,5 @@ Cellar    Homebrew    etc  lib      sbin  var
 * `Caskroom`：使用 Homebrew Cask 安裝的應用程式 app 的相關資訊或設定的文件
 
 
-## 參考文件：
-1.[Homebrew总结](https://www.jianshu.com/p/8ad7056b243f)
+## 參考文件
+1.[Homebrew 总结](https://www.jianshu.com/p/8ad7056b243f)
