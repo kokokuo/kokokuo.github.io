@@ -312,7 +312,7 @@ parser/> pipenv install --dev
 
 ![18-pipenv-run-python-sample](../images/20190308-python-pipenv-install-and-usage/18-pipenv-run-python-sample.png)
 
-
+<br/>
 
 ## 9. 指定 Python 版本建立虛擬環境
 如果你的系統中有安裝了多個 Python 版本，例如 `Python 2.7.10`, `Python 2.7.15`, `Python 3.7.1`，如下圖：
@@ -358,7 +358,7 @@ parser> pipenv --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
 
 <br/>
 
-## 虛擬環境 和 `Pipfile`, `Pipfile.lock` 的建立法則
+## 注意：虛擬環境和 `Pipfile`, `Pipfile.lock` 的建立法則
 看到了這裡可能有些人為疑惑，這樣子指令的功用不就有些重複了嗎？ 前面的 `pipenv install` 與 `pipenv shell` 也是，甚至指定版本的部分不需要有 `install` 與 `shell`，只要直接帶版本號也行？
 
 這樣的感覺對我當初來說，每個指令的行為非常沒有職責分一的感覺。
@@ -375,6 +375,15 @@ parser> pipenv --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
 - 會更新與產生 `Pipfile`,  `Pipfile.lock` 的指令有 `install`, `update`, `uninstall`, `lock`, `clean` 。
 - 只會產生 `Pipfile` 的有 `shell`, `check`, `run`, `open` , `sync` 。
 
+
+## 個人習慣模式
+因為上述有許多種方式建立虛擬環境，所以可能有人看完會不太知道自己想要怎麼做，因此分享一下自己的做法，個人習慣使用 `pipenv shell` 建立虛擬環境，同時進入到虛擬環境中，再透過 `pipenv install [套件名稱]` 安裝名稱，並且透過 `pipenv install` 指令直接產生 `Pipfile.lock`；如果本身有 `Pipfile`，則透過 `pipenv install` 來安裝與產生 `Pipfile.lock`。
+
+```bash
+(parser)parser/> pipenv shell
+(parser)parser/> pipenv install # 如果已經存在 Pipfile
+(parser)parser/> pipenv install [套件名稱 ]# 如果不存在Pipfile
+```
 
 # 後記
 ---
