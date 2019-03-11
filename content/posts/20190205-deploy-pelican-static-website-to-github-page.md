@@ -7,9 +7,9 @@ Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 
 # 前言
 ---
-在前一篇 [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]({filename}/posts/20190113-mac-using-pelican-build-static-website.md) 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。
+在前一篇 [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]({filename}/posts/20190113-mac-using-pelican-build-static-website.md) 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。
 
-不過因為靜態網站只有 HTML/CSS/JS 這類單純的檔案結構，需要建置資料庫，也沒有後端的語言因此可以選擇架設的選擇性也比較多樣，因為只需要一個空間與簡單的伺服器軟體即可，所以我們可以架設一台自己的伺服器電腦透過 SSH 或 FTP 上傳，又或是使用 Dropbox 空間，雲端 AWS 與 Google Cloud, Azure 提供的服務。
+不過因為靜態網站只有 HTML/CSS/JS 這類單純的檔案結構，需要建置資料庫，也沒有後端的語言因此可以選擇架設的選擇性也比較多樣，因為只需要一個空間與簡單的伺服器軟體即可，所以我們可以架設一台自己的伺服器電腦透過 SSH 或 FTP 上傳，又或是使用 Dropbox 空間，雲端 AWS 與 Google Cloud, Azure 提供的服務。
 
 但是上述中，要自己架設主機花時間也需要一些專業知識，使用 Dropbox、雲端服務的空間或多或少會需要收取一些費用，如果我們希望簡單又能夠不花費的話，要怎麼辦呢？
 
@@ -35,16 +35,16 @@ Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 
 *附註：因為我有使用 README，Github Repository 的 README 會把剛剛建立時輸入的 Description 直接自動填上。*
 
-完成後這個網站便可以馬上作用囉，只要在網址上輸入你建立的 `username.github.io` 名稱，例如我是 `kokokuo.github.io`，則輸入 https://kokokuo.github.io，就會看到這個 Github Page 的網站呈現了我剛剛建立的 `README` 內容。
+完成後這個網站便可以馬上作用囉，只要在網址上輸入你建立的 `username.github.io` 名稱，例如我是 `kokokuo.github.io`，則輸入 https://kokokuo.github.io，就會看到這個 Github Page 的網站呈現了我剛剛建立的 `README` 內容。
 
 ![default-readme-show-on-website](../images/20190205-deploy-pelican-static-website-to-github-page/default-readme-show-on-website.png)
 
 <br/>
 
 # 二、 Git 版管與 Repository 來源設定
-再來就是第二部步驟，上傳檔案，而 Github 提供了兩種方式，第一種是透過 **終端機(Terminal)** 下指令，另外一種是下載他們提供的工具 **Github Desktop**，以視窗介面的形式上傳。
+再來就是第二部步驟，上傳檔案，而 Github 提供了兩種方式，第一種是透過 **終端機(Terminal)** 下指令，另外一種是下載他們提供的工具 **Github Desktop**，以視窗介面的形式上傳。
 
-不過在操作上，由於 Pelican 有提供一些指令的部署工具，因此在此部分我們統一使用 Terminal 以指令的方式操作。
+不過在操作上，由於 Pelican 有提供一些指令的部署工具，因此在此部分我們統一使用 Terminal 以指令的方式操作。
 
 開始之前我們先確認是否有進到靜態網誌的專案目錄下，並且透過 Pipenv 或 Virtualenv 進入到虛擬環境下（這裡以 Pipenv 為例子），同時確認是否有執行或把 **output** 目錄中的 HTML 檔更新到最新，如果沒有則再次執行 `make html`：
 
@@ -68,7 +68,7 @@ kokokuo-note> pipenv shell
 
 ![clone-repository-url](../images/20190205-deploy-pelican-static-website-to-github-page/clone-repository-url.png)
 
-回到 Terminal 下，輸入以下指令，先在自己的 Pelican 網誌目錄下透過 `git init` 建立 Git 版本控管功能，Git 會預設幫我們建立一個 `master` 分支並在此分支下工作。
+回到 Terminal 下，輸入以下指令，先在自己的 Pelican 網誌目錄下透過 `git init` 建立 Git 版本控管功能，Git 會預設幫我們建立一個 `master` 分支並在此分支下工作。
 
 之後把剛剛的 URL 透過 `git remote add origin` 把網誌專案與 Repository 完成繫結：
 
@@ -83,7 +83,7 @@ kokokuo-note> pipenv shell
 ![git-init-add-remote](../images/20190205-deploy-pelican-static-website-to-github-page/git-init-add-remote.png)
 
 
-完成上述步驟，這個網誌目錄就與剛剛建立的 Github Repository 有了一個聯繫，之後我們便可以開始把整個 **kokokuo** 目錄透過 Git 提交儲存，再提交之前，我們先在專案目錄下建立一個 `.gitignore` 檔案並填入以下來榮。透過這個 `.gitignore` 檔案來過濾掉一些不必要上傳的檔案：
+完成上述步驟，這個網誌目錄就與剛剛建立的 Github Repository 有了一個聯繫，之後我們便可以開始把整個 **kokokuo** 目錄透過 Git 提交儲存，再提交之前，我們先在專案目錄下建立一個 `.gitignore` 檔案並填入以下來榮。透過這個 `.gitignore` 檔案來過濾掉一些不必要上傳的檔案：
 
 ```bash
 # 過濾掉 Mac 的 DS_Store
@@ -96,7 +96,7 @@ kokokuo-note> pipenv shell
 .venv/
 ```
 
-完成上述的 `.gitignore` 後便可以開始透過以下指令步驟提交，可以發現再次下 `git status` 時，我們原本的 `.venv` 這個目錄消失了，因為我們把它也放在 `.gitignore` 中讓此目錄不需要被提交存擋：
+完成上述的 `.gitignore` 後便可以開始透過以下指令步驟提交，可以發現再次下 `git status` 時，我們原本的 `.venv` 這個目錄消失了，因為我們把它也放在 `.gitignore` 中讓此目錄不需要被提交存擋：
 
 ![git-status](../images/20190205-deploy-pelican-static-website-to-github-page/git-status.png)
 
@@ -119,7 +119,7 @@ kokokuo-note> pipenv shell
 
 不過對於個用戶或組織的帳戶建立的 Github Page 網頁，只能在 `master` 分支生效 (e.g: `username.github.io` 這種格式），而 `gh-pages`，則針對在程式碼專案的部分
 
-另外若是都沒有 `index.html` 的話，則會優先顯示 `README` 這個檔案的內容。
+另外若是都沒有 `index.html` 的話，則會優先顯示 `README` 這個檔案的內容。
 
 而在此篇我們介紹個人用戶的靜態網站，所以會以 `master` 為主，至於專案的 `gh-pages` 以後會再介紹。
 
@@ -138,7 +138,7 @@ kokokuo-note> pipenv shell
 (kokokuo-note)kokokuo-note(develop)> git status # 查看現在狀態
 ```
 
-如下圖會看到我們已經搬移到 `develop` 中了：
+如下圖會看到我們已經搬移到 `develop` 中了：
 
 ![checkout-develop](../images/20190205-deploy-pelican-static-website-to-github-page/checkout-develop.png)
 
@@ -149,21 +149,21 @@ kokokuo-note> pipenv shell
 (kokokuo-note)kokokuo-note(develop)> git commit -m "生成所有 Pelican 網誌的檔案" # 準備提交所有的編輯動作完成存擋，透過 -m 給予此次提交的訊息內容
 ```
 
-提交完後，上傳這個 `develop` 分支與存檔到 Repository 上，來保存我們的來源內容：
+提交完後，上傳這個 `develop` 分支與存檔到 Repository 上，來保存我們的來源內容：
 
 ```bash
 (kokokuo-note)kokokuo-note(develop)> git push origin develop
 ```
 
 ### (2.) 使用 `make github` 指令把 output 靜態檔案上傳到 `master`
-當我們建立了 develop 分支並提交到 Repository 保存好我們的 Pelican 專案來源檔案後，再來我們就要使用到 Pelican 提供的 Makefile 檔案中的一個指令 `make github`。透過這個 `make github` 會自動執行 `make html` 產生在 **output** 目錄下的靜態 HTML 檔案，獨立推送上傳到 `master` 分支中。
+當我們建立了 develop 分支並提交到 Repository 保存好我們的 Pelican 專案來源檔案後，再來我們就要使用到 Pelican 提供的 Makefile 檔案中的一個指令 `make github`。透過這個 `make github` 會自動執行 `make html` 產生在 **output** 目錄下的靜態 HTML 檔案，獨立推送上傳到 `master` 分支中。
 
-不過為何會是推送到 `master` 呢？ 因為這個 `make github` 是讀取 Makefile 中設定好的預設上傳分支參數 `GITHUB_PAGES_BRANCH`，而預設就是 `master`：
+不過為何會是推送到 `master` 呢？ 因為這個 `make github` 是讀取 Makefile 中設定好的預設上傳分支參數 `GITHUB_PAGES_BRANCH`，而預設就是 `master`：
 
 ![makefile-content](../images/20190205-deploy-pelican-static-website-to-github-page/makefile-content.png)
 
 
-接下來在正式使用 `make github` 指令前，我們需要先安裝這個 Makefile 在執行 `make github` 所使用到的一個套件，叫做 `ghp-import` ，這個套件需要用到 `pip` 安裝，而因為我使用 Pipenv 所以如下執行：
+接下來在正式使用 `make github` 指令前，我們需要先安裝這個 Makefile 在執行 `make github` 所使用到的一個套件，叫做 `ghp-import` ，這個套件需要用到 `pip` 安裝，而因為我使用 Pipenv 所以如下執行：
 
 ```bash
 (kokokuo-note)kokokuo-note(develop)> pipenv install ghp-import
@@ -186,11 +186,11 @@ kokokuo-note> pipenv shell
 (kokokuo-note)kokokuo-note(develop)> make github
 ```
 
-![pelican-develop-make-github-push](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-develop-make-github-push.png)
+![pelican-develop-make-github-push](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-develop-make-github-push.png)
 
-你會看到 `make github` 以 Makefile 中指定的 `master` 作為分支參數，自己幫我們把輸出的 **output** 檔案推送到 Makefile 中指定的 `master` 分支上。
+你會看到 `make github` 以 Makefile 中指定的 `master` 作為分支參數，自己幫我們把輸出的 **output** 檔案推送到 Makefile 中指定的 `master` 分支上。
 
-之後切換到 Github Page 的 Repository 查看，如下圖你會看到 **output** 目錄下的 HTML 等靜態檔案都已在此 `master` 的 Repository 中：
+之後切換到 Github Page 的 Repository 查看，如下圖你會看到 **output** 目錄下的 HTML 等靜態檔案都已在此 `master` 的 Repository 中：
 
 ![pelican-make-push-master-files](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-make-push-master-files.png)
 
@@ -198,15 +198,15 @@ kokokuo-note> pipenv shell
 
 ![final-finish-deploy-pelican](../images/20190205-deploy-pelican-static-website-to-github-page/final-finish-deploy-pelican.png)
 
-到此大功告成囉！
+到此大功告成囉！
 
-*補充：在執行 `make github` 指令時，會在本機端建立 `master` 分支並提交推送，如果在 Github Page 的 Repository 有較早推送的檔案，會一併刪除舊檔案請注意。*
+*補充：在執行 `make github` 指令時，會在本機端建立 `master` 分支並提交推送，如果在 Github Page 的 Repository 有較早推送的檔案，會一併刪除舊檔案請注意。*
 
 
 # 參考來源
 ---
 [1. Configuring a publishing source for GitHub Pages](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/)
 [2. PUBLIC Stack Overflow Tags Users Jobs Teams Q&A for work Learn More Unable to change source branch in GitHub Pages](https://stackoverflow.com/questions/39978856/unable-to-change-source-branch-in-github-pages)
-[3. Pelican入门指南](http://chenjiee815.github.io/pelicanru-men-zhi-nan.html)
-[4. 使用Pelican和GitHub Pages搭建个人博客 —— 基础篇](http://www.xycoding.com/articles/2013/11/21/blog-create/)
+[3. Pelican 入门指南](http://chenjiee815.github.io/pelicanru-men-zhi-nan.html)
+[4. 使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇](http://www.xycoding.com/articles/2013/11/21/blog-create/)
 [5. Pelican Tutorial](https://docs.getpelican.com/en/stable/content.html)
