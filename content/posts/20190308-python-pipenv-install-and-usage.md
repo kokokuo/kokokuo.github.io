@@ -1,9 +1,9 @@
-Title: Python - 結合 pip 與 irtualenv 的虛擬環境與套件管理的二合一新利器
+Title: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv
 Date: 2019-03-08
 Tags: Python
 Slug: python-pipenv-install-and-usage
 Authors: kokokuo
-Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器
+Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv
 
 # 前言
 ---
@@ -27,13 +27,13 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 
 因此雖然 `virtualenv` 是一個可以幫助我們在開發 Python 專案時，隔離主系統與其他專案環境的好工具，但是 `virtualenv` 依然不夠好用。
 
-所以 **Pipenv** 便隨之誕生了，一套更強的虛擬環境與套件管理的工具利器。
+所以 **[Pipenv](https://pipenv.readthedocs.io/en/latest/)** 便隨之誕生了，一套更強的虛擬環境與套件管理的工具利器。
 
 # 什麼是 Pipenv
 ---
 ![pipenv-icon](../images/20190308-python-pipenv-install-and-usage/pipenv-icon.png)
 
-`Pipenv` 是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，`Pipenv` 整合了 `pip` 與 `virtualenv`，是一套具備了建立虛擬環境同時能管理件的利器，他能做到並解決原本存在的問題：
+**[Pipenv](https://pipenv.readthedocs.io/en/latest/)**  是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，Pipenv 整合了 `pip` 與 `virtualenv`，是一套具備了建立虛擬環境同時能管理件的利器，他能做到並解決原本存在的問題：
 
 
 
@@ -54,34 +54,74 @@ Summary: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二
 
 ```bash
 ~/> pip install pipenv
+Usage: pipenv [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --where             Output project home information.
+  --venv              Output virtualenv information.
+  --py                Output Python interpreter information.
+  --envs              Output Environment Variable options.
+  --rm                Remove the virtualenv.
+  --bare              Minimal output.
+  --completion        Output completion (to be eval'd).
+  --man               Display manpage.
+  --support           Output diagnostic information for use in GitHub issues.
+  --site-packages     Enable site-packages for the virtualenv.  [env var:
+                      PIPENV_SITE_PACKAGES]
+  --python TEXT       Specify which version of Python virtualenv should use.
+  --three / --two     Use Python 3/2 when creating virtualenv.
+  --clear             Clears caches (pipenv, pip, and pip-tools).  [env var:
+                      PIPENV_CLEAR]
+  -v, --verbose       Verbose mode.
+  --pypi-mirror TEXT  Specify a PyPI mirror.
+  --version           Show the version and exit.
+  -h, --help          Show this message and exit.
+
+Commands:
+  check      Checks for security vulnerabilities and against PEP 508 markers
+             provided in Pipfile.
+  clean      Uninstalls all packages not specified in Pipfile.lock.
+  graph      Displays currently-installed dependency graph information.
+  install    Installs provided packages and adds them to Pipfile, or (if no
+             packages are given), installs all packages from Pipfile.
+  lock       Generates Pipfile.lock.
+  open       View a given module in your editor.
+  run        Spawns a command installed into the virtualenv.
+  shell      Spawns a shell within the virtualenv.
+  sync       Installs all packages specified in Pipfile.lock.
+  uninstall  Un-installs a provided package and removes it from Pipfile.
+  update     Runs lock, then sync.
 ```
 
 由於 `pipenv` 會依賴 `virtualenv` 與 `pip` 套件，所以若是你沒有安裝 `virtualenv` 也會一併安裝下來（ `pip` 是原本已經內建在 Python 的套件 )
 
 # 使用 Pipenv
 ---
+Pipenv 是一套強大但入手時卻容易混淆的套件，由於 Pipenv 會很貼心的檢查許多狀況，所以使用時許多指令都會連貫性的完成其他單一動作的指令功能，因此你會發現許多指令都會 **達到相同的結果**，如建置虛擬環境、產生 `Pipfile.lock` 等等，導致反而對於指令原有的用途產生混淆。
+
 以下我們透過一個 `parser` 專案做來例子來介紹 Pipenv 中常用的指令，以及觀察 Pipenv 為我們做了什麼神奇的現象。
 
-## 1. 為你的專案建立虛擬環境
-進入要開發並準備建立虛擬環境的專案，再來透過 `pipenv install` 來建立虛擬環境，此時 `pipenv install` 會偵測你系統預設的 Python 環境版本，並且依照此版本建立虛擬環境：
+## 1. 建立虛擬環境
+進入要開發並準備建立虛擬環境的專案，透過 `pipenv install` 來建立虛擬環境，此時 `pipenv install` 會偵測你系統預設的 Python 版本環境，並且依照此版本建立虛擬環境：
 
 ```bash
 ~/> cd parser
 parser/> pipenv install
 ```
 
+如下圖你會看到在建置虛擬環境的過程中，`pipenv` 使用了系統所提供的 `3.7.1` 版，並且建立了虛擬環境出來，只不過與 `virtualenv` 不同的是，`pipenv` 會自動產生一個 `.local/share/ virtualenvs/` 在你的家目錄下，並且把所有專案的虛擬環境統一放置在其中管理，例如 `parser` 的虛擬目錄是 `parser-hvDw_3KS` 。
+
 ![1-create-virtualenv-by-pipenv](../images/20190308-python-pipenv-install-and-usage/1-create-virtualenv-by-pipenv.png)
 
-在建置虛擬環境的過程中，你會看見他所生成的路徑，只不過與 `virtualenv` 不同的是，`pipenv` 會自動產生一個 `.local/share/ virtualenvs/`  在你的家目錄下，並且把該專案的虛擬環境募放置在其中，如上圖你會看到該目錄名是  `parser-hvDw_3KS` 。
-
 ### 查詢虛擬環境所在位置
-如果你忘了你的虛擬目錄所在位置，可以透過 `--venv` 指令查詢哦，進到該目錄看，裡面放了從系統中複製過來 Python 的核心。
+如果往後你忘了你的虛擬目錄所在位置，可以透過 `--venv` 指令查詢哦，進到該目錄看，裡面放了從系統中複製過來 Python 的核心。
 
 ![2-virtualenv-path-by-pipenv](../images/20190308-python-pipenv-install-and-usage/2-virtualenv-path-by-pipenv.png)
 
 <br/>
 
 當虛擬環境完成後，你會接著發現，`pipenv install` 這個指令自動產生了兩個檔案在你的專案中，分別是 `Pipfile` 與 `Pipfile.lock`，這兩個檔案是圍繞著 `pipenv` 的整個核心，以下分別來看看：
+
 
 ### Pipfile 
 
@@ -95,27 +135,176 @@ parser/> pipenv install
 ### Pipfile.lock 
 一般而言當 `Pipfile` 產生或是更新後，`pipenv` 也會自動也更新 `Pipfile.lock`，這是因為 `Pipfile.lock` 會依據 `Pipfile` 紀錄的套件來源來抓取套件下來，並計算 Hash 值保存和記錄目前的版本號，同時也會把相依而下載的套件一併記錄在此，作為往後再次建立環境抓取套件安裝的依據。
 
-透過 Hash 計算紀錄作為安全性驗證，避免未來再次下載時，因遠端來源被竄改下載使用入侵系統，同時也能作為往後是否下載新版本的比較依據。
+透過 Hash 計算紀錄作為安全性驗證，避免未來再次下載時，因遠端來源被竄改下載使用入侵系統，同時也能作為往後是否下載新版本的比較依據。這個 Hash 的機制以 pip  8.0 版後的 [Hash-Checking Mode](https://pip.pypa.io/en/stable/reference/pip_install/#hash-checking-mode) 為基礎實現，可以參考 [Pipfile.lock Security Features](https://pipenv.readthedocs.io/en/latest/basics/#pipfile-lock-security-features)。
 
 ![4-pipenv-create-pipfile-lock](../images/20190308-python-pipenv-install-and-usage/4-pipenv-create-pipfile-lock.png)
 
-透過 `pipenv` 讀取這些檔案下載套件會參考的依據。
+<br/>
+
+## 2. 啟動虛擬環境
+---
+當建立好虛擬環境以及 `Pipfile`, `Pipfile.lock` 後，接著就是要進入虛擬環境中來在環境之下操作，在 `pipenv` 中提供了 `shell` 這個指令能使用我進入環境中：
+
+```bash
+parser/> pipenv shell
+(parser)parser/>
+```
+
+進入後會以 `(專案名稱)` 為前綴字表示在虛擬環境中，如下圖顯示的是 `(parser)parser/` ，此時我們使用 `pip list` 可以查閱到該環境下尚未安裝套件。
+
+然而系統的 Python 環境實際上是安裝了許多套件：
+
+![5-pipenv-shell-enter-virtualenv](../images/20190308-python-pipenv-install-and-usage/5-pipenv-shell-enter-virtualenv.png)
+
+### 以 `pipenv shell` 指令建立與進入虛擬環境
+其實，`pipenv shell` 這個指令會檢查目前的專案是否有建立虛擬環境，如果沒有的話是會為你的專案直接建立好，並且進入環境中，如下圖：
+
+![6-pipenv-shell-to-install-virtualenv](../images/20190308-python-pipenv-install-and-usage/6-pipenv-shell-to-install-virtualenv.png)
+
+不過比較特別的是，他不會為你也產生 `Pipfile.lock`，因為 `shell` 的主要動作是進入虛擬環境，所以他最多只會產生 `Pipfile` 而已，需要你透過其他指令，來生成 `Pipfile.lock` 檔案。
+
+<br/>
+
+## 3. 虛擬環境中安裝套件
+在一開頭我們提到了 `pipenv install` 這個指令，其實這個指令還夠安裝套件，只要下 `pipenv install [套件名稱]` 便可以幫助我們安裝想要的套件到虛擬環境中，以下我們以安裝 `requests` 與 `beautifulsoup4` 為例子：
+
+```bash 
+(parser)parser/> pipenv install requests
+(parser)parser/> pipenv install beautifulsoup4
+```
+
+Pipenv 也能夠一次對多個操件做相同的行爲，如下一次對多個套件安裝：
+
+```bash
+(parser)parser/> pipenv install requests beautifulsoup4
+```
+
+### Pipfile 與 Pipfile.lock 的變化
+
+接著打開 Pipfile， 你會在 `[packages]` 看見剛剛安裝的 `requests` 與 `beautifulsoup4` 都記錄在此並包含版本號：
+
+![12-pipenv-pipfile-installed-package](../images/20190308-python-pipenv-install-and-usage/12-pipenv-pipfile-installed-package.png)
+
+而且和以往的 `requirements.txt` 眾不同的是，這次他不會再把相依的套件資訊也記錄上去，你會發現 `requests` 安裝時會下載的相依套件不在此，這讓我們更一目瞭然的區分哪些才是我們開發與部署都會使用到的套件，並且提升協作時查閱套件的文件效率。
+
+相依的套件會被詳細記錄在 `Pipfile.lock`。
+
+![13-pipenv-pipfile-lock-installed-dependance-package](../images/20190308-python-pipenv-install-and-usage/13-pipenv-pipfile-lock-installed-dependance-package.png)
+
+### 透過 `--dev` 安裝開發環境需要的套件
+在 Pipenv 中，我們還能區分並安裝只有在開發時才會用到的套件，以避免部署時下載了不需要的套件在其中使專案容量變大，例如 `mypy`, `pytest` 等套件都是只有開發時才會使用到：
+
+```bash
+(parser)parser/> pipenv install pytest --dev
+```
+
+![14-pipenv-install-dev-package](../images/20190308-python-pipenv-install-and-usage/14-pipenv-install-dev-package.png)
+
+只要透過 `pipenv install [套件名稱] --dev` 就可以告訴 Pipenv 這個套件我只會在開發時使用，因此安裝後，該套件也會被記錄在 `Pipfile` 中的 `[dev-package]` 區塊：
+
+![15-pipfile-dev-package-update](../images/20190308-python-pipenv-install-and-usage/15-pipfile-dev-package-update.png)
 
 
 
-![5-pipenv-auto-install-plugin-if-pipfile-exist](../images/20190308-python-pipenv-install-and-usage/5-pipenv-auto-install-plugin-if-pipfile-exist.png)
+### `pipenv install` 的執行步驟
 
-![6-pipenv-install-indicate-python-version](../images/20190308-python-pipenv-install-and-usage/6-pipenv-install-indicate-python-version.png)
+從前面使用 `pipenv install` 這個指令觀察下來，你會注意到這個指令的功用是其實有兩個：
 
-![7-pipenv-install-indicate-python-version-by-two](../images/20190308-python-pipenv-install-and-usage/7-pipenv-install-indicate-python-version-by-two.png)
+1. 安裝套件到虛擬環境中
+2. 當令後面不帶後面的套件就會檢查是否有 `Pipfile` 存在，並且讀取 `Pipfile` 更新 `Pipfile.lock` ( `Pipfile.lock` 不存在則建立 ) 安裝到虛擬環境中。
 
-![8-pipenv-install-indicate-python-version-by-three](../images/20190308-python-pipenv-install-and-usage/8-pipenv-install-indicate-python-version-by-three.png)
 
-![9-pipenv-install-indicate-python-version-by-python-para](../images/20190308-python-pipenv-install-and-usage/9-pipenv-install-indicate-python-version-by-python-para.png)
+如果上述行為，虛擬環境原本就不存在便會建立環境，若是都沒有 `Pipefile`, `Pipfile.lock` 與虛擬環境目錄，就會建立全新的虛擬環境。
 
-![]()
+![11-pipenv-install-process](../images/20190308-python-pipenv-install-and-usage/11-pipenv-install-process.png)
+
+<br/>
+
+## 4. 透過 `Pipfile` 還原虛擬環境
+
+如果手上拿到了別人的專案，或是專案要重新建立虛擬環境，只要有 `Pipefile`，就能透過 `pipenv install` 讀取 `Pipefile` 、產生或更新 `Pipfile.lock` 後安裝套件還原環境。
+
+```bash
+# 如果 parser 專案是
+parser/> ls
+Pipfile Pipfile.lock
+parser/> pipenv install # 讀取 Pipfile 並且安裝套件還原虛擬環境
+```
+
+這也就是 `Pipefile` 取代 `requiremnets.txt` 的好處。
+
+過往的 `requiremnets.txt` 在安裝新套件後也要下指令手動更新，建立環境時，也要下指令來讀取 `requiremnets.txt` 建立與還原，但是這些步驟都會因為遺忘而漏掉；但是 `pipenv install [套件名稱]` 安裝套件時不用怕忘記手動更新，因為 `Pipfile` 會自動更新，並連同產生與更新`Pipfile.lock`，要建立環境時只要有 `Pipfile` 也不用在像過去下指令讀取讀取建立。
+
+順帶一題，使用 `pipenv install` 只會讀取 `Pipfile` 中 `[packages]` 區塊的套件，如果你要為你的專案安裝 `[dev-packages]` 的套件到虛擬環境，你要下：
+
+```bash
+parser/> pipenv install --dev
+```
+
+### 還原虛擬環境 - 執行 `Pipfile` 與 `Pipfile.lock` 的順序
+建立虛擬環境時，如果有 `Pipfile` 或 `Pipfile.lock` ，那麼 Pipenv 會有一個讀取與執行的順序：
+
+1. 如果沒有 `Pipfile` 而只有 `Pipfile.lock`，那麼建立虛擬環境時，會因為沒有 `Pipfile` 產生了新的 `Pipfile` 並把沒有安裝套件的 `Pipfile` 資訊更新覆蓋掉原本有安裝套件資訊的 `Pipfile.lock`
+   
+2. 如果有 `Pipfile` 卻沒有 `Pipfile.lock`，那麼建立虛擬環境時，會從 `Pipfile` 的資訊中讀取下載套件產生 Pipfile.lock ，所以資訊會保留。
+
+
+<br/>
+
+## 5. 指定 Python 版本建立虛擬環境
+如果你的系統中有安裝了多個 Python 版本，例如 `Python 2.7.10`, `Python 2.7.15`, `Python 3.7.1`，如下圖：
+
+![7-pipenv-install-indicate-python-version](../images/20190308-python-pipenv-install-and-usage/7-pipenv-install-indicate-python-version.png)
+
+因此今天想要指定該專案虛擬環境所用的 Python 版本的話，可以在 `pipenv install` 後面透過子參數來設定：
+
+```bash
+parser> pipenv install --two # 指定系統有安裝，優先使用的 Python 2
+parser> pipenv install --three # 指定系統有安裝，優先使用的 Python 3
+parser> pipenv install --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
+```
+
+在上述中 `--two` 與 `--three` 會分別尋找你系統中，優先指定的 Python 2 與 Python 3 版本，因為我的 Python 3 只有一個版本號所以會是 `3.7.1`，如下圖：
+
+![9-pipenv-install-indicate-python-version-by-three](../images/20190308-python-pipenv-install-and-usage/9-pipenv-install-indicate-python-version-by-three.png)
+
+但是 Python 2 在我的主系統中就有 `Python 2.7.10`, `Python 2.7.15` 兩個版本，因此 `pipenv` 會去抓取我系統中我設定優先讀取的 Python 2 版本：
+
+![8-pipenv-install-indicate-python-version-by-two](../images/20190308-python-pipenv-install-and-usage/8-pipenv-install-indicate-python-version-by-two.png)
+
+而如果你想要明確指定版本號，可以透過 `--python [系統存在的版本號]` 來指定：
+
+![10-pipenv-install-indicate-python-version-by-python-para](../images/20190308-python-pipenv-install-and-usage/10-pipenv-install-indicate-python-version-by-python-para.png)
+
+除此之外，因為前面提到了 `pipenv shell` 也會偵測你的專案中有無虛擬環境並自動為你建立，因此你也可以拿 `pipenv shell` 建立虛擬環境並指定版本：
+
+```bash
+parser> pipenv shell --two # 指定系統有安裝，優先使用的 Python 2
+parser> pipenv shell --three # 指定系統有安裝，優先使用的 Python 3
+parser> pipenv shell --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
+```
+
+甚至 `pipenv` 來能讓你不用下 `install` 或 `shell` ，而是直接指定 `--two`, `--three`, `--python [系統存在的版本號]`：
+
+```bash
+
+parser> pipenv --two # 指定系統有安裝，優先使用的 Python 2
+parser> pipenv --three # 指定系統有安裝，優先使用的 Python 3
+parser> pipenv --python 2.7.10 # 指定系統有安裝，明確的 Python 版本
+```
+
+### Pipenv 對虛擬環境的建立法則
+到了這裡可能有些人為疑惑，這樣子指令的功用不就有些重複了嗎？ 為何不使每個指令的行為明確職責分一呢？ 這也就是我在一開頭提到的， Pipenv 很強大，但是對於剛上手的人會在使用中容易混淆。
+
+對於建立虛擬環境而言，在 Pipenv 中，***除了 `pipenv graph` 這個指令外，所有其他的指令在執行時，都會檢查現有的專案目錄下有沒有虛擬環境存在，如果沒有就會為你建立。***
+
+
 # 參考文章
 ---
 1. [Pipenv: A Guide to the New Python Packaging Tool](https://realpython.com/pipenv-guide/)
 2. [用 pipenv 來管理 Python 開發環境](https://codinganimal.info/%E7%94%A8-pipenv-%E4%BE%86%E7%AE%A1%E7%90%86-python-%E9%96%8B%E7%99%BC%E7%92%B0%E5%A2%83-ce9f619825a2)
 3. [Pipenv 更簡單、更快速的 Python 套件管理工具](https://medium.com/@chihsuan/pipenv-%E6%9B%B4%E7%B0%A1%E5%96%AE-%E6%9B%B4%E5%BF%AB%E9%80%9F%E7%9A%84-python-%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-135a47e504f4)
+4. [Pipfile.lock Security Features](https://pipenv.readthedocs.io/en/latest/basics/#pipfile-lock-security-features)
+5. [Hash-Checking Mode in pip](https://pip.pypa.io/en/stable/reference/pip_install/#hash-checking-mode)
+
+[Windows + Python 3.6 + PipEnv + Visual Studio Code でPython開発環境](https://qiita.com/youkidkk/items/b6a6e39ee3a109001c75)
