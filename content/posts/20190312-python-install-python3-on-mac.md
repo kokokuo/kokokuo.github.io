@@ -108,7 +108,7 @@ $> python
 
 ![4-python2-mac-default-version](../images/20190312-python-install-python3-on-mac/4-python2-mac-default-version.png)
 
-我們來查看 `/usr/local/bin` 目錄下，你會發現並沒有 `python` 的可執行檔，而只有 `python3` ，因此 Mac 才會保持原先的狀態，直接使用內建的 python 2.7 。
+我們來查看 `/usr/local/bin` 目錄下，你會發現並沒有  Python 3 提供的  `python` 可執行檔，而只有 `python3` 執行檔，因此當你輸入 `python` 時， Mac 因為來到 `/usr/local/bin` 目錄下沒有找到 `python` 可執行檔，才會保持原先的狀態，近一步往下一個位置找，並找到內建的版本，直接使用內建的 python 2.7。
 
 只有當輸入 `python3`，你才會顯示 Homebrew 的 Python3.6.5
 
@@ -128,7 +128,7 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 ![6-python3-command](../images/20190312-python-install-python3-on-mac/6-python3-command.png)
 
-到此，即可以透過 `python3` 或設定好的 `python` 指令啟動 Python 3 。另外此設定也會影響到 `pip` 指令：
+到此，因為先讀取到的 `/usr/local/opt/python/libexec/bin` 下方有提供 Python 3 的 `python` 可執行檔案，即可以透過原本的 `python3` 或設定好的 `python` 指令啟動 Python 3 。另外此設定也會影響到 `pip` 指令：
 
 
 ![7-show-pip-cource-in-python3](../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png)

@@ -112,7 +112,7 @@ export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 答案是根據在 `~/.bash_profile` 中 PATH 設定的順序。
 
-因為再設定環境變數時，系統內建的環境變數 `$PATH` 是放在後頭， /`usr/local/bin` 是在前面，因此輸入 Python 指令時 Bash 讀取 `~/.bash_profile` 會先讀到 `/usr/local/bin` 底下 `python@2` 的 Link 檔，因而找到 Homebrew 安裝的 Python 2。
+因為再設定環境變數時，系統內建的環境變數 `$PATH` 是放在後頭， /`usr/local/bin` 是在前面，因此輸入 Python 指令時 Bash 讀取 `~/.bash_profile` 會先讀到 `/usr/local/bin` 底下 `python@2` 的 `python` 指令 Link 檔，因而找到 Homebrew 安裝的 Python 2。
 
 因此我們透過透過 `python -h` 查看後會發現目前的確讀到 Homebrew 安裝的 Python：
 
