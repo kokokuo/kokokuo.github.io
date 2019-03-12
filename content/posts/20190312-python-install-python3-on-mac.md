@@ -98,7 +98,7 @@ Homebrew 會一同連 `pip` 也安裝進去，而在 Python3 中 `pip` 名稱為
 ![4-installed-python3-location-2](../images/20190312-python-install-python3-on-mac/4-installed-python3-location-2.png)
 
 ## 步驟五：設定 Python 3 作為預設執行的指令
-若先前沒有以 Homebrew 安裝 Python 2 的話，那麼當下安裝 Python 3 時，如果從 Terminal 中直接輸入 python，如下：
+若先前沒有以 Homebrew 安裝 Python 2 的話，那麼當下安裝 Python 3 時，如果從 Terminal 中直接輸入 `python`，如下：
 
 ```bash
 $> python 
