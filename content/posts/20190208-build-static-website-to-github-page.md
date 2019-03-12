@@ -210,6 +210,6 @@ Desktop/(master)> push origin master
 ---
 透過 Github Page 你可以快速且免費的搭建簡易的靜態網站，不過上述自己撰寫 HTML/CSS 等網頁是比較費時間的，此時你不妨可以考慮使用 **態網站產生器 (Static Site Generator)** 來快速搭建你的靜態網站，在直接上傳到 Github Page 上。
 
-而且目前靜態網站產生器的選擇上非常多樣化，如果你想要知道哪裡可以選擇靜態網站，以及更加認識什麼是靜態網站，可以接著閱讀 TODO [什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)]({filenames}/posts/20190128-what-is-static-site-generator-and-when-to-use.md) 來了解更多。
+而且目前靜態網站產生器的選擇上非常多樣化，如果你想要知道哪裡可以選擇靜態網站，以及更加認識什麼是靜態網站，可以接著閱讀 [什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)]({filename}/posts/20190128-what-is-static-site-generator-and-when-to-use.md) 來了解更多。
 
 
