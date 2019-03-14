@@ -12,6 +12,11 @@ TIMEZONE = 'Asia/Taipei'
 
 DEFAULT_LANG = 'zh'
 
+# Indicate installed theme by pelican-themes command
+# THEME = 'Flex'
+# SITETITLE = "這是我的主題"
+# SITESUBTITLE = "這是我的副主題"
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
