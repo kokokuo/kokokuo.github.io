@@ -9,6 +9,7 @@ verify_ssl = true
 pelican = "*"
 markdown = "*"
 typogrify = "*"
+ghp-import = "*"
 
 [requires]
 python_version = "3.7"
