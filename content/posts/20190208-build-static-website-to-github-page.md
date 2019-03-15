@@ -3,7 +3,9 @@ Date: 2019-02-08
 Tags: 靜態網站產生器
 Slug: build-static-website-to-github-page
 Authors: kokokuo
-Summary: 透過 Github Page 架設個人靜態網站
+Summary: **靜態網站 (Static Site)** 因為檔案結構單純，架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可。
+
+但是要自己架設主機花時間也需要一些專業知識，而且或多或少會需要收取一些費用，如果我們希望簡單又能夠不花費的話，要怎麼辦呢？ 此時就要來了解一下什麼是 **Github Page** 啦，接著我們就來瞧瞧！
 
 # 前言
 ---

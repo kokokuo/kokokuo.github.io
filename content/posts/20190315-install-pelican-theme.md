@@ -3,12 +3,14 @@ Date: 2019-03-15
 Tags: Python, Mac, Python3
 Slug: nstall-pelican-theme
 Authors: kokokuo
-Summary: Python - 安裝 Pelican Theme 來改變你的靜態網站主題
+Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？
 
 
 # 前言
 ---
-由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？
+在前兩篇 [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]({filename}/posts/20190113-mac-using-pelican-build-static-website.md) 與 [使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例](20190205-deploy-pelican-static-website-to-github-page.md) 我們知道了要如何使用 Pelican 來架設靜態網站。
+
+但由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？
 
 放心，Pelican 有提供給我們更換網誌外觀的功能哦，以下我們接著來設定。
 
@@ -160,4 +162,7 @@ SOCIAL = (('github', 'https://github.com/kokokuo'),
 1. [Pelican Documents - pelican-themes](https://docs.getpelican.com/en/stable/pelican-themes.html)
 2. [Pelican Settings - Theme](https://docs.getpelican.com/en/stable/settings.html#themes)
 3. [Pelican Theme Website](http://www.pelicanthemes.com/)
-4. [Flex - pelicanconf.py](https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py)
+4. [Flex - Github Repository](https://github.com/alexandrevicenzi/Flex/tree/master)
+5. [Flex - Wiki](https://github.com/alexandrevicenzi/Flex/wiki)
+6. [Flex - pelicanconf.py](https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py)
+7. [設定部落格筆記](https://blog.liang2.tw/posts/2015/09/blog-internals/)

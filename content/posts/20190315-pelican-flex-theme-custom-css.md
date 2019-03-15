@@ -1,0 +1,123 @@
+Title: 如何客製化 Pelican Theme 的 Flex 樣式
+Date: 2019-03-15
+Tags: Pelican, Python
+Slug: install-pelican-theme
+Authors: kokokuo
+Summary: 如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。
+
+
+
+# 前言
+---
+如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇
+
+
+# 讓 Flex Theme 讀取客製化樣式
+---
+在 Flex 主題提供的 [Wiki](https://github.com/alexandrevicenzi/Flex/wiki) 文件中， Custom Settings 有提及一個 `CUSTOM_CSS` 設定參數，該參數的意思如下：
+
+> Path to a CSS file. Need to be used with [EXTRA_PATH_METADATA](http://docs.getpelican.com/en/stable/settings.html#path-metadata).
+
+可以讓你指定你要客製化的 CSS 檔案位置，而且 `CUSTOM_CSS` 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 `EXTRA_PATH_METADATA` 搭配使用。
+
+![1-extra-path-metadata](../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png)
+
+上述的 `EXTRA_PATH_METADATA` 參數可以讓你指定輸入來源目錄 `content` 下的特定的檔案，並在 `make html` 輸出成 HTML 後，放到輸出目錄 `output` 指定的位置中。
+
+不過 `EXTRA_PATH_METADATA` 需要與 `STATIC_PATHS` 搭配，因為 `STATIC_PATHS` 是告知 Pelican 哪些檔案或目錄，屬於靜態文件，唯有指定後，才會再輸出時複製檔案並且生效。
+
+這個原因是因為一般的靜態網站，通常分為 HTML 內容與靜態文件 (Static Files)，這些文件則是資源檔案（圖片、影片、影訊檔案）、CSS 與 JS 檔案，而在 Pelican 中，因為也是靜態網站，所以 Pelican 需要知道哪些檔案或目錄，會被歸類成靜態文件，才能在輸出成 HTML 時作用並複製放到到輸出 HTML 的目錄下。
+
+如下例子 `EXTRA_PATH_METADATA` 中的 `'static/robots.txt'` 是指在 `content` 下 `static` 的檔案，其投射到 HTML 時，被放置在 `output` 的根目錄。
+
+但是因為有指定該來源路徑的內容要被歸類在 `STATIC_PATHS` 中，因此輸出才會作用，Pelican 才會複製該檔案，並藉由 `EXTRA_PATH_METADATA` 得知要放到根目錄中。
+
+```python
+STATIC_PATHS = [
+    'static/robots.txt',
+    ]
+EXTRA_PATH_METADATA = {
+    'static/robots.txt': {'path': 'robots.txt'},
+    }
+```
+
+因此回到我們的設定，我們在預設的輸入目錄 `content` 下建立了一個 `extra` 子目錄並建立接下來要客製化的 CSS 檔案 `custom.css` ，並在該檔案中編輯要修改的 CSS，例如我的是：
+
+![2-extra-custom-css-path](../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png)
+
+```css
+
+body {
+    font-size: 1.02em;
+    line-height: 1.8em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+h1{
+  font-size: 1.8em
+}
+
+h2 {
+  font-size: 1.52em
+}
+
+h3 {
+  font-size: 1.36em
+}
+
+h4 {
+  font-size: 1.2em
+}
+
+h5 {
+  font-size: 1.1em
+}
+
+h6 {
+  font-size: 1.08em
+}
+
+
+main article *:not(pre)>code {
+  font-size: .9em;
+  white-space: nowrap;
+  color: #c25;
+  padding: 1px 3px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 3px;
+  margin: .2em;
+}
+```
+
+完成後，接著到 `pelicanconf.py` 中設定剛剛提到的參數：
+
+```python
+# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
+STATIC_PATHS = ["images", "extra/custom.css"]
+# 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static
+EXTRA_PATH_METADATA = {
+    "extra/custom.css": {"path": "static/custom.css"},
+}
+# CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置
+CUSTOM_CSS = "static/custom.css"
+```
+
+因為 Pelican 預設會把 `images` 目錄視為靜態文件放置輸出目錄下，所以要設定 `extra/custom.css` 時不能省略。
+
+之後設定 `EXTRA_PATH_METADATA`，並指定頭放到輸出目錄後要被放到 `static` 下，設定 `CUSTOM_CSS` 參數時在指定此 `custom.css` 在 HTML 輸出目錄下的所在位置。
+
+最後再透過 `make html` 與 `make serve [port]` 測試，如下圖：
+
+![3-output-mapping-path](../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png)
+
+![4-custom-css-review](../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png)

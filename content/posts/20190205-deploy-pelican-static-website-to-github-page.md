@@ -3,7 +3,9 @@ Date: 2019-02-05 01:40
 Tags: Python, Pelican, Github, 靜態網站產生器
 Slug: deploy-pelican-static-webiste-to-github-page
 Authors: kokokuo
-Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
+Summary: 在前一篇 [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]({filename}/posts/20190113-mac-using-pelican-build-static-website.md) 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。
+
+這篇我們特別記錄了使用 Pelican 靜態網站時，如何部署到 Github Page 的過程，因為只要把檔案上傳即可，並且還不用花費任何半毛錢，接著我們就來了解。
 
 # 前言
 ---
@@ -13,7 +15,7 @@ Summary: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 
 但是上述中，要自己架設主機花時間也需要一些專業知識，使用 Dropbox、雲端服務的空間或多或少會需要收取一些費用，如果我們希望簡單又能夠不花費的話，要怎麼辦呢？
 
-因此這裡我們就要選擇 **Github Page** ，因為當只要把檔案上傳即可，並且還不用花費任何半毛錢，以及因為 **Github Page** 是 **Github** 的服務之一，因此支援版本控制系統，簡單來說就是能夠幫你記錄每一次上傳更新的所有紀錄，能方便你還原上一版。
+因此這裡我們就要選擇 **Github Page** ，因為只要把檔案上傳即可，並且還不用花費任何半毛錢，以及因為 **Github Page** 是 **Github** 的服務之一，因此支援版本控制系統，簡單來說就是能夠幫你記錄每一次上傳更新的所有紀錄，能方便你還原上一版。
 
 而這篇我們特別記錄了使用 Pelican 靜態網站時，如何部署到 Github Page 的過程。
 

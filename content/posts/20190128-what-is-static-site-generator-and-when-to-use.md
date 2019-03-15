@@ -3,7 +3,13 @@ Date: 2019-01-28 22:40
 Tags: 靜態網站產生器
 Slug: what-is-static-site-generator-and-when-to-use
 Authors: kokokuo
-Summary: 什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)
+Summary: 當我們要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。
+
+而如果你的網站只是要單純呈現內容與介紹資訊為主，那麼你的網站可能有單純的靜態內容，此時我們也稱這類型的網站為 **靜態網站 (Static Site)**，此時你可以考慮使用 **靜態網站產生器 (Static Site Generator)** 來製作。
+
+那麼什麼是 **靜態網站 (Static Site)**，什麼又是 **靜態網站產生器 (Static Site Generator)** 呢？
+
+以下我們就來談談與介紹。
 
 # 前言
 ---

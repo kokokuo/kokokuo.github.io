@@ -6,13 +6,14 @@ AUTHOR = "kokokuo"
 SITENAME = "koko's Note"
 SITEURL = ""
 
+# Pelican 讀取的輸入目錄，也就是你的寫作目錄
 PATH = "content"
 
 TIMEZONE = "Asia/Taipei"
 
 DEFAULT_LANG = "en"
 
-# Indicate installed theme by pelican-themes command
+# Flex Theme Settings : Indicate installed theme by pelican-themes command
 THEME = "Flex"
 SITETITLE = "koko's Note"
 SITESUBTITLE = """
@@ -25,13 +26,16 @@ Code / Web / Architecture
 """
 
 SITELOGO = "https://avatars3.githubusercontent.com/u/5389253?s=460&v=4"
-# 用來指定編輯時的路徑要對應到的輸出目錄
+
+# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
+STATIC_PATHS = ["images", "extra/custom.css"]
+# 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static
 EXTRA_PATH_METADATA = {
     "extra/custom.css": {"path": "static/custom.css"},
 }
+# CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置
 CUSTOM_CSS = "static/custom.css"
-# 設定哪些目錄要被視為 static 目錄
-STATIC_PATHS = ["images", "extra"]
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -47,7 +51,7 @@ AUTHOR_FEED_RSS = None
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/kokokuo'),
-          ('linkedin', 'www.linkedin.com/in/easonkuo'),)
+          ('linkedin', 'https://www.linkedin.com/in/easonkuo'),)
 
 DEFAULT_PAGINATION = 10
 

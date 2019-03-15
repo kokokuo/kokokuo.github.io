@@ -15,11 +15,11 @@ h6 {
 }
 
 h1{
-  font-size: 2em
+  font-size: 1.8em
 }
 
 h2 {
-  font-size: 1.6em
+  font-size: 1.52em
 }
 
 h3 {
@@ -36,4 +36,27 @@ h5 {
 
 h6 {
   font-size: 1.08em
+}
+
+main article *:not(pre)>code {
+  font-size: .9em;
+  white-space: nowrap;
+  color: #c25;
+  padding: 1px 3px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 3px;
+  margin: .2em;
+}
+
+aside {
+  background-color: #304054;
+  color: #ffffff;
+  text-align: center;
+}
+
+main article blockquote {
+  padding: 1px 20px;
+  font-weight: 500;
+  font-size: 1.1em;
 }
