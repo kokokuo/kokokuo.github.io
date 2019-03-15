@@ -9,7 +9,7 @@ Summary: 如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個�
 
 # 前言
 ---
-如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇
+在前一篇 [Python - 安裝 Pelican Theme 來改變你的靜態網站主題]({filename}/posts/20190315-install-pelican-theme.md)，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。
 
 
 # 讓 Flex Theme 讀取客製化樣式
@@ -20,7 +20,7 @@ Summary: 如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個�
 
 可以讓你指定你要客製化的 CSS 檔案位置，而且 `CUSTOM_CSS` 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 `EXTRA_PATH_METADATA` 搭配使用。
 
-![1-extra-path-metadata](../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png)
+<img src="../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" style="width:70%"/>
 
 上述的 `EXTRA_PATH_METADATA` 參數可以讓你指定輸入來源目錄 `content` 下的特定的檔案，並在 `make html` 輸出成 HTML 後，放到輸出目錄 `output` 指定的位置中。
 
@@ -43,7 +43,7 @@ EXTRA_PATH_METADATA = {
 
 因此回到我們的設定，我們在預設的輸入目錄 `content` 下建立了一個 `extra` 子目錄並建立接下來要客製化的 CSS 檔案 `custom.css` ，並在該檔案中編輯要修改的 CSS，例如我的是：
 
-![2-extra-custom-css-path](../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png)
+<img src="../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" style="width:30%"/>
 
 ```css
 
@@ -86,7 +86,6 @@ h6 {
   font-size: 1.08em
 }
 
-
 main article *:not(pre)>code {
   font-size: .9em;
   white-space: nowrap;
@@ -116,8 +115,49 @@ CUSTOM_CSS = "static/custom.css"
 
 之後設定 `EXTRA_PATH_METADATA`，並指定頭放到輸出目錄後要被放到 `static` 下，設定 `CUSTOM_CSS` 參數時在指定此 `custom.css` 在 HTML 輸出目錄下的所在位置。
 
-最後再透過 `make html` 與 `make serve [port]` 測試，如下圖：
+最後再透過 `make html` 與 `make serve [port]` 測試，如下圖，你會看到該 `custom.css` 被複製到了 `output` 目錄下，並且放在指定的 `static` 目錄中：
 
-![3-output-mapping-path](../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png)
 
-![4-custom-css-review](../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png)
+<img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" style="width:30%"/>
+
+接著開啟網站看預覽畫面，如下圖 `custom.css` 生效囉！
+
+<img src="../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" style="width:80%"/>
+
+之後喜歡這個主題的人就可以開始對這個 CSS 大改特改了。
+
+
+<br/>
+
+
+# 補充 - 調整 Flex 內文中的圖像樣式
+---
+由於在 Markdown 中，預設並沒有可以直接調整圖像的參數，因此若要調整大小或置中的效果，因此需要另外的設定。
+
+首先對於圖片的置中部分，我們一樣可以透過 Flex 主題提供的 `CUSTOM_CSS` 設定，開啟 `custom.css` 檔案，並貼上，設定置中的段落：
+
+```css
+/* 調整文章的圖片置中 */
+main article p img {
+  margin: auto;
+  display: block;
+}
+```
+
+完成後再次輸出 HTML 查看：
+
+<img src="../images/20190315-pelican-flex-theme-custom-css/5-custom-image-css-preview.png" alt="5-custom-image-css-preview" style="width:80%"/>
+
+然而圖片的尺寸大小部分，雖然也有一些 Pelican 的 Plugin 有提供，但是都沒有辦法個別調整尺寸，因此還是要回歸到透過 HTML 的 `<img>` 標籤，並對每張圖片透過屬性個別設定會是比較好的方式，如下圖使用 `style` 在 `<img>` 中：
+
+<img src="../images/20190315-pelican-flex-theme-custom-css/6-custom-html-image-tag-width-preview.png" alt="6-custom-html-image-tag-width-preview" style="width:80%"/>
+
+# 後記
+---
+雖然樣式調整設定好了，但是在 Pelican 中還有許多可以設定的參數，以後有機會再接著介紹。
+
+# 參考文章
+---
+1. [Pelican Settings - Metadata](https://docs.getpelican.com/en/stable/settings.html#metadata)
+2. [利用 Pelican 和 GitHub Pages 打造个性化博客(二)](http://blog.game18.net/posts/2015/10/li-yong-pelicanhe-github-pagesda-zao-ge-xing-hua-bo-ke-er/)
+3. [Windows 下使用 Pelican 搭建静态博客](https://maxwell-nc.github.io/blog/pelicanBuildBlog.html)

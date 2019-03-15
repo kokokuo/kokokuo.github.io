@@ -1,4 +1,4 @@
-/* This is custome css style for Flex by setting CUSTOM_CSS in pelicanconf.py */
+/* This is custom css style for Flex by setting CUSTOM_CSS in pelicanconf.py */
 body {
     font-size: 1.02em;
     line-height: 1.8em;
@@ -38,6 +38,7 @@ h6 {
   font-size: 1.08em
 }
 
+/* 調整單行指令區塊的寬度與大小 */
 main article *:not(pre)>code {
   font-size: .9em;
   white-space: nowrap;
@@ -49,14 +50,22 @@ main article *:not(pre)>code {
   margin: .2em;
 }
 
+/* 調整左半邊區塊的顏色 */
 aside {
   background-color: #304054;
   color: #ffffff;
   text-align: center;
 }
 
+/* 調整引言的文字區塊 */
 main article blockquote {
   padding: 1px 20px;
   font-weight: 500;
   font-size: 1.1em;
+}
+
+/* 調整文章的圖片置中 */
+main article p img {
+  margin: auto;
+  display: block;
 }
