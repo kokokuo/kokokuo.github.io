@@ -9,9 +9,10 @@ Summary: 安裝 Python 2 在 Mac 上 (Python2.7.15 為例）
 ---
 對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。
 
+<br/>
+
 # 安裝步驟
 ---
-
 ## 步驟一：安裝 XCode 或 Xcode 命名行工具
 這是開發 Mac 或 iPhone 等 iOS 程式所用的開發工具，安裝此工具的原因是因為，在安裝 XCode 時， 也會依同安裝 C 編譯器，而 Python 的底層是以 C 編寫成，所以會需要 C 的 Compiler 來驅動。
 
@@ -106,7 +107,7 @@ export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 但因為 Homebrew 也會在 `/usr/local/bin` 中建立 Python2 的 Link 環境，因此其實不需要再去設定 `/usr/local/opt/python@2`
 
-除非今天環境中也有安裝 Python 3 ，並且希望可以透過 `.bash_profile` 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 TODO [Python2 與 Python 3 共存的設定 (以 Mac 為例)]() 中文章
+除非今天環境中也有安裝 Python 3 ，並且希望可以透過 `.bash_profile` 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 [Python2 與 Python 3 共存的設定 (以 Mac 為例)]({filename}/posts/20190312-python2-python3-run-on-mac.md) 中文章
 
 而當安裝完後， 重新開啟 Terminal 直接輸入 Python 時，會讀取到 Homebrew 安裝的 Python 嗎？ 
 
@@ -119,6 +120,8 @@ export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 ![5-python2-help-command](../images/20190312-python-install-python2-on-mac/5-python2-help-command.png)
 
 至此已經完成 Python2 的安裝。
+
+<br/>
 
 # 參考文章
 ---

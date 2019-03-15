@@ -14,9 +14,10 @@ Summary: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 
 因此這次決定採用 **markdown 格式撰寫為主的靜態網誌產生器 ( Static Site Generator )** 來產生部落格，這樣的好處除了未來要轉移時檔案都會以 markdown 檔案攜帶保存外，在本機端也能隨時編輯與閱讀，呈現格式也比較不用擔心跑掉需要重新設定（例如 Wordpress 升級或是主題更新或更換主題跑版），不過因為產生器會有一兩個簡單的腳本檔案，因此會稍微需要對程式語言有點簡易了解。
 
-<hr/>
+<br/>
 
 # 使用 Pelican 靜態網站產生器架設靜態網站
+---
 目前靜態網站產生器的選擇上非常多樣化，參考 [StaticGen](https://www.staticgen.com/) 可以看到許多使用不同程式語言開發的產生器，並且每個產生器都有特別的特色。
 
 而自己則是使用熟悉的 Python 語言所開發的 Pelican 作為個人的網誌，同時該產生器提供的樣式主題豐富外，在設定上也只需要編輯 `pelicanconf.py` 與 `publishconf.py` 即可，能夠自己定義新的頁面（如 About Me, 作品集...等)，擁有標籤與分類目錄的工能，並能安插 Google Analystic、 Twitter, Facebook 、留言版、RSS 等外部功能，非常豐富，也只要透過一個 `Makefile` 檔案就可以生成靜態網站，或是在自己的本機電腦產生預覽模式觀看。
@@ -198,6 +199,8 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 至此變完成的安裝 Pelican > 撰寫 Markdown 文章 > 產生 HTML 與預覽 的過程。
 
+<br/>
+
 # 後記
 ---
 雖然上述介紹了如何使用 Pelican 來編寫 Markdown 與產生的 HTML 網頁。
@@ -205,3 +208,11 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 但是這一切都是在自己的電腦本機端，我們仍然需要真的伺服器空間，來把我們的網誌與文章放上去才行。
 
 因此接下來我們會介紹一開始在執行 `pelican-quickstart` 時，選擇使用 **Github Page** 的後續部署網誌步驟，請參考 [使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例]({filename}/posts/20190205-deploy-pelican-static-website-to-github-page.md)。
+
+<br/>
+
+# 參考文章
+---
+1. [Pelican 入门指南](http://chenjiee815.github.io/pelicanru-men-zhi-nan.html)
+2. [使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇](http://www.xycoding.com/articles/2013/11/21/blog-create/)
+3. [Pelican Tutorial](https://docs.getpelican.com/en/stable/content.html)

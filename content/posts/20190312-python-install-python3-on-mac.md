@@ -133,7 +133,7 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 ![7-show-pip-cource-in-python3](../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png)
 
-在 TODO [Python2 與 Python 3 共存的設定 (以 Mac 為例)]() 此篇中亦有介紹如何設定預設 Mac 的 `python` 指令讀取來源。
+在 [Python2 與 Python 3 共存的設定 (以 Mac 為例)]({filename}/posts/20190312-python2-python3-run-on-mac.md) 此篇中亦有介紹如何設定預設 Mac 的 `python` 指令讀取來源。
 
 
 # 參考文章

@@ -70,7 +70,7 @@ Status: draft
 (kokokuo-note)kokokuo-note(master)> git commit -m "安裝 ghp-import"
 (kokokuo-note)kokokuo-note(master)> git push origin master
 ```
-
+
 之後執行 `make github`，你會看到 `make github` 建立了 `gh-pages` 分支推送到 Github Page Repository 上：
 
 ```bash

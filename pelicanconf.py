@@ -25,6 +25,13 @@ Code / Web / Architecture
 """
 
 SITELOGO = "https://avatars3.githubusercontent.com/u/5389253?s=460&v=4"
+# 用來指定編輯時的路徑要對應到的輸出目錄
+EXTRA_PATH_METADATA = {
+    "extra/custom.css": {"path": "static/custom.css"},
+}
+CUSTOM_CSS = "static/custom.css"
+# 設定哪些目錄要被視為 static 目錄
+STATIC_PATHS = ["images", "extra"]
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
