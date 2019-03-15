@@ -11,9 +11,9 @@ Code / Web / Architecture
 &lt;p&gt;自從工作超過一年後便開始停擺了自己的習慣，不過伴隨著逐漸的累積過程，最近有了想要重新撰寫網誌的想法，再加上自己不僅喜歡分享外，也認為取之網路回饋網路。&lt;/p&gt;
 &lt;p&gt;以前雖然使用 Wordpress 作為網誌，但是由於自己的網誌用途單純（純寫作紀錄），加上先前遇到架設的 Wordpress 再後來有轉移主機的情形，但轉移與重建過程繁瑣外，再次架設也只能使用 Wordrpress 與還原資料庫，還可能格式跑掉。&lt;/p&gt;
 &lt;p&gt;因此這次決定採用 &lt;strong&gt;markdown 格式撰寫為主的靜態網誌產生器 ( Static Site Generator )&lt;/strong&gt; 來產生部落格，這樣的好處除了未來要轉移時檔案都會以 markdown 檔案攜帶保存外，在本機端也能隨時編輯與閱讀，呈現格式也比較不用擔心跑掉需要重新設定（例如 Wordpress 升級或是主題更新或更換主題跑版），不過因為產生器會有一兩個簡單的腳本檔案，因此會稍微需要對程式語言有點簡易了解。&lt;/p&gt;
-&lt;hr/&gt;
-
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;使用 Pelican 靜態網站產生器架設靜態網站&lt;/h1&gt;
+&lt;hr&gt;
 &lt;p&gt;目前靜態網站產生器的選擇上非常多樣化，參考 &lt;a href="https://www.staticgen.com/"&gt;StaticGen&lt;/a&gt; 可以看到許多使用不同程式語言開發的產生器，並且每個產生器都有特別的特色。&lt;/p&gt;
 &lt;p&gt;而自己則是使用熟悉的 Python 語言所開發的 Pelican 作為個人的網誌，同時該產生器提供的樣式主題豐富外，在設定上也只需要編輯 &lt;code&gt;pelicanconf.py&lt;/code&gt; 與 &lt;code&gt;publishconf.py&lt;/code&gt; 即可，能夠自己定義新的頁面（如 About Me, 作品集...等)，擁有標籤與分類目錄的工能，並能安插 Google Analystic、 Twitter, Facebook 、留言版、RSS 等外部功能，非常豐富，也只要透過一個 &lt;code&gt;Makefile&lt;/code&gt; 檔案就可以生成靜態網站，或是在自己的本機電腦產生預覽模式觀看。&lt;/p&gt;
 &lt;p&gt;那麼以下來介紹安裝與使用步驟：&lt;/p&gt;
@@ -147,8 +147,17 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;p&gt;透過瀏覽器輸入 https://localhost:8000 便可以看到呈現的網頁：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="show-pelican-localhost-site" src="../images/20190113-how-to-start-pelican/show-pelican-localhost-site.png"&gt;&lt;/p&gt;
 &lt;p&gt;至此變完成的安裝 Pelican &amp;gt; 撰寫 Markdown 文章 &amp;gt; 產生 HTML 與預覽 的過程。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;後記&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;雖然上述介紹了如何使用 Pelican 來編寫 Markdown 與產生的 HTML 網頁。&lt;/p&gt;
 &lt;p&gt;但是這一切都是在自己的電腦本機端，我們仍然需要真的伺服器空間，來把我們的網誌與文章放上去才行。&lt;/p&gt;
-&lt;p&gt;因此接下來我們會介紹一開始在執行 &lt;code&gt;pelican-quickstart&lt;/code&gt; 時，選擇使用 &lt;strong&gt;Github Page&lt;/strong&gt; 的後續部署網誌步驟，請參考 &lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;。&lt;/p&gt;</content><category term="Python"></category><category term="Pelican"></category></entry></feed>
+&lt;p&gt;因此接下來我們會介紹一開始在執行 &lt;code&gt;pelican-quickstart&lt;/code&gt; 時，選擇使用 &lt;strong&gt;Github Page&lt;/strong&gt; 的後續部署網誌步驟，請參考 &lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考文章&lt;/h1&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry></feed>

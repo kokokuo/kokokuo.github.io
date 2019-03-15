@@ -17,6 +17,7 @@
   <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
   <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
 
+    <link href="/static/custom.css" rel="stylesheet">
 
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
 
@@ -98,6 +99,7 @@ Code / Web / Architecture
     <h1>前言</h1>
 <hr>
 <p>對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。</p>
+<p><br/></p>
 <h1>安裝步驟</h1>
 <hr>
 <h2>步驟一：安裝 XCode 或 Xcode 命名行工具</h2>
@@ -164,13 +166,14 @@ Code / Web / Architecture
 
 
 <p>但因為 Homebrew 也會在 <code>/usr/local/bin</code> 中建立 Python2 的 Link 環境，因此其實不需要再去設定 <code>/usr/local/opt/python@2</code></p>
-<p>除非今天環境中也有安裝 Python 3 ，並且希望可以透過 <code>.bash_profile</code> 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 TODO <a href="">Python2 與 Python 3 共存的設定 (以 Mac 為例)</a> 中文章</p>
+<p>除非今天環境中也有安裝 Python 3 ，並且希望可以透過 <code>.bash_profile</code> 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 <a href="/python2-python3-run-on-mac.html">Python2 與 Python 3 共存的設定 (以 Mac 為例)</a> 中文章</p>
 <p>而當安裝完後， 重新開啟 Terminal 直接輸入 Python 時，會讀取到 Homebrew 安裝的 Python 嗎？ </p>
 <p>答案是根據在 <code>~/.bash_profile</code> 中 PATH 設定的順序。</p>
 <p>因為再設定環境變數時，系統內建的環境變數 <code>$PATH</code> 是放在後頭， /<code>usr/local/bin</code> 是在前面，因此輸入 Python 指令時 Bash 讀取 <code>~/.bash_profile</code> 會先讀到 <code>/usr/local/bin</code> 底下 <code>python@2</code> 的 <code>python</code> 指令 Link 檔，因而找到 Homebrew 安裝的 Python 2。</p>
 <p>因此我們透過透過 <code>python -h</code> 查看後會發現目前的確讀到 Homebrew 安裝的 Python：</p>
 <p><img alt="5-python2-help-command" src="../images/20190312-python-install-python2-on-mac/5-python2-help-command.png"></p>
 <p>至此已經完成 Python2 的安裝。</p>
+<p><br/></p>
 <h1>參考文章</h1>
 <hr>
 <ol>

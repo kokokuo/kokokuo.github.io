@@ -128,6 +128,7 @@ notmyidea
 &lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>安裝 Python 2 在 Mac 上 (Python2.7.15 為例）</title><link href="/python-install-python2-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-12:/python-install-python2-on-mac.html</id><summary type="html">&lt;p&gt;安裝 Python 2 在 Mac 上 (Python2.7.15 為例）&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;安裝步驟&lt;/h1&gt;
 &lt;hr&gt;
 &lt;h2&gt;步驟一：安裝 XCode 或 Xcode 命名行工具&lt;/h2&gt;
@@ -194,13 +195,14 @@ notmyidea
 
 
 &lt;p&gt;但因為 Homebrew 也會在 &lt;code&gt;/usr/local/bin&lt;/code&gt; 中建立 Python2 的 Link 環境，因此其實不需要再去設定 &lt;code&gt;/usr/local/opt/python@2&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;除非今天環境中也有安裝 Python 3 ，並且希望可以透過 &lt;code&gt;.bash_profile&lt;/code&gt; 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 TODO &lt;a href=""&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 中文章&lt;/p&gt;
+&lt;p&gt;除非今天環境中也有安裝 Python 3 ，並且希望可以透過 &lt;code&gt;.bash_profile&lt;/code&gt; 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 &lt;a href="/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 中文章&lt;/p&gt;
 &lt;p&gt;而當安裝完後， 重新開啟 Terminal 直接輸入 Python 時，會讀取到 Homebrew 安裝的 Python 嗎？ &lt;/p&gt;
 &lt;p&gt;答案是根據在 &lt;code&gt;~/.bash_profile&lt;/code&gt; 中 PATH 設定的順序。&lt;/p&gt;
 &lt;p&gt;因為再設定環境變數時，系統內建的環境變數 &lt;code&gt;$PATH&lt;/code&gt; 是放在後頭， /&lt;code&gt;usr/local/bin&lt;/code&gt; 是在前面，因此輸入 Python 指令時 Bash 讀取 &lt;code&gt;~/.bash_profile&lt;/code&gt; 會先讀到 &lt;code&gt;/usr/local/bin&lt;/code&gt; 底下 &lt;code&gt;python@2&lt;/code&gt; 的 &lt;code&gt;python&lt;/code&gt; 指令 Link 檔，因而找到 Homebrew 安裝的 Python 2。&lt;/p&gt;
 &lt;p&gt;因此我們透過透過 &lt;code&gt;python -h&lt;/code&gt; 查看後會發現目前的確讀到 Homebrew 安裝的 Python：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="5-python2-help-command" src="../images/20190312-python-install-python2-on-mac/5-python2-help-command.png"&gt;&lt;/p&gt;
 &lt;p&gt;至此已經完成 Python2 的安裝。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考文章&lt;/h1&gt;
 &lt;hr&gt;
 &lt;ol&gt;
@@ -293,7 +295,7 @@ notmyidea
 &lt;p&gt;&lt;img alt="6-python3-command" src="../images/20190312-python-install-python3-on-mac/6-python3-command.png"&gt;&lt;/p&gt;
 &lt;p&gt;到此，因為先讀取到的 &lt;code&gt;/usr/local/opt/python/libexec/bin&lt;/code&gt; 下方有提供 Python 3 的 &lt;code&gt;python&lt;/code&gt; 可執行檔案，即可以透過原本的 &lt;code&gt;python3&lt;/code&gt; 或設定好的 &lt;code&gt;python&lt;/code&gt; 指令啟動 Python 3 。另外此設定也會影響到 &lt;code&gt;pip&lt;/code&gt; 指令：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="7-show-pip-cource-in-python3" src="../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png"&gt;&lt;/p&gt;
-&lt;p&gt;在 TODO &lt;a href=""&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 此篇中亦有介紹如何設定預設 Mac 的 &lt;code&gt;python&lt;/code&gt; 指令讀取來源。&lt;/p&gt;
+&lt;p&gt;在 &lt;a href="/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 此篇中亦有介紹如何設定預設 Mac 的 &lt;code&gt;python&lt;/code&gt; 指令讀取來源。&lt;/p&gt;
 &lt;h1&gt;參考文章&lt;/h1&gt;
 &lt;hr&gt;
 &lt;ol&gt;
@@ -1240,9 +1242,9 @@ kokokuo-note&amp;gt; pipenv shell
 &lt;p&gt;自從工作超過一年後便開始停擺了自己的習慣，不過伴隨著逐漸的累積過程，最近有了想要重新撰寫網誌的想法，再加上自己不僅喜歡分享外，也認為取之網路回饋網路。&lt;/p&gt;
 &lt;p&gt;以前雖然使用 Wordpress 作為網誌，但是由於自己的網誌用途單純（純寫作紀錄），加上先前遇到架設的 Wordpress 再後來有轉移主機的情形，但轉移與重建過程繁瑣外，再次架設也只能使用 Wordrpress 與還原資料庫，還可能格式跑掉。&lt;/p&gt;
 &lt;p&gt;因此這次決定採用 &lt;strong&gt;markdown 格式撰寫為主的靜態網誌產生器 ( Static Site Generator )&lt;/strong&gt; 來產生部落格，這樣的好處除了未來要轉移時檔案都會以 markdown 檔案攜帶保存外，在本機端也能隨時編輯與閱讀，呈現格式也比較不用擔心跑掉需要重新設定（例如 Wordpress 升級或是主題更新或更換主題跑版），不過因為產生器會有一兩個簡單的腳本檔案，因此會稍微需要對程式語言有點簡易了解。&lt;/p&gt;
-&lt;hr/&gt;
-
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;使用 Pelican 靜態網站產生器架設靜態網站&lt;/h1&gt;
+&lt;hr&gt;
 &lt;p&gt;目前靜態網站產生器的選擇上非常多樣化，參考 &lt;a href="https://www.staticgen.com/"&gt;StaticGen&lt;/a&gt; 可以看到許多使用不同程式語言開發的產生器，並且每個產生器都有特別的特色。&lt;/p&gt;
 &lt;p&gt;而自己則是使用熟悉的 Python 語言所開發的 Pelican 作為個人的網誌，同時該產生器提供的樣式主題豐富外，在設定上也只需要編輯 &lt;code&gt;pelicanconf.py&lt;/code&gt; 與 &lt;code&gt;publishconf.py&lt;/code&gt; 即可，能夠自己定義新的頁面（如 About Me, 作品集...等)，擁有標籤與分類目錄的工能，並能安插 Google Analystic、 Twitter, Facebook 、留言版、RSS 等外部功能，非常豐富，也只要透過一個 &lt;code&gt;Makefile&lt;/code&gt; 檔案就可以生成靜態網站，或是在自己的本機電腦產生預覽模式觀看。&lt;/p&gt;
 &lt;p&gt;那麼以下來介紹安裝與使用步驟：&lt;/p&gt;
@@ -1376,8 +1378,17 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;p&gt;透過瀏覽器輸入 https://localhost:8000 便可以看到呈現的網頁：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="show-pelican-localhost-site" src="../images/20190113-how-to-start-pelican/show-pelican-localhost-site.png"&gt;&lt;/p&gt;
 &lt;p&gt;至此變完成的安裝 Pelican &amp;gt; 撰寫 Markdown 文章 &amp;gt; 產生 HTML 與預覽 的過程。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;後記&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;雖然上述介紹了如何使用 Pelican 來編寫 Markdown 與產生的 HTML 網頁。&lt;/p&gt;
 &lt;p&gt;但是這一切都是在自己的電腦本機端，我們仍然需要真的伺服器空間，來把我們的網誌與文章放上去才行。&lt;/p&gt;
-&lt;p&gt;因此接下來我們會介紹一開始在執行 &lt;code&gt;pelican-quickstart&lt;/code&gt; 時，選擇使用 &lt;strong&gt;Github Page&lt;/strong&gt; 的後續部署網誌步驟，請參考 &lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;。&lt;/p&gt;</content><category term="Python"></category><category term="Pelican"></category></entry></feed>
+&lt;p&gt;因此接下來我們會介紹一開始在執行 &lt;code&gt;pelican-quickstart&lt;/code&gt; 時，選擇使用 &lt;strong&gt;Github Page&lt;/strong&gt; 的後續部署網誌步驟，請參考 &lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考文章&lt;/h1&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry></feed>

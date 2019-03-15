@@ -128,6 +128,7 @@ notmyidea
 &lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>安裝 Python 2 在 Mac 上 (Python2.7.15 為例）</title><link href="/python-install-python2-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-12:/python-install-python2-on-mac.html</id><summary type="html">&lt;p&gt;安裝 Python 2 在 Mac 上 (Python2.7.15 為例）&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;安裝步驟&lt;/h1&gt;
 &lt;hr&gt;
 &lt;h2&gt;步驟一：安裝 XCode 或 Xcode 命名行工具&lt;/h2&gt;
@@ -194,13 +195,14 @@ notmyidea
 
 
 &lt;p&gt;但因為 Homebrew 也會在 &lt;code&gt;/usr/local/bin&lt;/code&gt; 中建立 Python2 的 Link 環境，因此其實不需要再去設定 &lt;code&gt;/usr/local/opt/python@2&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;除非今天環境中也有安裝 Python 3 ，並且希望可以透過 &lt;code&gt;.bash_profile&lt;/code&gt; 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 TODO &lt;a href=""&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 中文章&lt;/p&gt;
+&lt;p&gt;除非今天環境中也有安裝 Python 3 ，並且希望可以透過 &lt;code&gt;.bash_profile&lt;/code&gt; 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 &lt;a href="/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 中文章&lt;/p&gt;
 &lt;p&gt;而當安裝完後， 重新開啟 Terminal 直接輸入 Python 時，會讀取到 Homebrew 安裝的 Python 嗎？ &lt;/p&gt;
 &lt;p&gt;答案是根據在 &lt;code&gt;~/.bash_profile&lt;/code&gt; 中 PATH 設定的順序。&lt;/p&gt;
 &lt;p&gt;因為再設定環境變數時，系統內建的環境變數 &lt;code&gt;$PATH&lt;/code&gt; 是放在後頭， /&lt;code&gt;usr/local/bin&lt;/code&gt; 是在前面，因此輸入 Python 指令時 Bash 讀取 &lt;code&gt;~/.bash_profile&lt;/code&gt; 會先讀到 &lt;code&gt;/usr/local/bin&lt;/code&gt; 底下 &lt;code&gt;python@2&lt;/code&gt; 的 &lt;code&gt;python&lt;/code&gt; 指令 Link 檔，因而找到 Homebrew 安裝的 Python 2。&lt;/p&gt;
 &lt;p&gt;因此我們透過透過 &lt;code&gt;python -h&lt;/code&gt; 查看後會發現目前的確讀到 Homebrew 安裝的 Python：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="5-python2-help-command" src="../images/20190312-python-install-python2-on-mac/5-python2-help-command.png"&gt;&lt;/p&gt;
 &lt;p&gt;至此已經完成 Python2 的安裝。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考文章&lt;/h1&gt;
 &lt;hr&gt;
 &lt;ol&gt;
@@ -293,7 +295,7 @@ notmyidea
 &lt;p&gt;&lt;img alt="6-python3-command" src="../images/20190312-python-install-python3-on-mac/6-python3-command.png"&gt;&lt;/p&gt;
 &lt;p&gt;到此，因為先讀取到的 &lt;code&gt;/usr/local/opt/python/libexec/bin&lt;/code&gt; 下方有提供 Python 3 的 &lt;code&gt;python&lt;/code&gt; 可執行檔案，即可以透過原本的 &lt;code&gt;python3&lt;/code&gt; 或設定好的 &lt;code&gt;python&lt;/code&gt; 指令啟動 Python 3 。另外此設定也會影響到 &lt;code&gt;pip&lt;/code&gt; 指令：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="7-show-pip-cource-in-python3" src="../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png"&gt;&lt;/p&gt;
-&lt;p&gt;在 TODO &lt;a href=""&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 此篇中亦有介紹如何設定預設 Mac 的 &lt;code&gt;python&lt;/code&gt; 指令讀取來源。&lt;/p&gt;
+&lt;p&gt;在 &lt;a href="/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 此篇中亦有介紹如何設定預設 Mac 的 &lt;code&gt;python&lt;/code&gt; 指令讀取來源。&lt;/p&gt;
 &lt;h1&gt;參考文章&lt;/h1&gt;
 &lt;hr&gt;
 &lt;ol&gt;
