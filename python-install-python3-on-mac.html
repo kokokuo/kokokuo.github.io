@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）" />
+<meta name="keywords" content="Python, Mac, Python3">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）"/>
+<meta property="og:description" content="Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/python-install-python3-on-mac.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-03-12 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Python3"/>
+<meta property="og:image" content="https://avatars3.githubusercontent.com/u/5389253?s=460&v=4">
+
+  <title>koko's Note &ndash; Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="https://avatars3.githubusercontent.com/u/5389253?s=460&v=4" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="python-install-python3-on-mac">Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）</h1>
+    <p>
+          Posted on 二 12 3月 2019 in <a href="/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<hr>
+<p>由於 Python 2.7 的核心開發團隊公布 2020 年確定會捨棄 2.7 版本，因此會有越來越多人開始轉移到 Python 3 版本，所以下面我們來介紹安裝 Python 3 在 Mac 的話如何處理。</p>
+<h1>安裝步驟</h1>
+<hr>
+<h2>步驟一：安裝 XCode 或 Xcode 命名行工具</h2>
+<p>這是開發 Mac 或 iPhone 等 iOS 程式所用的開發工具，安裝此工具的原因是因為，在安裝 XCode 時， 也會依同安裝 C 編譯器，而 Python 的底層是以 C 編寫成，所以會需要 C 的 Compiler 來驅動。</p>
+<p>開啟 Terminal App ，並且輸入以下指令安裝 Xcode 的命名行工具：</p>
+<div class="highlight"><pre><span></span>$&gt; xcode-select --install
+</pre></div>
+
+
+<p><img alt="1-Install-XCode-Tool" src="../images/20190312-python-install-python3-on-mac/1-Install-XCode-Tool.png"></p>
+<p>除了上述的方式，也可以透過 Mac 上的 App Store 安裝完全版的 XCode 開發工具。</p>
+<h2>步驟二：安裝 Homebrew</h2>
+<p>Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 <code>apt</code> 或是 <code>yum</code> 工具，後續透過 Homebrew 來安裝 Python ，進入 Homebrew 官網，依照步驟，在 Terminal 輸入下列此串：</p>
+<div class="highlight"><pre><span></span>$&gt; /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p><img alt="2-Install-Homebrew" src="../images/20190312-python-install-python3-on-mac/2-Install-Homebrew.png"></p>
+<h2>步驟三：設定讀取 Homebrew 指令的環境變數</h2>
+<p>安裝完後，為了要使 Homebrew 的指令可以被 Mac 的 Terminal 中的 Bash 程式讀取到，需要設定 <code>/usr/local/bin</code> 與 <code>/usr/local/sbin</code> 至環境變數。</p>
+<p>建立一個 <code>.bash_profile</code> 或是 <code>.profile</code> （如果已有其中一個檔案則不需再次建立）並且在檔案中新增此行：</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:/usr/local/sbin:<span class="nv">$PATH</span>
+</pre></div>
+
+
+<p>或是可以透過 Shell 的另一種語法雙引號來設定</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="s2">&quot;PATH=/usr/local/bin:/usr/local/sbin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>設定完成後，關閉 Terminal 應用程式重開 或是直接在 Terminal 中輸入以下指令啟動 <code>.bash_profile</code> 或 <code>.profile</code> 啟動即可（以下以 <code>.bash_pofile</code> 為例 ）：</p>
+<div class="highlight"><pre><span></span>$&gt; <span class="nb">source</span> ~/.bash_pofile
+</pre></div>
+
+
+<p>接著便可以透過輸入 <code>brew</code> 來做所有跟 Homebrew 有關的套件管理操作行為了！ </p>
+<p>例如要對 Homrbew 診斷可以輸入以下指令：</p>
+<div class="highlight"><pre><span></span>$&gt; brew doctor
+</pre></div>
+
+
+<p>更詳細的 Hombrew 安裝可以參考 <a href="/mac-install-homebrew.html">Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</a>。</p>
+<h2>步驟四：透過 Homebrew 安裝 Python3</h2>
+<p>安裝 Python 其實除了透過 Homebrew 的方式外，也可以透過 Python 官方網站，下載 <code>.pkg</code> 的安裝包，但是因為安裝完後檔案的路徑會分別在：</p>
+<p><strong>位置一：</strong> <code>/Library/Frameworks/Python3.framework</code>
+<strong>位置二：</strong> <code>/usr/local/bin/</code></p>
+<p>這兩個位置，位置二是一個 symlink。另外，安裝包也會附帶 IDLE、PythonLauncher 這兩個軟體，安裝在 Application 資料夾。</p>
+<p>因此需要除了自己紀錄位置外，刪除時，也要自己去找尋上述兩個位置與 IDLE、PythonLauncher 分別刪除，所以不推薦。</p>
+<p>而透過 Homebrew 安裝除了， Homebrew 會列出 Python 的安裝位置外，也會把其他未來安裝的套件放在同一處，移除與升級都可以透過指令達成，因此非常便利，所以推薦在 Mac 上使用 Homebrew 安裝。</p>
+<p>在 Homebrew 中， 目前 Python 3 會以 python 的套件名稱呈現，如下執行：</p>
+<div class="highlight"><pre><span></span>$&gt; brew install python
+</pre></div>
+
+
+<p>Homebrew 會一同連 <code>pip</code> 也安裝進去，而在 Python3 中 <code>pip</code> 名稱為 <code>pip3</code>，如下安裝完的結果與訊息：</p>
+<p><img alt="3-python-install-python3-by-homebrew" src="../images/20190312-python-install-python3-on-mac/3-python-install-python3-by-homebrew.png"></p>
+<p>安裝完後 Homebrew 會自動為放在 <code>Cellar</code> 的 Python 3，並在 Mac 的 <code>/usr/local/opt</code> 與 <code>/usr/local/bin</code> 分別建置 link 檔案，如下為 <code>/usr/local/opt</code>：</p>
+<p><img alt="4-installed-python3-location-1" src="../images/20190312-python-install-python3-on-mac/4-installed-python3-location-1.png"></p>
+<p><code>/usr/local/bin</code> 也有：</p>
+<p><img alt="4-installed-python3-location-2" src="../images/20190312-python-install-python3-on-mac/4-installed-python3-location-2.png"></p>
+<h2>步驟五：設定 Python 3 作為預設執行的指令</h2>
+<p>若先前沒有以 Homebrew 安裝 Python 2 的話，那麼當下安裝 Python 3 時，如果從 Terminal 中直接輸入 <code>python</code>，如下：</p>
+<div class="highlight"><pre><span></span>$&gt; python 
+</pre></div>
+
+
+<p>會出現的是內建的 Mac Python 2.7，這是為何呢？</p>
+<p><img alt="4-python2-mac-default-version" src="../images/20190312-python-install-python3-on-mac/4-python2-mac-default-version.png"></p>
+<p>我們來查看 <code>/usr/local/bin</code> 目錄下，你會發現並沒有  Python 3 提供的  <code>python</code> 可執行檔，而只有 <code>python3</code> 執行檔，因此當你輸入 <code>python</code> 時， Mac 因為來到 <code>/usr/local/bin</code> 目錄下沒有找到 <code>python</code> 可執行檔，才會保持原先的狀態，近一步往下一個位置找，並找到內建的版本，直接使用內建的 python 2.7。</p>
+<p>只有當輸入 <code>python3</code>，你才會顯示 Homebrew 的 Python3.6.5</p>
+<div class="highlight"><pre><span></span>$&gt; python3
+</pre></div>
+
+
+<p>如果想要讓 Mac Terminal 在輸入 <code>python</code> 指令時，會自動開啟 Homebrew 安裝的 Python 3，解決辦法是設定 <code>/usr/local/opt</code> 下的 Homebrew Python 3 來源到系統環境變數前，使 PATH 先讀到 Homebrew 的 Python3：</p>
+<p><img alt="5-python3-system-path-setting" src="../images/20190312-python-install-python3-on-mac/5-python3-system-path-setting.png"></p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/python/libexec/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>完成後重開 Terminal 或透過 <code>source</code> 執行，即可成功，如下圖。</p>
+<p><img alt="6-python3-command" src="../images/20190312-python-install-python3-on-mac/6-python3-command.png"></p>
+<p>到此，因為先讀取到的 <code>/usr/local/opt/python/libexec/bin</code> 下方有提供 Python 3 的 <code>python</code> 可執行檔案，即可以透過原本的 <code>python3</code> 或設定好的 <code>python</code> 指令啟動 Python 3 。另外此設定也會影響到 <code>pip</code> 指令：</p>
+<p><img alt="7-show-pip-cource-in-python3" src="../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png"></p>
+<p>在 TODO <a href="">Python2 與 Python 3 共存的設定 (以 Mac 為例)</a> 此篇中亦有介紹如何設定預設 Mac 的 <code>python</code> 指令讀取來源。</p>
+<h1>參考文章</h1>
+<hr>
+<ol>
+<li><a href="https://medium.com/denix-daily/macos%E4%B8%8A%E7%9A%84python%E8%B7%AF%E5%BE%91%E5%95%8F%E9%A1%8C-%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95-a10c01cc42a">MacOS 上 的 Python 路徑問題＆安裝方法</a></li>
+<li><a href="http://pythonguidecn.readthedocs.io/zh/latest/starting/install3/osx.html">在 Mac OS X 上安装 Python 3</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/python.html">Python</a>
+      <a href="/tag/mac.html">Mac</a>
+      <a href="/tag/python3.html">Python3</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "",
+  "image": "https://avatars3.githubusercontent.com/u/5389253?s=460&v=4",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

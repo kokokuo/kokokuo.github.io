@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具" />
+<meta name="keywords" content="Mac, Homebrew">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具"/>
+<meta property="og:description" content="Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/mac-install-homebrew.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-03-06 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Homebrew"/>
+<meta property="og:image" content="https://avatars3.githubusercontent.com/u/5389253?s=460&v=4">
+
+  <title>koko's Note &ndash; Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="https://avatars3.githubusercontent.com/u/5389253?s=460&v=4" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="mac-install-homebrew">Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</h1>
+    <p>
+          Posted on 三 06 3月 2019 in <a href="/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<hr>
+<p>Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 apt 或是 yum 工具，許多的套件工具都可以透過 Homebrew 安裝，並且管理（如列出安裝的套件、更新套件、修正套件、移除套件等等）上非常方便，即便要尋找也都會放在相同的目錄下。</p>
+<p><br/></p>
+<h1>安裝步驟</h1>
+<hr>
+<h2>步驟一：下載 Homebrew</h2>
+<p>安裝步驟非常簡單，進入 <a href="https://brew.sh/index_zh-tw">Homebrew 官網</a>，依照步驟，在 Terminal 輸入下列此串：</p>
+<p><img alt="homebrew-website" src="../images/20190306-mac-install-homebrew/homebrew-website.png"></p>
+<div class="highlight"><pre><span></span>$&gt; /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>安裝過程如下圖：</p>
+<p><img alt="terminal-install-message" src="../images/20190306-mac-install-homebrew/terminal-install-message.png"></p>
+<h2>步驟二：建立環境變數</h2>
+<p>安裝完後，為了要使 Homebrew 的指令可以被 Mac 的 Terminal 中的 Bash 程式讀取到，需要設定 <code>/usr/local/bin</code> 與 <code>/usr/local/sbin</code> 至環境變數。</p>
+<p>建立一個 <code>.bash_profile</code> 或是 <code>.profile</code> （如果已有其中一個檔案則不需再次建立）在自己的家目錄下：</p>
+<div class="highlight"><pre><span></span>$&gt; <span class="nb">cd</span> ~ <span class="c1"># 移動到家目錄</span>
+$&gt; vim .bash_profile
+</pre></div>
+
+
+<p>並且在檔案中新增此行：</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:/usr/local/sbin:<span class="nv">$PATH</span>
+</pre></div>
+
+
+<p>或是可以透過 Shell 的另一種語法雙引號來設定，如下</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="s2">&quot;PATH=/usr/local/bin:/usr/local/sbin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+<p>設定完成後，<strong>關閉 Terminal 應用程式重開</strong> 或是 <strong>直接在 Terminal 中輸入以下指令啟動</strong> <code>.bash_profile</code> 或 <code>.profile</code> 啟動即可（以下以 <code>.bash_pofile</code> 為例 ）：</p>
+<div class="highlight"><pre><span></span>$&gt; <span class="nb">source</span> ~/.bash_pofile <span class="c1"># 以 source 指令啟動檔案執行並生效</span>
+</pre></div>
+
+
+<p>如果原先 Mac 中的預設 PATH 環境變數已有其中一個路徑則可以只需要把剩餘沒有的補上即可，或是兩個皆有即可忽略。</p>
+<p>例如我的 Mac 透過 <code>export</code> 指令發現 PATH 系統環境變數中缺少 <code>/usr/local/sbin</code>：</p>
+<p><img alt="show-env-by-export" src="../images/20190306-mac-install-homebrew/show-env-by-export.png"></p>
+<p>則編輯 <code>~/.bash_profile</code> 補上去，如下圖：</p>
+<p><img alt="append-missing-envpath" src="../images/20190306-mac-install-homebrew/append-missing-envpath.png"></p>
+<p>完成後，重新開啟 Terminal 應用程式，再次透過 export 檢查，會發現剛剛補上去的 <code>/usr/local/sbin</code> 已經作用在系統環境中：</p>
+<p><img alt="show-env-by-export" src="../images/20190306-mac-install-homebrew/show-env-by-export.png"></p>
+<h2>步驟三：測試 brew 指令</h2>
+<p>可以透過輸入 brew 來做所有跟 Homebrew 有關的套件管理操作行為，如下圖：</p>
+<p><img alt="show-brew-test" src="../images/20190306-mac-install-homebrew/show-brew-test.png"></p>
+<p>到此即表示安裝順利完成囉！</p>
+<h2>安裝套件：以 wget 為例</h2>
+<p>如果要安裝套件裝在 Mac 上，可以透過 <code>brew install</code> 指令再補上要安裝的套件名即可，例如以下以 <code>wget</code> 可為例，<code>wget</code> 是一個可以用來直接在終端機上安裝網路上的檔案內容指令工具：</p>
+<div class="highlight"><pre><span></span>$&gt; brew install wget
+</pre></div>
+
+
+<p><img alt="brew-install-sample" src="../images/20190306-mac-install-homebrew/brew-install-sample.png"></p>
+<p><br/></p>
+<h1>Homebrew 資料夾目錄介紹</h1>
+<hr>
+<p>在上述中所提到的環境變數設定步驟，Homebrew 會在安裝完後放在 <code>/usrl/local</code> 下，所以透過 Homebrew 下載安裝或管理套件時，實際上會影響到的有  <code>/usrl/local</code>  下這幾個目錄：</p>
+<div class="highlight"><pre><span></span>Caskroom  Frameworks  bin  include  opt   share
+Cellar    Homebrew    etc  lib      sbin  var
+</pre></div>
+
+
+<ul>
+<li><code>Cellar</code>：此文件夾存放的是所有包安裝所在路徑，包括二進制，文檔和配置文件。並且會依照 <code>Cellar/套件名稱/版本號/</code> 的形式與為規範放置</li>
+<li><code>opt</code>：由於版本號隨著跟新而改變的，所以需要一個固定不變的路徑作為我們訪問二進制和文檔的路徑，這就是 <code>opt</code> 的作用。</li>
+<li><code>Homebrew</code>：brew 程序所在路徑.</li>
+<li><code>bin</code>：所有包安裝之後二進制都會鏈接到這個路徑下</li>
+<li><code>share</code>：所有包安裝之後的文檔都會鏈接到這個路徑下</li>
+<li><code>etc</code>：同上，所有套件的配置文件</li>
+<li><code>lib</code>：同上，所有套件相關庫文件</li>
+<li><code>Caskroom</code>：使用 Homebrew Cask 安裝的應用程式 app 的相關資訊或設定的文件</li>
+</ul>
+<h2>參考文件</h2>
+<p>1.<a href="https://www.jianshu.com/p/8ad7056b243f">Homebrew 总结</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/mac.html">Mac</a>
+      <a href="/tag/homebrew.html">Homebrew</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "",
+  "image": "https://avatars3.githubusercontent.com/u/5389253?s=460&v=4",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

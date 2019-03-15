@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>koko's Note - Python</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2019-01-13T12:40:00+08:00</updated><subtitle>
+Code / Web / Architecture
+&lt;br/&gt;
+&lt;br/&gt;
+你需要非常多的努力
+&lt;br/&gt;
+才能看起來毫不費力
+</subtitle><entry><title>在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌</title><link href="/mac-using-pelican-build-static-website.html" rel="alternate"></link><published>2019-01-13T12:40:00+08:00</published><updated>2019-01-13T12:40:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-01-13:/mac-using-pelican-build-static-website.html</id><summary type="html">&lt;p&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;自從工作超過一年後便開始停擺了自己的習慣，不過伴隨著逐漸的累積過程，最近有了想要重新撰寫網誌的想法，再加上自己不僅喜歡分享外，也認為取之網路回饋網路。&lt;/p&gt;
+&lt;p&gt;以前雖然使用 Wordpress 作為網誌，但是由於自己的網誌用途單純（純寫作紀錄），加上先前遇到架設的 Wordpress 再後來有轉移主機的情形，但轉移與重建過程繁瑣外，再次架設也只能使用 Wordrpress 與還原資料庫，還可能格式跑掉。&lt;/p&gt;
+&lt;p&gt;因此這次決定採用 &lt;strong&gt;markdown 格式撰寫為主的靜態網誌產生器 ( Static Site Generator )&lt;/strong&gt; 來產生部落格，這樣的好處除了未來要轉移時檔案都會以 markdown 檔案攜帶保存外，在本機端也能隨時編輯與閱讀，呈現格式也比較不用擔心跑掉需要重新設定（例如 Wordpress 升級或是主題更新或更換主題跑版），不過因為產生器會有一兩個簡單的腳本檔案，因此會稍微需要對程式語言有點簡易了解。&lt;/p&gt;
+&lt;hr/&gt;
+
+&lt;h1&gt;使用 Pelican 靜態網站產生器架設靜態網站&lt;/h1&gt;
+&lt;p&gt;目前靜態網站產生器的選擇上非常多樣化，參考 &lt;a href="https://www.staticgen.com/"&gt;StaticGen&lt;/a&gt; 可以看到許多使用不同程式語言開發的產生器，並且每個產生器都有特別的特色。&lt;/p&gt;
+&lt;p&gt;而自己則是使用熟悉的 Python 語言所開發的 Pelican 作為個人的網誌，同時該產生器提供的樣式主題豐富外，在設定上也只需要編輯 &lt;code&gt;pelicanconf.py&lt;/code&gt; 與 &lt;code&gt;publishconf.py&lt;/code&gt; 即可，能夠自己定義新的頁面（如 About Me, 作品集...等)，擁有標籤與分類目錄的工能，並能安插 Google Analystic、 Twitter, Facebook 、留言版、RSS 等外部功能，非常豐富，也只要透過一個 &lt;code&gt;Makefile&lt;/code&gt; 檔案就可以生成靜態網站，或是在自己的本機電腦產生預覽模式觀看。&lt;/p&gt;
+&lt;p&gt;那麼以下來介紹安裝與使用步驟：&lt;/p&gt;
+&lt;h2&gt;1.安裝 Pelican 套件&lt;/h2&gt;
+&lt;p&gt;在安裝 Pelican 前請先確認自己的 Mac 環境具有 Python 2.6 以上或是 Python 3.3 以上，由於未來 Python 2.x 將會淘汰，建議直接使用 Python 3.x 版本。&lt;/p&gt;
+&lt;h3&gt;(1.) 建立網誌目錄&lt;/h3&gt;
+&lt;p&gt;首先準備要用來建立網誌的目錄，如下為 &lt;code&gt;kokokuo-note&lt;/code&gt;，另外為了避免不影響主要電腦的 Python 環境，當我們進入到目錄中會接下著建立 Pelican 用的虛擬環境再安裝 Pelican 套件。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; mkdir kokokuo-note
+&amp;gt; &lt;span class="nb"&gt;cd&lt;/span&gt; kokokuo-note
+kokokuo-note/&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;當進入目錄後，我們便可以安裝虛擬環境，並且裝載 Pelican ，以下的安裝步驟會分別紀錄採用 &lt;code&gt;virtualenv&lt;/code&gt; 與 &lt;code&gt;pipenv&lt;/code&gt; 兩種不同的虛擬環境工具。&lt;/p&gt;
+&lt;h3&gt;(2.1) 建立虛擬環境 Virtualenv 安裝 Pelican&lt;/h3&gt;
+&lt;p&gt;如果你採用 &lt;code&gt;virtualenv&lt;/code&gt; 作為虛擬環境，那麼首先我們要透過 &lt;code&gt;virtualenv&lt;/code&gt; 的指令建立虛擬環境的目錄，並進入虛擬環境中，才能 &lt;code&gt;pip&lt;/code&gt; 指令安裝 Pelican，若對 Python 的虛擬環境 virtualenv 有更多想要知道的部分可以參考此篇 &lt;a href="/python-virtualenv-install-and-usage.html"&gt;Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;kokokuo-note/&amp;gt; virtualenv venv &lt;span class="c1"&gt;# 採用 virtualenv 建立虛擬環境目錄&lt;/span&gt;
+kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate  &lt;span class="c1"&gt;# 進入虛擬環境&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pip install pelican &lt;span class="c1"&gt;# 當顯示 (venv) 後表示我們已經在許你環境中，安裝 Pelican &lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pip install markdown # 安裝 markdowan ，使 Pelican 的 markdown 語法作用，務必安裝
+&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pip install typogrify &lt;span class="c1"&gt;# 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的排版，務必安裝&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如下圖：&lt;/p&gt;
+&lt;h3&gt;(2.2) 建立虛擬環境 Pipenv 安裝 Pelican&lt;/h3&gt;
+&lt;p&gt;如果你採用 &lt;code&gt;pipenv&lt;/code&gt; 作為操作虛擬環境指令工具，則採用以下步驟：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;kokokuo-note/&amp;gt; mkdir .venv &lt;span class="c1"&gt;# 建立等等 Pipenv 安裝虛擬環境時所存放的目錄&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="pipenv-create-virtualenv" src="../images/20190113-how-to-start-pelican/pipenv-create-virtualenv.png"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;kokokuo-note/&amp;gt; pipenv shell &lt;span class="c1"&gt;# 進入虛擬環境&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;kokokuo-note&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pipenv install pelican &lt;span class="c1"&gt;# 當顯示 (kokokuo-note) 後表示我們已經在 kokokuo-note 這個專案目錄的虛擬環境中，安裝 Pelican &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="pipenv-install-pelican" src="../images/20190113-how-to-start-pelican/pipenv-install-pelican.png"&gt;&lt;/p&gt;
+&lt;p&gt;再來還需要安裝 markdown 與 typogrify：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;kokokuo-note&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pipenv install markdown &lt;span class="c1"&gt;# 安裝 markdowan ，使 Pelican 的 markdown 語法作用，務必安裝，務必安裝&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;kokokuo-note&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pipenv install typogrify  &lt;span class="c1"&gt;# 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的，務必安裝排版&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="pipenv-install-markdown" src="../images/20190113-how-to-start-pelican/pipenv-install-markdown.png"&gt;&lt;/p&gt;
+&lt;p&gt;若是想要更多了解 &lt;code&gt;pipenv&lt;/code&gt;，可以參考此篇 &lt;a href="/python-pipenv-install-and-usage.html"&gt;Python - 使用 Pipenv 建立虛擬環境與安裝套件&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;(3.) 透過 Pelican 指定產生靜態網站檔案&lt;/h3&gt;
+&lt;p&gt;當我們安裝好 Pelican 與所需要的套件後，再來便可以透過 Pelican 提供的指令 &lt;code&gt;pelican-quickstart&lt;/code&gt; 來產生後續我們要的靜態網站範本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;kokokuo-note&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;之後 Pelican 會如下圖，依序詢問幾個問題，來幫忙建立屬於你要的範本：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pipenv-pelican-to-generate" src="../images/20190113-how-to-start-pelican/pipenv-pelican-to-generate.png"&gt;&lt;/p&gt;
+&lt;p&gt;上圖中的幾個問題分別是解說如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; What will be the title of this web site?  &lt;span class="c1"&gt;# 輸入你的網站名稱，未來也可以再改&lt;/span&gt;
+&amp;gt; Who will be the author of this web site? &lt;span class="c1"&gt;# 輸入網站的作者名稱，未來也可以再改&lt;/span&gt;
+&amp;gt; What will be the default language of this web site? &lt;span class="o"&gt;[&lt;/span&gt;zh&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 輸入你的預設語系 e.g 這邊預設是 zh，未來也可以再改&lt;/span&gt;
+&amp;gt; Do you want to specify a URL prefix? e.g., https://example.com   &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; n  &lt;span class="c1"&gt;# 是否要指定網誌的網址 URL，若目前沒有可以輸入 n，未來也可以再改&lt;/span&gt;
+&amp;gt; Do you want to &lt;span class="nb"&gt;enable&lt;/span&gt; article pagination? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y &lt;span class="c1"&gt;# 是否要設定分頁功能，未來也可以再改&lt;/span&gt;
+&amp;gt; How many articles per page &lt;span class="k"&gt;do&lt;/span&gt; you want? &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="m"&gt;10&lt;/span&gt;  &lt;span class="c1"&gt;# 分頁功能的預設頁數，未來也可以再改&lt;/span&gt;
+&amp;gt; What is your &lt;span class="nb"&gt;time&lt;/span&gt; zone? &lt;span class="o"&gt;[&lt;/span&gt;Europe/Paris&lt;span class="o"&gt;]&lt;/span&gt; Asia/Taipei &lt;span class="c1"&gt;# 設定所在時區，例如這裡我設定 亞洲台北時區，未來也可以再改&lt;/span&gt;
+&amp;gt; Do you want to generate a tasks.py/Makefile to automate generation and publishing? &lt;span class="o"&gt;(&lt;/span&gt;Y/n&lt;span class="o"&gt;)&lt;/span&gt; Y # 是否要有 Makefile 或 task.py 等腳本檔案，幫變你自動產生靜態 HTML 網站與協助部署，建議要
+&amp;gt; Do you want to upload your website using FTP? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; N &lt;span class="c1"&gt;# 網站是否要透過 FTP 上傳呈現，因為之後要用 Github Page 所以這裡回答 N&lt;/span&gt;
+&amp;gt; Do you want to upload your website using SSH? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; N &lt;span class="c1"&gt;# 網站是否要透過 SSH 上傳呈現，因為之後要用 Github Page 所以這裡回答 N&lt;/span&gt;
+&amp;gt; Do you want to upload your website using Dropbox? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; N &lt;span class="c1"&gt;# 網站是否要透過 Dropbox 上傳呈現，因為之後要用 Github Page 所以這裡回答 N&lt;/span&gt;
+&amp;gt; Do you want to upload your website using S3? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; N &lt;span class="c1"&gt;# 網站是否要透過 AWS 的 S3 儲存庫 上傳呈現，因為之後要用 Github Page 所以這裡回答 N&lt;/span&gt;
+&amp;gt; Do you want to upload your website using Rackspace Cloud Files? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; N &lt;span class="c1"&gt;# 網站是否要透過 Rackspace Cloud 上傳呈現，因為之後要用 Github Page 所以這裡回答 N&lt;/span&gt;
+&amp;gt; Do you want to upload your website using GitHub Pages? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; y &lt;span class="c1"&gt;# 網站是否要透過 Github Pages 上傳呈現，因為這是本篇網誌的架設方式，所以選擇 y&lt;/span&gt;
+&amp;gt; Is this your personal page &lt;span class="o"&gt;(&lt;/span&gt;username.github.io&lt;span class="o"&gt;)&lt;/span&gt;? &lt;span class="o"&gt;(&lt;/span&gt;y/N&lt;span class="o"&gt;)&lt;/span&gt; y &lt;span class="c1"&gt;# 因為採用 Github Page 作為個人網誌，所以為y，如果你架設的目的是專案文件，則輸入 N&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上述關於時區的部分，可以參考 &lt;a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"&gt;wikipedia 的 List of tz database time zones&lt;/a&gt;，裡面詳列的各國的時區碼供設定參考。&lt;/p&gt;
+&lt;p&gt;完成後便會看到產生的檔案：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pelican-defult-files" src="../images/20190113-how-to-start-pelican/pelican-default-files.png"&gt;&lt;/p&gt;
+&lt;h3&gt;(4.) Pelican 目錄檔案功用介紹&lt;/h3&gt;
+&lt;p&gt;在上圖中，會看到 &lt;code&gt;pelican-quickstart&lt;/code&gt; 執行並回答完問題後，會產生一些檔案與目錄，這些檔案與目錄便是之後這個網誌的架構，以下分別介紹每個目錄與檔案的作用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;content&lt;/strong&gt; : 此目錄為 Pelican 預設提供給我們用來存放 markdown 邊寫完的網誌，因為是預設，也代表我們可以額外更改擺放位置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;output&lt;/strong&gt; : 因為靜態網站產生器的構造是透過 markdown 撰寫我們的網誌內容後，在透過一些功能，產生具有 HTML/CSS/JS 的網頁呈現，因此會需要有一個目錄擺放這些 HTML/CSS/JS 檔案，而在 Pelican 便是 &lt;code&gt;output&lt;/code&gt; 這個目錄。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;task.py 與 Makefile&lt;/strong&gt; : 則是剛剛在回答 &lt;code&gt;pelican-quickstart&lt;/code&gt; 的問題中詢問的問題，這兩個檔案很有用，Pelican 提供他們來協助我們寫完每篇網誌後，可以用來產生 HTML/CSS/JS 這些靜態檔案，除此之外還能在自己的本機電腦跑出類似預覽功能觀看與檢查的&lt;strong&gt;本機端伺服器&lt;/strong&gt;作測試，也能協助我們把完成並測試預覽後的網誌直接的以 FTP, SSH, 或是 Github Page 等方式放上去。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;pelicanconf.py&lt;/strong&gt; : 這也是一個很重要的檔案，該檔案是 &lt;code&gt;.py&lt;/code&gt; 結尾，也就是 Python 的程式碼。剛剛在回答 &lt;code&gt;pelican-quickstart&lt;/code&gt; 中的問題如設定網站名稱、作者、語言、時區、分頁等等功能，包含未來其他的更換網誌樣板，或是設定網址要擺放的目錄，都會在此設定。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;publishconf.py&lt;/strong&gt; : 這個檔案會作用在我們要把網誌擺到伺服器上時，如剛剛問題中提問的  FTP, SSH, 或是 Github Page 等方式，因此只有在部署時會需要。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;(5.) 開始使用 Pelican 撰寫第一篇網誌&lt;/h3&gt;
+&lt;p&gt;完成上半部分後，我們終於可以開始編寫網誌了，一個 Pelican 用 Markdown 寫的網誌，簡易結構會如下：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="first-pelican-markdown-example" src="../images/20190113-how-to-start-pelican/first-markdown-example.png"&gt;&lt;/p&gt;
+&lt;p&gt;下半部的部分就是我們一般的 markdown 內容，也就是我們要寫的文章，而上半部的 Title, Date, Category, Tags, Slug, Authors, Summary 都是 Pelican 的 Metadata 關鍵字，這些關鍵字可以有也可以不提供，每一個關鍵字都會有其特殊的用途，以下常用的有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Title&lt;/strong&gt; : 文章的表題&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Date&lt;/strong&gt; : 文章的發表日期&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modified&lt;/strong&gt; : 文章的修改日期&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Category&lt;/strong&gt; : 此篇文章所屬的分類目錄名稱&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tags&lt;/strong&gt; : 此篇文章的標籤&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slugs&lt;/strong&gt; : 文章的連結路徑名稱&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Summary&lt;/strong&gt; : 使用 RSS 或是網站目錄時呈現的簡介&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其他更多的設定可以參考 &lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Document - Write Content&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;(6.) 產生 HTML 的靜態網頁&lt;/h3&gt;
+&lt;p&gt;當寫好我們的第一個範例後，我們便可以開始來預覽我們寫的文章了，這個步驟很容易，只要在我們所建立的專案目錄下，如我是 &lt;code&gt;kokokuo-note&lt;/code&gt; 輸入以下指令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;kokokuo-note&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; make html &lt;span class="c1"&gt;# 產生 HTML 檔案&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;透過上述的指令 &lt;code&gt;make html&lt;/code&gt;  會幫助我們把剛剛所寫完的 markdown 文章，轉換並生出成 HTML 網頁，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pelican-make-html" src="../images/20190113-how-to-start-pelican/pelican-make-html.png"&gt;&lt;/p&gt;
+&lt;p&gt;而產生後，我們可以進一步到 &lt;strong&gt;output&lt;/strong&gt; 目錄下，會看到生出了許多的子目錄與檔案，包含 HTML/CSS 與 圖像檔案。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pelican-output-html" src="../images/20190113-how-to-start-pelican/pelican-output-html.png"&gt;&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;output&lt;/code&gt; 目錄中，會看到一個檔案是 &lt;code&gt;mac-using-pelican-build-static-website.html&lt;/code&gt; ，這個檔案便是我們剛剛在寫 &lt;code&gt;hello-pelican&lt;/code&gt; 第一篇網誌時，所設定的 &lt;code&gt;Slug&lt;/code&gt; 網址名稱，而 Pelican 會幫我們以此為檔名產生出來。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pelican-html-sample" src="../images/20190113-how-to-start-pelican/pelican-html-sample.png"&gt;&lt;/p&gt;
+&lt;p&gt;而這個 &lt;code&gt;make html&lt;/code&gt; 實際上便是最早在回答 &lt;code&gt;pelican-quickstart&lt;/code&gt; 問題時其中提到的 &lt;em&gt;Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n)&lt;/em&gt;，由於回答了 Yes，所以 &lt;code&gt;Pelican&lt;/code&gt; 協助我們提供了 &lt;code&gt;task.py&lt;/code&gt; 與 &lt;code&gt;Makefile&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;而上述的這兩個檔案是相輔相成的，核心功能寫在 &lt;code&gt;task.py&lt;/code&gt;，並再透過 &lt;code&gt;Makefile&lt;/code&gt; 來產生 &lt;code&gt;make html&lt;/code&gt; 的功能。&lt;/p&gt;
+&lt;p&gt;另外除了 &lt;code&gt;make html&lt;/code&gt; 以外，這個 &lt;code&gt;task.py&lt;/code&gt; 與 &lt;code&gt;Makefile&lt;/code&gt; 還提供了很多其他的能力，我們可以在目錄下輸入 &lt;code&gt;make&lt;/code&gt; 即可看到：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;kokokuo-note&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; make  &lt;span class="c1"&gt;# 顯示 Help 功能，所有的指令與用途。&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img alt="pelican-make-commands" src="../images/20190113-how-to-start-pelican/pelican-make-commands.png"&gt;&lt;/p&gt;
+&lt;p&gt;以下介紹最常用的有幾個：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;make html&lt;/strong&gt; : 把 &lt;strong&gt;content&lt;/strong&gt; 下所有的 Markdown 檔案轉為 HTML 網頁。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;make clean&lt;/strong&gt; : 清除掉 &lt;strong&gt;output&lt;/strong&gt; 目錄下的所有內容。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;make regenerate&lt;/strong&gt; : 若是使用 &lt;code&gt;make html&lt;/code&gt; ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 &lt;code&gt;make html&lt;/code&gt; 才能產生看到的 HTML 內容並被看到。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;make serve&lt;/strong&gt; : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:8000 來預覽與測試文章有無格式或排版問提。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;make devserver&lt;/strong&gt; : 啟動開發用的本機伺服器，&lt;code&gt;與 make serve&lt;/code&gt; 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 &lt;code&gt;make regenerate&lt;/code&gt; 與 &lt;code&gt;make serve&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;(7.) 預覽編寫完的 Markdown 網誌&lt;/h3&gt;
+&lt;p&gt;當完成 &lt;code&gt;make html&lt;/code&gt; 產生網頁後，再來只要輸入 &lt;code&gt;make serve&lt;/code&gt; 便可以預覽寫完的網頁：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pelican-make-serve" src="../images/20190113-how-to-start-pelican/pelican-make-serve.png"&gt;&lt;/p&gt;
+&lt;p&gt;透過瀏覽器輸入 https://localhost:8000 便可以看到呈現的網頁：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="show-pelican-localhost-site" src="../images/20190113-how-to-start-pelican/show-pelican-localhost-site.png"&gt;&lt;/p&gt;
+&lt;p&gt;至此變完成的安裝 Pelican &amp;gt; 撰寫 Markdown 文章 &amp;gt; 產生 HTML 與預覽 的過程。&lt;/p&gt;
+&lt;h1&gt;後記&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;雖然上述介紹了如何使用 Pelican 來編寫 Markdown 與產生的 HTML 網頁。&lt;/p&gt;
+&lt;p&gt;但是這一切都是在自己的電腦本機端，我們仍然需要真的伺服器空間，來把我們的網誌與文章放上去才行。&lt;/p&gt;
+&lt;p&gt;因此接下來我們會介紹一開始在執行 &lt;code&gt;pelican-quickstart&lt;/code&gt; 時，選擇使用 &lt;strong&gt;Github Page&lt;/strong&gt; 的後續部署網誌步驟，請參考 &lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;。&lt;/p&gt;</content><category term="Python"></category><category term="Pelican"></category></entry></feed>
