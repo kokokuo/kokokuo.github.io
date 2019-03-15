@@ -26,12 +26,12 @@
 
 
 <meta name="author" content="kokokuo" />
-<meta name="description" content="Python - 透過 .venv 管理 Pipenv 虛擬環境的來源" />
+<meta name="description" content="在前一篇 Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。" />
 <meta name="keywords" content="Python, Pipenv, Virtualenv">
 
 <meta property="og:site_name" content="koko's Note"/>
 <meta property="og:title" content="Python - 透過 .venv 管理 Pipenv 虛擬環境的來源"/>
-<meta property="og:description" content="Python - 透過 .venv 管理 Pipenv 虛擬環境的來源"/>
+<meta property="og:description" content="在前一篇 Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="/pipenv-use-dot-venv-folder.html"/>
 <meta property="og:type" content="article"/>
@@ -71,7 +71,7 @@ Code / Web / Architecture
             </i>
           </a></li>
           <li>
-            <a  class="sc-linkedin" href="www.linkedin.com/in/easonkuo" target="_blank">
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
             <i class="fab fa-linkedin">
             </i>
           </a></li>
@@ -98,7 +98,7 @@ Code / Web / Architecture
   <div>
     <h1>前言</h1>
 <hr>
-<p>在前一篇 <a href="/python-pipenv-install-and-usage.html">Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv</a> 中提到透過 Pipenv 建立好的虛擬環境都會統一放在用戶家目錄下的 <code>.local/share/ virtualenvs/</code> 路徑，並且統一管理。</p>
+<p>在前一篇 <a href="/python-pipenv-install-and-usage.html">Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv</a> 中提到透過 Pipenv 建立好的虛擬環境都會放在用戶家目錄下的 <code>.local/share/ virtualenvs/</code> 路徑，並且統一管理。</p>
 <p>但是如果用編輯器像是 VSCode 開發時，還要設定虛擬目錄的來源很麻煩（因為每個虛擬目錄的命名都不同）所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。</p>
 <h1>建立 <code>.venv</code> 管理你的虛擬環境目錄</h1>
 <hr>
