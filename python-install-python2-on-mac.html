@@ -109,7 +109,7 @@ Code / Web / Architecture
 </pre></div>
 
 
-<p><img alt="1-Install-XCode-Tool" src="../images/20190312-python-install-python2-on-mac/1-Install-XCode-Tool.png"></p>
+<p><img src="../images/20190312-python-install-python2-on-mac/1-Install-XCode-Tool.png" alt="1-Install-XCode-Tool" /></p>
 <p>除了上述的方式，也可以透過 Mac 上的 App Store 安裝完全版的 XCode 開發工具。</p>
 <h2>步驟二：安裝 Homebrew</h2>
 <p>Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 <code>apt</code> 或是 <code>yum</code> 工具，後續透過 Homebrew 來安裝 Python ，進入 Homebrew 官網，依照步驟，在 Terminal 輸入下列此串：</p>
@@ -117,7 +117,7 @@ Code / Web / Architecture
 </pre></div>
 
 
-<p><img alt="2-Install-Homebrew" src="../images/20190312-python-install-python2-on-mac/2-Install-Homebrew.png"></p>
+<p><img src="../images/20190312-python-install-python2-on-mac/2-Install-Homebrew.png" alt="2-Install-Homebrew" /></p>
 <h2>步驟三：設定讀取 Homebrew 指令的環境變數</h2>
 <p>安裝完後，為了要使 Homebrew 的指令可以被 Mac 的 Terminal 中的 Bash 程式讀取到，需要設定 <code>/usr/local/bin</code> 與 <code>/usr/local/sbin</code> 至環境變數。</p>
 <p>建立一個 <code>.bash_profile</code> 或是 <code>.profile</code> （如果已有其中一個檔案則不需再次建立）並且在檔案中新增此行：</p>
@@ -155,11 +155,11 @@ Code / Web / Architecture
 
 
 <p>Homebrew 會一同連 <code>pip</code> 也安裝進去，如下安裝完的結果與訊息：</p>
-<p><img alt="3-install-python2-by-homebrew" src="../images/20190312-python-install-python2-on-mac/3-install-python2-by-homebrew.png"></p>
+<p><img src="../images/20190312-python-install-python2-on-mac/3-install-python2-by-homebrew.png" alt="3-install-python2-by-homebrew" width="480px"/></p>
 <p>安裝完後 Homebrew 會自動為放在 <code>Cellar</code> 的 <code>Python@2</code> 在 Mac 的 <code>/usr/local/opt</code> 與 <code>/usr/local/bin</code> 分別建置 link 檔案，如下為 <code>/usr/local/opt</code>：</p>
-<p><img alt="4-installed-python2-location-1" src="../images/20190312-python-install-python2-on-mac/4-installed-python2-location-1.png"></p>
+<p><img src="../images/20190312-python-install-python2-on-mac/4-installed-python2-location-1.png" alt="4-installed-python2-location-1" /></p>
 <p><code>/usr/local/bin</code> 也有：</p>
-<p><img alt="4-installed-python2-location-2" src="../images/20190312-python-install-python2-on-mac/4-installed-python2-location-2.png"></p>
+<p><img src="../images/20190312-python-install-python2-on-mac/4-installed-python2-location-2.png" alt="4-installed-python2-location-2" /></p>
 <p>因此，雖然在另一篇在 <a href="http://pythonguidecn.readthedocs.io/zh/latest/starting/install/osx.html">Mac OS X 上安装 Python 2</a> 有提及需要設定以下 <code>/usr/local/opt/python@2</code> 在環境變數：</p>
 <div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/python@2/libexec/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
 </pre></div>
@@ -171,7 +171,7 @@ Code / Web / Architecture
 <p>答案是根據在 <code>~/.bash_profile</code> 中 PATH 設定的順序。</p>
 <p>因為再設定環境變數時，系統內建的環境變數 <code>$PATH</code> 是放在後頭， /<code>usr/local/bin</code> 是在前面，因此輸入 Python 指令時 Bash 讀取 <code>~/.bash_profile</code> 會先讀到 <code>/usr/local/bin</code> 底下 <code>python@2</code> 的 <code>python</code> 指令 Link 檔，因而找到 Homebrew 安裝的 Python 2。</p>
 <p>因此我們透過透過 <code>python -h</code> 查看後會發現目前的確讀到 Homebrew 安裝的 Python：</p>
-<p><img alt="5-python2-help-command" src="../images/20190312-python-install-python2-on-mac/5-python2-help-command.png"></p>
+<p><img src="../images/20190312-python-install-python2-on-mac/5-python2-help-command.png" alt="5-python2-help-command"/></p>
 <p>至此已經完成 Python2 的安裝。</p>
 <p><br/></p>
 <h1>參考文章</h1>

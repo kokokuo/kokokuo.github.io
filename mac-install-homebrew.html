@@ -103,13 +103,13 @@ Code / Web / Architecture
 <hr>
 <h2>步驟一：下載 Homebrew</h2>
 <p>安裝步驟非常簡單，進入 <a href="https://brew.sh/index_zh-tw">Homebrew 官網</a>，依照步驟，在 Terminal 輸入下列此串：</p>
-<p><img alt="homebrew-website" src="../images/20190306-mac-install-homebrew/homebrew-website.png"></p>
+<p><img src="../images/20190306-mac-install-homebrew/homebrew-website.png" alt="homebrew-website" /></p>
 <div class="highlight"><pre><span></span>$&gt; /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 
 
 <p>安裝過程如下圖：</p>
-<p><img alt="terminal-install-message" src="../images/20190306-mac-install-homebrew/terminal-install-message.png"></p>
+<p><img src="../images/20190306-mac-install-homebrew/terminal-install-message.png" alt="terminal-install-message" /></p>
 <h2>步驟二：建立環境變數</h2>
 <p>安裝完後，為了要使 Homebrew 的指令可以被 Mac 的 Terminal 中的 Bash 程式讀取到，需要設定 <code>/usr/local/bin</code> 與 <code>/usr/local/sbin</code> 至環境變數。</p>
 <p>建立一個 <code>.bash_profile</code> 或是 <code>.profile</code> （如果已有其中一個檔案則不需再次建立）在自己的家目錄下：</p>
@@ -135,14 +135,14 @@ $&gt; vim .bash_profile
 
 <p>如果原先 Mac 中的預設 PATH 環境變數已有其中一個路徑則可以只需要把剩餘沒有的補上即可，或是兩個皆有即可忽略。</p>
 <p>例如我的 Mac 透過 <code>export</code> 指令發現 PATH 系統環境變數中缺少 <code>/usr/local/sbin</code>：</p>
-<p><img alt="show-env-by-export" src="../images/20190306-mac-install-homebrew/show-env-by-export.png"></p>
+<p><img src="../images/20190306-mac-install-homebrew/show-env-by-export.png" alt="show-env-by-export" width="480px"/></p>
 <p>則編輯 <code>~/.bash_profile</code> 補上去，如下圖：</p>
-<p><img alt="append-missing-envpath" src="../images/20190306-mac-install-homebrew/append-missing-envpath.png"></p>
+<p><img src="../images/20190306-mac-install-homebrew/append-missing-envpath.png" alt="append-missing-envpath" width="320px"/></p>
 <p>完成後，重新開啟 Terminal 應用程式，再次透過 export 檢查，會發現剛剛補上去的 <code>/usr/local/sbin</code> 已經作用在系統環境中：</p>
-<p><img alt="show-env-by-export" src="../images/20190306-mac-install-homebrew/show-env-by-export.png"></p>
+<p><img src="../images/20190306-mac-install-homebrew/show-env-by-export.png" alt="show-env-by-export" width="480px"/></p>
 <h2>步驟三：測試 brew 指令</h2>
 <p>可以透過輸入 brew 來做所有跟 Homebrew 有關的套件管理操作行為，如下圖：</p>
-<p><img alt="show-brew-test" src="../images/20190306-mac-install-homebrew/show-brew-test.png"></p>
+<p><img src="../images/20190306-mac-install-homebrew/show-brew-test.png" alt="show-brew-test" width="480px"/></p>
 <p>到此即表示安裝順利完成囉！</p>
 <h2>安裝套件：以 wget 為例</h2>
 <p>如果要安裝套件裝在 Mac 上，可以透過 <code>brew install</code> 指令再補上要安裝的套件名即可，例如以下以 <code>wget</code> 可為例，<code>wget</code> 是一個可以用來直接在終端機上安裝網路上的檔案內容指令工具：</p>
@@ -150,7 +150,7 @@ $&gt; vim .bash_profile
 </pre></div>
 
 
-<p><img alt="brew-install-sample" src="../images/20190306-mac-install-homebrew/brew-install-sample.png"></p>
+<p><img src="../images/20190306-mac-install-homebrew/brew-install-sample.png" alt="brew-install-sample" /></p>
 <p><br/></p>
 <h1>Homebrew 資料夾目錄介紹</h1>
 <hr>

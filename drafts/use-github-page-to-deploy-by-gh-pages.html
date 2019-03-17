@@ -109,7 +109,7 @@ Code / Web / Architecture
 </pre></div>
 
 
-<p><img alt="git-push-master-failed" src="../images/20190205-deploy-pelican-static-website-to-github-page/git-push-master-failed.png"></p>
+<p><img src="../images/20190205-deploy-pelican-static-website-to-github-page/git-push-master-failed.png" alt="git-push-master-failed" /></p>
 <p>但是在推送上去後你會看到一個拒絕的資訊：<em>「error: failed to push some refs to 'https://github.com/kokokuo/kokokuo.github.io.git'」</em> ...</p>
 <p>再來因為在 Github Page Repository 上的 <code>master</code> 中已經有一些內容了，所以我們要先做 <code>git pull</code> 下來，與目前自己電腦上的最新版的 Pelican 檔案做合併：</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note<span class="o">(</span>master<span class="o">)</span>&gt; git pull origin master
@@ -117,7 +117,7 @@ Code / Web / Architecture
 
 
 <p>不過如果你的 Git 在 2.9 版以上時你有可能會看到新的錯誤訊息， 如下：</p>
-<p><img alt="git-refuse-unrelated" src="../images/20190205-deploy-pelican-static-website-to-github-page/git-refuse-unrelated.png"></p>
+<p><img src="../images/20190205-deploy-pelican-static-website-to-github-page/git-refuse-unrelated.png" alt="git-refuse-unrelated" /></p>
 <p>這是 Git 在 2.9 版本時出現的，主要是告訴你這個要放到 Github Repository <code>master</code> 的檔案與原先在 Github 上的 Repository 是兩個不同的專案，因為來源不同沒有關連才拒絕你。</p>
 <p>如果要解決這個問題，只要輸入 <code>git pull origin master</code> 並在後面加入 <code>--allow-unrelated-histories</code> 這個指令就好，表示我允許你們不相關沒關係，給我合併就對了，如下：</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note<span class="o">(</span>master<span class="o">)</span>&gt; git pull origin master --allow-unrelated-histories
@@ -125,9 +125,9 @@ Code / Web / Architecture
 
 
 <p>如此就會看到在 Github Repository 上我們原先建立好的 README 與 index.html 與我們的 Pelican 專案合再一起放到 Pelican 網誌專案的目錄中，之後我們再次執行 <code>git push origin master</code> 就可以了，如下圖：</p>
-<p><img alt="pull-remote-file-and-push-again" src="../images/20190205-deploy-pelican-static-website-to-github-page/pull-remote-file-and-push-again.png"></p>
+<p><img src="../images/20190205-deploy-pelican-static-website-to-github-page/pull-remote-file-and-push-again.png" alt="pull-remote-file-and-push-again" /></p>
 <p>完成後讓我們移動到 Github Page 所放的 Repository 上，你會看到剛剛在自己電腦上的 Pelican 專案中所有的檔案被放上去了：</p>
-<p><img alt="github-push-pelican-files" src="../images/20190205-deploy-pelican-static-website-to-github-page/github-push-pelican-files.png"></p>
+<p><img src="../images/20190205-deploy-pelican-static-website-to-github-page/github-push-pelican-files.png" alt="github-push-pelican-files" /></p>
 <h3>(2.) 修改 <code>Makefile</code> 建立 <code>gh-pages</code></h3>
 <p>當我們完成提交 <code>master</code> 後，再來我們就要處裡 <code>gh-pages</code> 分支了，在處理之前如同方法一，我們需要安裝 <code>ghp-import</code> 套件，因為我們也會使用到 <code>make github</code> 指令：</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note<span class="o">(</span>master<span class="o">)</span>&gt; pipenv install ghp-import

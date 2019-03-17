@@ -126,7 +126,7 @@ parser/&gt; ls
 </pre></div>
 
 
-<p><img alt="create-virtualenv" src="../images/20190307-python-virtualenv-install-and-usage/create-virtualenv.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/create-virtualenv.png" alt="create-virtualenv" /></p>
 <p>你會看到在 <code>venv</code> 中是安裝 Python 時產生的目錄與檔案。</p>
 <p><br/></p>
 <h1>使用 virtualenv</h1>
@@ -137,9 +137,9 @@ parser/&gt; ls
 </pre></div>
 
 
-<p><img alt="source-virtualenv-pip-list" src="../images/20190307-python-virtualenv-install-and-usage/source-virtualenv-pip-list.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/source-virtualenv-pip-list.png" alt="source-virtualenv-pip-list" width="320px"/></p>
 <p>如上圖你會看到這個 <code>pip list</code> 出來的套件都是一開始安裝 Python 時最乾淨的環境，即便你作業系統中安裝的 Python 已經有裝了其他套件，在這裡都會以最乾淨的方式呈現，因為 <code>virtualenv</code> 只會複製一份 Python 核心，不會連作業系統中的 Python 所安裝的套件也一併抓過來，此時我們可以透過 <code>python --version</code> 來看看 Python 的路徑以及版本，以下我的 Python 是安裝 <code>3.7.1</code> 版本的，此時透過進入 Python 環境下，透過 <code>sys.path</code> 就可以看到來源是 <code>venv</code> 中：</p>
-<p><img alt="show-virtualenv-python-path" src="../images/20190307-python-virtualenv-install-and-usage/show-virtualenv-python-path.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/show-virtualenv-python-path.png" alt="show-virtualenv-python-path" /></p>
 <p>接著回過頭來，我們來安裝套件 <code>requests</code> 與 <code>beautifulsoup4</code>：</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>parser/&gt; pip install requests
 <span class="o">(</span>venv<span class="o">)</span>parser/&gt; pip install beautifulsoup4
@@ -166,7 +166,7 @@ parser/&gt; pip list
 
 
 <p>退出後你就會看到 <code>(venv)</code> 的標示不存在了，就是退出虛擬環境成功，此時你可以在透過 <code>pip list</code> 看看，就會發現虛擬環境中安裝的套件不在了：</p>
-<p><img alt="system-pip-list" src="../images/20190307-python-virtualenv-install-and-usage/system-pip-list.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/system-pip-list.png" alt="system-pip-list" width="320px"/></p>
 <p>但是因為他好好的放在 <code>venv</code> 目錄下，所以下次要使用只要再透過 <code>source venv/bin/activate</code> 進入即可囉！</p>
 <p>另外若是你今天在使用虛擬環境時完髒了，要刪除要怎麼做呢？ 我們只要先用 <code>deactivate</code> 退出虛擬環境後，在做 <code>rm -rf</code> 把虛擬環境的目錄刪掉就好，豈不是很容易？</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>venv<span class="o">)</span>parser/&gt; deactivate
@@ -191,7 +191,7 @@ parser/&gt; rm -rf venv
 </pre></div>
 
 
-<p><img alt="pip-freeze-requirements" src="../images/20190307-python-virtualenv-install-and-usage/pip-freeze-requirements.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/pip-freeze-requirements.png" alt="pip-freeze-requirements" width="480px"/></p>
 <p>如上圖，會建立了 <code>requriements.txt</code> 檔案，這個檔名可以隨意命名，不過一般在使用 <code>virtualenv</code> 中，使用 <code>requriements.txt</code> 已經變成 Python 的一種 Convention ，所以若是去瀏覽大多是 Github 的 Reposiotry 都會看到。</p>
 <p>當我們產生了 <code>requriements.txt</code> 後，專案變只要帶著這個 <code>requriements.txt</code> 即可，上傳版控也一樣，並可以用 <code>.gitignore</code> 過濾掉 <code>venv</code> 目錄。</p>
 <p><br/></p>
@@ -205,22 +205,22 @@ parser/&gt; <span class="nb">source</span> venv/bin/activate
 </pre></div>
 
 
-<p><img alt="pip-install-by-requirments" src="../images/20190307-python-virtualenv-install-and-usage/pip-install-by-requirments.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/pip-install-by-requirments.png" alt="pip-install-by-requirments" /></p>
 <p>如上圖，再次安裝 Python 套件完成囉。</p>
 <p><br/></p>
 <h1>指定 Python 版本的虛擬環境</h1>
 <hr>
 <p>如果今天你的作業系統中有多個 Python 版本，例如我一開頭提到的 <code>Python 2.7</code> 與 <code>Python 3.7</code>，那麼在建立虛擬環境時，還可以指定要產生的虛擬環境要以哪個 Python 版本為基底哦！ 以下接著介紹如何設定：</p>
 <p>首先先看到一下範例：以下是我的 <code>Python 2.7.15</code> 版本以及 <code>Python 3.7.1</code>：</p>
-<p><img alt="system-multi-python-version" src="../images/20190307-python-virtualenv-install-and-usage/system-multi-python-version.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/system-multi-python-version.png" alt="system-multi-python-version" /></p>
 <p>在上述因為我預設的優先讀取版本是 Python 3.7.1 ，所以輸入 <code>python</code> 會是呈現 <code>3.7.1</code> 版本（因此我的系統下 <code>pip</code> 時出來的也會是以放在預設的 <code>Python 3.7.1</code> 中套件)</p>
 <p>除此之外當我在創建虛擬環境時，也因此我的預設 Python 環境會是 <code>3.7.1</code>，例如先前的 <code>partser</code> 專案。</p>
 <p>那麼今天如果要指定虛擬環境中要用的 Python 版本要如何設定？ 很容易地只要透過 <code>-p</code> 參數後面帶入你指定的 Python 執行檔所在的路徑就好，不過因為路徑往往不好記。</p>
-<p><img alt="virtualenv-python2-path" src="../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-path.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-path.png" alt="virtualenv-python2-path" /></p>
 <p>所以只要以指令代替即可，例如因為我的環境只有 <code>2.7.15</code> 與 <code>3.7.1</code> ，因此執行的 Python 指令就只有 <code>python2</code> 與 <code>python3</code> 而已，因此我要指定 <code>Python 2.7.15</code></p>
-<p><img alt="virtualenv-python2-command" src="../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-command.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-command.png" alt="virtualenv-python2-command" /></p>
 <p>最後以 <code>parser</code> 專案以及另外一個新建的 <code>flask-sample</code> 專案作為作為不同專案各有自己的虛擬環境的例子，如下 <code>parser</code> 以 <code>python 2.7.15</code> 為環境安裝了 <code>requests</code> 與 <code>beautifulsoup4</code> ；而 <code>flask-sample</code> 以 <code>Python 3.7.1</code> 為環境並安裝了 <code>flask</code>，如下圖：</p>
-<p><img alt="multi-virtualenv" src="../images/20190307-python-virtualenv-install-and-usage/multi-virtualenv.png"></p>
+<p><img src="../images/20190307-python-virtualenv-install-and-usage/multi-virtualenv.png" alt="multi-virtualenv" /></p>
   </div>
   <div class="tag-cloud">
     <p>

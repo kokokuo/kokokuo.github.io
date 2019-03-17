@@ -65,7 +65,38 @@ main article blockquote {
 }
 
 /* 調整文章的圖片置中 */
-main article p img {
+/* main article p img {
   margin: auto;
   display: block;
+  width: 70%;
+} */
+
+ /* Media Query ，也就是當寬度 > 769 px 時將載入下面這段 CSS : */
+ @media only screen and (min-width: 769px) {
+  /* 調整文章的圖片置中 */
+  main article p img {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+  }
+}
+
+ /* Media Query ，也就是當 481px < 寬度 < 768px 時將載入下面這段 CSS : */
+ @media only screen and (min-width: 481px) and (max-width: 768px) {
+  /* 調整文章的圖片置中 */
+  main article p img {
+    margin: auto;
+    display: block;
+    max-width: 85%;
+  }
+}
+
+
+ /* Media Query ，也就是當寬度 < 480 px 時將載入下面這段 CSS : */
+@media only screen and (max-width: 480px) {
+  /* 調整文章的圖片置中 */
+  main article p img {
+    margin: auto;
+    display: block;
+  }
 }

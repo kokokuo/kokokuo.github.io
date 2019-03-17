@@ -107,32 +107,32 @@ Code / Web / Architecture
 <h1>什麼是 Github Page</h1>
 <hr>
 <p><a href="https://pages.github.com/">Github Page</a> 是全球最多開發者使用的版本控管程式碼託管服務 - Github 旗下的產品服務。</p>
-<p><img alt="github-page-website" src="../images/20190208-build-static-website-to-github-page/github-page-website.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/github-page-website.png" alt="github-page-website" /></p>
 <p>之所以會有 Github Page ，是因為 Github 雖然託管了許多來自世界各地的程式碼專案並起開源給任何人使用，但由於程式碼本身便不易理解也難以知道其意圖外，Github 更希望不僅是這些程式碼，有任何的點子或想法的人也能夠在上面分享。</p>
 <p>因此有了 Github Page - 希望提供一個可以簡單架設靜態網站的服務，不僅讓這些程式碼專案都有自己的網頁介紹外，Github Page 也提供給每個用戶或是組織企業的帳號可以架設一個自己帳號用的的靜態網站，來分享自己在做的事情或是想法、經歷，而且不用自己架設架設伺服器維護，只要把想放上去呈現的檔案上傳就好，也不用花錢不是該來試試看嗎？</p>
 <h1>一、創建一個存放靜態網站的 Github 倉儲庫 (Repository)</h1>
 <hr>
 <p>首先我們需要在 Github 建立一個 Github Page 用的 Repository ，第一次使用 Github 的朋友可以先去註冊一個。</p>
 <p>這個 Github Page 用的 Repository 會專門用來放置的靜態網誌的檔案：</p>
-<p><img alt="build-github-page-repository" src="../images/20190208-build-static-website-to-github-page/build-github-page-repository.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/build-github-page-repository.png" alt="build-github-page-repository" width="480px" /></p>
 <p>需要特別注意的部分是，我們的 Repository 名稱需要照個 Github Page 的教學指示，建立一個格式為 username.github.io 的名稱，而這個 <code>username</code> 必須是你的 Github 使用者名稱，如此 Github Page 才會知道你要建立屬於自己帳戶用的靜態網站，例如我的名稱是 <code>kokokuo</code> 所以我建立的 Repository 名稱為 <code>kokokuo.github.io</code>，如果不照著此方式，是無法作用建立的。</p>
 <p>而 Repository 的權限、 <code>README</code> 與 <code>.gitignore</code>，看個人需要，例如我設定為 Public，並且有 README。</p>
 <p>建立完後，你的 Repository 會如此畫面：</p>
-<p><img alt="github-page-default-repository" src="../images/20190208-build-static-website-to-github-page/default-repository.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/default-repository.png" alt="github-page-default-repository" width="480px"/></p>
 <p>附註一下，因為我有使用 README，Github Repository 的 README 會把剛剛建立時輸入的 Description 直接自動填上。</p>
 <p>完成後這個網站便可以馬上作用囉，只要在網址上輸入你建立的 <code>username.github.io</code> 名稱，例如我是 <code>kokokuo.github.io</code>，則輸入 https://kokokuo.github.io，就會看到這個 Github Page 的網站呈現了我剛剛建立的 <code>README</code> 內容。</p>
-<p><img alt="default-readme-show-on-website" src="../images/20190208-build-static-website-to-github-page/default-readme-show-on-website.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/default-readme-show-on-website.png" alt="default-readme-show-on-website" /></p>
 <p>再來我們也來測試一下上傳一個 HTML 檔案作為該靜態網站的預設頁面。</p>
 <p>點擊在 Repository 中的一個 <strong>create new file</strong> 按鈕，並建立一個叫做 <code>index.html</code> 的網頁檔案， Github Page 會偵測名為 <code>index.html</code> 自動作為 https://username.github.io 的預設讀取入口檔。</p>
-<p><img alt="add-html-file-to-github" src="../images/20190208-build-static-website-to-github-page/add-html-file-to-github.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/add-html-file-to-github.png" alt="add-html-file-to-github" /></p>
 <p>如上所述，我們建立一個簡單的 HTML 檔案，並且輸入要 Commit 的描述與內容，來完成建立。</p>
 <p>這邊稍微提一下，所謂的 Commit 表示提交，也就是提交此次新增、編輯或刪除的動作，而 Git 版本控管會記錄你每一次的 Commit，換句話說就是紀錄你每次的修改，有點像是遊戲的存擋，或是 Google 文件與 Word 會記錄你每次的新增、編輯或刪除的動作，因此未來你也可以讀取回到原先的動作與紀錄，這又稱作 <strong>「版本控制系統」</strong>。</p>
 <p>而整個 Github 的服務都是以 <strong>Git</strong> 這套版本控制系統為核心的，所以不管是架設 Github Page 還是把程式碼放到 Repository 上都需要稍微了解一下 <strong>Git 版本控制系統</strong> ，而同時 <strong>Git 版本控制系統</strong> 也是目前全世界最多人用的版本控制系統。</p>
 <p>若想要深入了解的人可以查一查 <strong>Git 版本控管系統</strong> 的用途。</p>
 <p>上傳完後，會看到以下的檔案內容：</p>
-<p><img alt="github-page-html-files" src="../images/20190208-build-static-website-to-github-page/github-page-html-files.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/github-page-html-files.png" alt="github-page-html-files" /></p>
 <p>再次輸入網址 https://kokokuo.github.io，如下顯示的內容也改變了：</p>
-<p><img alt="test-github-page" src="../images/20190208-build-static-website-to-github-page/test-github-page.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/test-github-page.png" alt="test-github-page" width="480px"/></p>
 <p>不過上述的方式只是單純在 Github Page 的 Repository 上做一個簡單的測試而已，接下來我們要在自己電腦本機上建立與編輯的檔案，並上傳到 Github Page 的 Repository 上。</p>
 <h1>二、透過 Git 版本控管上傳靜態網站的檔案</h1>
 <hr>
@@ -147,21 +147,21 @@ Code / Web / Architecture
 
 
 <p>安裝完後，我們來把我們在 Github 上的 Repository 抓下來，點選 Reposiotry 右側的 <strong>Clone or download</strong> 並複製字串：</p>
-<p><img alt="clone-repository-url" src="../images/20190208-build-static-website-to-github-page/clone-repository-url.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/clone-repository-url.png" alt="clone-repository-url" /></p>
 <p>在我們的終端機找好一個目錄位置把他抓下來，例如 Desktop 下面：</p>
 <div class="highlight"><pre><span></span>$&gt; <span class="nb">cd</span> ~/Desktop
 Desktop/&gt; git clone https://github.com/kokokuo/kokokuo.github.io.git
 </pre></div>
 
 
-<p><img alt="git-clone-repository" src="../images/20190208-build-static-website-to-github-page/git-clone-repository.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/git-clone-repository.png" alt="git-clone-repository" width="480px"/></p>
 <p>此時你便可以發現  <code>koko.github.io</code> 這個目錄與檔案被抓下來：</p>
-<p><img alt="show-clone-repository" src="../images/20190208-build-static-website-to-github-page/show-clone-repository.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/show-clone-repository.png" alt="show-clone-repository" width="480px"/></p>
 <p>再來我們便可以在這個目錄下新增或編輯我們要的網頁，在這裡我使用 VSCode 這套工具來編輯，我們嘗試加入一個檔案叫做 <code>about.html</code> 在同層目錄下，並且讓 <code>index.html</code> 加入一個連結可以跳到這個 <code>about.html</code> 中：</p>
 <p>加入 <code>about.html</code>：
-<img alt="add-about-html" src="../images/20190208-build-static-website-to-github-page/add-about-html.png"></p>
+<img src="../images/20190208-build-static-website-to-github-page/add-about-html.png" alt="add-about-html" width="480px"/></p>
 <p>設定 <code>about.html</code> 的連結：
-<img alt="add-about-link" src="../images/20190208-build-static-website-to-github-page/add-about-link.png"></p>
+<img src="../images/20190208-build-static-website-to-github-page/add-about-link.png" alt="add-about-link" width="480px"/></p>
 <p>再來我們把修改過的結果往 <code>kokokuo.github.io</code> 的 Repository 丟上去，透過以下幾個指令：</p>
 <div class="highlight"><pre><span></span>Desktop/<span class="o">(</span>master<span class="o">)</span>&gt; git status
 Desktop/<span class="o">(</span>master<span class="o">)</span>&gt; git add .
@@ -173,41 +173,41 @@ Desktop/<span class="o">(</span>master<span class="o">)</span>&gt; push origin m
 
 
 <p>這邊來稍微介紹一下上述這些指令的用途，首先是 <code>git status</code> ，這個可以透來檢查目前你做了哪些修改，所以他你輸入後，你會看到如下圖，紀錄了我們修改一個檔案 <code>index.html</code> ，另外有一個是新加入還沒有被紀錄追蹤的檔案 <code>about.html</code>：</p>
-<p><img alt="git-status" src="../images/20190208-build-static-website-to-github-page/git-status.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/git-status.png" alt="git-status" width="480px"/></p>
 <p>然後 <code>git add</code> 就可以用來告訴 Git 哪些變更的動作要被放到暫存區準備提交保存的，其中 <code>git add .</code> 表示所有變更的動作都要保存：</p>
-<p><img alt="git-check-add-statue" src="../images/20190208-build-static-website-to-github-page/git-check-add-statue.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/git-check-add-statue.png" alt="git-check-add-statue" width="320px"/></p>
 <p>接著透過 <code>git config local --email</code> 與 <code>git config local --name</code> 來設定在我們這個本機上對這個專案變更的用戶是誰，另外若設定的用戶名稱與 Email 是 Github 上註冊過的帳戶，上傳後還會顯示這個帳號在 Github 的資訊與連結哦！</p>
 <p>設定完後再透過 <code>git commit</code> 把剛剛因為 <code>git add</code> 指令，放到暫存區的所有變更動作提交保存，這樣未來要是出了什麼問題，只要本機上的整個專案目錄不刪除，都能回到之前的版本哦。</p>
 <p>最後我們以 <code>git push origin master</code> 指令把這些提交變更上傳到我們剛剛抓下來的 Github Repository 上傳回去 Github Repository：</p>
-<p><img alt="git-push-master" src="../images/20190208-build-static-website-to-github-page/git-push-master.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/git-push-master.png" alt="git-push-master" /></p>
 <p>接著我們回到 Github Page 存放的 Repository ，此時修改與新的檔案已經在此，輸入 https://kokokuo.github.io 也能看到新的內容出現了！</p>
-<p><img alt="updated-repository" src="../images/20190208-build-static-website-to-github-page/updated-repository.png"></p>
-<p><img alt="new-index-html" src="../images/20190208-build-static-website-to-github-page/new-index-html.png"></p>
-<p><img alt="new-about-html" src="../images/20190208-build-static-website-to-github-page/new-about-html.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/updated-repository.png" alt="updated-repository" /></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/new-index-html.png" alt="new-index-html" width="320px"/></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/new-about-html.png" alt="new-about-html" width="320px"/></p>
 <p>而且使用 <code>git push</code> 指令上傳到 Github Repository 還能幫忙備份檔案，讓你在本機上刪除專案目錄後，也能再次下載還原，一舉數得。</p>
 <p>好的，到此完成使用 <strong>Terminal 終端機與指令</strong> 上傳與架設靜態 Github Page 網站囉，再來我們要介紹比較簡單的 <strong>Github Desktop</strong> ，讓不熟悉或懼怕指令的朋友們也能輕鬆上手。</p>
 <h2>2. 透過 Github Desktop 軟體上傳靜態網站的檔案</h2>
 <p>在上半部我們講完了如何使用 <strong>Terminal 終端機與指令</strong> 上傳與架設靜態 Github Page 網站，接下來我們要介紹如何使用 <strong>Github Desktop</strong> 軟體一樣做到上傳檔案與架設靜態的 Github Page 網站。</p>
 <p>不使用指令的人可以在 <strong>一、創建一個存放靜態網站的 Github 倉儲庫 (Repository)</strong> 完成後，不於電腦上安裝 <code>git</code> ，而是選擇安裝 Github 提供的一個圖形化的版本控制軟體，叫做 <strong>Github Desktop</strong> 來加入檔案、 Commit 提交或是推送到 Github Respository 上。( 如果你對這類工具很熟悉，你也可以選擇其他類的工具，例如： SourceTree )。</p>
 <p>首先開始搜尋 Github Desktop 會進入下載的連結頁面，如下圖你會看到一個 Mac OS 的版本可以下載。</p>
-<p><img alt="github-desktop-website" src="../images/20190208-build-static-website-to-github-page/github-desktop-website.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/github-desktop-website.png" alt="github-desktop-website" /></p>
 <p>安裝後開啟程式，會需要你登入自己的 Github 帳戶，如下圖：</p>
-<p><img alt="signin-github-account" src="../images/20190208-build-static-website-to-github-page/signin-github-account.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/signin-github-account.png" alt="signin-github-account" /></p>
 <p>再來選擇你放在 Github 上要 Clone 抓下來的 Repository，在這邊我們選擇自己 Github Page 所存放的 Repository：</p>
-<p><img alt="clone-repo-desktop" src="../images/20190208-build-static-website-to-github-page/clone-repo-desktop.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/clone-repo-desktop.png" alt="clone-repo-desktop" /></p>
 <p>選擇後可以設定抓下來放在本機端的位置：</p>
-<p><img alt="clone-local-path-desktop" src="../images/20190208-build-static-website-to-github-page/clone-local-path-desktop.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/clone-local-path-desktop.png" alt="clone-local-path-desktop" width="480px"/></p>
 <p>抓下來後 Github Desktop 會進入工作畫面（如下圖），此頁面會告知若專案更改時，會有哪些變動的檔案，我們可以點選 <strong>Show in Finder</strong> 直接找到下載下來的 Repository 目錄並接著編輯：</p>
-<p><img alt="dashboard-click-show-finder" src="../images/20190208-build-static-website-to-github-page/dashboard-click-show-finder.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/dashboard-click-show-finder.png" alt="dashboard-click-show-finder" /></p>
 <p>我們繼續編輯 <strong>1. 透過終端機 Terminal 指令上傳檔案</strong> 之後的檔案內容：</p>
 <p>加入一個 <code>profolio.html</code> 並且在 <code>index.html</code> 頁面加入一個作品集的連結，在更新一下 <code>README.md</code> 檔案</p>
-<p><img alt="add-profolio-html" src="../images/20190208-build-static-website-to-github-page/add-profolio-html.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/add-profolio-html.png" alt="add-profolio-html" width="480px"/></p>
 <p>回到 Github Desktop，你會看到更動的檔案與結果會被呈現出來，接著在左下角輸入要 Commit 的訊息並 Commit 提交此次的變更：</p>
-<p><img alt="commit-new-action-desktop" src="../images/20190208-build-static-website-to-github-page/commit-new-action-desktop.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/commit-new-action-desktop.png" alt="commit-new-action-desktop" /></p>
 <p>提交後再按下 <strong>Push Origin</strong> 送出到 Repository 上就大功告成囉。</p>
-<p><img alt="push-in-desktop" src="../images/20190208-build-static-website-to-github-page/push-in-desktop.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/push-in-desktop.png" alt="push-in-desktop" /></p>
 <p>最後輸入 Github Page 的網址，例如我的是 https://kokokuo.github.io 就會看到更新的結果：</p>
-<p><img alt="desktop-page-result" src="../images/20190208-build-static-website-to-github-page/desktop-page-result.png"></p>
+<p><img src="../images/20190208-build-static-website-to-github-page/desktop-page-result.png" alt="desktop-page-result" width="320px"/></p>
 <h1>後記</h1>
 <hr>
 <p>透過 Github Page 你可以快速且免費的搭建簡易的靜態網站，不過上述自己撰寫 HTML/CSS 等網頁是比較費時間的，此時你不妨可以考慮使用 <strong>態網站產生器 (Static Site Generator)</strong> 來快速搭建你的靜態網站，在直接上傳到 Github Page 上。</p>
