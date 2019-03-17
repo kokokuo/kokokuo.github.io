@@ -1,7 +1,7 @@
 Title: 如何客製化 Pelican Theme 的 Flex 樣式
 Date: 2019-03-15
 Tags: Pelican, Python
-Slug: install-pelican-theme
+Slug: custom-pelican-theme-flex-style
 Authors: kokokuo
 Summary: 如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。
 
