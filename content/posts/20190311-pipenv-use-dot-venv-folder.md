@@ -22,14 +22,16 @@ parser/> pipenv shell
 ```
 
 如下圖，你會看到虛擬環境被建立在 `parser` 這個專案下的 `.venv`
-![1-pipenv-mkdir-dot.venv-create-virtualenv](../images/20190311-pipenv-use-dot-venv-folder/1-pipenv-mkdir-dot.venv-create-virtualenv.png)
+
+<img src="../images/20190311-pipenv-use-dot-venv-folder/1-pipenv-mkdir-dot.venv-create-virtualenv.png" alt="1-pipenv-mkdir-dot.venv-create-virtualenv" />
 
 因為 `pipenv shell` 只會建立 `Pipfile`，所以我們再透過 `pipenv install` 或是 `pipenv lock` 建立 `Pipfile.lock`
 
-![2-pipenv-show-dot-venv](../images/20190311-pipenv-use-dot-venv-folder/2-pipenv-show-dot-venv.png)
+
+<img src="../images/20190311-pipenv-use-dot-venv-folder/2-pipenv-show-dot-venv.png" alt="2-pipenv-show-dot-venv" width="480px"/>
 
 此時你會虛擬環境的檔案被建置在 `.venv` 下。
 
 # 參考資料
 ---
-[Windows + Python 3.6 + PipEnv + Visual Studio Code でPython開発環境](https://qiita.com/youkidkk/items/b6a6e39ee3a109001c75)
+[Windows + Python 3.6 + PipEnv + Visual Studio Code でPython 開発環境](https://qiita.com/youkidkk/items/b6a6e39ee3a109001c75)

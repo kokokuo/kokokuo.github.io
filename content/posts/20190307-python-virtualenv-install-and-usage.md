@@ -47,7 +47,8 @@ parser/> virtualenv venv # 這個 venv 是用來存放虛擬環境建立的 Pyth
 parser/> ls
 ```
 
-![create-virtualenv](../images/20190307-python-virtualenv-install-and-usage/create-virtualenv.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/create-virtualenv.png" alt="create-virtualenv" />
+
 
 你會看到在 `venv` 中是安裝 Python 時產生的目錄與檔案。
 
@@ -62,11 +63,13 @@ parser/> source/bin/activate
 (venv)parser/> pip list
 ```
 
-![source-virtualenv-pip-list](../images/20190307-python-virtualenv-install-and-usage/source-virtualenv-pip-list.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/source-virtualenv-pip-list.png" alt="source-virtualenv-pip-list" width="320px"/>
+
 
 如上圖你會看到這個 `pip list` 出來的套件都是一開始安裝 Python 時最乾淨的環境，即便你作業系統中安裝的 Python 已經有裝了其他套件，在這裡都會以最乾淨的方式呈現，因為 `virtualenv` 只會複製一份 Python 核心，不會連作業系統中的 Python 所安裝的套件也一併抓過來，此時我們可以透過 `python --version` 來看看 Python 的路徑以及版本，以下我的 Python 是安裝 `3.7.1` 版本的，此時透過進入 Python 環境下，透過 `sys.path` 就可以看到來源是 `venv` 中：
 
-![show-virtualenv-python-path](../images/20190307-python-virtualenv-install-and-usage/show-virtualenv-python-path.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/show-virtualenv-python-path.png" alt="show-virtualenv-python-path" />
+
 
 接著回過頭來，我們來安裝套件 `requests` 與 `beautifulsoup4`：
 
@@ -97,7 +100,8 @@ parser/> pip list
 
 退出後你就會看到 `(venv)` 的標示不存在了，就是退出虛擬環境成功，此時你可以在透過 `pip list` 看看，就會發現虛擬環境中安裝的套件不在了：
 
-![system-pip-list](../images/20190307-python-virtualenv-install-and-usage/system-pip-list.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/system-pip-list.png" alt="system-pip-list" width="320px"/>
+
 
 
 但是因為他好好的放在 `venv` 目錄下，所以下次要使用只要再透過 `source venv/bin/activate` 進入即可囉！
@@ -125,7 +129,8 @@ parser/> rm -rf venv
 (venv)parser/> pip freeze > requirements.txt
 ```
 
-![pip-freeze-requirements](../images/20190307-python-virtualenv-install-and-usage/pip-freeze-requirements.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/pip-freeze-requirements.png" alt="pip-freeze-requirements" width="480px"/>
+
 
 如上圖，會建立了 `requriements.txt` 檔案，這個檔名可以隨意命名，不過一般在使用 `virtualenv` 中，使用 `requriements.txt` 已經變成 Python 的一種 Convention ，所以若是去瀏覽大多是 Github 的 Reposiotry 都會看到。
 
@@ -144,7 +149,8 @@ parser/> source venv/bin/activate
 (venv)parser/> pip install -r requirements.txt
 ```
 
-![pip-install-by-requirments](../images/20190307-python-virtualenv-install-and-usage/pip-install-by-requirments.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/pip-install-by-requirments.png" alt="pip-install-by-requirments" />
+
 
 如上圖，再次安裝 Python 套件完成囉。
 
@@ -156,7 +162,8 @@ parser/> source venv/bin/activate
 
 首先先看到一下範例：以下是我的 `Python 2.7.15` 版本以及 `Python 3.7.1`：
 
-![system-multi-python-version](../images/20190307-python-virtualenv-install-and-usage/system-multi-python-version.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/system-multi-python-version.png" alt="system-multi-python-version" />
+
 
 在上述因為我預設的優先讀取版本是 Python 3.7.1 ，所以輸入 `python` 會是呈現 `3.7.1` 版本（因此我的系統下 `pip` 時出來的也會是以放在預設的 `Python 3.7.1` 中套件)
 
@@ -164,13 +171,14 @@ parser/> source venv/bin/activate
 
 那麼今天如果要指定虛擬環境中要用的 Python 版本要如何設定？ 很容易地只要透過 `-p` 參數後面帶入你指定的 Python 執行檔所在的路徑就好，不過因為路徑往往不好記。
 
-![virtualenv-python2-path](../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-path.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-path.png" alt="virtualenv-python2-path" />
+
 
 所以只要以指令代替即可，例如因為我的環境只有 `2.7.15` 與 `3.7.1` ，因此執行的 Python 指令就只有 `python2` 與 `python3` 而已，因此我要指定 `Python 2.7.15`
 
-![virtualenv-python2-command](../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-command.png)
+<img src="../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-command.png" alt="virtualenv-python2-command" />
+
 
 最後以 `parser` 專案以及另外一個新建的 `flask-sample` 專案作為作為不同專案各有自己的虛擬環境的例子，如下 `parser` 以 `python 2.7.15` 為環境安裝了 `requests` 與 `beautifulsoup4` ；而 `flask-sample` 以 `Python 3.7.1` 為環境並安裝了 `flask`，如下圖：
 
-![multi-virtualenv](../images/20190307-python-virtualenv-install-and-usage/multi-virtualenv.png)
-
+<img src="../images/20190307-python-virtualenv-install-and-usage/multi-virtualenv.png" alt="multi-virtualenv" />

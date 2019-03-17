@@ -22,7 +22,7 @@ Summary: 由於 Python 2.7 的核心開發團隊公布 2020 年確定會捨棄 2
 $> xcode-select --install
 ```
 
-![1-Install-XCode-Tool](../images/20190312-python-install-python3-on-mac/1-Install-XCode-Tool.png)
+<img src="../images/20190312-python-install-python3-on-mac/1-Install-XCode-Tool.png" alt="1-Install-XCode-Tool" />
 
 除了上述的方式，也可以透過 Mac 上的 App Store 安裝完全版的 XCode 開發工具。
 
@@ -33,7 +33,7 @@ Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 `apt` 或是 
 $> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-![2-Install-Homebrew](../images/20190312-python-install-python3-on-mac/2-Install-Homebrew.png)
+<img src="../images/20190312-python-install-python3-on-mac/2-Install-Homebrew.png" alt="2-Install-Homebrew"/>
 
 ## 步驟三：設定讀取 Homebrew 指令的環境變數
 
@@ -87,15 +87,15 @@ $> brew install python
 
 Homebrew 會一同連 `pip` 也安裝進去，而在 Python3 中 `pip` 名稱為 `pip3`，如下安裝完的結果與訊息：
 
-![3-python-install-python3-by-homebrew](../images/20190312-python-install-python3-on-mac/3-python-install-python3-by-homebrew.png)
+<img src="../images/20190312-python-install-python3-on-mac/3-python-install-python3-by-homebrew.png" alt="3-python-install-python3-by-homebrew"/>
 
 安裝完後 Homebrew 會自動為放在 `Cellar` 的 Python 3，並在 Mac 的 `/usr/local/opt` 與 `/usr/local/bin` 分別建置 link 檔案，如下為 `/usr/local/opt`：
 
-![4-installed-python3-location-1](../images/20190312-python-install-python3-on-mac/4-installed-python3-location-1.png)
+<img src="../images/20190312-python-install-python3-on-mac/4-installed-python3-location-1.png" alt="4-installed-python3-location-1"/>
 
 `/usr/local/bin` 也有：
 
-![4-installed-python3-location-2](../images/20190312-python-install-python3-on-mac/4-installed-python3-location-2.png)
+<img src="../images/20190312-python-install-python3-on-mac/4-installed-python3-location-2.png" alt="4-installed-python3-location-2"/>
 
 ## 步驟五：設定 Python 3 作為預設執行的指令
 若先前沒有以 Homebrew 安裝 Python 2 的話，那麼當下安裝 Python 3 時，如果從 Terminal 中直接輸入 `python`，如下：
@@ -106,7 +106,7 @@ $> python
 
 會出現的是內建的 Mac Python 2.7，這是為何呢？
 
-![4-python2-mac-default-version](../images/20190312-python-install-python3-on-mac/4-python2-mac-default-version.png)
+<img src="../images/20190312-python-install-python3-on-mac/4-python2-mac-default-version.png" alt="4-python2-mac-default-version"/>
 
 我們來查看 `/usr/local/bin` 目錄下，你會發現並沒有  Python 3 提供的  `python` 可執行檔，而只有 `python3` 執行檔，因此當你輸入 `python` 時， Mac 因為來到 `/usr/local/bin` 目錄下沒有找到 `python` 可執行檔，才會保持原先的狀態，近一步往下一個位置找，並找到內建的版本，直接使用內建的 python 2.7。
 
@@ -118,7 +118,7 @@ $> python3
 
 如果想要讓 Mac Terminal 在輸入 `python` 指令時，會自動開啟 Homebrew 安裝的 Python 3，解決辦法是設定 `/usr/local/opt` 下的 Homebrew Python 3 來源到系統環境變數前，使 PATH 先讀到 Homebrew 的 Python3：
 
-![5-python3-system-path-setting](../images/20190312-python-install-python3-on-mac/5-python3-system-path-setting.png)
+<img src="../images/20190312-python-install-python3-on-mac/5-python3-system-path-setting.png" alt="5-python3-system-path-setting" width="480px"/>
 
 ```bash
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -126,12 +126,11 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 完成後重開 Terminal 或透過 `source` 執行，即可成功，如下圖。
 
-![6-python3-command](../images/20190312-python-install-python3-on-mac/6-python3-command.png)
+<img src="../images/20190312-python-install-python3-on-mac/6-python3-command.png" alt="6-python3-command"/>
 
 到此，因為先讀取到的 `/usr/local/opt/python/libexec/bin` 下方有提供 Python 3 的 `python` 可執行檔案，即可以透過原本的 `python3` 或設定好的 `python` 指令啟動 Python 3 。另外此設定也會影響到 `pip` 指令：
 
-
-![7-show-pip-cource-in-python3](../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png)
+<img src="../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png" alt="7-show-pip-cource-in-python3"/>
 
 在 [Python2 與 Python 3 共存的設定 (以 Mac 為例)]({filename}/posts/20190312-python2-python3-run-on-mac.md) 此篇中亦有介紹如何設定預設 Mac 的 `python` 指令讀取來源。
 

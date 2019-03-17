@@ -1,7 +1,7 @@
 Title: Python - 安裝 Pelican Theme 來改變你的靜態網站主題
 Date: 2019-03-15
 Tags: Python, Mac, Python3
-Slug: nstall-pelican-theme
+Slug: install-pelican-theme
 Authors: kokokuo
 Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？
 
@@ -25,15 +25,15 @@ Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供�
 ## 1. 挑選你喜歡的 Pelican Theme
 有許多設計師設計了許多出色的主題，並且統一放在 [Pelican 官網的 Theme 頁面中](http://www.pelicanthemes.com/)，如下圖：
 
-![1-pelican-themes-website](../images/20190315-install-pelican-theme/1-pelican-themes-website.png)
+<img src="../images/20190315-install-pelican-theme/1-pelican-themes-website.png" alt="1-pelican-themes-website" />
 
 當你從中挑選了你喜歡的主題，你可以點擊此主題的名稱連結，該連結多半會導到其主題的個人設計師官網或是這些主題所存放的 Github Repository，如下：
 
-![2-other-designer-repository](../images/20190315-install-pelican-theme/2-other-designer-repository.png)
+<img src="../images/20190315-install-pelican-theme/2-other-designer-repository.png" alt="2-other-designer-repository" width="480px" />
 
 除此之外這些主題的 Repository 也有提供一個連結讓 [Pelican Themes 的 Repository](https://github.com/getpelican/pelican-themes) 統一管理，這個 Repository 你可以從 Pelican Themes 的官網中找到其連結。
 
-![3-pelican-themes-repository](../images/20190315-install-pelican-theme/3-pelican-themes-repository.png)
+<img src="../images/20190315-install-pelican-theme/3-pelican-themes-repository.png" alt="3-pelican-themes-repository" width="480px"/>
 
 進入到挑選的主題的 Repository 後，透過 `git clone` 或是點擊 **Clone or download** 下載檔案解壓縮。
 
@@ -46,7 +46,7 @@ Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供�
 ~/(master)Flex/>
 ```
 
-![4-clone-or-download-candidate-theme](../images/20190315-install-pelican-theme/4-clone-or-download-candidate-theme.png)
+<img src="../images/20190315-install-pelican-theme/4-clone-or-download-candidate-theme.png" alt="4-clone-or-download-candidate-theme" width="480px"/>
 
 之後回到你的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令
 
@@ -100,13 +100,13 @@ notmyidea
 
 然後安裝完，你可以透過 `pelican-themes -l` 查看是否有安裝，只不過如果你想知道他安裝在哪裡，你可以也加入 `--verbose` 或 `-v` 看到：
 
-![5-pelican-theme-install-command](../images/20190315-install-pelican-theme/5-pelican-theme-install-command.png)
+<img src="../images/20190315-install-pelican-theme/5-pelican-theme-install-command.png" alt="5-pelican-theme-install-command" />
 
 你會發現，不管是預設的主題，還是安裝的主題，都會被放置到虛擬環境下 `pelican/themes/` 的位置。
 
 另外，如果你要移除主題，你可以使用 `--remove` 或是 `-r` 短指令來指定你要移除的主題名稱移除：
 
-![6.remove-pelican-theme-command](../images/20190315-install-pelican-theme/6.remove-pelican-theme-command.png)
+<img src="../images/20190315-install-pelican-theme/6-remove-pelican-theme-command.png" alt="6-remove-pelican-theme-command" />
 
 ## 3. 設定 Pelican 網站使用的主題
 當你安裝好主題後，此時我們需要讓我們的 Pelican 網站採用此主題才行，打開 `pelicanconf.py`，並添加此行：
@@ -125,7 +125,7 @@ Theme = 'Flex' # Flex 是你透過 pelican-themes 指令安裝的主題名稱
 
 如下圖，你會看到修改後的畫面，成功！
 
-![7-flex-theme-result](../images/20190315-install-pelican-theme/7-flex-theme-result.png)
+<img src="../images/20190315-install-pelican-theme/7-flex-theme-result.png" alt="7-flex-theme-result" />
 
 如果你對 Flex 這個主題有興趣，你可以去查看 Flex 主題提供的 [文件 wiki](https://github.com/alexandrevicenzi/Flex/wiki)，在其中有 [Custom Settings](https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings)) 的參數是 Flex 有提供可以設定的部分。
 
@@ -143,7 +143,7 @@ SOCIAL = (('github', 'https://github.com/kokokuo'),
 
 這些參數有些是 Pelican Settings 中提到的，有些是 Flex 這個主題客製化提供的，然後讓我們再次透過 `make html` 與 `make serve [port]` 指令來生出新的 HTML 檔案並測試：
 
-![8-flex-add-custom-settings](../images/20190315-install-pelican-theme/8-flex-add-custom-settings.png)
+<img src="../images/20190315-install-pelican-theme/8-flex-add-custom-settings.png" alt="8-flex-add-custom-settings" />
 
 大功告成！
 

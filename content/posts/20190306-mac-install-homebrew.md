@@ -17,7 +17,7 @@ Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 apt 或是 yu
 ## 步驟一：下載 Homebrew
 安裝步驟非常簡單，進入 [Homebrew 官網](https://brew.sh/index_zh-tw)，依照步驟，在 Terminal 輸入下列此串：
 
-![homebrew-website](../images/20190306-mac-install-homebrew/homebrew-website.png)
+<img src="../images/20190306-mac-install-homebrew/homebrew-website.png" alt="homebrew-website" />
 
 ```bash
 $> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -26,7 +26,7 @@ $> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/ins
 
 安裝過程如下圖：
 
-![terminal-install-message](../images/20190306-mac-install-homebrew/terminal-install-message.png)
+<img src="../images/20190306-mac-install-homebrew/terminal-install-message.png" alt="terminal-install-message" />
 
 ## 步驟二：建立環境變數
 
@@ -60,21 +60,21 @@ $> source ~/.bash_pofile # 以 source 指令啟動檔案執行並生效
 
 例如我的 Mac 透過 `export` 指令發現 PATH 系統環境變數中缺少 `/usr/local/sbin`：
 
-![show-env-by-export](../images/20190306-mac-install-homebrew/show-env-by-export.png)
+<img src="../images/20190306-mac-install-homebrew/show-env-by-export.png" alt="show-env-by-export" width="480px"/>
 
 則編輯 `~/.bash_profile` 補上去，如下圖：
 
-![append-missing-envpath](../images/20190306-mac-install-homebrew/append-missing-envpath.png)
+<img src="../images/20190306-mac-install-homebrew/append-missing-envpath.png" alt="append-missing-envpath" width="320px"/>
 
 完成後，重新開啟 Terminal 應用程式，再次透過 export 檢查，會發現剛剛補上去的 `/usr/local/sbin` 已經作用在系統環境中：
 
-![show-env-by-export](../images/20190306-mac-install-homebrew/show-env-by-export.png)
+<img src="../images/20190306-mac-install-homebrew/show-env-by-export.png" alt="show-env-by-export" width="480px"/>
 
 ## 步驟三：測試 brew 指令
 
 可以透過輸入 brew 來做所有跟 Homebrew 有關的套件管理操作行為，如下圖：
 
-![show-brew-test](../images/20190306-mac-install-homebrew/show-brew-test.png)
+<img src="../images/20190306-mac-install-homebrew/show-brew-test.png" alt="show-brew-test" width="480px"/>
 
 到此即表示安裝順利完成囉！
 
@@ -85,7 +85,7 @@ $> source ~/.bash_pofile # 以 source 指令啟動檔案執行並生效
 $> brew install wget
 ```
 
-![brew-install-sample](../images/20190306-mac-install-homebrew/brew-install-sample.png)
+<img src="../images/20190306-mac-install-homebrew/brew-install-sample.png" alt="brew-install-sample" />
 
 <br/>
 

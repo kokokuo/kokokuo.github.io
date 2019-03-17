@@ -22,7 +22,7 @@ Summary: 對於使用 Mac 的開發者而言，雖然 Python 都會有內建在�
 $> xcode-select --install
 ```
 
-![1-Install-XCode-Tool](../images/20190312-python-install-python2-on-mac/1-Install-XCode-Tool.png)
+<img src="../images/20190312-python-install-python2-on-mac/1-Install-XCode-Tool.png" alt="1-Install-XCode-Tool" />
 
 除了上述的方式，也可以透過 Mac 上的 App Store 安裝完全版的 XCode 開發工具。
 
@@ -33,7 +33,7 @@ Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 `apt` 或是 
 $> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-![2-Install-Homebrew](../images/20190312-python-install-python2-on-mac/2-Install-Homebrew.png)
+<img src="../images/20190312-python-install-python2-on-mac/2-Install-Homebrew.png" alt="2-Install-Homebrew" />
 
 ## 步驟三：設定讀取 Homebrew 指令的環境變數
 
@@ -89,15 +89,15 @@ $> brew install python@2
 
 Homebrew 會一同連 `pip` 也安裝進去，如下安裝完的結果與訊息：
 
-![3-install-python2-by-homebrew](../images/20190312-python-install-python2-on-mac/3-install-python2-by-homebrew.png)
+<img src="../images/20190312-python-install-python2-on-mac/3-install-python2-by-homebrew.png" alt="3-install-python2-by-homebrew" width="480px"/>
 
 安裝完後 Homebrew 會自動為放在 `Cellar` 的 `Python@2` 在 Mac 的 `/usr/local/opt` 與 `/usr/local/bin` 分別建置 link 檔案，如下為 `/usr/local/opt`：
 
-![4-installed-python2-location-1](../images/20190312-python-install-python2-on-mac/4-installed-python2-location-1.png)
+<img src="../images/20190312-python-install-python2-on-mac/4-installed-python2-location-1.png" alt="4-installed-python2-location-1" />
 
 `/usr/local/bin` 也有：
 
-![4-installed-python2-location-2](../images/20190312-python-install-python2-on-mac/4-installed-python2-location-2.png)
+<img src="../images/20190312-python-install-python2-on-mac/4-installed-python2-location-2.png" alt="4-installed-python2-location-2" />
 
 因此，雖然在另一篇在 [Mac OS X 上安装 Python 2](http://pythonguidecn.readthedocs.io/zh/latest/starting/install/osx.html) 有提及需要設定以下 `/usr/local/opt/python@2` 在環境變數：
 
@@ -117,7 +117,7 @@ export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 因此我們透過透過 `python -h` 查看後會發現目前的確讀到 Homebrew 安裝的 Python：
 
-![5-python2-help-command](../images/20190312-python-install-python2-on-mac/5-python2-help-command.png)
+<img src="../images/20190312-python-install-python2-on-mac/5-python2-help-command.png" alt="5-python2-help-command"/>
 
 至此已經完成 Python2 的安裝。
 

@@ -20,7 +20,7 @@ Summary: 如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個�
 
 可以讓你指定你要客製化的 CSS 檔案位置，而且 `CUSTOM_CSS` 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 `EXTRA_PATH_METADATA` 搭配使用。
 
-<img src="../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" style="width:70%"/>
+<img src="../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" />
 
 上述的 `EXTRA_PATH_METADATA` 參數可以讓你指定輸入來源目錄 `content` 下的特定的檔案，並在 `make html` 輸出成 HTML 後，放到輸出目錄 `output` 指定的位置中。
 
@@ -43,7 +43,7 @@ EXTRA_PATH_METADATA = {
 
 因此回到我們的設定，我們在預設的輸入目錄 `content` 下建立了一個 `extra` 子目錄並建立接下來要客製化的 CSS 檔案 `custom.css` ，並在該檔案中編輯要修改的 CSS，例如我的是：
 
-<img src="../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" style="width:30%"/>
+<img src="../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" width="380px"/>
 
 ```css
 
@@ -118,11 +118,11 @@ CUSTOM_CSS = "static/custom.css"
 最後再透過 `make html` 與 `make serve [port]` 測試，如下圖，你會看到該 `custom.css` 被複製到了 `output` 目錄下，並且放在指定的 `static` 目錄中：
 
 
-<img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" style="width:30%"/>
+<img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" width="380px"/>
 
 接著開啟網站看預覽畫面，如下圖 `custom.css` 生效囉！
 
-<img src="../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" style="width:80%"/>
+<img src="../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" />
 
 之後喜歡這個主題的人就可以開始對這個 CSS 大改特改了。
 
@@ -146,11 +146,50 @@ main article p img {
 
 完成後再次輸出 HTML 查看：
 
-<img src="../images/20190315-pelican-flex-theme-custom-css/5-custom-image-css-preview.png" alt="5-custom-image-css-preview" style="width:80%"/>
+<img src="../images/20190315-pelican-flex-theme-custom-css/5-custom-image-css-preview.png" alt="5-custom-image-css-preview" />
 
-然而圖片的尺寸大小部分，雖然也有一些 Pelican 的 Plugin 有提供，但是都沒有辦法個別調整尺寸，因此還是要回歸到透過 HTML 的 `<img>` 標籤，並對每張圖片透過屬性個別設定會是比較好的方式，如下圖使用 `style` 在 `<img>` 中：
+然而圖片的尺寸大小部分，雖然也有一些 Pelican 的 Plugin 有提供，但是都沒有辦法個別調整尺寸，因此還是要回歸到透過 HTML 的 `<img>` 標籤，並對每張圖片透過屬性個別設定會是比較好的方式。
 
-<img src="../images/20190315-pelican-flex-theme-custom-css/6-custom-html-image-tag-width-preview.png" alt="6-custom-html-image-tag-width-preview" style="width:80%"/>
+此外由於 Flex 對於圖片只有設定 `max-width: 100%;` ，因此如果如果圖片尺寸太大的話，會整個版面佔滿被放大，所以透過 `@media` 來設定不同尺寸下各自的設定模式，以下是讓尺寸在寬小於 480 時， `max-width` 為預設的 `100%`，若不是，則依照各個寬度縮放。
+
+```css
+ /* Media Query ，也就是當寬度 > 769 px 時將載入下面這段 CSS : */
+ @media only screen and (min-width: 769px) {
+  /* 調整文章的圖片置中 */
+  main article p img {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+  }
+}
+
+ /* Media Query ，也就是當 481px < 寬度 < 768px 時將載入下面這段 CSS : */
+ @media only screen and (min-width: 481px) and (max-width: 768px) {
+  /* 調整文章的圖片置中 */
+  main article p img {
+    margin: auto;
+    display: block;
+    max-width: 85%;
+  }
+}
+
+ /* Media Query ，也就是當寬度 < 480 px 時將載入下面這段 CSS : */
+@media only screen and (max-width: 480px) {
+  /* 調整文章的圖片置中 */
+  main article p img {
+    margin: auto;
+    display: block;
+  }
+}
+```
+
+若是仍有圖片過大，在各自調整 `<img>` 中的 `width` 尺寸，最後如下：
+
+<img src="../images/20190315-pelican-flex-theme-custom-css/6-custom-html-image-tag-width-preview.png" alt="6-custom-html-image-tag-width-preview" />
+
+當把瀏覽器拉窄後，畫面會看到 `@media` 變為適用寬度小於 `max-width` 為 480px：
+
+<img src="../images/20190315-pelican-flex-theme-custom-css/7-rwd-custom-css-image-preview.png" alt="7-rwd-custom-css-image-preview.png" width="320px"/>
 
 # 後記
 ---

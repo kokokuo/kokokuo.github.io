@@ -23,7 +23,7 @@ $> python
 
 會出現的是內建的 Mac Python 2.7：
 
-![1-python2-command](../images/20190312-python2-python3-run-on-mac/1-python2-command.png)
+<img src="../images/20190312-python2-python3-run-on-mac/1-python2-command.png" alt="1-python2-command"/>
 
 
 這是為何呢？
@@ -36,11 +36,11 @@ $> python
 $> python3
 ```
 
-![2-python3-command](../images/20190312-python2-python3-run-on-mac/2-python3-command.png)
+<img src="../images/20190312-python2-python3-run-on-mac/2-python3-command.png" alt="2-python3-command"/>
 
 如果想要讓 Mac Terminal 在輸入 `python` 指令時，會自動開啟 Homebrew 安裝的 Python 3，解決辦法是設定 `/usr/local/opt` 下的 Homebrew Python 3 來源到系統環境變數前，使 PATH 先讀到 Homebrew 的 Python3：
 
-![3-python3-system-path-setting](../images/20190312-python2-python3-run-on-mac/3-python3-system-path-setting.png)
+<img src="../images/20190312-python2-python3-run-on-mac/3-python3-system-path-setting.png" alt="3-python3-system-path-setting" width="480px"/>
 
 ```bash
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -48,7 +48,7 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 完成後重開 Terminal 或透過 `source` 執行，即可成功，如下圖。
 
-![4-python3-command](../images/20190312-python2-python3-run-on-mac/4-python3-command.png)
+<img src="../images/20190312-python2-python3-run-on-mac/4-python3-command.png" alt="4-python3-command"/>
 
 到此，可以透過 `python3` 或設定好的 `python` 指令啟動 Python 3 。
 
@@ -56,11 +56,11 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 當透過 Homebrew 安裝了 Python2 與 Python 3 後，分別查看 `/usr/local/bin` 與 `/usr/local/opt` 時會發現 `/usr/local/bin` 下的 `python` 是導向 Homebrew 安裝 Python 2.7.15，如下圖：
 
-![5-python2-and-python3-location](../images/20190312-python2-python3-run-on-mac/5-python2-and-python3-location.png)
+<img src="../images/20190312-python2-python3-run-on-mac/5-python2-and-python3-location.png" alt="5-python2-and-python3-location"/>
 
 然而 `/usr/local/opt` 則是 `python` 位置導向 Python3：
 
-![6-opt-location-python-link](../images/20190312-python2-python3-run-on-mac/6-opt-location-python-link.png)
+<img src="../images/20190312-python2-python3-run-on-mac/6-opt-location-python-link.png" alt="6-opt-location-python-link"/>
 
 因此當我們分別輸入以下三種指令情況
 
@@ -72,12 +72,13 @@ $> python3
 
 會發現內建的 Python 指令會指定 Homebrew 安裝的 Python 2.7.15:
 
-![7-test-python2-python3-command](../images/20190312-python2-python3-run-on-mac/7-test-python2-python3-command.png)
+<img src="../images/20190312-python2-python3-run-on-mac/7-test-python2-python3-command.png" alt="7-test-python2-python3-command"/>
 
 此原因透過 `export` 會發現， 因為系統 `PATH `中會先讀取到的 `/usr/local/bin` ，因此 Homebrew 的 Python 會取代掉 Mac 內建的 Python 。
 再來因為  `/usr/local/bin` 下的 `python` 指令是 Link 到 Homebrew 的 `python@2` ，因此會是執行 Python 2.7 而非 Python 3。
 
-![8-system-path-order](../images/20190312-python2-python3-run-on-mac/8-system-path-order.png)
+<img src="../images/20190312-python2-python3-run-on-mac/8-system-path-order.png" alt="8-system-path-order"/>
+
 
 此時，如果想要把預設的 python 替換成 Homebrew 的 Python3 ，那麼便是如同例子一依樣設定 Python 3 所在的位置 
 
@@ -87,11 +88,13 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 到環境變數中，如下後再重新開啟 Terminal 或是透過 `source` 啟動即可。
 
-![9-python3-order-first-system-path](../images/20190312-python2-python3-run-on-mac/9-python3-order-first-system-path.png)
+<img src="../images/20190312-python2-python3-run-on-mac/9-python3-order-first-system-path.png" alt="9-python3-order-first-system-path" width="480px"/>
+
 
 此時 `PATH` 環境變數會先讀取到 Python 3 的位置，並抓取 `python` 可執行檔。
 
-![10-python3-order-first-system-path-2](../images/20190312-python2-python3-run-on-mac/10-python3-order-first-system-path-2.png)
+<img src="../images/20190312-python2-python3-run-on-mac/10-python3-order-first-system-path-2.png" alt="10-python3-order-first-system-path-2"/>
+
 
 因此當再次測試 `python` 指令會發現預設的 `python` 已經變為 Python 3 的位置。
 
@@ -101,11 +104,13 @@ $> python2
 $> python3
 ```
 
-![11-python3-command-first](../images/20190312-python2-python3-run-on-mac/11-python3-command-first.png)
+<img src="../images/20190312-python2-python3-run-on-mac/11-python3-command-first.png" alt="11-python3-command-first"/>
+
 
 可以透過 `python -h` 查看路徑：
 
-![12-python-command-show-python3-path](../images/20190312-python2-python3-run-on-mac/12-python-command-show-python3-path.png)
+<img src="../images/20190312-python2-python3-run-on-mac/12-python-command-show-python3-path.png" alt="12-python-command-show-python3-path"/>
+
 
 即可設定完成。
 
@@ -113,7 +118,8 @@ $> python3
 ---
 上述的 `python` 指令同時也會對 `pip` 造成影響，如果現在預設的 `python` 是讀取 Python 3 那麼 `pip` 也會是 Python 3 的 `pip`，如下：
 
-![13-show-pip-path](../images/20190312-python2-python3-run-on-mac/13-show-pip-path.png)
+<img src="../images/20190312-python2-python3-run-on-mac/13-show-pip-path.png" alt="13-show-pip-path"/>
+
 
 如果預設的 `python` 是讀取 Python 2 ，那麼 `pip` 則會是 Python 2 的 `pip` 。
 
@@ -127,9 +133,11 @@ export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 因此未來便可以透過修改 `.bash_profile` 去做預設 `python` 指令讀取設定的開關：
 
-![14-bash-profile-setting](../images/20190312-python2-python3-run-on-mac/14-bash-profile-setting.png)
+<img src="../images/20190312-python2-python3-run-on-mac/14-bash-profile-setting.png" alt="14-bash-profile-setting" width="480px" />
+
 
 最後觀察一下環境變數，分別設定完成。
 
-![15-readable-system-path](../images/20190312-python2-python3-run-on-mac/15-readable-system-path.png)
+<img src="../images/20190312-python2-python3-run-on-mac/15-readable-system-path.png" alt="15-readable-system-path"/>
+
 

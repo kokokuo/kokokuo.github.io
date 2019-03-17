@@ -24,7 +24,7 @@ Status: draft
 (kokokuo-note)kokokuo-note(master)> git push origin master
 ```
 
-![git-push-master-failed](../images/20190205-deploy-pelican-static-website-to-github-page/git-push-master-failed.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/git-push-master-failed.png" alt="git-push-master-failed" />
 
 但是在推送上去後你會看到一個拒絕的資訊：*「error: failed to push some refs to 'https://github.com/kokokuo/kokokuo.github.io.git'」* ...
 
@@ -36,7 +36,7 @@ Status: draft
 
 不過如果你的 Git 在 2.9 版以上時你有可能會看到新的錯誤訊息， 如下：
 
-![git-refuse-unrelated](../images/20190205-deploy-pelican-static-website-to-github-page/git-refuse-unrelated.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/git-refuse-unrelated.png" alt="git-refuse-unrelated" />
 
 這是 Git 在 2.9 版本時出現的，主要是告訴你這個要放到 Github Repository `master` 的檔案與原先在 Github 上的 Repository 是兩個不同的專案，因為來源不同沒有關連才拒絕你。
 
@@ -48,11 +48,11 @@ Status: draft
 
 如此就會看到在 Github Repository 上我們原先建立好的 README 與 index.html 與我們的 Pelican 專案合再一起放到 Pelican 網誌專案的目錄中，之後我們再次執行 `git push origin master` 就可以了，如下圖：
 
-![pull-remote-file-and-push-again](../images/20190205-deploy-pelican-static-website-to-github-page/pull-remote-file-and-push-again.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/pull-remote-file-and-push-again.png" alt="pull-remote-file-and-push-again" />
 
 完成後讓我們移動到 Github Page 所放的 Repository 上，你會看到剛剛在自己電腦上的 Pelican 專案中所有的檔案被放上去了：
 
-![github-push-pelican-files](../images/20190205-deploy-pelican-static-website-to-github-page/github-push-pelican-files.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/github-push-pelican-files.png" alt="github-push-pelican-files" />
 
 ### (2.) 修改 `Makefile` 建立 `gh-pages`
 當我們完成提交 `master` 後，再來我們就要處裡 `gh-pages` 分支了，在處理之前如同方法一，我們需要安裝 `ghp-import` 套件，因為我們也會使用到 `make github` 指令：

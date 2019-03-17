@@ -25,7 +25,7 @@ Summary: 在前一篇 [在 Mac 上使用 Python 的 Pelican 建立靜態個人�
 
 這個 Github Page 用的 Repository 會專門用來放置的靜態網誌的檔：
 
-![build-github-page-repository](../images/20190205-deploy-pelican-static-website-to-github-page/build-github-page-repository.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/build-github-page-repository.png" alt="build-github-page-repository" width="480px"/>
 
 需要特別注意的部分是，我們的 Repository 名稱需要照個 Github Page 的教學指示，建立一個格式為 username.github.io 的名稱，而這個 `username` 必須是你的 Github 使用者名稱，如此 Github Page 才會知道你要建立屬於自己的個人網站並且作用，例如我的名稱是 `kokokuo` 所以我建立的 Repository 名稱為 `kokokuo.github.io`，如果不照著此方式，是無法作用建立的。
 
@@ -33,13 +33,13 @@ Summary: 在前一篇 [在 Mac 上使用 Python 的 Pelican 建立靜態個人�
 
 建立完後，你的 Repository 會如此畫面：
 
-![github-page-default-repository](../images/20190205-deploy-pelican-static-website-to-github-page/github-page-default-repository.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/github-page-default-repository.png" alt="github-page-default-repository" />
 
 *附註：因為我有使用 README，Github Repository 的 README 會把剛剛建立時輸入的 Description 直接自動填上。*
 
 完成後這個網站便可以馬上作用囉，只要在網址上輸入你建立的 `username.github.io` 名稱，例如我是 `kokokuo.github.io`，則輸入 https://kokokuo.github.io，就會看到這個 Github Page 的網站呈現了我剛剛建立的 `README` 內容。
 
-![default-readme-show-on-website](../images/20190205-deploy-pelican-static-website-to-github-page/default-readme-show-on-website.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/default-readme-show-on-website.png" alt="default-readme-show-on-website" />
 
 <br/>
 
@@ -68,7 +68,7 @@ kokokuo-note> pipenv shell
 
 首先點選建立的 Repository 的 **Clone or Download**，並複製顯示的 URL:
 
-![clone-repository-url](../images/20190205-deploy-pelican-static-website-to-github-page/clone-repository-url.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/clone-repository-url.png" alt="clone-repository-url" />
 
 回到 Terminal 下，輸入以下指令，先在自己的 Pelican 網誌目錄下透過 `git init` 建立 Git 版本控管功能，Git 會預設幫我們建立一個 `master` 分支並在此分支下工作。
 
@@ -82,7 +82,7 @@ kokokuo-note> pipenv shell
 
 如下圖，其中我們透過 `git status` 確認是否 `git init` 有無作用，或是來確認此次的變動修改有哪些檔案： 
 
-![git-init-add-remote](../images/20190205-deploy-pelican-static-website-to-github-page/git-init-add-remote.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/git-init-add-remote.png" alt="git-init-add-remote" />
 
 
 完成上述步驟，這個網誌目錄就與剛剛建立的 Github Repository 有了一個聯繫，之後我們便可以開始把整個 **kokokuo** 目錄透過 Git 提交儲存，再提交之前，我們先在專案目錄下建立一個 `.gitignore` 檔案並填入以下來榮。透過這個 `.gitignore` 檔案來過濾掉一些不必要上傳的檔案：
@@ -100,7 +100,7 @@ kokokuo-note> pipenv shell
 
 完成上述的 `.gitignore` 後便可以開始透過以下指令步驟提交，可以發現再次下 `git status` 時，我們原本的 `.venv` 這個目錄消失了，因為我們把它也放在 `.gitignore` 中讓此目錄不需要被提交存擋：
 
-![git-status](../images/20190205-deploy-pelican-static-website-to-github-page/git-status.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/git-status.png" alt="git-status" width="480px"/>
 
 再來我們要設定 `git config`，因為需要告訴 Git 這個提交的作者是誰，才能追朔後續的歷史紀錄與變動，因此如果沒有設定，後半段的 Commit 也無法成功。
 
@@ -142,7 +142,7 @@ kokokuo-note> pipenv shell
 
 如下圖會看到我們已經搬移到 `develop` 中了：
 
-![checkout-develop](../images/20190205-deploy-pelican-static-website-to-github-page/checkout-develop.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/checkout-develop.png" alt="checkout-develop" width="480px"/>
 
 再來我們要把這些檔案 Commit 到此 `develop` 分支上：
 
@@ -162,7 +162,7 @@ kokokuo-note> pipenv shell
 
 不過為何會是推送到 `master` 呢？ 因為這個 `make github` 是讀取 Makefile 中設定好的預設上傳分支參數 `GITHUB_PAGES_BRANCH`，而預設就是 `master`：
 
-![makefile-content](../images/20190205-deploy-pelican-static-website-to-github-page/makefile-content.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/makefile-content.png" alt="makefile-content" />
 
 
 接下來在正式使用 `make github` 指令前，我們需要先安裝這個 Makefile 在執行 `make github` 所使用到的一個套件，叫做 `ghp-import` ，這個套件需要用到 `pip` 安裝，而因為我使用 Pipenv 所以如下執行：
@@ -171,7 +171,7 @@ kokokuo-note> pipenv shell
 (kokokuo-note)kokokuo-note(develop)> pipenv install ghp-import
 ```
 
-![pipenv-install-ghp-import](../images/20190205-deploy-pelican-static-website-to-github-page/pipenv-install-ghp-import.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/pipenv-install-ghp-import.png" alt="pipenv-install-ghp-import" width="480px" />
 
 安裝完後我們再次更新 Commit 提交：
 
@@ -180,7 +180,7 @@ kokokuo-note> pipenv shell
 (kokokuo-note)kokokuo-note(develop)> git commit -m "安裝 ghp-import"
 ```
 
-![add-ghp-import-and-commit](../images/20190205-deploy-pelican-static-website-to-github-page/add-ghp-import-and-commit.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/add-ghp-import-and-commit.png" alt="add-ghp-import-and-commit" width="480px" />
 
 提交完後，我們便可以開始執行 `make github` ：
 
@@ -188,17 +188,17 @@ kokokuo-note> pipenv shell
 (kokokuo-note)kokokuo-note(develop)> make github
 ```
 
-![pelican-develop-make-github-push](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-develop-make-github-push.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/pelican-develop-make-github-push.png" alt="pelican-develop-make-github-push" />
 
 你會看到 `make github` 以 Makefile 中指定的 `master` 作為分支參數，自己幫我們把輸出的 **output** 檔案推送到 Makefile 中指定的 `master` 分支上。
 
 之後切換到 Github Page 的 Repository 查看，如下圖你會看到 **output** 目錄下的 HTML 等靜態檔案都已在此 `master` 的 Repository 中：
 
-![pelican-make-push-master-files](../images/20190205-deploy-pelican-static-website-to-github-page/pelican-make-push-master-files.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/pelican-make-push-master-files.png" alt="pelican-make-push-master-files" />
 
 同時輸入網址，會看到我們的網頁內容，例如我是 https://kokokuo.github.io：
 
-![final-finish-deploy-pelican](../images/20190205-deploy-pelican-static-website-to-github-page/final-finish-deploy-pelican.png)
+<img src="../images/20190205-deploy-pelican-static-website-to-github-page/final-finish-deploy-pelican.png" alt="final-finish-deploy-pelican" />
 
 到此大功告成囉！
 
