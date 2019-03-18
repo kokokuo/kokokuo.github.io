@@ -34,4 +34,4 @@ parser/> pipenv shell
 
 # 參考資料
 ---
-[Windows + Python 3.6 + PipEnv + Visual Studio Code でPython 開発環境](https://qiita.com/youkidkk/items/b6a6e39ee3a109001c75)
+1. [Windows + Python 3.6 + PipEnv + Visual Studio Code でPython 開発環境](https://qiita.com/youkidkk/items/b6a6e39ee3a109001c75)

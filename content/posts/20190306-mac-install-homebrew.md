@@ -109,4 +109,4 @@ Cellar    Homebrew    etc  lib      sbin  var
 
 
 ## 參考文件
-1.[Homebrew 总结](https://www.jianshu.com/p/8ad7056b243f)
+1. [Homebrew 总结](https://www.jianshu.com/p/8ad7056b243f)

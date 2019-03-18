@@ -29,7 +29,7 @@ Summary: 使用 Python 做開發的人，多數都會使用虛擬環境，特別
 
 # 什麼是 Pipenv
 
-<img src="../images/20190308-python-pipenv-install-and-usage/pipenv-icon.png" alt="" /pipenv-icon>---
+<img src="../images/20190308-python-pipenv-install-and-usage/pipenv-icon.png" alt="pipenv-icon" />
 
 
 **[Pipenv](https://pipenv.readthedocs.io/en/latest/)**  是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，Pipenv 整合了 `pip` 與 `virtualenv`，是一套具備了建立虛擬環境同時能管理件的利器，他能做到並解決原本存在的問題：

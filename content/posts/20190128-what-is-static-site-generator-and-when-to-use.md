@@ -1,5 +1,5 @@
 Title: 什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)
-Date: 2019-01-28 22:40
+Date: 2019-01-28
 Tags: 靜態網站產生器
 Slug: what-is-static-site-generator-and-when-to-use
 Authors: kokokuo

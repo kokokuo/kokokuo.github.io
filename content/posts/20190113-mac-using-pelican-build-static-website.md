@@ -1,6 +1,5 @@
 Title: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
-Date: 2019-01-13 12:40
-Category: Python
+Date: 2019-01-13
 Tags: Python, Pelican
 Slug: mac-using-pelican-build-static-website
 Authors: kokokuo
