@@ -227,11 +227,13 @@ Pipenv 也能夠一次對多個操件做相同的行爲，如下一次對多個�
 從前面使用 `pipenv install` 這個指令觀察下來，你會注意到這個指令的功用是其實有兩個：
 
 1. 安裝套件到虛擬環境中
-2. 當指令後面不寫套件名稱時，就會檢查是否有 `Pipfile` 存在，並且讀取 `Pipfile` 更新 `Pipfile.lock` ( `Pipfile.lock` 不存在則建立 ) 安裝到虛擬環境中。
+2. 當指令後面不寫套件名稱時，就會檢查是否有 `Pipfile` 存在，並且讀取 `Pipfile` 更新 `Pipfile.lock` ( `Pipfile.lock` 不存在則建立 ) 安裝到虛擬環境中；如果沒有 `Pipfile` 則會檢查是否有 `requirements.txt`，所的話也會讀取安裝的套件並轉換到 `Pipfile`。
 
 如果上述行為，虛擬環境原本就不存在便會建立環境，若是都沒有 `Pipefile`, `Pipfile.lock` 與虛擬環境目錄，就會建立全新的虛擬環境。
 
 <img src="../images/20190308-python-pipenv-install-and-usage/11-pipenv-install-process.png" alt="11-pipenv-install-process" width="480"/>
+
+另外若你不希望 `requirements.txt` 因為 `pipenv install` 而被讀取安裝到 `Pipfile` 的話，可以透過 `pipenv shell` 這個指令哦，此時就只會建立乾淨 `Pipfile` 與 `Pipfile.lock`，並同時進入虛擬環境中了！
 
 <br/>
 
