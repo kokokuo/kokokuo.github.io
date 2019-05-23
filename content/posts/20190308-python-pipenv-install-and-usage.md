@@ -233,7 +233,7 @@ Pipenv 也能夠一次對多個操件做相同的行爲，如下一次對多個�
 
 <img src="../images/20190308-python-pipenv-install-and-usage/11-pipenv-install-process.png" alt="11-pipenv-install-process" width="480"/>
 
-另外若你不希望 `requirements.txt` 因為 `pipenv install` 而被讀取安裝到 `Pipfile` 的話，可以透過 `pipenv shell` 這個指令哦，此時就只會建立乾淨 `Pipfile` 與 `Pipfile.lock`，並同時進入虛擬環境中了！
+若你不希望 `requirements.txt` 因為 `pipenv install` 而被讀取安裝到 `Pipfile` 的話，建議你先把該檔案移到外面哦！
 
 <br/>
 
@@ -328,10 +328,10 @@ parser/> pipenv --rm
 ## 9. 使用與產生 requirements.txt
 前面篇幅提到的都是 `Pipfile` 與 `Pipfile.lock` ，那如果今天想要從原本的 `virtualenv` 換成 `pipenv` 指令來使用的話，有沒有辦法讀取原本的 `requirements.txt` 來建立 **Pipenv** 的虛擬環境又能還原本來的套件呢？
 
-這是可以的， **Pipenv** 提供了 `-r` 參數讓你透過 `pipenv install` 來指定檔案還原虛擬環境，並轉移記錄到 `Pipfile` 與 `Pipfile.lock` 中：
+這是可以的，前面提到若是你在執行 `pipenv install` 建立虛擬環境時，專案有 `requirements.txt` 便會自動被讀取安裝，不過 **Pipenv** 也提供了 `-r` 參數讓你透過 `pipenv install` 來指定你要讀取的 `requirements.txt` 檔案來還原虛擬環境，並轉移記錄到 `Pipfile` 與 `Pipfile.lock` 中：
 
 ```bash
-parser/> pipenv install -r [你的 `requirements.txt` 位置]
+parser/> pipenv install -r [你的 `requirements.txt` 路徑位置]
 ```
 
 相反的，如果你想要透過 Pipenv 產生 `requirements.txt`，可以透過 `pipenv lock -r requirements.txt`:
