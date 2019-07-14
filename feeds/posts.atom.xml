@@ -6,8 +6,8 @@ Code / Web / Architecture
 你需要非常多的努力
 &lt;br/&gt;
 才能看起來毫不費力
-</subtitle><entry><title>Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上</title><link href="/golang-install-on-mac-with-gvm.html" rel="alternate"></link><published>2019-07-13T00:00:00+08:00</published><updated>2019-07-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-07-13:/golang-install-on-mac-with-gvm.html</id><summary type="html">&lt;p&gt;最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹如何安裝 Golang 以及使用 Golang 版本管理器 - GVM 來俐落的安裝不同的 Golang 版本。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
-&lt;p&gt;最近開始摸 Golang，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹如何安裝 Golang 以及使用 Golang 版本管理器 - GVM 來俐落的安裝不同的 Golang 版本。&lt;/p&gt;
+</subtitle><entry><title>Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上</title><link href="/golang-install-on-mac-with-gvm.html" rel="alternate"></link><published>2019-07-13T00:00:00+08:00</published><updated>2019-07-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-07-13:/golang-install-on-mac-with-gvm.html</id><summary type="html">&lt;p&gt;最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;最近開始摸 Golang，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。&lt;/p&gt;
 &lt;h1&gt;透過 GVM 安裝並管理 Go 版本&lt;/h1&gt;
 &lt;h2&gt;1. 什麼是 GVM ( Go Version Management )&lt;/h2&gt;
 &lt;p&gt;GVM 是一套由第三方的開源開發者們共同撰寫的 Go 語言版本管理器，能夠在系統上同時透過這套 GVM 的套件，為我們同時安裝多個不同版本的 Go ，並且可以切換要使用的版本。&lt;/p&gt;
@@ -128,7 +128,7 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;另外如果你對如何架設 Pelican 、部署網站、使用 Pelican 的主題...等有疑慮的話，也歡迎你閱讀我前幾篇寫的文章，來幫助你更多認識唷。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="filename/posts/20190205-deploy-pelican-static-website-to-github-page.md"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;接著我們來進入正題！&lt;/p&gt;
