@@ -130,8 +130,8 @@ Desktop/(master)> git status
 Desktop/(master)> git add .
 Desktop/(master)> git config local --email "你註冊的 Github 信箱"
 Desktop/(master)> git config local --name "你註冊的 Github 用戶名稱 Username"
-Desktop/(master)> commit -m "加入 about.html 並從 inde.html 建立 Link 到 about.html"
-Desktop/(master)> push origin master
+Desktop/(master)> git commit -m "加入 about.html 並從 inde.html 建立 Link 到 about.html"
+Desktop/(master)> git push origin master
 ```
 
 這邊來稍微介紹一下上述這些指令的用途，首先是 `git status` ，這個可以透來檢查目前你做了哪些修改，所以他你輸入後，你會看到如下圖，紀錄了我們修改一個檔案 `index.html` ，另外有一個是新加入還沒有被紀錄追蹤的檔案 `about.html`：
