@@ -37,8 +37,10 @@ Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供�
 
 進入到挑選的主題的 Repository 後，透過 `git clone` 或是點擊 **Clone or download** 下載檔案解壓縮。
 
-## 2. 安裝到你的 Pelican 網站中
-下載後把你下載的位置與目錄記錄下來，例如選擇了 [Flex](https://github.com/alexandrevicenzi/Flex) 這個主題，透過 `git clone` 放在家目錄下：
+## 2. 安裝 Theme 到你的 Pelican 網站中
+
+### (1.) 下載想要的 Theme
+下載後先把下載的位置與目錄記錄下來。例如選擇了 [Flex](https://github.com/alexandrevicenzi/Flex) 這個主題，並透過 `git clone` 放在家目錄下：
 
 ```bash
 ~/> git clone https://github.com/alexandrevicenzi/Flex
@@ -48,7 +50,9 @@ Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供�
 
 <img src="../images/20190315-install-pelican-theme/4-clone-or-download-candidate-theme.png" alt="4-clone-or-download-candidate-theme" width="480px"/>
 
-之後回到你的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令
+### (2.) 安裝已下載的 Theme 到 Pelican 網站中
+
+之後回到自己的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令
 
 ```bash
 (kokokuo-note)kokokuo-note/> pelican-themes -h
@@ -78,7 +82,7 @@ optional arguments:
   -v, --verbose         Verbose output
 ```
 
-這個是 Pelican 套件提供的主題指令，協助你查詢你用 Pelican 架設的靜態網站中，你如你可以透過 `pelican-themes -l` 來查詢你目前所有安裝的套件：
+以上是 Pelican 套件提供的主題指令，協助你查詢你用 Pelican 架設的靜態網站中，你如你可以透過 `pelican-themes -l` 來查詢你目前所有安裝的套件：
 
 ```bash
 (kokokuo-note)kokokuo-note/> pelican-themes -l
@@ -86,7 +90,7 @@ simple
 notmyidea
 ```
 
-你會發現原來 Pelican 有預設幫你安裝了兩個主題，並且設定使用其中一個，所以你再啟動網站時才會看到，而在指令中也有提到安裝主題，這也是我們剛剛下載主題的原因，因為 pelican-themes 是許要指定安裝的路徑來源，因此不能從網路上指定，需要先下載那來才行，所以如下我們指令他的路徑，並安裝：
+你會發現原來 Pelican 有預設幫你安裝了兩個主題，並且設定使用其中一個，所以你再啟動網站時才會看到，而在指令中也有提到安裝主題，這也是我們剛剛下載主題的原因，因為 **pelican-themes 是需要指定安裝的路徑來源，因此不能從網路上指定，需要先下載那來才行**，所以如下我們指令他的路徑，並安裝：
 
 ```bash
 (kokokuo-note)kokokuo-note/> pelican-themes --install ~/Flex --verbose # 使用 --verbose 查看細節過程資訊
@@ -103,6 +107,8 @@ notmyidea
 <img src="../images/20190315-install-pelican-theme/5-pelican-theme-install-command.png" alt="5-pelican-theme-install-command" />
 
 你會發現，不管是預設的主題，還是安裝的主題，都會被放置到虛擬環境下 `pelican/themes/` 的位置。
+
+### (3.) 移除安裝的 Theme
 
 另外，如果你要移除主題，你可以使用 `--remove` 或是 `-r` 短指令來指定你要移除的主題名稱移除：
 
