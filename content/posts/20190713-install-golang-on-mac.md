@@ -149,6 +149,9 @@ $ gvm use go1.12.7 --default
 
 <img src="../images/20190713-install-golang-on-mac/go-env-show-installed-path.png" alt="go-env-show-installed-path" width="360px"/>
 
+進到目錄 `~/.gvm/pkgsets` 下後會看到剛剛所安裝的其他版本 Go:
+
+<img src="../images/20190713-install-golang-on-mac/all-gvm-go-version-location.png" alt="all-gvm-go-version-location" width="240px"/>
 
 ### (7.) 移除指定的 Go 版本
 要透過 GVM 移除 Go 很容易，只要透過以下指令：
@@ -157,7 +160,7 @@ $ gvm use go1.12.7 --default
 $ gvm uninstall <要移除的版本>
 ```
 
-以下透過一個例子來觀看，你會發現後來安裝的 `go1.13.beta1` 被移除掉。
+以下透過一個例子來觀看，你會發現後來安裝的 `go1.13beta1` 被移除掉。
 
 <img src="../images/20190713-install-golang-on-mac/gvm-uninstall-go.png" alt="gvm-uninstall-go" width="280px"/>
 
@@ -170,11 +173,9 @@ $ gvm uninstall <要移除的版本>
 $ gvm implode
 ```
 
-當透過這個指令移除 GVM 後，所有透過 GVM 所安裝的 Go 版本也會移除，因為先前提到所有透過 GVM 所安裝的 Go 都會安放在 `~/.gvm/pkgsets` 目錄下：
+當透過這個指令移除 GVM 後，所有透過 GVM 所安裝的 Go 版本也會移除，因為先前提到所有透過 GVM 所安裝的 Go 都會安放在 `~/.gvm/pkgsets` 目錄下。
 
-<img src="../images/20190713-install-golang-on-mac/all-gvm-go-version-location.png" alt="all-gvm-go-version-location" width="240px"/>
-
-如果發現 `gvm implode` 無法移除 GVM ，可以手動刪除 `.gvm` 整個目錄，並把一開始安裝時寫入到 `zsh` 或 `bash` 環境變數中的指令移除即可。
+另外如果發現 `gvm implode` 無法移除 GVM ，可以手動刪除 `.gvm` 整個目錄，並把一開始安裝時寫入到 `zsh` 或 `bash` 環境變數中的指令移除即可。
 
 # 參考資料
 1. [GVM Github Repository](https://github.com/moovweb/gvm)
