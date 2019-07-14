@@ -114,8 +114,9 @@ Code / Web / Architecture
 <p>除此之外這些主題的 Repository 也有提供一個連結讓 <a href="https://github.com/getpelican/pelican-themes">Pelican Themes 的 Repository</a> 統一管理，這個 Repository 你可以從 Pelican Themes 的官網中找到其連結。</p>
 <p><img src="../images/20190315-install-pelican-theme/3-pelican-themes-repository.png" alt="3-pelican-themes-repository" width="480px"/></p>
 <p>進入到挑選的主題的 Repository 後，透過 <code>git clone</code> 或是點擊 <strong>Clone or download</strong> 下載檔案解壓縮。</p>
-<h2>2. 安裝到你的 Pelican 網站中</h2>
-<p>下載後把你下載的位置與目錄記錄下來，例如選擇了 <a href="https://github.com/alexandrevicenzi/Flex">Flex</a> 這個主題，透過 <code>git clone</code> 放在家目錄下：</p>
+<h2>2. 安裝 Theme 到你的 Pelican 網站中</h2>
+<h3>(1.) 下載想要的 Theme</h3>
+<p>下載後先把下載的位置與目錄記錄下來。例如選擇了 <a href="https://github.com/alexandrevicenzi/Flex">Flex</a> 這個主題，並透過 <code>git clone</code> 放在家目錄下：</p>
 <div class="highlight"><pre><span></span>~/&gt; git clone https://github.com/alexandrevicenzi/Flex
 ~/&gt; <span class="nb">cd</span> Flex
 ~/<span class="o">(</span>master<span class="o">)</span>Flex/&gt;
@@ -123,7 +124,8 @@ Code / Web / Architecture
 
 
 <p><img src="../images/20190315-install-pelican-theme/4-clone-or-download-candidate-theme.png" alt="4-clone-or-download-candidate-theme" width="480px"/></p>
-<p>之後回到你的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令</p>
+<h3>(2.) 安裝已下載的 Theme 到 Pelican 網站中</h3>
+<p>之後回到自己的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes -h
 usage: pelican-themes <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-l <span class="p">|</span> -p <span class="p">|</span> -V<span class="o">]</span> <span class="o">[</span>-i theme path <span class="o">[</span>theme path ...<span class="o">]]</span>
                       <span class="o">[</span>-r theme name <span class="o">[</span>theme name ...<span class="o">]]</span>
@@ -152,14 +154,14 @@ optional arguments:
 </pre></div>
 
 
-<p>這個是 Pelican 套件提供的主題指令，協助你查詢你用 Pelican 架設的靜態網站中，你如你可以透過 <code>pelican-themes -l</code> 來查詢你目前所有安裝的套件：</p>
+<p>以上是 Pelican 套件提供的主題指令，協助你查詢你用 Pelican 架設的靜態網站中，你如你可以透過 <code>pelican-themes -l</code> 來查詢你目前所有安裝的套件：</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes -l
 simple
 notmyidea
 </pre></div>
 
 
-<p>你會發現原來 Pelican 有預設幫你安裝了兩個主題，並且設定使用其中一個，所以你再啟動網站時才會看到，而在指令中也有提到安裝主題，這也是我們剛剛下載主題的原因，因為 pelican-themes 是許要指定安裝的路徑來源，因此不能從網路上指定，需要先下載那來才行，所以如下我們指令他的路徑，並安裝：</p>
+<p>你會發現原來 Pelican 有預設幫你安裝了兩個主題，並且設定使用其中一個，所以你再啟動網站時才會看到，而在指令中也有提到安裝主題，這也是我們剛剛下載主題的原因，因為 <strong>pelican-themes 是需要指定安裝的路徑來源，因此不能從網路上指定，需要先下載那來才行</strong>，所以如下我們指令他的路徑，並安裝：</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes --install ~/Flex --verbose <span class="c1"># 使用 --verbose 查看細節過程資訊</span>
 </pre></div>
 
@@ -172,6 +174,7 @@ notmyidea
 <p>然後安裝完，你可以透過 <code>pelican-themes -l</code> 查看是否有安裝，只不過如果你想知道他安裝在哪裡，你可以也加入 <code>--verbose</code> 或 <code>-v</code> 看到：</p>
 <p><img src="../images/20190315-install-pelican-theme/5-pelican-theme-install-command.png" alt="5-pelican-theme-install-command" /></p>
 <p>你會發現，不管是預設的主題，還是安裝的主題，都會被放置到虛擬環境下 <code>pelican/themes/</code> 的位置。</p>
+<h3>(3.) 移除安裝的 Theme</h3>
 <p>另外，如果你要移除主題，你可以使用 <code>--remove</code> 或是 <code>-r</code> 短指令來指定你要移除的主題名稱移除：</p>
 <p><img src="../images/20190315-install-pelican-theme/6-remove-pelican-theme-command.png" alt="6-remove-pelican-theme-command" /></p>
 <h2>3. 設定 Pelican 網站使用的主題</h2>

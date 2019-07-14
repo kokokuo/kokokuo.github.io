@@ -117,7 +117,7 @@ Code / Web / Architecture
 <p>因此雖然 <code>virtualenv</code> 是一個可以幫助我們在開發 Python 專案時，隔離主系統與其他專案環境的好工具，但是 <code>virtualenv</code> 依然不夠好用。</p>
 <p>所以 <strong><a href="https://pipenv.readthedocs.io/en/latest/">Pipenv</a></strong> 便隨之誕生了，一套更強的虛擬環境與套件管理的工具利器。</p>
 <h1>什麼是 Pipenv</h1>
-<p><img src="../images/20190308-python-pipenv-install-and-usage/pipenv-icon.png" alt="" /pipenv-icon>---</p>
+<p><img src="../images/20190308-python-pipenv-install-and-usage/pipenv-icon.png" alt="pipenv-icon" /></p>
 <p><strong><a href="https://pipenv.readthedocs.io/en/latest/">Pipenv</a></strong>  是為了解決上述所有現存套件管理與虛擬環境的問題而誕生了，正如其名，Pipenv 整合了 <code>pip</code> 與 <code>virtualenv</code>，是一套具備了建立虛擬環境同時能管理件的利器，他能做到並解決原本存在的問題：</p>
 <ol>
 <li>只需要 <code>pipenv</code> 指令，不在需要分別使用 <code>pip</code> 與 <code>virtualenv</code></li>
@@ -259,10 +259,11 @@ parser/&gt;
 <p>從前面使用 <code>pipenv install</code> 這個指令觀察下來，你會注意到這個指令的功用是其實有兩個：</p>
 <ol>
 <li>安裝套件到虛擬環境中</li>
-<li>當指令後面不寫套件名稱時，就會檢查是否有 <code>Pipfile</code> 存在，並且讀取 <code>Pipfile</code> 更新 <code>Pipfile.lock</code> ( <code>Pipfile.lock</code> 不存在則建立 ) 安裝到虛擬環境中。</li>
+<li>當指令後面不寫套件名稱時，就會檢查是否有 <code>Pipfile</code> 存在，並且讀取 <code>Pipfile</code> 更新 <code>Pipfile.lock</code> ( <code>Pipfile.lock</code> 不存在則建立 ) 安裝到虛擬環境中；如果沒有 <code>Pipfile</code> 則會檢查是否有 <code>requirements.txt</code>，所的話也會讀取安裝的套件並轉換到 <code>Pipfile</code>。</li>
 </ol>
 <p>如果上述行為，虛擬環境原本就不存在便會建立環境，若是都沒有 <code>Pipefile</code>, <code>Pipfile.lock</code> 與虛擬環境目錄，就會建立全新的虛擬環境。</p>
 <p><img src="../images/20190308-python-pipenv-install-and-usage/11-pipenv-install-process.png" alt="11-pipenv-install-process" width="480"/></p>
+<p>若你不希望 <code>requirements.txt</code> 因為 <code>pipenv install</code> 而被讀取安裝到 <code>Pipfile</code> 的話，建議你先把該檔案移到外面哦！</p>
 <p><br/></p>
 <h2>4. 查看安裝的套件</h2>
 <p>在 Pipenv 中查看安裝的套件很簡單，只要透過 <code>pipenv graph</code> 即可，而且還會顯示套件以及相依套件的關聯：</p>
@@ -338,8 +339,8 @@ parser/&gt; pipenv --rm
 <p><br/></p>
 <h2>9. 使用與產生 requirements.txt</h2>
 <p>前面篇幅提到的都是 <code>Pipfile</code> 與 <code>Pipfile.lock</code> ，那如果今天想要從原本的 <code>virtualenv</code> 換成 <code>pipenv</code> 指令來使用的話，有沒有辦法讀取原本的 <code>requirements.txt</code> 來建立 <strong>Pipenv</strong> 的虛擬環境又能還原本來的套件呢？</p>
-<p>這是可以的， <strong>Pipenv</strong> 提供了 <code>-r</code> 參數讓你透過 <code>pipenv install</code> 來指定檔案還原虛擬環境，並轉移記錄到 <code>Pipfile</code> 與 <code>Pipfile.lock</code> 中：</p>
-<div class="highlight"><pre><span></span>parser/&gt; pipenv install -r <span class="o">[</span>你的 <span class="sb">`</span>requirements.txt<span class="sb">`</span> 位置<span class="o">]</span>
+<p>這是可以的，前面提到若是你在執行 <code>pipenv install</code> 建立虛擬環境時，專案有 <code>requirements.txt</code> 便會自動被讀取安裝，不過 <strong>Pipenv</strong> 也提供了 <code>-r</code> 參數讓你透過 <code>pipenv install</code> 來指定你要讀取的 <code>requirements.txt</code> 檔案來還原虛擬環境，並轉移記錄到 <code>Pipfile</code> 與 <code>Pipfile.lock</code> 中：</p>
+<div class="highlight"><pre><span></span>parser/&gt; pipenv install -r <span class="o">[</span>你的 <span class="sb">`</span>requirements.txt<span class="sb">`</span> 路徑位置<span class="o">]</span>
 </pre></div>
 
 
