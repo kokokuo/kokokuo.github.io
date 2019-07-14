@@ -132,7 +132,17 @@ $ gvm use go1.12.7 --default
 &lt;li&gt;&lt;a href="/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;接著我們來進入正題！&lt;/p&gt;
-&lt;h1&gt;設定回首頁&lt;/h1&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>如何客製化 Pelican Theme 的 Flex 樣式</title><link href="/custom-pelican-theme-flex-style.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-15:/custom-pelican-theme-flex-style.html</id><summary type="html">&lt;p&gt;如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;h1&gt;設定 Favicon&lt;/h1&gt;
+&lt;p&gt;在使用 Pelican 時如果有注意到的話，會發現當我們透過 &lt;code&gt;make serve PORT=[number]&lt;/code&gt; 後，每當開啟網頁請求時，都會跳出，找不到 Favicon 的警告，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/warning-not-find-favicon.png" alt="warning-not-find-favicon" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;Favicon 是網站圖示，主要被用在瀏覽器的網址搜尋列圖示或是書籤列圖示等等，尺寸通常在 100 多或 100 以下 Pixel 的大小 ( 更多介紹可以查看 &lt;a href="https://zh.wikipedia.org/wiki/Favicon"&gt;Wiki&lt;/a&gt; )，副檔名為 &lt;code&gt;ico&lt;/code&gt;。 而在 Pelican 中雖然不會影響，但是會被作為不完全的警告，因此我們接著來把 Favicon 加入進去。&lt;/p&gt;
+&lt;p&gt;另外 Favicon 有許多網站有在提供免費的圖像格式檔案轉換 ( png, jpg 轉 ico  )，例如我在這邊使用的是 &lt;a href="http://tw.faviconico.org/"&gt;Favicon 線上製作轉換工具&lt;/a&gt;。&lt;/p&gt;
+&lt;h2&gt;顯示 Favicon&lt;/h2&gt;
+&lt;h1&gt;設定回首頁&lt;/h1&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog"&gt;How to add a favicon to a Pelican blog?&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>如何客製化 Pelican Theme 的 Flex 樣式</title><link href="/custom-pelican-theme-flex-style.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-15:/custom-pelican-theme-flex-style.html</id><summary type="html">&lt;p&gt;如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在前一篇 &lt;a href="/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;
 &lt;h1&gt;讓 Flex Theme 讀取客製化樣式&lt;/h1&gt;

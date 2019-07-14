@@ -22,6 +22,8 @@
     <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
 
 
+    <link rel="shortcut icon" href="/static/koko-favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/koko-favicon.ico" type="image/x-icon">
 
 
 
@@ -41,7 +43,7 @@
 <meta property="article:section" content="posts"/>
 <meta property="article:tag" content="Pelican"/>
 <meta property="article:tag" content="Python"/>
-<meta property="og:image" content="https://avatars3.githubusercontent.com/u/5389253?s=460&v=4">
+<meta property="og:image" content="/static/koko-logo.png">
 
   <title>koko's Note &ndash; Pelican - 常用參數設定介紹與功能設定</title>
 
@@ -50,7 +52,7 @@
   <aside>
     <div>
       <a href="">
-        <img src="https://avatars3.githubusercontent.com/u/5389253?s=460&v=4" alt="koko's Note" title="koko's Note">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
       </a>
       <h1><a href="">koko's Note</a></h1>
 
@@ -105,7 +107,17 @@ Code / Web / Architecture
 <li><a href="/install-pelican-theme.html">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</a></li>
 </ol>
 <p>接著我們來進入正題！</p>
+<h1>設定 Favicon</h1>
+<p>在使用 Pelican 時如果有注意到的話，會發現當我們透過 <code>make serve PORT=[number]</code> 後，每當開啟網頁請求時，都會跳出，找不到 Favicon 的警告，如下圖：</p>
+<p><img src="../images/20190318-pelican-setting-introduction/warning-not-find-favicon.png" alt="warning-not-find-favicon" width="480px"/></p>
+<p>Favicon 是網站圖示，主要被用在瀏覽器的網址搜尋列圖示或是書籤列圖示等等，尺寸通常在 100 多或 100 以下 Pixel 的大小 ( 更多介紹可以查看 <a href="https://zh.wikipedia.org/wiki/Favicon">Wiki</a> )，副檔名為 <code>ico</code>。 而在 Pelican 中雖然不會影響，但是會被作為不完全的警告，因此我們接著來把 Favicon 加入進去。</p>
+<p>另外 Favicon 有許多網站有在提供免費的圖像格式檔案轉換 ( png, jpg 轉 ico  )，例如我在這邊使用的是 <a href="http://tw.faviconico.org/">Favicon 線上製作轉換工具</a>。</p>
+<h2>顯示 Favicon</h2>
 <h1>設定回首頁</h1>
+<h1>參考資料</h1>
+<ol>
+<li><a href="https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog">How to add a favicon to a Pelican blog?</a></li>
+</ol>
   </div>
   <div class="tag-cloud">
     <p>
@@ -135,7 +147,7 @@ Code / Web / Architecture
   "@type" : "Blog",
   "name": " koko's Note ",
   "url" : "",
-  "image": "https://avatars3.githubusercontent.com/u/5389253?s=460&v=4",
+  "image": "/static/koko-logo.png",
   "description": ""
 }
 </script>
