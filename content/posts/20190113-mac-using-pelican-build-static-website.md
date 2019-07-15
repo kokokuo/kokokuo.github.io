@@ -190,7 +190,7 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 * **make html** : 把 **content** 下所有的 Markdown 檔案轉為 HTML 網頁。
 * **make publish** : 如同 `make html` 指令一樣是把 **content** 下所有的 Markdown 檔案轉為 HTML 網頁，但唯一的差異在於透過此指令，會使用 `publishconf.py` 的設定檔案，這個好處是幫助我們可以把撰寫測試中的設定與正式發佈網站的設定隔離。
-* **make clean** : 清除掉 **output** 目錄下的所有內容。
+* **make clean** : 清除掉 **output** 目錄下的所有內容，另外會建議如果檔案更新了，要確認是否有輸出到 `output` 目錄的話，先執行一次 `make clean` 再執行 `make html` 或 `make publish`。
 * **make regenerate** : 若是使用 `make html` ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 `make html` 才能產生看到的 HTML 內容並被看到，有時還需要搭配 `make clean` 才會乾淨會頗麻煩，因此透過 `make regenerate` 可以讓 Pelican 自動偵測檔案的改變並產生出 HTML 內容，如此便可以節省手動建置 HTML 的時間。
 * **make serve PORT=[port]** : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:[port] 來預覽與測試文章有無格式或排版問題，如果不指定 `PORT` 的話預設會是 `8000`。
 * **make devserver** : 啟動開發用的本機伺服器，`與 make serve` 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 `make regenerate` 與 `make serve`。

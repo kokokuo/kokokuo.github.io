@@ -83,7 +83,44 @@ EXTRA_PATH_METADATA = {
 
 <br/>
 
-# 設定回首頁
+# 在 master 分支加入 README
+在使用 Pelican 建置靜態網站時，因為預設是使用 Markdown 來撰寫，所以 Pelican 會有功能協助我們在網站發佈成網頁時都需要轉換成 HTML 這個便利性。
+可是如果你的網站是放在 Github Page 中的 Repository `master` 分支，那你可能也會希望如同往常使用 Github 一樣，當別人逛到該 Repository 也可以有一個 `README` 認識該 Repository。
+
+但現在卻因 Pelican 會需要轉換 Markdown 成 HTML 呈現網頁而造成衝突，那該如何是好呢？
+
+不用擔心，在這裡我們一樣透過 `EXTRA_PATH_METADATA` 與 `STATIC_PATHS` 參數，讓我們的網站的 `README` 可以不被放在文章的 `content/posts`。
+
+接著因為 Pelican 會檢查 markdown 副檔名的檔案，所以一開始也不能把檔案的副檔名也標示出來，最後藉由 Pelican 轉換時自己轉換檔案名稱就可以搞定囉，以下我們來看一下：
+
+首先建立一個 `README` 檔案，並放到 `content/extra` 下，此時該 `README` 不能有副檔名（ 但是內容需保持 Markdown 格式 ）:
+
+<img src="../images/20190318-pelican-setting-introduction/add-readme-in-extra-folder.png" alt="add-readme-in-extra-folder" width="240px"/>
+
+接著我們在 `pelicanconf.py` 中添加此段：
+
+```python
+# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
+STATIC_PATHS = [
+    "extra/favicon.ico"
+    "extra/README"
+]
+# 用來設定複製到輸出目錄時，該 extra/README 會被投放對應的位置，這邊設定在根目錄下，並且關鍵是 Path 設定為 .md 副檔名
+EXTRA_PATH_METADATA = {
+    "extra/favicon.ico": {"path": "favicon.ico"},
+    "extra/README": {"path": "README.md"},
+}
+```
+
+以會看到我們添加了 `README` 的部分，並且關鍵在於 `path` 設定為 `.md` 副檔名，之後一樣的 `make clean` 再 `make html` 就會看到檔案在 `output` 這個根目錄下囉：
+
+<img src="../images/20190318-pelican-setting-introduction/readme-in-output-folder.png" alt="readme-in-output-folder" width="240px"/>
+
+最後我們在透過 `make github` 把這個新版的內容部署到 Github 的 `master` 上：
+
+<img src="../images/20190318-pelican-setting-introduction/readme-on-github.png" alt="readme-on-github" width="480px"/>
+
+也可以點擊我的 [Github Page](https://github.com/kokokuo/kokokuo.github.io) 查看。
 
 <br/>
 
