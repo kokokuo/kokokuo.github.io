@@ -186,8 +186,7 @@ Code / Web / Architecture
 <p>之後設定 <code>EXTRA_PATH_METADATA</code>，並指定要求輸出目錄後，放到 <code>static</code> 下，設定 <code>CUSTOM_CSS</code> 參數時在指定此 <code>custom.css</code> 在 HTML 輸出目錄下的所在位置。</p>
 <p>最後再透過 <code>make html</code> 與 <code>make serve [port]</code> 測試，如下圖，你會看到該 <code>custom.css</code> 被複製到了 <code>output</code> 目錄下，並且放在指定的 <code>static</code> 目錄中：</p>
 <p><img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" width="360px"/></p>
-<p><br/>
-<br/></p>
+<p><br/></p>
 <p>接著開啟網站看預覽畫面，如下圖 <code>custom.css</code> 生效囉！</p>
 <p><img src="../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" /></p>
 <p>之後喜歡這個主題的人就可以開始對這個 CSS 大改特改了。</p>
@@ -199,8 +198,7 @@ Code / Web / Architecture
 </pre></div>
 
 
-<p><br/>
-<br/></p>
+<p><br/></p>
 <h1>調整 Flex 內文中的圖像樣式</h1>
 <hr>
 <p>由於在 Markdown 中，預設並沒有可以直接調整圖像的參數，因此若要調整大小或置中的效果，因此需要另外的設定。</p>
@@ -252,6 +250,30 @@ Code / Web / Architecture
 <p><img src="../images/20190315-pelican-flex-theme-custom-css/6-custom-html-image-tag-width-preview.png" alt="6-custom-html-image-tag-width-preview" /></p>
 <p>當把瀏覽器拉窄後，畫面會看到 <code>@media</code> 變為適用寬度小於 <code>max-width</code> 為 480px：</p>
 <p><img src="../images/20190315-pelican-flex-theme-custom-css/7-rwd-custom-css-image-preview.png" alt="7-rwd-custom-css-image-preview.png" width="320px"/></p>
+<p><br/></p>
+<h1>指定 Favicon 輸出路徑</h1>
+<hr>
+<p>在 <a href="/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 中有介紹到如何設定 Favicon 並讓瀏覽器搜尋與書籤列顯示圖示，但是 Pelican 預設只能放在根目錄下，因此若不想放在根目錄下，就要看不同的 Theme 是否可以指定目錄（ 否則就要額外寫一些腳本程式 ）。</p>
+<p>而剛好的 <code>Flex</code> 這套 Theme 就可以在 <code>pelicanconf.py</code> 中設定參數 <code>FAVICON</code>，參考 <a href="https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings">Flex - Custom Settings</a>。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下</span>
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;extra/favicon.ico&quot;</span>
+<span class="p">]</span>
+<span class="c1"># 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在根目錄下</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;extra/favicon.ico&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/favicon.ico&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>如上這次把 <code>favicon</code> 指定在輸出時放到 <code>static</code> 目錄下，並再次清除並重新輸出 HTML 與執行 Server，會看到 <code>favicon.ico</code> 放在 <code>static</code> 目錄下了，並且也會發現瀏覽器上沒有顯示 <code>favicon</code> 的圖案。</p>
+<p><img src="../images/20190318-pelican-setting-introduction/favicon-in-the-output.png" alt="favicon-in-the-output" width="240px"/></p>
+<p>此時要怎麼辦呢？ 如果使用 <code>Flex</code> 樣板，我們可以直接指定所在目錄下，就會再次看到。</p>
+<div class="highlight"><pre><span></span><span class="n">FAVICON</span> <span class="o">=</span> <span class="s2">&quot;/static/favicon.ico&quot;</span>
+</pre></div>
+
+
+<p><br/></p>
 <h1>指定 Flex 樣式使用本地端的 Logo</h1>
 <hr>
 <p>在前一篇 <a href="/install-pelican-theme.html">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</a> 文章安裝 <code>Flex</code> 時，因為 <code>Flex</code> 可以透過 <code>SITELOGO</code> 參數設定個人的大頭貼，因此當時直接使用了放置在雲端的路徑路徑。</p>
@@ -278,6 +300,7 @@ Code / Web / Architecture
 <p><code>make clean</code> 後再次輸入 <code>make html &amp;&amp; make serve PORT=[number]</code> 執行：</p>
 <p><img src="../images/20190315-pelican-flex-theme-custom-css/koko-logo-local-resource.png" alt="koko-logo-local-resource.png" width="480px"/></p>
 <p>完成。</p>
+<p><br/></p>
 <h1>後記</h1>
 <hr>
 <p>雖然樣式調整設定好了，但是在 Pelican 中還有許多可以設定的參數，以後若是會使用新的參數會再跟大家分享。</p>
