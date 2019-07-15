@@ -37,7 +37,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://note.koko.guru/install-pelican-theme.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-03-15 00:00:00+08:00"/>
+<meta property="article:published_time" content="2019-03-14 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
 <meta property="article:section" content="posts"/>
@@ -90,7 +90,7 @@ Code / Web / Architecture
       
     <h1 id="install-pelican-theme">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</h1>
     <p>
-          Posted on 五 15 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+          Posted on 四 14 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
 
 
     </p>
@@ -110,11 +110,11 @@ Code / Web / Architecture
 <p>而在 Pelican 中要安裝與設定非常容易，讓我們來執行以下步驟。</p>
 <h2>1. 挑選你喜歡的 Pelican Theme</h2>
 <p>有許多設計師設計了許多出色的主題，並且統一放在 <a href="http://www.pelicanthemes.com/">Pelican 官網的 Theme 頁面中</a>，如下圖：</p>
-<p><img src="../images/20190315-install-pelican-theme/1-pelican-themes-website.png" alt="1-pelican-themes-website" /></p>
+<p><img src="../images/20190314-install-pelican-theme/1-pelican-themes-website.png" alt="1-pelican-themes-website" /></p>
 <p>當你從中挑選了你喜歡的主題，你可以點擊此主題的名稱連結，該連結多半會導到其主題的個人設計師官網或是這些主題所存放的 Github Repository，如下：</p>
-<p><img src="../images/20190315-install-pelican-theme/2-other-designer-repository.png" alt="2-other-designer-repository" width="480px" /></p>
+<p><img src="../images/20190314-install-pelican-theme/2-other-designer-repository.png" alt="2-other-designer-repository" width="480px" /></p>
 <p>除此之外這些主題的 Repository 也有提供一個連結讓 <a href="https://github.com/getpelican/pelican-themes">Pelican Themes 的 Repository</a> 統一管理，這個 Repository 你可以從 Pelican Themes 的官網中找到其連結。</p>
-<p><img src="../images/20190315-install-pelican-theme/3-pelican-themes-repository.png" alt="3-pelican-themes-repository" width="480px"/></p>
+<p><img src="../images/20190314-install-pelican-theme/3-pelican-themes-repository.png" alt="3-pelican-themes-repository" width="480px"/></p>
 <p>進入到挑選的主題的 Repository 後，透過 <code>git clone</code> 或是點擊 <strong>Clone or download</strong> 下載檔案解壓縮。</p>
 <h2>2. 安裝 Theme 到你的 Pelican 網站中</h2>
 <h3>(1.) 下載想要的 Theme</h3>
@@ -125,7 +125,7 @@ Code / Web / Architecture
 </pre></div>
 
 
-<p><img src="../images/20190315-install-pelican-theme/4-clone-or-download-candidate-theme.png" alt="4-clone-or-download-candidate-theme" width="480px"/></p>
+<p><img src="../images/20190314-install-pelican-theme/4-clone-or-download-candidate-theme.png" alt="4-clone-or-download-candidate-theme" width="480px"/></p>
 <h3>(2.) 安裝已下載的 Theme 到 Pelican 網站中</h3>
 <p>之後回到自己的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes -h
@@ -174,11 +174,11 @@ notmyidea
 
 
 <p>然後安裝完，你可以透過 <code>pelican-themes -l</code> 查看是否有安裝，只不過如果你想知道他安裝在哪裡，你可以也加入 <code>--verbose</code> 或 <code>-v</code> 看到：</p>
-<p><img src="../images/20190315-install-pelican-theme/5-pelican-theme-install-command.png" alt="5-pelican-theme-install-command" /></p>
+<p><img src="../images/20190314-install-pelican-theme/5-pelican-theme-install-command.png" alt="5-pelican-theme-install-command" /></p>
 <p>你會發現，不管是預設的主題，還是安裝的主題，都會被放置到虛擬環境下 <code>pelican/themes/</code> 的位置。</p>
 <h3>(3.) 移除安裝的 Theme</h3>
 <p>另外，如果你要移除主題，你可以使用 <code>--remove</code> 或是 <code>-r</code> 短指令來指定你要移除的主題名稱移除：</p>
-<p><img src="../images/20190315-install-pelican-theme/6-remove-pelican-theme-command.png" alt="6-remove-pelican-theme-command" /></p>
+<p><img src="../images/20190314-install-pelican-theme/6-remove-pelican-theme-command.png" alt="6-remove-pelican-theme-command" /></p>
 <h2>3. 設定 Pelican 網站使用的主題</h2>
 <p>當你安裝好主題後，此時我們需要讓我們的 Pelican 網站採用此主題才行，打開 <code>pelicanconf.py</code>，並添加此行：</p>
 <div class="highlight"><pre><span></span><span class="n">Theme</span> <span class="o">=</span> <span class="s1">&#39;Flex&#39;</span> <span class="c1"># Flex 是你透過 pelican-themes 指令安裝的主題名稱</span>
@@ -192,7 +192,7 @@ notmyidea
 
 
 <p>如下圖，你會看到修改後的畫面，成功！</p>
-<p><img src="../images/20190315-install-pelican-theme/7-flex-theme-result.png" alt="7-flex-theme-result" /></p>
+<p><img src="../images/20190314-install-pelican-theme/7-flex-theme-result.png" alt="7-flex-theme-result" /></p>
 <p>如果你對 Flex 這個主題有興趣，你可以去查看 Flex 主題提供的 <a href="https://github.com/alexandrevicenzi/Flex/wiki">文件 wiki</a>，在其中有 <a href="https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings">Custom Settings</a>) 的參數是 Flex 有提供可以設定的部分。</p>
 <p>例如以下是我的一些簡易設定：</p>
 <div class="highlight"><pre><span></span><span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;Flex&quot;</span>
@@ -206,7 +206,7 @@ notmyidea
 
 
 <p>這些參數有些是 Pelican Settings 中提到的，有些是 Flex 這個主題客製化提供的，然後讓我們再次透過 <code>make html</code> 與 <code>make serve [port]</code> 指令來生出新的 HTML 檔案並測試：</p>
-<p><img src="../images/20190315-install-pelican-theme/8-flex-add-custom-settings.png" alt="8-flex-add-custom-settings" /></p>
+<p><img src="../images/20190314-install-pelican-theme/8-flex-add-custom-settings.png" alt="8-flex-add-custom-settings" /></p>
 <p>大功告成！</p>
 <p><br/></p>
 <h1>後記</h1>

@@ -32,7 +32,7 @@
 <meta name="keywords" content="Pelican, Python">
 
 <meta property="og:site_name" content="koko's Note"/>
-<meta property="og:title" content="如何客製化 Pelican Theme 的 Flex 樣式"/>
+<meta property="og:title" content="Pelican - 如何客製化 Pelican Theme 的 Flex 樣式"/>
 <meta property="og:description" content="如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://note.koko.guru/custom-pelican-theme-flex-style.html"/>
@@ -45,7 +45,7 @@
 <meta property="article:tag" content="Python"/>
 <meta property="og:image" content="/static/koko-logo.png">
 
-  <title>koko's Note &ndash; 如何客製化 Pelican Theme 的 Flex 樣式</title>
+  <title>koko's Note &ndash; Pelican - 如何客製化 Pelican Theme 的 Flex 樣式</title>
 
 </head>
 <body>
@@ -87,7 +87,7 @@ Code / Web / Architecture
 <article class="single">
   <header>
       
-    <h1 id="custom-pelican-theme-flex-style">如何客製化 Pelican Theme 的 Flex 樣式</h1>
+    <h1 id="custom-pelican-theme-flex-style">Pelican - 如何客製化 Pelican Theme 的 Flex 樣式</h1>
     <p>
           Posted on 一 18 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
 
@@ -107,13 +107,13 @@ Code / Web / Architecture
 <p>Path to a CSS file. Need to be used with <a href="http://docs.getpelican.com/en/stable/settings.html#path-metadata">EXTRA_PATH_METADATA</a>.</p>
 </blockquote>
 <p>可以讓你指定你要客製化的 CSS 檔案位置，而且 <code>CUSTOM_CSS</code> 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 <code>EXTRA_PATH_METADATA</code> 搭配使用：</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" /></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" /></p>
 <p>關於 <code>EXTRA_PATH_METADATA</code> 有在 <a href="https://note.koko.guru/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 介紹到。</p>
 <p>透過 <code>EXTRA_PATH_METADATA</code> 參數加入想要的特定的檔案到來源目錄 <code>content</code> 下，並在 <code>make html</code> 輸出成 HTML 後，自動產生在輸出目錄 <code>output</code> 指定的位置中。</p>
 <p><code>EXTRA_PATH_METADATA</code> 需要需要與 <code>STATIC_PATHS</code> 搭配使用，藉由 <code>STATIC_PATHS</code> 告知 Pelican 哪些檔案或目錄屬於靜態文件，並在指定後才會在輸出時複製檔案並且生效。</p>
 <p>藉由在 <a href="https://note.koko.guru/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 提到 <code>favicon.ico</code> 與 <code>robot.txt</code> 的例子參考。</p>
 <p>把接下來要客製化的 CSS 檔案 <code>custom.css</code> 一同放置 <code>content</code> 下的 <code>extra</code> 子目錄並在該檔案中編輯要修改的 CSS，例如我的是：</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" width="380px"/></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" width="380px"/></p>
 <div class="highlight"><pre><span></span><span class="nt">body</span> <span class="p">{</span>
     <span class="k">font-size</span><span class="p">:</span> <span class="mf">1.02</span><span class="kt">em</span><span class="p">;</span>
     <span class="k">line-height</span><span class="p">:</span> <span class="mf">1.8</span><span class="kt">em</span><span class="p">;</span>
@@ -185,10 +185,10 @@ Code / Web / Architecture
 
 <p>之後設定 <code>EXTRA_PATH_METADATA</code>，並指定要求輸出目錄後，放到 <code>static</code> 下，設定 <code>CUSTOM_CSS</code> 參數時在指定此 <code>custom.css</code> 在 HTML 輸出目錄下的所在位置。</p>
 <p>最後再透過 <code>make html</code> 與 <code>make serve [port]</code> 測試，如下圖，你會看到該 <code>custom.css</code> 被複製到了 <code>output</code> 目錄下，並且放在指定的 <code>static</code> 目錄中：</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" width="360px"/></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" width="360px"/></p>
 <p><br/></p>
 <p>接著開啟網站看預覽畫面，如下圖 <code>custom.css</code> 生效囉！</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" /></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" /></p>
 <p>之後喜歡這個主題的人就可以開始對這個 CSS 大改特改了。</p>
 <p><br/></p>
 <h1>調整 Flex 內文中的圖像樣式</h1>
@@ -204,7 +204,7 @@ Code / Web / Architecture
 
 
 <p>完成後再次輸出 HTML 查看：</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/5-custom-image-css-preview.png" alt="5-custom-image-css-preview" /></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/5-custom-image-css-preview.png" alt="5-custom-image-css-preview" /></p>
 <p>然而圖片的尺寸大小部分，雖然也有一些 Pelican 的 Plugin 有提供，但是都沒有辦法個別調整尺寸，因此還是要回歸到透過 HTML 的 <code>&lt;img&gt;</code> 標籤，並對每張圖片透過屬性個別設定會是比較好的方式。</p>
 <p>此外由於 Flex 對於圖片只有設定 <code>max-width: 100%;</code> ，因此如果如果圖片尺寸太大的話，會整個版面佔滿被放大，所以透過 <code>@media</code> 來設定不同尺寸下各自的設定模式，以下是讓尺寸在寬小於 480 時， <code>max-width</code> 為預設的 <code>100%</code>，若不是，則依照各個寬度縮放。</p>
 <div class="highlight"><pre><span></span> <span class="c">/* Media Query ，也就是當寬度 &gt; 769 px 時將載入下面這段 CSS : */</span>
@@ -239,9 +239,9 @@ Code / Web / Architecture
 
 
 <p>若是仍有圖片過大，在各自調整 <code>&lt;img&gt;</code> 中的 <code>width</code> 尺寸，最後如下：</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/6-custom-html-image-tag-width-preview.png" alt="6-custom-html-image-tag-width-preview" /></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/6-custom-html-image-tag-width-preview.png" alt="6-custom-html-image-tag-width-preview" /></p>
 <p>當把瀏覽器拉窄後，畫面會看到 <code>@media</code> 變為適用寬度小於 <code>max-width</code> 為 480px：</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/7-rwd-custom-css-image-preview.png" alt="7-rwd-custom-css-image-preview.png" width="320px"/></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/7-rwd-custom-css-image-preview.png" alt="7-rwd-custom-css-image-preview.png" width="320px"/></p>
 <p><br/></p>
 <h1>指定 Favicon 輸出路徑</h1>
 <hr>
@@ -259,7 +259,7 @@ Code / Web / Architecture
 
 
 <p>如上這次把 <code>favicon</code> 指定在輸出時放到 <code>static</code> 目錄下，並再次清除並重新輸出 HTML 與執行 Server，會看到 <code>favicon.ico</code> 放在 <code>static</code> 目錄下了，並且也會發現瀏覽器上沒有顯示 <code>favicon</code> 的圖案。</p>
-<p><img src="../images/20190318-pelican-setting-introduction/favicon-in-the-output.png" alt="favicon-in-the-output" width="240px"/></p>
+<p><img src="../images/20190315-pelican-setting-introduction/favicon-in-the-output.png" alt="favicon-in-the-output" width="240px"/></p>
 <p>此時要怎麼辦呢？ 如果使用 <code>Flex</code> 樣板，我們可以直接指定所在目錄下，就會再次看到。</p>
 <div class="highlight"><pre><span></span><span class="n">FAVICON</span> <span class="o">=</span> <span class="s2">&quot;/static/favicon.ico&quot;</span>
 </pre></div>
@@ -291,7 +291,7 @@ Code / Web / Architecture
 
 
 <p><code>make clean</code> 後再次輸入 <code>make html &amp;&amp; make serve PORT=[number]</code> 執行：</p>
-<p><img src="../images/20190315-pelican-flex-theme-custom-css/koko-logo-local-resource.png" alt="koko-logo-local-resource.png" width="480px"/></p>
+<p><img src="../images/20190318-pelican-flex-theme-custom-css/koko-logo-local-resource.png" alt="koko-logo-local-resource.png" width="480px"/></p>
 <p>完成。</p>
 <p><br/></p>
 <h1>後記</h1>
