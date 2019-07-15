@@ -64,15 +64,15 @@ kokokuo-note/> source venv/bin/activate  # 進入虛擬環境
 kokokuo-note/> mkdir .venv # 建立等等 Pipenv 安裝虛擬環境時所存放的目錄
 ```
 
-![pipenv-create-virtualenv](../images/20190113-how-to-start-pelican/pipenv-create-virtualenv.png)
-
+<img src="../images/20190113-how-to-start-pelican/pipenv-create-virtualenv.png" alt="pipenv-create-virtualenv" width="480px"/>
 
 ```bash
 kokokuo-note/> pipenv shell # 進入虛擬環境
 (kokokuo-note)kokokuo-note/> pipenv install pelican # 當顯示 (kokokuo-note) 後表示我們已經在 kokokuo-note 這個專案目錄的虛擬環境中，安裝 Pelican 
 ```
 
-![pipenv-install-pelican](../images/20190113-how-to-start-pelican/pipenv-install-pelican.png)
+<img src="../images/20190113-how-to-start-pelican/pipenv-install-pelican.png" alt="pipenv-install-pelican" width="360px"/>
+
 
 再來還需要安裝 markdown 與 typogrify：
 
@@ -81,7 +81,7 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 (kokokuo-note)kokokuo-note/> pipenv install typogrify  # 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的，務必安裝排版
 ```
 
-![pipenv-install-markdown](../images/20190113-how-to-start-pelican/pipenv-install-markdown.png)
+<img src="../images/20190113-how-to-start-pelican/pipenv-install-markdown.png" alt="pipenv-install-markdown" width="360px"/>
 
 
 若是想要更多了解 `pipenv`，可以參考此篇 [Python - 使用 Pipenv 建立虛擬環境與安裝套件]({filename}/posts/20190308-python-pipenv-install-and-usage.md)
@@ -96,7 +96,7 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 之後 Pelican 會如下圖，依序詢問幾個問題，來幫忙建立屬於你要的範本：
 
-![pipenv-pelican-to-generate](../images/20190113-how-to-start-pelican/pipenv-pelican-to-generate.png)
+<img src="../images/20190113-how-to-start-pelican/pipenv-pelican-to-generate.png" alt="pipenv-pelican-to-generate" width="480px"/>
 
 上圖中的幾個問題分別是解說如下：
 
@@ -121,7 +121,7 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 完成後便會看到產生的檔案：
 
-![pelican-defult-files](../images/20190113-how-to-start-pelican/pelican-default-files.png)
+<img src="../images/20190113-how-to-start-pelican/pelican-default-files.png" alt="pelican-defult-files" width="360px"/>
 
 
 ### (4.) Pelican 目錄檔案功用介紹
@@ -137,7 +137,9 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 ### (5.) 開始使用 Pelican 撰寫第一篇網誌
 完成上半部分後，我們終於可以開始編寫網誌了，一個 Pelican 用 Markdown 寫的網誌，簡易結構會如下：
 
-![first-pelican-markdown-example](../images/20190113-how-to-start-pelican/first-markdown-example.png)
+
+<img src="../images/20190113-how-to-start-pelican/first-markdown-example.png" alt="first-markdown-example" width="640px"/>
+
 
 下半部的部分就是我們一般的 markdown 內容，也就是我們要寫的文章，而上半部的 Title, Date, Category, Tags, Slug, Authors, Summary 都是 Pelican 的 Metadata 關鍵字，這些關鍵字可以有也可以不提供，每一個關鍵字都會有其特殊的用途，以下常用的有：
 
@@ -161,15 +163,15 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 
 透過上述的指令 `make html`  會幫助我們把剛剛所寫完的 markdown 文章，轉換並生出成 HTML 網頁，如下圖：
 
-![pelican-make-html](../images/20190113-how-to-start-pelican/pelican-make-html.png)
+<img src="../images/20190113-how-to-start-pelican/pelican-make-html.png" alt="pelican-make-html" width="640px"/>
 
 而產生後，我們可以進一步到 **output** 目錄下，會看到生出了許多的子目錄與檔案，包含 HTML/CSS 與 圖像檔案。
 
-![pelican-output-html](../images/20190113-how-to-start-pelican/pelican-output-html.png)
+<img src="../images/20190113-how-to-start-pelican/pelican-output-html.png" alt="pelican-output-html" width="480px"/>
 
 在 `output` 目錄中，會看到一個檔案是 `mac-using-pelican-build-static-website.html` ，這個檔案便是我們剛剛在寫 `hello-pelican` 第一篇網誌時，所設定的 `Slug` 網址名稱，而 Pelican 會幫我們以此為檔名產生出來。
 
-![pelican-html-sample](../images/20190113-how-to-start-pelican/pelican-html-sample.png)
+<img src="../images/20190113-how-to-start-pelican/pelican-html-sample.png" alt="pelican-html-sample" width="640px"/>
 
 而這個 `make html` 實際上便是最早在回答 `pelican-quickstart` 問題時其中提到的 *Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n)*，由於回答了 Yes，所以 `Pelican` 協助我們提供了 `task.py` 與 `Makefile` 。
 
@@ -182,25 +184,25 @@ kokokuo-note/> pipenv shell # 進入虛擬環境
 (kokokuo-note)kokokuo-note/> make  # 顯示 Help 功能，所有的指令與用途。
 ```
 
-![pelican-make-commands](../images/20190113-how-to-start-pelican/pelican-make-commands.png)
-
+<img src="../images/20190113-how-to-start-pelican/pelican-make-commands.png" alt="pelican-make-commands" width="640px"/>
 
 以下介紹最常用的有幾個：
 
 * **make html** : 把 **content** 下所有的 Markdown 檔案轉為 HTML 網頁。
+* **make publish** : 如同 `make html` 指令一樣是把 **content** 下所有的 Markdown 檔案轉為 HTML 網頁，但唯一的差異在於透過此指令，會使用 `publishconf.py` 的設定檔案，這個好處是幫助我們可以把撰寫測試中的設定與正式發佈網站的設定隔離。
 * **make clean** : 清除掉 **output** 目錄下的所有內容。
-* **make regenerate** : 若是使用 `make html` ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 `make html` 才能產生看到的 HTML 內容並被看到。
-* **make serve** : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:8000 來預覽與測試文章有無格式或排版問提。
+* **make regenerate** : 若是使用 `make html` ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 `make html` 才能產生看到的 HTML 內容並被看到，有時還需要搭配 `make clean` 才會乾淨會頗麻煩，因此透過 `make regenerate` 可以讓 Pelican 自動偵測檔案的改變並產生出 HTML 內容，如此便可以節省手動建置 HTML 的時間。
+* **make serve PORT=[port]** : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:[port] 來預覽與測試文章有無格式或排版問題，如果不指定 `PORT` 的話預設會是 `8000`。
 * **make devserver** : 啟動開發用的本機伺服器，`與 make serve` 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 `make regenerate` 與 `make serve`。
 
 ### (7.) 預覽編寫完的 Markdown 網誌
 當完成 `make html` 產生網頁後，再來只要輸入 `make serve` 便可以預覽寫完的網頁：
 
-![pelican-make-serve](../images/20190113-how-to-start-pelican/pelican-make-serve.png)
+<img src="../images/20190113-how-to-start-pelican/pelican-make-serve.png" alt="pelican-make-serve" width="640px"/>
 
 透過瀏覽器輸入 https://localhost:8000 便可以看到呈現的網頁：
 
-![show-pelican-localhost-site](../images/20190113-how-to-start-pelican/show-pelican-localhost-site.png)
+<img src="../images/20190113-how-to-start-pelican/show-pelican-localhost-site.png" alt="show-pelican-localhost-site" width="640px"/>
 
 至此變完成的安裝 Pelican > 撰寫 Markdown 文章 > 產生 HTML 與預覽 的過程。
 
