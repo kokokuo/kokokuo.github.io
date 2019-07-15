@@ -10,16 +10,16 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/font-awesome/css/solid.css">
 
-    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+    <link href="https://kokokuo.github.io/static/custom.css" rel="stylesheet">
 
-    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+    <link href="https://kokokuo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
 
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
@@ -35,11 +35,11 @@
 <meta property="og:title" content="Pelican - 如何客製化 Pelican Theme 的 Flex 樣式"/>
 <meta property="og:description" content="如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://note.koko.guru/custom-pelican-theme-flex-style.html"/>
+<meta property="og:url" content="https://kokokuo.github.io/custom-pelican-theme-flex-style.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-18 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:author" content="https://kokokuo.github.io/author/kokokuo.html">
 <meta property="article:section" content="posts"/>
 <meta property="article:tag" content="Pelican"/>
 <meta property="article:tag" content="Python"/>
@@ -51,10 +51,10 @@
 <body>
   <aside>
     <div>
-      <a href="https://note.koko.guru">
+      <a href="https://kokokuo.github.io">
         <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
       </a>
-      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+      <h1><a href="https://kokokuo.github.io">koko's Note</a></h1>
 
 <p>
 Code / Web / Architecture
@@ -89,7 +89,7 @@ Code / Web / Architecture
       
     <h1 id="custom-pelican-theme-flex-style">Pelican - 如何客製化 Pelican Theme 的 Flex 樣式</h1>
     <p>
-          Posted on 一 18 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+          Posted on 一 18 3月 2019 in <a href="https://kokokuo.github.io/category/posts.html">posts</a>
 
 
     </p>
@@ -99,7 +99,7 @@ Code / Web / Architecture
   <div>
     <h1>前言</h1>
 <hr>
-<p>在前一篇 <a href="https://note.koko.guru/install-pelican-theme.html">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</a>，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。</p>
+<p>在前一篇 <a href="https://kokokuo.github.io/install-pelican-theme.html">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</a>，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。</p>
 <h1>讓 Flex Theme 讀取客製化樣式</h1>
 <hr>
 <p>在 Flex 主題提供的 <a href="https://github.com/alexandrevicenzi/Flex/wiki">Wiki</a> 文件中， Custom Settings 有提及一個 <code>CUSTOM_CSS</code> 設定參數，該參數的意思如下：</p>
@@ -108,10 +108,10 @@ Code / Web / Architecture
 </blockquote>
 <p>可以讓你指定你要客製化的 CSS 檔案位置，而且 <code>CUSTOM_CSS</code> 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 <code>EXTRA_PATH_METADATA</code> 搭配使用：</p>
 <p><img src="../images/20190318-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" /></p>
-<p>關於 <code>EXTRA_PATH_METADATA</code> 有在 <a href="https://note.koko.guru/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 介紹到。</p>
+<p>關於 <code>EXTRA_PATH_METADATA</code> 有在 <a href="https://kokokuo.github.io/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 介紹到。</p>
 <p>透過 <code>EXTRA_PATH_METADATA</code> 參數加入想要的特定的檔案到來源目錄 <code>content</code> 下，並在 <code>make html</code> 輸出成 HTML 後，自動產生在輸出目錄 <code>output</code> 指定的位置中。</p>
 <p><code>EXTRA_PATH_METADATA</code> 需要需要與 <code>STATIC_PATHS</code> 搭配使用，藉由 <code>STATIC_PATHS</code> 告知 Pelican 哪些檔案或目錄屬於靜態文件，並在指定後才會在輸出時複製檔案並且生效。</p>
-<p>藉由在 <a href="https://note.koko.guru/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 提到 <code>favicon.ico</code> 與 <code>robot.txt</code> 的例子參考。</p>
+<p>藉由在 <a href="https://kokokuo.github.io/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 提到 <code>favicon.ico</code> 與 <code>robot.txt</code> 的例子參考。</p>
 <p>把接下來要客製化的 CSS 檔案 <code>custom.css</code> 一同放置 <code>content</code> 下的 <code>extra</code> 子目錄並在該檔案中編輯要修改的 CSS，例如我的是：</p>
 <p><img src="../images/20190318-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" width="380px"/></p>
 <div class="highlight"><pre><span></span><span class="nt">body</span> <span class="p">{</span>
@@ -245,7 +245,7 @@ Code / Web / Architecture
 <p><br/></p>
 <h1>指定 Favicon 輸出路徑</h1>
 <hr>
-<p>在 <a href="https://note.koko.guru/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 中有介紹到如何設定 Favicon 並讓瀏覽器搜尋與書籤列顯示圖示，但是 Pelican 預設只能放在根目錄下，因此若不想放在根目錄下，就要看不同的 Theme 是否可以指定目錄（ 否則就要額外寫一些腳本程式 ）。</p>
+<p>在 <a href="https://kokokuo.github.io/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 中有介紹到如何設定 Favicon 並讓瀏覽器搜尋與書籤列顯示圖示，但是 Pelican 預設只能放在根目錄下，因此若不想放在根目錄下，就要看不同的 Theme 是否可以指定目錄（ 否則就要額外寫一些腳本程式 ）。</p>
 <p>而剛好的 <code>Flex</code> 這套 Theme 就可以在 <code>pelicanconf.py</code> 中設定參數 <code>FAVICON</code>，參考 <a href="https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings">Flex - Custom Settings</a>。</p>
 <div class="highlight"><pre><span></span><span class="c1"># 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下</span>
 <span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
@@ -268,7 +268,7 @@ Code / Web / Architecture
 <p><br/></p>
 <h1>指定 Flex 樣式使用本地端的 Logo</h1>
 <hr>
-<p>在前一篇 <a href="https://note.koko.guru/install-pelican-theme.html">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</a> 文章安裝 <code>Flex</code> 時，因為 <code>Flex</code> 可以透過 <code>SITELOGO</code> 參數設定個人的大頭貼，因此當時直接使用了放置在雲端的路徑路徑。</p>
+<p>在前一篇 <a href="https://kokokuo.github.io/install-pelican-theme.html">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</a> 文章安裝 <code>Flex</code> 時，因為 <code>Flex</code> 可以透過 <code>SITELOGO</code> 參數設定個人的大頭貼，因此當時直接使用了放置在雲端的路徑路徑。</p>
 <p>但是因為我們現在知道了 <code>EXTRA_PATH_METADATA</code> 與 <code>STATIC_PATHS</code> ，所以我們也可以存取網站的資源目錄下要用的 LOGO，在這邊我準備了原先的大頭貼並放到 <code>content/extra</code> 目錄下，並接著使用 <code>EXTRA_PATH_METADATA</code> 與 <code>STATIC_PATHS</code> 來把檔案輸出到 HTML 的 <code>static</code> 目錄下：</p>
 <div class="highlight"><pre><span></span><span class="c1"># 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下</span>
 <span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
@@ -309,8 +309,8 @@ Code / Web / Architecture
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://note.koko.guru/tag/pelican.html">Pelican</a>
-      <a href="https://note.koko.guru/tag/python.html">Python</a>
+      <a href="https://kokokuo.github.io/tag/pelican.html">Pelican</a>
+      <a href="https://kokokuo.github.io/tag/python.html">Python</a>
     </p>
   </div>
 
@@ -334,7 +334,7 @@ Code / Web / Architecture
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " koko's Note ",
-  "url" : "https://note.koko.guru",
+  "url" : "https://kokokuo.github.io",
   "image": "/static/koko-logo.png",
   "description": ""
 }
