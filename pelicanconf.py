@@ -41,7 +41,10 @@ STATIC_PATHS = [
     "images",
     "extra"
 ]
-# 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static
+# 用來設定複製到輸出目錄時，使該 extra/custom.css 會被投放對應的位置，這邊設定在 static，其他的也是檔案亦是。
+# README :使得 Github Repo 可以看得到檔案，為了避免被 Pelican 判斷成要轉換為文章的 markdown，須先設定為無格式，在此轉換。
+# CNAME : Github 客製化網址使用。
+# 另外因 README 與 CNAME 需要放在根目錄下，所以不指定在 static 之中
 EXTRA_PATH_METADATA = {
     "extra/custom.css": {"path": "static/custom.css"},
     "extra/koko-logo.png": {"path": "static/koko-logo.png"},
