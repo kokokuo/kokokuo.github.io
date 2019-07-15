@@ -10,16 +10,16 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
 
-    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+    <link href="/static/custom.css" rel="stylesheet">
 
-    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
 
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
@@ -35,11 +35,11 @@
 <meta property="og:title" content="Python - 透過 .venv 管理 Pipenv 虛擬環境的來源"/>
 <meta property="og:description" content="在前一篇 Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://note.koko.guru/pipenv-use-dot-venv-folder.html"/>
+<meta property="og:url" content="/pipenv-use-dot-venv-folder.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-11 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:author" content="/author/kokokuo.html">
 <meta property="article:section" content="posts"/>
 <meta property="article:tag" content="Python"/>
 <meta property="article:tag" content="Pipenv"/>
@@ -52,10 +52,10 @@
 <body>
   <aside>
     <div>
-      <a href="https://note.koko.guru">
+      <a href="">
         <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
       </a>
-      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+      <h1><a href="">koko's Note</a></h1>
 
 <p>
 Code / Web / Architecture
@@ -90,7 +90,7 @@ Code / Web / Architecture
       
     <h1 id="pipenv-use-dot-venv-folder">Python - 透過 .venv 管理 Pipenv 虛擬環境的來源</h1>
     <p>
-          Posted on 一 11 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+          Posted on 一 11 3月 2019 in <a href="/category/posts.html">posts</a>
 
 
     </p>
@@ -100,7 +100,7 @@ Code / Web / Architecture
   <div>
     <h1>前言</h1>
 <hr>
-<p>在前一篇 <a href="https://note.koko.guru/python-pipenv-install-and-usage.html">Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv</a> 中提到透過 Pipenv 建立好的虛擬環境都會放在用戶家目錄下的 <code>.local/share/ virtualenvs/</code> 路徑，並且統一管理。</p>
+<p>在前一篇 <a href="/python-pipenv-install-and-usage.html">Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv</a> 中提到透過 Pipenv 建立好的虛擬環境都會放在用戶家目錄下的 <code>.local/share/ virtualenvs/</code> 路徑，並且統一管理。</p>
 <p>但是如果用編輯器像是 VSCode 開發時，還要設定虛擬目錄的來源很麻煩（因為每個虛擬目錄的命名都不同）所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。</p>
 <h1>建立 <code>.venv</code> 管理你的虛擬環境目錄</h1>
 <hr>
@@ -123,9 +123,9 @@ parser/&gt; pipenv shell
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://note.koko.guru/tag/python.html">Python</a>
-      <a href="https://note.koko.guru/tag/pipenv.html">Pipenv</a>
-      <a href="https://note.koko.guru/tag/virtualenv.html">Virtualenv</a>
+      <a href="/tag/python.html">Python</a>
+      <a href="/tag/pipenv.html">Pipenv</a>
+      <a href="/tag/virtualenv.html">Virtualenv</a>
     </p>
   </div>
 
@@ -149,7 +149,7 @@ parser/&gt; pipenv shell
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " koko's Note ",
-  "url" : "https://note.koko.guru",
+  "url" : "",
   "image": "/static/koko-logo.png",
   "description": ""
 }
