@@ -117,6 +117,7 @@ $ gvm use go1.12.7 --default
 
 &lt;p&gt;當透過這個指令移除 GVM 後，所有透過 GVM 所安裝的 Go 版本也會移除，因為先前提到所有透過 GVM 所安裝的 Go 都會安放在 &lt;code&gt;~/.gvm/pkgsets&lt;/code&gt; 目錄下。&lt;/p&gt;
 &lt;p&gt;另外如果發現 &lt;code&gt;gvm implode&lt;/code&gt; 無法移除 GVM ，可以手動刪除 &lt;code&gt;.gvm&lt;/code&gt; 整個目錄，並把一開始安裝時寫入到 &lt;code&gt;zsh&lt;/code&gt; 或 &lt;code&gt;bash&lt;/code&gt; 環境變數中的指令移除即可。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://github.com/moovweb/gvm"&gt;GVM Github Repository&lt;/a&gt;&lt;/li&gt;
@@ -178,6 +179,7 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/show-favicon.png" alt="show-favicon" width="240px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;設定回首頁&lt;/h1&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog"&gt;How to add a favicon to a Pelican blog?&lt;/a&gt;&lt;/li&gt;
@@ -391,6 +393,7 @@ $ gvm use go1.12.7 --default
 &lt;hr&gt;
 &lt;p&gt;雖然樣式調整設定好了，但是在 Pelican 中還有許多可以設定的參數，以後若是會使用新的參數會再跟大家分享。&lt;/p&gt;
 &lt;p&gt;到此 Pelican 相關的靜態網站主題會告一段落，若有想要詢問的人歡迎來在詢問。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考文章&lt;/h1&gt;
 &lt;hr&gt;
 &lt;ol&gt;
