@@ -1,5 +1,5 @@
 Title: Pelican - 常用參數設定介紹與功能設定
-Date: 2019-03-18
+Date: 2019-03-15
 Tags: Pelican, Python
 Slug: pelican-settings-parameter-introudction
 Authors: kokokuo
@@ -61,6 +61,7 @@ EXTRA_PATH_METADATA = {
 ```python
 # 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
 STATIC_PATHS = [
+    "images",
     "extra/favicon.ico"
 ]
 # 用來設定複製到輸出目錄時，該 extra/favicon.ico 會被投放對應的位置，這邊設定在根目錄下
@@ -102,13 +103,14 @@ EXTRA_PATH_METADATA = {
 ```python
 # 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
 STATIC_PATHS = [
+    "images",
+    "extra/README",
     "extra/favicon.ico"
-    "extra/README"
 ]
 # 用來設定複製到輸出目錄時，該 extra/README 會被投放對應的位置，這邊設定在根目錄下，並且關鍵是 Path 設定為 .md 副檔名
 EXTRA_PATH_METADATA = {
-    "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/README": {"path": "README.md"},
+    "extra/favicon.ico": {"path": "favicon.ico"},
 }
 ```
 
@@ -121,6 +123,17 @@ EXTRA_PATH_METADATA = {
 <img src="../images/20190318-pelican-setting-introduction/readme-on-github.png" alt="readme-on-github" width="480px"/>
 
 也可以點擊我的 [Github Page](https://github.com/kokokuo/kokokuo.github.io) 查看。
+
+<br/>
+
+另外由於先前我們把 `favicon.ico` 與這個 `README` 檔案都放在 `extra` 底下，因此當有多個檔案時，如果這些檔案未來都是要顯示設為靜態文件，可以直接對 `STATIC_PATHS` 改成指定目錄 ( 如同 `images` ) ：
+
+```python
+STATIC_PATHS = [
+    "images",
+    "extra"
+]
+```
 
 <br/>
 

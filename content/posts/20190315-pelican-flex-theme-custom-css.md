@@ -1,5 +1,5 @@
 Title: 如何客製化 Pelican Theme 的 Flex 樣式
-Date: 2019-03-15
+Date: 2019-03-18
 Tags: Pelican, Python
 Slug: custom-pelican-theme-flex-style
 Authors: kokokuo
@@ -93,11 +93,11 @@ main article *:not(pre)>code {
 # 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
 STATIC_PATHS = [
   "images", 
-  "extra/favicon.ico"
-  "extra/custom.css"
+  "extra",
 ]
 # 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static
 EXTRA_PATH_METADATA = {
+    "extra/README": {"path": "README.md"},
     "extra/favicon.ico": {"path": "static/favicon.ico"},
     "extra/custom.css": {"path": "static/custom.css"},
 }
@@ -119,16 +119,6 @@ CUSTOM_CSS = "static/custom.css"
 <img src="../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" />
 
 之後喜歡這個主題的人就可以開始對這個 CSS 大改特改了。
-
-
-對了，由於先前我們把 `custom.css` 與 `favicon.ico` 都放在 `extra` 底下，因此當有多個檔案時，如果這些檔案未來都是要顯示設為靜態文件，可以直接對 `STATIC_PATHS` 改成指定目錄 ( 如同 `images` ) ：
-
-```python
-STATIC_PATHS = [
-    "images",
-    "extra"
-]
-```
 
 <br/>
 
@@ -240,9 +230,10 @@ STATIC_PATHS = [
 ]
 # 用來設定複製到輸出目錄時，該 extra/koko-logo.png 會被投放對應的位置，這邊設定在 static
 EXTRA_PATH_METADATA = {
+    "extra/README": {"path": "README.md"},
     "extra/favicon.ico": {"path": "static/favicon.ico"},
-     "extra/koko-logo.png": {"path": "static/koko-logo.png"},
     "extra/custom.css": {"path": "static/custom.css"},
+    "extra/koko-logo.png": {"path": "static/koko-logo.png"},
 }
 ```
 
