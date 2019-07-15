@@ -1,5 +1,5 @@
 Title: Pelican - 常用參數設定介紹與功能設定
-Date: 2019-03-15
+Date: 2019-03-14
 Tags: Pelican, Python
 Slug: pelican-settings-parameter-introudction
 Authors: kokokuo

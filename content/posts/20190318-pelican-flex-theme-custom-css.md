@@ -1,4 +1,4 @@
-Title: 如何客製化 Pelican Theme 的 Flex 樣式
+Title: Pelican - 如何客製化 Pelican Theme 的 Flex 樣式
 Date: 2019-03-18
 Tags: Pelican, Python
 Slug: custom-pelican-theme-flex-style
