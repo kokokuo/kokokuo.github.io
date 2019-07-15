@@ -10,16 +10,16 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
 
-    <link href="/static/custom.css" rel="stylesheet">
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
 
-    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
 
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
@@ -35,11 +35,11 @@
 <meta property="og:title" content="安裝 Python 2 在 Mac 上 (Python2.7.15 為例）"/>
 <meta property="og:description" content="對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="/python-install-python2-on-mac.html"/>
+<meta property="og:url" content="https://note.koko.guru/python-install-python2-on-mac.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-12 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
-<meta property="article:author" content="/author/kokokuo.html">
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
 <meta property="article:section" content="posts"/>
 <meta property="article:tag" content="Python"/>
 <meta property="article:tag" content="Mac"/>
@@ -52,10 +52,10 @@
 <body>
   <aside>
     <div>
-      <a href="">
+      <a href="https://note.koko.guru">
         <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
       </a>
-      <h1><a href="">koko's Note</a></h1>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
 
 <p>
 Code / Web / Architecture
@@ -90,7 +90,7 @@ Code / Web / Architecture
       
     <h1 id="python-install-python2-on-mac">安裝 Python 2 在 Mac 上 (Python2.7.15 為例）</h1>
     <p>
-          Posted on 二 12 3月 2019 in <a href="/category/posts.html">posts</a>
+          Posted on 二 12 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
 
 
     </p>
@@ -143,7 +143,7 @@ Code / Web / Architecture
 </pre></div>
 
 
-<p>更詳細的 Hombrew 安裝可以參考 <a href="/mac-install-homebrew.html">Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</a>。</p>
+<p>更詳細的 Hombrew 安裝可以參考 <a href="https://note.koko.guru/mac-install-homebrew.html">Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</a>。</p>
 <h2>步驟四：透過 Homebrew 安裝 Python</h2>
 <p>安裝 Python 其實除了透過 Homebrew 的方式外，也可以透過 Python 官方網站，下載 <code>.pkg</code> 的安裝包，但是因為安裝完後檔案的路徑會分別在：</p>
 <p><strong>位置一：</strong> <code>/Library/Frameworks/Python.framework</code>
@@ -168,7 +168,7 @@ Code / Web / Architecture
 
 
 <p>但因為 Homebrew 也會在 <code>/usr/local/bin</code> 中建立 Python2 的 Link 環境，因此其實不需要再去設定 <code>/usr/local/opt/python@2</code></p>
-<p>除非今天環境中也有安裝 Python 3 ，並且希望可以透過 <code>.bash_profile</code> 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 <a href="/python2-python3-run-on-mac.html">Python2 與 Python 3 共存的設定 (以 Mac 為例)</a> 中文章</p>
+<p>除非今天環境中也有安裝 Python 3 ，並且希望可以透過 <code>.bash_profile</code> 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 <a href="https://note.koko.guru/python2-python3-run-on-mac.html">Python2 與 Python 3 共存的設定 (以 Mac 為例)</a> 中文章</p>
 <p>而當安裝完後， 重新開啟 Terminal 直接輸入 Python 時，會讀取到 Homebrew 安裝的 Python 嗎？ </p>
 <p>答案是根據在 <code>~/.bash_profile</code> 中 PATH 設定的順序。</p>
 <p>因為再設定環境變數時，系統內建的環境變數 <code>$PATH</code> 是放在後頭， /<code>usr/local/bin</code> 是在前面，因此輸入 Python 指令時 Bash 讀取 <code>~/.bash_profile</code> 會先讀到 <code>/usr/local/bin</code> 底下 <code>python@2</code> 的 <code>python</code> 指令 Link 檔，因而找到 Homebrew 安裝的 Python 2。</p>
@@ -185,9 +185,9 @@ Code / Web / Architecture
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="/tag/python.html">Python</a>
-      <a href="/tag/mac.html">Mac</a>
-      <a href="/tag/python2.html">Python2</a>
+      <a href="https://note.koko.guru/tag/python.html">Python</a>
+      <a href="https://note.koko.guru/tag/mac.html">Mac</a>
+      <a href="https://note.koko.guru/tag/python2.html">Python2</a>
     </p>
   </div>
 
@@ -211,7 +211,7 @@ Code / Web / Architecture
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " koko's Note ",
-  "url" : "",
+  "url" : "https://note.koko.guru",
   "image": "/static/koko-logo.png",
   "description": ""
 }

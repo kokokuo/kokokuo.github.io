@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>koko's Note</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2019-07-13T00:00:00+08:00</updated><subtitle>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>koko's Note</title><link href="https://note.koko.guru/" rel="alternate"></link><link href="https://note.koko.guru/feeds/all.atom.xml" rel="self"></link><id>https://note.koko.guru/</id><updated>2019-07-13T00:00:00+08:00</updated><subtitle>
 Code / Web / Architecture
 &lt;br/&gt;
 &lt;br/&gt;
 你需要非常多的努力
 &lt;br/&gt;
 才能看起來毫不費力
-</subtitle><entry><title>Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上</title><link href="/golang-install-on-mac-with-gvm.html" rel="alternate"></link><published>2019-07-13T00:00:00+08:00</published><updated>2019-07-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-07-13:/golang-install-on-mac-with-gvm.html</id><summary type="html">&lt;p&gt;最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+</subtitle><entry><title>Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上</title><link href="https://note.koko.guru/golang-install-on-mac-with-gvm.html" rel="alternate"></link><published>2019-07-13T00:00:00+08:00</published><updated>2019-07-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-13:/golang-install-on-mac-with-gvm.html</id><summary type="html">&lt;p&gt;最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;最近開始摸 Golang，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。&lt;/p&gt;
 &lt;h1&gt;透過 GVM 安裝並管理 Go 版本&lt;/h1&gt;
 &lt;hr&gt;
@@ -124,14 +124,14 @@ $ gvm use go1.12.7 --default
 &lt;li&gt;&lt;a href="https://dryyun.com/2018/11/28/how-to-use-gvm/"&gt;GVM - Go 的多版本管理工具，使用介绍&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://chen-tao.github.io/2017/09/14/Use-gvm-manage-golang-version/"&gt;使用 gvm 管理多版本 golang&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://golang.org/doc/devel/release.html"&gt;Go Release History&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Golang"></category><category term="Mac"></category><category term="GVM"></category></entry><entry><title>Pelican - 常用參數設定介紹與功能設定</title><link href="/pelican-settings-parameter-introudction.html" rel="alternate"></link><published>2019-03-18T00:00:00+08:00</published><updated>2019-03-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-18:/pelican-settings-parameter-introudction.html</id><summary type="html">&lt;p&gt;如果你的 Pelican 剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，介紹一些常用的 Pelican 的設定參數用途。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Golang"></category><category term="Mac"></category><category term="GVM"></category></entry><entry><title>Pelican - 常用參數設定介紹與功能設定</title><link href="https://note.koko.guru/pelican-settings-parameter-introudction.html" rel="alternate"></link><published>2019-03-18T00:00:00+08:00</published><updated>2019-03-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-18:/pelican-settings-parameter-introudction.html</id><summary type="html">&lt;p&gt;如果你的 Pelican 剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，介紹一些常用的 Pelican 的設定參數用途。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;如果你的 Pelican 靜態網站剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，接著會介紹一些常用的 Pelican 的設定參數用途，希望能幫助到你。&lt;/p&gt;
 &lt;p&gt;另外如果你對如何架設 Pelican 、部署網站、使用 Pelican 的主題...等有疑慮的話，也歡迎你閱讀我前幾篇寫的文章，來幫助你更多認識唷。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://note.koko.guru/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://note.koko.guru/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;接著我們來進入正題！&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;
@@ -185,9 +185,9 @@ $ gvm use go1.12.7 --default
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog"&gt;How to add a favicon to a Pelican blog?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16"&gt;Does a favicon have to be 32x32 or 16x16?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://docs.getpelican.com/en/3.6.0/tips.html?highlight=favicon"&gt;Pelican - Tips&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>如何客製化 Pelican Theme 的 Flex 樣式</title><link href="/custom-pelican-theme-flex-style.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-15:/custom-pelican-theme-flex-style.html</id><summary type="html">&lt;p&gt;如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>如何客製化 Pelican Theme 的 Flex 樣式</title><link href="https://note.koko.guru/custom-pelican-theme-flex-style.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-15:/custom-pelican-theme-flex-style.html</id><summary type="html">&lt;p&gt;如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
-&lt;p&gt;在前一篇 &lt;a href="/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;
+&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;
 &lt;h1&gt;讓 Flex Theme 讀取客製化樣式&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在 Flex 主題提供的 &lt;a href="https://github.com/alexandrevicenzi/Flex/wiki"&gt;Wiki&lt;/a&gt; 文件中， Custom Settings 有提及一個 &lt;code&gt;CUSTOM_CSS&lt;/code&gt; 設定參數，該參數的意思如下：&lt;/p&gt;
@@ -196,10 +196,10 @@ $ gvm use go1.12.7 --default
 &lt;/blockquote&gt;
 &lt;p&gt;可以讓你指定你要客製化的 CSS 檔案位置，而且 &lt;code&gt;CUSTOM_CSS&lt;/code&gt; 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 搭配使用：&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" /&gt;&lt;/p&gt;
-&lt;p&gt;關於 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 有在 &lt;a href="/pelican-settings-parameter-introudction.html"&gt;Pelican - 常用參數設定介紹與功能設定&lt;/a&gt; 介紹到。&lt;/p&gt;
+&lt;p&gt;關於 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 有在 &lt;a href="https://note.koko.guru/pelican-settings-parameter-introudction.html"&gt;Pelican - 常用參數設定介紹與功能設定&lt;/a&gt; 介紹到。&lt;/p&gt;
 &lt;p&gt;透過 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 參數加入想要的特定的檔案到來源目錄 &lt;code&gt;content&lt;/code&gt; 下，並在 &lt;code&gt;make html&lt;/code&gt; 輸出成 HTML 後，自動產生在輸出目錄 &lt;code&gt;output&lt;/code&gt; 指定的位置中。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 需要需要與 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 搭配使用，藉由 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 告知 Pelican 哪些檔案或目錄屬於靜態文件，並在指定後才會在輸出時複製檔案並且生效。&lt;/p&gt;
-&lt;p&gt;藉由在 &lt;a href="/pelican-settings-parameter-introudction.html"&gt;Pelican - 常用參數設定介紹與功能設定&lt;/a&gt; 提到 &lt;code&gt;favicon.ico&lt;/code&gt; 與 &lt;code&gt;robot.txt&lt;/code&gt; 的例子參考。&lt;/p&gt;
+&lt;p&gt;藉由在 &lt;a href="https://note.koko.guru/pelican-settings-parameter-introudction.html"&gt;Pelican - 常用參數設定介紹與功能設定&lt;/a&gt; 提到 &lt;code&gt;favicon.ico&lt;/code&gt; 與 &lt;code&gt;robot.txt&lt;/code&gt; 的例子參考。&lt;/p&gt;
 &lt;p&gt;把接下來要客製化的 CSS 檔案 &lt;code&gt;custom.css&lt;/code&gt; 一同放置 &lt;code&gt;content&lt;/code&gt; 下的 &lt;code&gt;extra&lt;/code&gt; 子目錄並在該檔案中編輯要修改的 CSS，例如我的是：&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" width="380px"/&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
@@ -341,7 +341,7 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;指定 Favicon 輸出路徑&lt;/h1&gt;
 &lt;hr&gt;
-&lt;p&gt;在 &lt;a href="/pelican-settings-parameter-introudction.html"&gt;Pelican - 常用參數設定介紹與功能設定&lt;/a&gt; 中有介紹到如何設定 Favicon 並讓瀏覽器搜尋與書籤列顯示圖示，但是 Pelican 預設只能放在根目錄下，因此若不想放在根目錄下，就要看不同的 Theme 是否可以指定目錄（ 否則就要額外寫一些腳本程式 ）。&lt;/p&gt;
+&lt;p&gt;在 &lt;a href="https://note.koko.guru/pelican-settings-parameter-introudction.html"&gt;Pelican - 常用參數設定介紹與功能設定&lt;/a&gt; 中有介紹到如何設定 Favicon 並讓瀏覽器搜尋與書籤列顯示圖示，但是 Pelican 預設只能放在根目錄下，因此若不想放在根目錄下，就要看不同的 Theme 是否可以指定目錄（ 否則就要額外寫一些腳本程式 ）。&lt;/p&gt;
 &lt;p&gt;而剛好的 &lt;code&gt;Flex&lt;/code&gt; 這套 Theme 就可以在 &lt;code&gt;pelicanconf.py&lt;/code&gt; 中設定參數 &lt;code&gt;FAVICON&lt;/code&gt;，參考 &lt;a href="https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings"&gt;Flex - Custom Settings&lt;/a&gt;。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
 &lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
@@ -364,7 +364,7 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;指定 Flex 樣式使用本地端的 Logo&lt;/h1&gt;
 &lt;hr&gt;
-&lt;p&gt;在前一篇 &lt;a href="/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt; 文章安裝 &lt;code&gt;Flex&lt;/code&gt; 時，因為 &lt;code&gt;Flex&lt;/code&gt; 可以透過 &lt;code&gt;SITELOGO&lt;/code&gt; 參數設定個人的大頭貼，因此當時直接使用了放置在雲端的路徑路徑。&lt;/p&gt;
+&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt; 文章安裝 &lt;code&gt;Flex&lt;/code&gt; 時，因為 &lt;code&gt;Flex&lt;/code&gt; 可以透過 &lt;code&gt;SITELOGO&lt;/code&gt; 參數設定個人的大頭貼，因此當時直接使用了放置在雲端的路徑路徑。&lt;/p&gt;
 &lt;p&gt;但是因為我們現在知道了 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 與 &lt;code&gt;STATIC_PATHS&lt;/code&gt; ，所以我們也可以存取網站的資源目錄下要用的 LOGO，在這邊我準備了原先的大頭貼並放到 &lt;code&gt;content/extra&lt;/code&gt; 目錄下，並接著使用 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 與 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 來把檔案輸出到 HTML 的 &lt;code&gt;static&lt;/code&gt; 目錄下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
 &lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
@@ -400,9 +400,9 @@ $ gvm use go1.12.7 --default
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/settings.html#metadata"&gt;Pelican Settings - Metadata&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://blog.game18.net/posts/2015/10/li-yong-pelicanhe-github-pagesda-zao-ge-xing-hua-bo-ke-er/"&gt;利用 Pelican 和 GitHub Pages 打造个性化博客(二)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://maxwell-nc.github.io/blog/pelicanBuildBlog.html"&gt;Windows 下使用 Pelican 搭建静态博客&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>Python - 安裝 Pelican Theme 來改變你的靜態網站主題</title><link href="/install-pelican-theme.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-15:/install-pelican-theme.html</id><summary type="html">&lt;p&gt;由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>Python - 安裝 Pelican Theme 來改變你的靜態網站主題</title><link href="https://note.koko.guru/install-pelican-theme.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-15:/install-pelican-theme.html</id><summary type="html">&lt;p&gt;由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
-&lt;p&gt;在前兩篇 &lt;a href="/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt; 與 &lt;a href="20190205-deploy-pelican-static-website-to-github-page.md"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt; 我們知道了要如何使用 Pelican 來架設靜態網站。&lt;/p&gt;
+&lt;p&gt;在前兩篇 &lt;a href="https://note.koko.guru/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt; 與 &lt;a href="20190205-deploy-pelican-static-website-to-github-page.md"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt; 我們知道了要如何使用 Pelican 來架設靜態網站。&lt;/p&gt;
 &lt;p&gt;但由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？&lt;/p&gt;
 &lt;p&gt;放心，Pelican 有提供給我們更換網誌外觀的功能哦，以下我們接著來設定。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -526,7 +526,7 @@ notmyidea
 &lt;li&gt;&lt;a href="https://github.com/alexandrevicenzi/Flex/wiki"&gt;Flex - Wiki&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py"&gt;Flex - pelicanconf.py&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.liang2.tw/posts/2015/09/blog-internals/"&gt;設定部落格筆記&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>安裝 Python 2 在 Mac 上 (Python2.7.15 為例）</title><link href="/python-install-python2-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-12:/python-install-python2-on-mac.html</id><summary type="html">&lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>安裝 Python 2 在 Mac 上 (Python2.7.15 為例）</title><link href="https://note.koko.guru/python-install-python2-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-12:/python-install-python2-on-mac.html</id><summary type="html">&lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -571,7 +571,7 @@ notmyidea
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;更詳細的 Hombrew 安裝可以參考 &lt;a href="/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;更詳細的 Hombrew 安裝可以參考 &lt;a href="https://note.koko.guru/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;。&lt;/p&gt;
 &lt;h2&gt;步驟四：透過 Homebrew 安裝 Python&lt;/h2&gt;
 &lt;p&gt;安裝 Python 其實除了透過 Homebrew 的方式外，也可以透過 Python 官方網站，下載 &lt;code&gt;.pkg&lt;/code&gt; 的安裝包，但是因為安裝完後檔案的路徑會分別在：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;位置一：&lt;/strong&gt; &lt;code&gt;/Library/Frameworks/Python.framework&lt;/code&gt;
@@ -596,7 +596,7 @@ notmyidea
 
 
 &lt;p&gt;但因為 Homebrew 也會在 &lt;code&gt;/usr/local/bin&lt;/code&gt; 中建立 Python2 的 Link 環境，因此其實不需要再去設定 &lt;code&gt;/usr/local/opt/python@2&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;除非今天環境中也有安裝 Python 3 ，並且希望可以透過 &lt;code&gt;.bash_profile&lt;/code&gt; 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 &lt;a href="/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 中文章&lt;/p&gt;
+&lt;p&gt;除非今天環境中也有安裝 Python 3 ，並且希望可以透過 &lt;code&gt;.bash_profile&lt;/code&gt; 明確區分 Mac 優先以 python 讀取的指令是來自 Python 3 或 Python 2 時，可以放進去，參考 &lt;a href="https://note.koko.guru/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 中文章&lt;/p&gt;
 &lt;p&gt;而當安裝完後， 重新開啟 Terminal 直接輸入 Python 時，會讀取到 Homebrew 安裝的 Python 嗎？ &lt;/p&gt;
 &lt;p&gt;答案是根據在 &lt;code&gt;~/.bash_profile&lt;/code&gt; 中 PATH 設定的順序。&lt;/p&gt;
 &lt;p&gt;因為再設定環境變數時，系統內建的環境變數 &lt;code&gt;$PATH&lt;/code&gt; 是放在後頭， /&lt;code&gt;usr/local/bin&lt;/code&gt; 是在前面，因此輸入 Python 指令時 Bash 讀取 &lt;code&gt;~/.bash_profile&lt;/code&gt; 會先讀到 &lt;code&gt;/usr/local/bin&lt;/code&gt; 底下 &lt;code&gt;python@2&lt;/code&gt; 的 &lt;code&gt;python&lt;/code&gt; 指令 Link 檔，因而找到 Homebrew 安裝的 Python 2。&lt;/p&gt;
@@ -609,7 +609,7 @@ notmyidea
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://medium.com/denix-daily/macos%E4%B8%8A%E7%9A%84python%E8%B7%AF%E5%BE%91%E5%95%8F%E9%A1%8C-%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95-a10c01cc42a"&gt;MacOS 上的 Python 路徑問題＆安裝方法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://pythonguidecn.readthedocs.io/zh/latest/starting/install/osx.html"&gt;在 Mac OS X 上安装 Python 2&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python2"></category></entry><entry><title>Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）</title><link href="/python-install-python3-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-12:/python-install-python3-on-mac.html</id><summary type="html">&lt;p&gt;由於 Python 2.7 的核心開發團隊公布 2020 年確定會捨棄 2.7 版本，因此會有越來越多人開始轉移到 Python 3 版本，所以下面我們來介紹安裝 Python 3 在 Mac 的話如何處理。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python2"></category></entry><entry><title>Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）</title><link href="https://note.koko.guru/python-install-python3-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-12:/python-install-python3-on-mac.html</id><summary type="html">&lt;p&gt;由於 Python 2.7 的核心開發團隊公布 2020 年確定會捨棄 2.7 版本，因此會有越來越多人開始轉移到 Python 3 版本，所以下面我們來介紹安裝 Python 3 在 Mac 的話如何處理。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;由於 Python 2.7 的核心開發團隊公布 2020 年確定會捨棄 2.7 版本，因此會有越來越多人開始轉移到 Python 3 版本，所以下面我們來介紹安裝 Python 3 在 Mac 的話如何處理。&lt;/p&gt;
 &lt;h1&gt;安裝步驟&lt;/h1&gt;
@@ -653,7 +653,7 @@ notmyidea
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;更詳細的 Hombrew 安裝可以參考 &lt;a href="/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;更詳細的 Hombrew 安裝可以參考 &lt;a href="https://note.koko.guru/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;。&lt;/p&gt;
 &lt;h2&gt;步驟四：透過 Homebrew 安裝 Python3&lt;/h2&gt;
 &lt;p&gt;安裝 Python 其實除了透過 Homebrew 的方式外，也可以透過 Python 官方網站，下載 &lt;code&gt;.pkg&lt;/code&gt; 的安裝包，但是因為安裝完後檔案的路徑會分別在：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;位置一：&lt;/strong&gt; &lt;code&gt;/Library/Frameworks/Python3.framework&lt;/code&gt;
@@ -696,13 +696,13 @@ notmyidea
 &lt;p&gt;&lt;img src="../images/20190312-python-install-python3-on-mac/6-python3-command.png" alt="6-python3-command"/&gt;&lt;/p&gt;
 &lt;p&gt;到此，因為先讀取到的 &lt;code&gt;/usr/local/opt/python/libexec/bin&lt;/code&gt; 下方有提供 Python 3 的 &lt;code&gt;python&lt;/code&gt; 可執行檔案，即可以透過原本的 &lt;code&gt;python3&lt;/code&gt; 或設定好的 &lt;code&gt;python&lt;/code&gt; 指令啟動 Python 3 。另外此設定也會影響到 &lt;code&gt;pip&lt;/code&gt; 指令：&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190312-python-install-python3-on-mac/7-show-pip-cource-in-python3.png" alt="7-show-pip-cource-in-python3"/&gt;&lt;/p&gt;
-&lt;p&gt;在 &lt;a href="/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 此篇中亦有介紹如何設定預設 Mac 的 &lt;code&gt;python&lt;/code&gt; 指令讀取來源。&lt;/p&gt;
+&lt;p&gt;在 &lt;a href="https://note.koko.guru/python2-python3-run-on-mac.html"&gt;Python2 與 Python 3 共存的設定 (以 Mac 為例)&lt;/a&gt; 此篇中亦有介紹如何設定預設 Mac 的 &lt;code&gt;python&lt;/code&gt; 指令讀取來源。&lt;/p&gt;
 &lt;h1&gt;參考文章&lt;/h1&gt;
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://medium.com/denix-daily/macos%E4%B8%8A%E7%9A%84python%E8%B7%AF%E5%BE%91%E5%95%8F%E9%A1%8C-%E5%AE%89%E8%A3%9D%E6%96%B9%E6%B3%95-a10c01cc42a"&gt;MacOS 上 的 Python 路徑問題＆安裝方法&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://pythonguidecn.readthedocs.io/zh/latest/starting/install3/osx.html"&gt;在 Mac OS X 上安装 Python 3&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>Python2 與 Python 3 共存的設定 (以 Mac 為例）</title><link href="/python2-python3-run-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-12:/python2-python3-run-on-mac.html</id><summary type="html">&lt;p&gt;當你的 Mac 系統要同時使用到 Python 2 與 Python 3 的專案時，就會遇到需要同時安裝多個 Python 版本在電腦中，可是此時要如何設定透過指令啟動不同的版本，以下我們以 &lt;strong&gt;Python 2.7.15&lt;/strong&gt; 與 &lt;strong&gt;Python 3.6.5&lt;/strong&gt; 為例子，並舉出兩個常見的 Python 2 與 Python 3 例子。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>Python2 與 Python 3 共存的設定 (以 Mac 為例）</title><link href="https://note.koko.guru/python2-python3-run-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-12:/python2-python3-run-on-mac.html</id><summary type="html">&lt;p&gt;當你的 Mac 系統要同時使用到 Python 2 與 Python 3 的專案時，就會遇到需要同時安裝多個 Python 版本在電腦中，可是此時要如何設定透過指令啟動不同的版本，以下我們以 &lt;strong&gt;Python 2.7.15&lt;/strong&gt; 與 &lt;strong&gt;Python 3.6.5&lt;/strong&gt; 為例子，並舉出兩個常見的 Python 2 與 Python 3 例子。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;當你的 Mac 系統要同時使用到 Python 2 與 Python 3 的專案時，就會遇到需要同時安裝多個 Python 版本在電腦中，可是此時要如何設定透過指令啟動不同的版本，以下我們以 &lt;strong&gt;Python 2.7.15&lt;/strong&gt; 與 &lt;strong&gt;Python 3.6.5&lt;/strong&gt; 為例子，並舉出兩個常見的 Python 2 與 Python 3 例子。&lt;/p&gt;
 &lt;h1&gt;解決方法&lt;/h1&gt;
@@ -784,9 +784,9 @@ $&amp;gt; python3
 &lt;p&gt;因此未來便可以透過修改 &lt;code&gt;.bash_profile&lt;/code&gt; 去做預設 &lt;code&gt;python&lt;/code&gt; 指令讀取設定的開關：&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190312-python2-python3-run-on-mac/14-bash-profile-setting.png" alt="14-bash-profile-setting" width="480px" /&gt;&lt;/p&gt;
 &lt;p&gt;最後觀察一下環境變數，分別設定完成。&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190312-python2-python3-run-on-mac/15-readable-system-path.png" alt="15-readable-system-path"/&gt;&lt;/p&gt;</content><category term="Python2"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>Python - 透過 .venv 管理 Pipenv 虛擬環境的來源</title><link href="/pipenv-use-dot-venv-folder.html" rel="alternate"></link><published>2019-03-11T00:00:00+08:00</published><updated>2019-03-11T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-11:/pipenv-use-dot-venv-folder.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="/python-pipenv-install-and-usage.html"&gt;Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv&lt;/a&gt; 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;&lt;img src="../images/20190312-python2-python3-run-on-mac/15-readable-system-path.png" alt="15-readable-system-path"/&gt;&lt;/p&gt;</content><category term="Python2"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>Python - 透過 .venv 管理 Pipenv 虛擬環境的來源</title><link href="https://note.koko.guru/pipenv-use-dot-venv-folder.html" rel="alternate"></link><published>2019-03-11T00:00:00+08:00</published><updated>2019-03-11T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-11:/pipenv-use-dot-venv-folder.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/python-pipenv-install-and-usage.html"&gt;Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv&lt;/a&gt; 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
-&lt;p&gt;在前一篇 &lt;a href="/python-pipenv-install-and-usage.html"&gt;Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv&lt;/a&gt; 中提到透過 Pipenv 建立好的虛擬環境都會放在用戶家目錄下的 &lt;code&gt;.local/share/ virtualenvs/&lt;/code&gt; 路徑，並且統一管理。&lt;/p&gt;
+&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/python-pipenv-install-and-usage.html"&gt;Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv&lt;/a&gt; 中提到透過 Pipenv 建立好的虛擬環境都會放在用戶家目錄下的 &lt;code&gt;.local/share/ virtualenvs/&lt;/code&gt; 路徑，並且統一管理。&lt;/p&gt;
 &lt;p&gt;但是如果用編輯器像是 VSCode 開發時，還要設定虛擬目錄的來源很麻煩（因為每個虛擬目錄的命名都不同）所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。&lt;/p&gt;
 &lt;h1&gt;建立 &lt;code&gt;.venv&lt;/code&gt; 管理你的虛擬環境目錄&lt;/h1&gt;
 &lt;hr&gt;
@@ -805,7 +805,7 @@ parser/&amp;gt; pipenv shell
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://qiita.com/youkidkk/items/b6a6e39ee3a109001c75"&gt;Windows + Python 3.6 + PipEnv + Visual Studio Code でPython 開発環境&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pipenv"></category><category term="Virtualenv"></category></entry><entry><title>Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv</title><link href="/python-pipenv-install-and-usage.html" rel="alternate"></link><published>2019-03-08T00:00:00+08:00</published><updated>2019-03-08T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-08:/python-pipenv-install-and-usage.html</id><summary type="html">&lt;p&gt;使用 Python 做開發的人，多數都會使用虛擬環境，特別是 &lt;code&gt;virtualenv&lt;/code&gt; 作為建立開發並隔離環境的方式，但是使用一段時間後都會遇到一些管理或是協作上的問題，為了解決這些困擾，新的套件 &lt;strong&gt;Pipenv&lt;/strong&gt; 誕生了，不僅解決了所有問題，在使用上還非常方便，此篇就來深入了解與學習如何使用  &lt;strong&gt;Pipenv&lt;/strong&gt;  吧&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pipenv"></category><category term="Virtualenv"></category></entry><entry><title>Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv</title><link href="https://note.koko.guru/python-pipenv-install-and-usage.html" rel="alternate"></link><published>2019-03-08T00:00:00+08:00</published><updated>2019-03-08T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-08:/python-pipenv-install-and-usage.html</id><summary type="html">&lt;p&gt;使用 Python 做開發的人，多數都會使用虛擬環境，特別是 &lt;code&gt;virtualenv&lt;/code&gt; 作為建立開發並隔離環境的方式，但是使用一段時間後都會遇到一些管理或是協作上的問題，為了解決這些困擾，新的套件 &lt;strong&gt;Pipenv&lt;/strong&gt; 誕生了，不僅解決了所有問題，在使用上還非常方便，此篇就來深入了解與學習如何使用  &lt;strong&gt;Pipenv&lt;/strong&gt;  吧&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;使用 Python 做開發的人，多數都會使用虛擬環境，特別是 &lt;code&gt;virtualenv&lt;/code&gt; 作為建立開發並隔離環境的方式，而且這個工作的流程不外乎就是：&lt;/p&gt;
 &lt;ol&gt;
@@ -1139,7 +1139,7 @@ parser&amp;gt; pipenv --python &lt;span class="m"&gt;2&lt;/span&gt;.7.10 &lt;spa
 &lt;li&gt;&lt;a href="https://www.jianshu.com/p/8c6ae288ba48"&gt;pipenv 的高级用法了解一下&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://crazygit.wiseturtles.com/2018/01/08/pipenv-tour/"&gt;pipenv 使用指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.windrunner.me/python/pip.html"&gt;pip 与 Pipfile&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pipenv"></category><category term="Virtualenv"></category></entry><entry><title>Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv</title><link href="/python-virtualenv-install-and-usage.html" rel="alternate"></link><published>2019-03-07T00:00:00+08:00</published><updated>2019-03-07T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-07:/python-virtualenv-install-and-usage.html</id><summary type="html">&lt;p&gt;在開發 Python 的程式時，時不時就會透過 &lt;code&gt;pip&lt;/code&gt; 從 PyPI 上安許多的套件來 &lt;code&gt;import&lt;/code&gt; 使用，但是因為 Python 是裝在整個電腦的系統環境的，所以當我們之後寫的專案變多，每個不同的專案都因為有各自的需要 &lt;code&gt;pip install&lt;/code&gt; 了不同的套件，最後整個 Python 的系統環境所安裝的套件就會非常多且雜亂！ 那麼要如何讓每個專案安裝的套件都只有自己的專案擁有，且不會弄亂系統的 Python 環境呢？ 這時候就需要虛擬環境了！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pipenv"></category><category term="Virtualenv"></category></entry><entry><title>Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv</title><link href="https://note.koko.guru/python-virtualenv-install-and-usage.html" rel="alternate"></link><published>2019-03-07T00:00:00+08:00</published><updated>2019-03-07T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-07:/python-virtualenv-install-and-usage.html</id><summary type="html">&lt;p&gt;在開發 Python 的程式時，時不時就會透過 &lt;code&gt;pip&lt;/code&gt; 從 PyPI 上安許多的套件來 &lt;code&gt;import&lt;/code&gt; 使用，但是因為 Python 是裝在整個電腦的系統環境的，所以當我們之後寫的專案變多，每個不同的專案都因為有各自的需要 &lt;code&gt;pip install&lt;/code&gt; 了不同的套件，最後整個 Python 的系統環境所安裝的套件就會非常多且雜亂！ 那麼要如何讓每個專案安裝的套件都只有自己的專案擁有，且不會弄亂系統的 Python 環境呢？ 這時候就需要虛擬環境了！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在開發 Python 的程式時，時不時就會透過 &lt;code&gt;pip&lt;/code&gt; 從 PyPI 上安許多的套件來 &lt;code&gt;import&lt;/code&gt; 使用，但是因為 Python 是裝在整個電腦的系統環境的，所以當我們之後寫的專案變多，每個不同的專案都因為有各自的需要 &lt;code&gt;pip install&lt;/code&gt; 了不同的套件，最後整個 Python 的系統環境所安裝的套件就會非常多且雜亂！ 那麼要如何讓每個專案安裝的套件都只有自己的專案擁有，且不會弄亂系統的 Python 環境呢？ 這時候就需要虛擬環境了！&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -1264,7 +1264,7 @@ parser/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate
 &lt;p&gt;所以只要以指令代替即可，例如因為我的環境只有 &lt;code&gt;2.7.15&lt;/code&gt; 與 &lt;code&gt;3.7.1&lt;/code&gt; ，因此執行的 Python 指令就只有 &lt;code&gt;python2&lt;/code&gt; 與 &lt;code&gt;python3&lt;/code&gt; 而已，因此我要指定 &lt;code&gt;Python 2.7.15&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190307-python-virtualenv-install-and-usage/virtualenv-python2-command.png" alt="virtualenv-python2-command" /&gt;&lt;/p&gt;
 &lt;p&gt;最後以 &lt;code&gt;parser&lt;/code&gt; 專案以及另外一個新建的 &lt;code&gt;flask-sample&lt;/code&gt; 專案作為作為不同專案各有自己的虛擬環境的例子，如下 &lt;code&gt;parser&lt;/code&gt; 以 &lt;code&gt;python 2.7.15&lt;/code&gt; 為環境安裝了 &lt;code&gt;requests&lt;/code&gt; 與 &lt;code&gt;beautifulsoup4&lt;/code&gt; ；而 &lt;code&gt;flask-sample&lt;/code&gt; 以 &lt;code&gt;Python 3.7.1&lt;/code&gt; 為環境並安裝了 &lt;code&gt;flask&lt;/code&gt;，如下圖：&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190307-python-virtualenv-install-and-usage/multi-virtualenv.png" alt="multi-virtualenv" /&gt;&lt;/p&gt;</content><category term="Python"></category><category term="虛擬環境"></category></entry><entry><title>Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</title><link href="/mac-install-homebrew.html" rel="alternate"></link><published>2019-03-06T00:00:00+08:00</published><updated>2019-03-06T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-03-06:/mac-install-homebrew.html</id><summary type="html">&lt;p&gt;Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 apt 或是 yum 工具，許多的套件工具都可以透過 Homebrew 安裝，並且管理（如列出安裝的套件、更新套件、修正套件、移除套件等等）上非常方便，即便要尋找也都會放在相同的目錄下。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;&lt;img src="../images/20190307-python-virtualenv-install-and-usage/multi-virtualenv.png" alt="multi-virtualenv" /&gt;&lt;/p&gt;</content><category term="Python"></category><category term="虛擬環境"></category></entry><entry><title>Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</title><link href="https://note.koko.guru/mac-install-homebrew.html" rel="alternate"></link><published>2019-03-06T00:00:00+08:00</published><updated>2019-03-06T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-06:/mac-install-homebrew.html</id><summary type="html">&lt;p&gt;Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 apt 或是 yum 工具，許多的套件工具都可以透過 Homebrew 安裝，並且管理（如列出安裝的套件、更新套件、修正套件、移除套件等等）上非常方便，即便要尋找也都會放在相同的目錄下。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 apt 或是 yum 工具，許多的套件工具都可以透過 Homebrew 安裝，並且管理（如列出安裝的套件、更新套件、修正套件、移除套件等等）上非常方便，即便要尋找也都會放在相同的目錄下。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -1342,7 +1342,7 @@ Cellar    Homebrew    etc  lib      sbin  var
 &lt;h2&gt;參考文件&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://www.jianshu.com/p/8ad7056b243f"&gt;Homebrew 总结&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Mac"></category><category term="Homebrew"></category></entry><entry><title>透過 Github Page 上傳靜態網站</title><link href="/build-static-website-to-github-page.html" rel="alternate"></link><published>2019-02-08T00:00:00+08:00</published><updated>2019-02-08T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-02-08:/build-static-website-to-github-page.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;靜態網站 (Static Site)&lt;/strong&gt; 因為檔案結構單純，架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可。&lt;/p&gt;</summary><content type="html">&lt;p&gt;但是要自己架設主機花時間也需要一些專業知識，而且或多或少會需要收取一些費用，如果我們希望簡單又能夠不花費的話，要怎麼辦呢？ 此時就要來了解一下什麼是 &lt;strong&gt;Github Page&lt;/strong&gt; 啦，接著我們就來瞧瞧！&lt;/p&gt;
+&lt;/ol&gt;</content><category term="Mac"></category><category term="Homebrew"></category></entry><entry><title>透過 Github Page 上傳靜態網站</title><link href="https://note.koko.guru/build-static-website-to-github-page.html" rel="alternate"></link><published>2019-02-08T00:00:00+08:00</published><updated>2019-02-08T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-02-08:/build-static-website-to-github-page.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;靜態網站 (Static Site)&lt;/strong&gt; 因為檔案結構單純，架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可。&lt;/p&gt;</summary><content type="html">&lt;p&gt;但是要自己架設主機花時間也需要一些專業知識，而且或多或少會需要收取一些費用，如果我們希望簡單又能夠不花費的話，要怎麼辦呢？ 此時就要來了解一下什麼是 &lt;strong&gt;Github Page&lt;/strong&gt; 啦，接著我們就來瞧瞧！&lt;/p&gt;
 &lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;我們提到了要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。&lt;/p&gt;
@@ -1387,7 +1387,7 @@ Cellar    Homebrew    etc  lib      sbin  var
 &lt;p&gt;在 Github 中提供了兩種方式，第一種是透過 &lt;strong&gt;終端機(Terminal)&lt;/strong&gt; 下指令，另外一種是下載他們提供的工具 &lt;strong&gt;Github Desktop&lt;/strong&gt;，以視窗介面的形式上傳。&lt;/p&gt;
 &lt;p&gt;不管是使用 Terminal 或是 &lt;strong&gt;Github Desktop&lt;/strong&gt;，都需要安裝 Git 指令工具，但只有使用 Terminal 需要手動下載一下，至於 &lt;strong&gt;Github Desktop&lt;/strong&gt; 會順便安裝進去，以下我們分別介紹：&lt;/p&gt;
 &lt;h2&gt;1. 透過終端機 Terminal 指令上傳檔案&lt;/h2&gt;
-&lt;p&gt;由於本人使用的是 Mac ，所以我們採用 &lt;strong&gt;Homebrew&lt;/strong&gt; 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 &lt;a href="/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;由於本人使用的是 Mac ，所以我們採用 &lt;strong&gt;Homebrew&lt;/strong&gt; 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 &lt;a href="https://note.koko.guru/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;首先我們要安裝 &lt;code&gt;git&lt;/code&gt; 這個指令工具，&lt;code&gt;git&lt;/code&gt; 也就是前面提到的「版本控制系統」，而由於在 Github 上其網站的核心與提供的功能都已經包含，所以不用特別安裝。&lt;/p&gt;
 &lt;p&gt;但是在我們自己的電腦上，為了可以跟 Github 溝通並上傳檔案，所以需要安裝，不過因為 &lt;code&gt;git&lt;/code&gt; 這套系統其實只需要指令就可以執行，所以在 Mac 上我們可以直接以指令工具的形式安裝即可。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; brew install git
@@ -1459,10 +1459,10 @@ Desktop/&lt;span class="o"&gt;(&lt;/span&gt;master&lt;span class="o"&gt;)&lt;/sp
 &lt;h1&gt;後記&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;透過 Github Page 你可以快速且免費的搭建簡易的靜態網站，不過上述自己撰寫 HTML/CSS 等網頁是比較費時間的，此時你不妨可以考慮使用 &lt;strong&gt;態網站產生器 (Static Site Generator)&lt;/strong&gt; 來快速搭建你的靜態網站，在直接上傳到 Github Page 上。&lt;/p&gt;
-&lt;p&gt;而且目前靜態網站產生器的選擇上非常多樣化，如果你想要知道哪裡可以選擇靜態網站，以及更加認識什麼是靜態網站，可以接著閱讀 &lt;a href="/what-is-static-site-generator-and-when-to-use.html"&gt;什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)&lt;/a&gt; 來了解更多。&lt;/p&gt;</content><category term="靜態網站產生器"></category></entry><entry><title>使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例</title><link href="/deploy-pelican-static-webiste-to-github-page.html" rel="alternate"></link><published>2019-02-05T00:00:00+08:00</published><updated>2019-02-05T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-02-05:/deploy-pelican-static-webiste-to-github-page.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt; 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。&lt;/p&gt;</summary><content type="html">&lt;p&gt;這篇我們特別記錄了使用 Pelican 靜態網站時，如何部署到 Github Page 的過程，因為只要把檔案上傳即可，並且還不用花費任何半毛錢，接著我們就來了解。&lt;/p&gt;
+&lt;p&gt;而且目前靜態網站產生器的選擇上非常多樣化，如果你想要知道哪裡可以選擇靜態網站，以及更加認識什麼是靜態網站，可以接著閱讀 &lt;a href="https://note.koko.guru/what-is-static-site-generator-and-when-to-use.html"&gt;什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)&lt;/a&gt; 來了解更多。&lt;/p&gt;</content><category term="靜態網站產生器"></category></entry><entry><title>使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例</title><link href="https://note.koko.guru/deploy-pelican-static-webiste-to-github-page.html" rel="alternate"></link><published>2019-02-05T00:00:00+08:00</published><updated>2019-02-05T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-02-05:/deploy-pelican-static-webiste-to-github-page.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt; 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。&lt;/p&gt;</summary><content type="html">&lt;p&gt;這篇我們特別記錄了使用 Pelican 靜態網站時，如何部署到 Github Page 的過程，因為只要把檔案上傳即可，並且還不用花費任何半毛錢，接著我們就來了解。&lt;/p&gt;
 &lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
-&lt;p&gt;在前一篇 &lt;a href="/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt; 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。&lt;/p&gt;
+&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt; 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。&lt;/p&gt;
 &lt;p&gt;不過因為靜態網站只有 HTML/CSS/JS 這類單純的檔案結構，需要建置資料庫，也沒有後端的語言因此可以選擇架設的選擇性也比較多樣，因為只需要一個空間與簡單的伺服器軟體即可，所以我們可以架設一台自己的伺服器電腦透過 SSH 或 FTP 上傳，又或是使用 Dropbox 空間，雲端 AWS 與 Google Cloud, Azure 提供的服務。&lt;/p&gt;
 &lt;p&gt;但是上述中，要自己架設主機花時間也需要一些專業知識，使用 Dropbox、雲端服務的空間或多或少會需要收取一些費用，如果我們希望簡單又能夠不花費的話，要怎麼辦呢？&lt;/p&gt;
 &lt;p&gt;因此這裡我們就要選擇 &lt;strong&gt;Github Page&lt;/strong&gt; ，因為只要把檔案上傳即可，並且還不用花費任何半毛錢，以及因為 &lt;strong&gt;Github Page&lt;/strong&gt; 是 &lt;strong&gt;Github&lt;/strong&gt; 的服務之一，因此支援版本控制系統，簡單來說就是能夠幫你記錄每一次上傳更新的所有紀錄，能方便你還原上一版。&lt;/p&gt;
@@ -1490,7 +1490,7 @@ kokokuo-note&amp;gt; pipenv shell
 
 
 &lt;h2&gt;1. 安裝 Git 指令工具&lt;/h2&gt;
-&lt;p&gt;首先我們要安裝 Git 指令工具，由於本人使用的是 Mac ，所以我們採用 &lt;strong&gt;Homebrew&lt;/strong&gt; 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 &lt;a href="/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;首先我們要安裝 Git 指令工具，由於本人使用的是 Mac ，所以我們採用 &lt;strong&gt;Homebrew&lt;/strong&gt; 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 &lt;a href="https://note.koko.guru/mac-install-homebrew.html"&gt;Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; brew install git
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1599,7 +1599,7 @@ kokokuo-note&amp;gt; pipenv shell
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category><category term="Github"></category><category term="靜態網站產生器"></category></entry><entry><title>什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)</title><link href="/what-is-static-site-generator-and-when-to-use.html" rel="alternate"></link><published>2019-01-28T00:00:00+08:00</published><updated>2019-01-28T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-01-28:/what-is-static-site-generator-and-when-to-use.html</id><summary type="html">&lt;p&gt;當我們要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。&lt;/p&gt;</summary><content type="html">&lt;p&gt;而如果你的網站只是要單純呈現內容與介紹資訊為主，那麼你的網站可能有單純的靜態內容，此時我們也稱這類型的網站為 &lt;strong&gt;靜態網站 (Static Site)&lt;/strong&gt;，此時你可以考慮使用 &lt;strong&gt;靜態網站產生器 (Static Site Generator)&lt;/strong&gt; 來製作。&lt;/p&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category><category term="Github"></category><category term="靜態網站產生器"></category></entry><entry><title>什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)</title><link href="https://note.koko.guru/what-is-static-site-generator-and-when-to-use.html" rel="alternate"></link><published>2019-01-28T00:00:00+08:00</published><updated>2019-01-28T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-01-28:/what-is-static-site-generator-and-when-to-use.html</id><summary type="html">&lt;p&gt;當我們要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。&lt;/p&gt;</summary><content type="html">&lt;p&gt;而如果你的網站只是要單純呈現內容與介紹資訊為主，那麼你的網站可能有單純的靜態內容，此時我們也稱這類型的網站為 &lt;strong&gt;靜態網站 (Static Site)&lt;/strong&gt;，此時你可以考慮使用 &lt;strong&gt;靜態網站產生器 (Static Site Generator)&lt;/strong&gt; 來製作。&lt;/p&gt;
 &lt;p&gt;那麼什麼是 &lt;strong&gt;靜態網站 (Static Site)&lt;/strong&gt;，什麼又是 &lt;strong&gt;靜態網站產生器 (Static Site Generator)&lt;/strong&gt; 呢？&lt;/p&gt;
 &lt;p&gt;以下我們就來談談與介紹。&lt;/p&gt;
 &lt;h1&gt;前言&lt;/h1&gt;
@@ -1650,7 +1650,7 @@ kokokuo-note&amp;gt; pipenv shell
 &lt;li&gt;&lt;a href="https://www.staticgen.com/"&gt;StaticGen&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://learn.cloudcannon.com/jekyll/why-use-a-static-site-generator/"&gt;Why use a static site generator?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://wsvincent.com/what-is-a-static-site-generator/"&gt;What is a Static Site Generator?&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="靜態網站產生器"></category></entry><entry><title>在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌</title><link href="/mac-using-pelican-build-static-website.html" rel="alternate"></link><published>2019-01-13T00:00:00+08:00</published><updated>2019-01-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2019-01-13:/mac-using-pelican-build-static-website.html</id><summary type="html">&lt;p&gt;以前雖然使用 Wordpress 作為網誌，但是由於自己的網誌用途單純以寫作為主，加上先前遇到架設的 Wordpress 後來有轉移主機的情形，但轉移與重建過程繁瑣外，再次架設還需要還原資料庫，甚至新的 Wordpress 格式跑掉。&lt;/p&gt;</summary><content type="html">&lt;p&gt;因此這次決定採用 &lt;strong&gt;markdown 格式撰寫為主的靜態網誌產生器 ( Static Site Generator )&lt;/strong&gt; 來產生部落格，這樣的好處除了未來要轉移時檔案都會以 markdown 檔案攜帶保存外，在本機端也能隨時編輯與閱讀，呈現格式也比較不用擔心跑掉需要重新設定（例如 Wordpress 升級或是主題更新或更換主題跑版）！&lt;/p&gt;
+&lt;/ol&gt;</content><category term="靜態網站產生器"></category></entry><entry><title>在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌</title><link href="https://note.koko.guru/mac-using-pelican-build-static-website.html" rel="alternate"></link><published>2019-01-13T00:00:00+08:00</published><updated>2019-01-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-01-13:/mac-using-pelican-build-static-website.html</id><summary type="html">&lt;p&gt;以前雖然使用 Wordpress 作為網誌，但是由於自己的網誌用途單純以寫作為主，加上先前遇到架設的 Wordpress 後來有轉移主機的情形，但轉移與重建過程繁瑣外，再次架設還需要還原資料庫，甚至新的 Wordpress 格式跑掉。&lt;/p&gt;</summary><content type="html">&lt;p&gt;因此這次決定採用 &lt;strong&gt;markdown 格式撰寫為主的靜態網誌產生器 ( Static Site Generator )&lt;/strong&gt; 來產生部落格，這樣的好處除了未來要轉移時檔案都會以 markdown 檔案攜帶保存外，在本機端也能隨時編輯與閱讀，呈現格式也比較不用擔心跑掉需要重新設定（例如 Wordpress 升級或是主題更新或更換主題跑版）！&lt;/p&gt;
 &lt;p&gt;這麼神奇的方式要怎麼使用，接著們我就來了解。&lt;/p&gt;
 &lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
@@ -1676,7 +1676,7 @@ kokokuo-note/&amp;gt;
 
 &lt;p&gt;當進入目錄後，我們便可以安裝虛擬環境，並且裝載 Pelican ，以下的安裝步驟會分別紀錄採用 &lt;code&gt;virtualenv&lt;/code&gt; 與 &lt;code&gt;pipenv&lt;/code&gt; 兩種不同的虛擬環境工具。&lt;/p&gt;
 &lt;h3&gt;(2.1) 建立虛擬環境 Virtualenv 安裝 Pelican&lt;/h3&gt;
-&lt;p&gt;如果你採用 &lt;code&gt;virtualenv&lt;/code&gt; 作為虛擬環境，那麼首先我們要透過 &lt;code&gt;virtualenv&lt;/code&gt; 的指令建立虛擬環境的目錄，並進入虛擬環境中，才能 &lt;code&gt;pip&lt;/code&gt; 指令安裝 Pelican，若對 Python 的虛擬環境 virtualenv 有更多想要知道的部分可以參考此篇 &lt;a href="/python-virtualenv-install-and-usage.html"&gt;Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;如果你採用 &lt;code&gt;virtualenv&lt;/code&gt; 作為虛擬環境，那麼首先我們要透過 &lt;code&gt;virtualenv&lt;/code&gt; 的指令建立虛擬環境的目錄，並進入虛擬環境中，才能 &lt;code&gt;pip&lt;/code&gt; 指令安裝 Pelican，若對 Python 的虛擬環境 virtualenv 有更多想要知道的部分可以參考此篇 &lt;a href="https://note.koko.guru/python-virtualenv-install-and-usage.html"&gt;Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv&lt;/a&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;kokokuo-note/&amp;gt; virtualenv venv &lt;span class="c1"&gt;# 採用 virtualenv 建立虛擬環境目錄&lt;/span&gt;
 kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activate  &lt;span class="c1"&gt;# 進入虛擬環境&lt;/span&gt;
 &lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pip install pelican &lt;span class="c1"&gt;# 當顯示 (venv) 後表示我們已經在許你環境中，安裝 Pelican &lt;/span&gt;
@@ -1706,7 +1706,7 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 
 
 &lt;p&gt;&lt;img src="../images/20190113-how-to-start-pelican/pipenv-install-markdown.png" alt="pipenv-install-markdown" width="360px"/&gt;&lt;/p&gt;
-&lt;p&gt;若是想要更多了解 &lt;code&gt;pipenv&lt;/code&gt;，可以參考此篇 &lt;a href="/python-pipenv-install-and-usage.html"&gt;Python - 使用 Pipenv 建立虛擬環境與安裝套件&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;若是想要更多了解 &lt;code&gt;pipenv&lt;/code&gt;，可以參考此篇 &lt;a href="https://note.koko.guru/python-pipenv-install-and-usage.html"&gt;Python - 使用 Pipenv 建立虛擬環境與安裝套件&lt;/a&gt;&lt;/p&gt;
 &lt;h3&gt;(3.) 透過 Pelican 指定產生靜態網站檔案&lt;/h3&gt;
 &lt;p&gt;當我們安裝好 Pelican 與所需要的套件後，再來便可以透過 Pelican 提供的指令 &lt;code&gt;pelican-quickstart&lt;/code&gt; 來產生後續我們要的靜態網站範本：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;kokokuo-note&lt;span class="o"&gt;)&lt;/span&gt;kokokuo-note/&amp;gt; pelican-quickstart
@@ -1800,7 +1800,7 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;hr&gt;
 &lt;p&gt;雖然上述介紹了如何使用 Pelican 來編寫 Markdown 與產生的 HTML 網頁。&lt;/p&gt;
 &lt;p&gt;但是這一切都是在自己的電腦本機端，我們仍然需要真的伺服器空間，來把我們的網誌與文章放上去才行。&lt;/p&gt;
-&lt;p&gt;因此接下來我們會介紹一開始在執行 &lt;code&gt;pelican-quickstart&lt;/code&gt; 時，選擇使用 &lt;strong&gt;Github Page&lt;/strong&gt; 的後續部署網誌步驟，請參考 &lt;a href="/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;因此接下來我們會介紹一開始在執行 &lt;code&gt;pelican-quickstart&lt;/code&gt; 時，選擇使用 &lt;strong&gt;Github Page&lt;/strong&gt; 的後續部署網誌步驟，請參考 &lt;a href="https://note.koko.guru/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考文章&lt;/h1&gt;
 &lt;hr&gt;
@@ -1808,7 +1808,7 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Python - 使用 py2exe 製作 Python exe 執行檔</title><link href="/build-python-exe-using-py2exe%20Authors:%20kokokuo.html" rel="alternate"></link><published>2015-01-03T00:00:00+08:00</published><updated>2015-01-03T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2015-01-03:/build-python-exe-using-py2exe Authors: kokokuo.html</id><summary type="html">&lt;p&gt;用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，此文章這邊我先選擇 py2exe 做使用與測試。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Python - 使用 py2exe 製作 Python exe 執行檔</title><link href="https://note.koko.guru/build-python-exe-using-py2exe%20Authors:%20kokokuo.html" rel="alternate"></link><published>2015-01-03T00:00:00+08:00</published><updated>2015-01-03T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-03:/build-python-exe-using-py2exe Authors: kokokuo.html</id><summary type="html">&lt;p&gt;用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，此文章這邊我先選擇 py2exe 做使用與測試。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。
 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，而這邊我先選擇 py2exe 做使用與測試。&lt;/p&gt;
@@ -1951,7 +1951,7 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/Python/M.1278481498.A.403.html"&gt;PPT python2exe&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://mf99coding.logdown.com/posts/206237-package-your-python-script-into-exe-executable"&gt;將 Python script 打包成 exe 執行檔&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://stackoverflow.com/questions/112698/py2exe-generate-single-executable-file#113014"&gt;py2exe - generate single executable file&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="py2exe"></category></entry><entry><title>Vundle 安裝與安裝 Plugin 時的注意事項</title><link href="/install-vundle-and-notice.html" rel="alternate"></link><published>2015-01-02T00:00:00+08:00</published><updated>2015-01-02T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:None,2015-01-02:/install-vundle-and-notice.html</id><summary type="html">&lt;p&gt;剛開始學習使用 Vim，因為習慣了 GUI 的 IDE 特別是剛從號稱 Windows 的地表最強 IDE - Visual Studio 跳過來，整個好不容易，所以這裡記錄了一些剛使用 Vundle 時下載 Plugin 的小須知&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="py2exe"></category></entry><entry><title>Vundle 安裝與安裝 Plugin 時的注意事項</title><link href="https://note.koko.guru/install-vundle-and-notice.html" rel="alternate"></link><published>2015-01-02T00:00:00+08:00</published><updated>2015-01-02T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-02:/install-vundle-and-notice.html</id><summary type="html">&lt;p&gt;剛開始學習使用 Vim，因為習慣了 GUI 的 IDE 特別是剛從號稱 Windows 的地表最強 IDE - Visual Studio 跳過來，整個好不容易，所以這裡記錄了一些剛使用 Vundle 時下載 Plugin 的小須知&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;剛開始學習使用 Vim，因為習慣了 GUI 的 IDE 特別是剛從號稱 Windows 的地表最強 IDE - Visual Studio 跳過來，整個非常不容易，所以這裡記錄了一些剛使用 Vundle 時下載 Plugin 的小須知&lt;/p&gt;
 &lt;h1&gt;安裝 Vundle&lt;/h1&gt;
