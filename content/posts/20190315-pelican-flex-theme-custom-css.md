@@ -113,7 +113,6 @@ CUSTOM_CSS = "static/custom.css"
 <img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" width="360px"/>
 
 <br/>
-<br/>
 
 接著開啟網站看預覽畫面，如下圖 `custom.css` 生效囉！
 
@@ -130,7 +129,7 @@ STATIC_PATHS = [
     "extra"
 ]
 ```
-<br/>
+
 <br/>
 
 
@@ -195,6 +194,37 @@ main article p img {
 
 <img src="../images/20190315-pelican-flex-theme-custom-css/7-rwd-custom-css-image-preview.png" alt="7-rwd-custom-css-image-preview.png" width="320px"/>
 
+<br/>
+
+
+# 指定 Favicon 輸出路徑
+---
+在 [Pelican - 常用參數設定介紹與功能設定]({filename}/posts/20190318-pelican-setting-introduction.md) 中有介紹到如何設定 Favicon 並讓瀏覽器搜尋與書籤列顯示圖示，但是 Pelican 預設只能放在根目錄下，因此若不想放在根目錄下，就要看不同的 Theme 是否可以指定目錄（ 否則就要額外寫一些腳本程式 ）。
+
+而剛好的 `Flex` 這套 Theme 就可以在 `pelicanconf.py` 中設定參數 `FAVICON`，參考 [Flex - Custom Settings](https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings)。
+
+```python
+# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
+STATIC_PATHS = [
+    "extra/favicon.ico"
+]
+# 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在根目錄下
+EXTRA_PATH_METADATA = {
+    "extra/favicon.ico": {"path": "static/favicon.ico"},
+}
+```
+
+如上這次把 `favicon` 指定在輸出時放到 `static` 目錄下，並再次清除並重新輸出 HTML 與執行 Server，會看到 `favicon.ico` 放在 `static` 目錄下了，並且也會發現瀏覽器上沒有顯示 `favicon` 的圖案。
+
+<img src="../images/20190318-pelican-setting-introduction/favicon-in-the-output.png" alt="favicon-in-the-output" width="240px"/>
+
+此時要怎麼辦呢？ 如果使用 `Flex` 樣板，我們可以直接指定所在目錄下，就會再次看到。
+
+```python
+FAVICON = "/static/favicon.ico"
+```
+
+<br/>
 
 # 指定 Flex 樣式使用本地端的 Logo
 ---
@@ -228,6 +258,7 @@ SITELOGO = "/static/koko-logo.png"
 
 完成。
 
+<br/>
 
 # 後記
 ---

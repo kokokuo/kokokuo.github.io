@@ -30,11 +30,8 @@ Favicon 是網站圖示，主要被用在瀏覽器的網址搜尋列圖示或是
 
 另外 Favicon 有許多網站有在提供免費的圖像格式檔案轉換 ( png, jpg 轉 ico  )，例如我在這邊使用的是 [Favicon 線上製作轉換工具](http://tw.faviconico.org/)，另外 Favicon 有不同的尺寸，有興趣的可以看此篇 - [Does a favicon have to be 32x32 or 16x16?](https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16)。
 
-<br/>
-<br/>
 
-## 顯示 Favicon
-要讓 Pelican 顯示 Favicon，有我們需要借助在 Pelican 文件中提到的 `EXTRA_PATH_METADATA` 設定參數：
+ 接著要開始設定 Pelican 的 Favicon 並顯示，有我們需要借助在 Pelican 文件中提到的 `EXTRA_PATH_METADATA` 設定參數：
 
 <img src="../images/20190318-pelican-setting-introduction/1-extra-path-metadata.png" alt="1-extra-path-metadata" width="360px"/>
 
@@ -85,32 +82,7 @@ EXTRA_PATH_METADATA = {
 <img src="../images/20190318-pelican-setting-introduction/show-favicon.png" alt="show-favicon" width="240px"/>
 
 <br/>
-<br/>
 
-## 指定 Favicon 輸出路徑
-
-如果不想放在根目錄下，就要看不同的 Theme 是否可以指定目錄（ 否則就要額外寫一些腳本程式 ），例如 `Flex` 這套 Theme 就可以在 `pelicanconf.py` 中設定參數 `FAVICON`，參考 [Flex - Custom Settings](https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings)。
-
-```python
-# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
-STATIC_PATHS = [
-    "extra/favicon.ico"
-]
-# 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在根目錄下
-EXTRA_PATH_METADATA = {
-    "extra/favicon.ico": {"path": "static/favicon.ico"},
-}
-```
-
-如上這次把 `favicon` 指定在輸出時放到 `static` 目錄下，並再次清除並重新輸出 HTML 與執行 Server，會看到 `favicon.ico` 放在 `static` 目錄下了，並且也會發現瀏覽器上沒有顯示 `favicon` 的圖案。
-
-<img src="../images/20190318-pelican-setting-introduction/favicon-in-the-output.png" alt="favicon-in-the-output" width="240px"/>
-
-此時要怎麼辦呢？ 如果使用 `Flex` 樣板，我們可以直接指定所在目錄下，就會再次看到。
-
-```python
-FAVICON = "/static/favicon.ico"
-```
 
 # 設定回首頁
 
