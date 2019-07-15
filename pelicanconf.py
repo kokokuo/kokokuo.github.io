@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = "kokokuo"
 SITENAME = "koko's Note"
-SITEURL = "https://koko.guru"
+SITEURL = "https://note.koko.guru"
 
 # Pelican 讀取的輸入目錄，也就是你的寫作目錄
 PATH = "content"
