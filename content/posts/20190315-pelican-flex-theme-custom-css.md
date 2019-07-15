@@ -18,30 +18,19 @@ Summary: 如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個�
 
 > Path to a CSS file. Need to be used with [EXTRA_PATH_METADATA](http://docs.getpelican.com/en/stable/settings.html#path-metadata).
 
-可以讓你指定你要客製化的 CSS 檔案位置，而且 `CUSTOM_CSS` 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 `EXTRA_PATH_METADATA` 搭配使用。
+可以讓你指定你要客製化的 CSS 檔案位置，而且 `CUSTOM_CSS` 的位置是指在輸出 HTML 的目錄下位置，但是該參數與要與 Pelican 本身的 `EXTRA_PATH_METADATA` 搭配使用：
 
 <img src="../images/20190315-pelican-flex-theme-custom-css/1-extra-path-metadata.png" alt="1-extra-path-metadata" />
 
-上述的 `EXTRA_PATH_METADATA` 參數可以讓你指定輸入來源目錄 `content` 下的特定的檔案，並在 `make html` 輸出成 HTML 後，放到輸出目錄 `output` 指定的位置中。
+關於 `EXTRA_PATH_METADATA` 有在 [Pelican - 常用參數設定介紹與功能設定]({filename}/posts/20190318-pelican-setting-introduction.md) 介紹到。
 
-不過 `EXTRA_PATH_METADATA` 需要與 `STATIC_PATHS` 搭配，因為 `STATIC_PATHS` 是告知 Pelican 哪些檔案或目錄，屬於靜態文件，唯有指定後，才會再輸出時複製檔案並且生效。
+透過 `EXTRA_PATH_METADATA` 參數加入想要的特定的檔案到來源目錄 `content` 下，並在 `make html` 輸出成 HTML 後，自動產生在輸出目錄 `output` 指定的位置中。
 
-這個原因是因為一般的靜態網站，通常分為 HTML 內容與靜態文件 (Static Files)，這些文件則是資源檔案（圖片、影片、影訊檔案）、CSS 與 JS 檔案，而在 Pelican 中，因為也是靜態網站，所以 Pelican 需要知道哪些檔案或目錄，會被歸類成靜態文件，才能在輸出成 HTML 時作用並複製放到到輸出 HTML 的目錄下。
+ `EXTRA_PATH_METADATA` 需要需要與 `STATIC_PATHS` 搭配使用，藉由 `STATIC_PATHS` 告知 Pelican 哪些檔案或目錄屬於靜態文件，並在指定後才會在輸出時複製檔案並且生效。
 
-如下例子 `EXTRA_PATH_METADATA` 中的 `'static/robots.txt'` 是指在 `content` 下 `static` 的檔案，其投射到 HTML 時，被放置在 `output` 的根目錄。
+藉由在 [Pelican - 常用參數設定介紹與功能設定]({filename}/posts/20190318-pelican-setting-introduction.md) 提到 `favicon.ico` 與 `robot.txt` 的例子參考。
 
-但是因為有指定該來源路徑的內容要被歸類在 `STATIC_PATHS` 中，因此輸出才會作用，Pelican 才會複製該檔案，並藉由 `EXTRA_PATH_METADATA` 得知要放到根目錄中。
-
-```python
-STATIC_PATHS = [
-    'static/robots.txt',
-    ]
-EXTRA_PATH_METADATA = {
-    'static/robots.txt': {'path': 'robots.txt'},
-    }
-```
-
-因此回到我們的設定，我們在預設的輸入目錄 `content` 下建立了一個 `extra` 子目錄並建立接下來要客製化的 CSS 檔案 `custom.css` ，並在該檔案中編輯要修改的 CSS，例如我的是：
+把接下來要客製化的 CSS 檔案 `custom.css` 一同放置 `content` 下的 `extra` 子目錄並在該檔案中編輯要修改的 CSS，例如我的是：
 
 <img src="../images/20190315-pelican-flex-theme-custom-css/2-extra-custom-css-path.png" alt="2-extra-custom-css-path" width="380px"/>
 
@@ -102,23 +91,29 @@ main article *:not(pre)>code {
 
 ```python
 # 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
-STATIC_PATHS = ["images", "extra/custom.css"]
+STATIC_PATHS = [
+  "images", 
+  "extra/favicon.ico"
+  "extra/custom.css"
+]
 # 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static
 EXTRA_PATH_METADATA = {
+    "extra/favicon.ico": {"path": "static/favicon.ico"},
     "extra/custom.css": {"path": "static/custom.css"},
 }
 # CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置
 CUSTOM_CSS = "static/custom.css"
 ```
 
-因為 Pelican 預設會把 `images` 目錄視為靜態文件放置輸出目錄下，所以要設定 `extra/custom.css` 時不能省略。
-
-之後設定 `EXTRA_PATH_METADATA`，並指定頭放到輸出目錄後要被放到 `static` 下，設定 `CUSTOM_CSS` 參數時在指定此 `custom.css` 在 HTML 輸出目錄下的所在位置。
+之後設定 `EXTRA_PATH_METADATA`，並指定要求輸出目錄後，放到 `static` 下，設定 `CUSTOM_CSS` 參數時在指定此 `custom.css` 在 HTML 輸出目錄下的所在位置。
 
 最後再透過 `make html` 與 `make serve [port]` 測試，如下圖，你會看到該 `custom.css` 被複製到了 `output` 目錄下，並且放在指定的 `static` 目錄中：
 
 
-<img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" width="380px"/>
+<img src="../images/20190315-pelican-flex-theme-custom-css/3-output-mapping-path.png" alt="3-output-mapping-path" width="360px"/>
+
+<br/>
+<br/>
 
 接著開啟網站看預覽畫面，如下圖 `custom.css` 生效囉！
 
@@ -127,10 +122,19 @@ CUSTOM_CSS = "static/custom.css"
 之後喜歡這個主題的人就可以開始對這個 CSS 大改特改了。
 
 
+對了，由於先前我們把 `custom.css` 與 `favicon.ico` 都放在 `extra` 底下，因此當有多個檔案時，如果這些檔案未來都是要顯示設為靜態文件，可以直接對 `STATIC_PATHS` 改成指定目錄 ( 如同 `images` ) ：
+
+```python
+STATIC_PATHS = [
+    "images",
+    "extra"
+]
+```
+<br/>
 <br/>
 
 
-# 補充 - 調整 Flex 內文中的圖像樣式
+# 調整 Flex 內文中的圖像樣式
 ---
 由於在 Markdown 中，預設並沒有可以直接調整圖像的參數，因此若要調整大小或置中的效果，因此需要另外的設定。
 
@@ -191,12 +195,50 @@ main article p img {
 
 <img src="../images/20190315-pelican-flex-theme-custom-css/7-rwd-custom-css-image-preview.png" alt="7-rwd-custom-css-image-preview.png" width="320px"/>
 
+
+# 指定 Flex 樣式使用本地端的 Logo
+---
+在前一篇 [Python - 安裝 Pelican Theme 來改變你的靜態網站主題]({filename}/posts/20190315-install-pelican-theme.md) 文章安裝 `Flex` 時，因為 `Flex` 可以透過 `SITELOGO` 參數設定個人的大頭貼，因此當時直接使用了放置在雲端的路徑路徑。
+
+但是因為我們現在知道了 `EXTRA_PATH_METADATA` 與 `STATIC_PATHS` ，所以我們也可以存取網站的資源目錄下要用的 LOGO，在這邊我準備了原先的大頭貼並放到 `content/extra` 目錄下，並接著使用 `EXTRA_PATH_METADATA` 與 `STATIC_PATHS` 來把檔案輸出到 HTML 的 `static` 目錄下：
+
+```python
+# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
+STATIC_PATHS = [
+  "images", 
+  "extra"
+]
+# 用來設定複製到輸出目錄時，該 extra/koko-logo.png 會被投放對應的位置，這邊設定在 static
+EXTRA_PATH_METADATA = {
+    "extra/favicon.ico": {"path": "static/favicon.ico"},
+     "extra/koko-logo.png": {"path": "static/koko-logo.png"},
+    "extra/custom.css": {"path": "static/custom.css"},
+}
+```
+
+接著設定原先的 `SITELOGO` 參數指向 `static/koko-logo.png`:
+
+```python
+SITELOGO = "/static/koko-logo.png"
+```
+
+`make clean` 後再次輸入 `make html && make serve PORT=[number]` 執行：
+
+<img src="../images/20190315-pelican-flex-theme-custom-css/koko-logo-local-resource.png" alt="koko-logo-local-resource.png" width="480px"/>
+
+完成。
+
+
 # 後記
 ---
-雖然樣式調整設定好了，但是在 Pelican 中還有許多可以設定的參數，以後有機會再接著介紹。
+雖然樣式調整設定好了，但是在 Pelican 中還有許多可以設定的參數，以後若是會使用新的參數會再跟大家分享。
+
+到此 Pelican 相關的靜態網站主題會告一段落，若有想要詢問的人歡迎來在詢問。
 
 # 參考文章
 ---
 1. [Pelican Settings - Metadata](https://docs.getpelican.com/en/stable/settings.html#metadata)
 2. [利用 Pelican 和 GitHub Pages 打造个性化博客(二)](http://blog.game18.net/posts/2015/10/li-yong-pelicanhe-github-pagesda-zao-ge-xing-hua-bo-ke-er/)
 3. [Windows 下使用 Pelican 搭建静态博客](https://maxwell-nc.github.io/blog/pelicanBuildBlog.html)
+
+
