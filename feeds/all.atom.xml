@@ -124,68 +124,7 @@ $ gvm use go1.12.7 --default
 &lt;li&gt;&lt;a href="https://dryyun.com/2018/11/28/how-to-use-gvm/"&gt;GVM - Go 的多版本管理工具，使用介绍&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://chen-tao.github.io/2017/09/14/Use-gvm-manage-golang-version/"&gt;使用 gvm 管理多版本 golang&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://golang.org/doc/devel/release.html"&gt;Go Release History&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Golang"></category><category term="Mac"></category><category term="GVM"></category></entry><entry><title>Pelican - 常用參數設定介紹與功能設定</title><link href="https://note.koko.guru/pelican-settings-parameter-introudction.html" rel="alternate"></link><published>2019-03-18T00:00:00+08:00</published><updated>2019-03-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-18:/pelican-settings-parameter-introudction.html</id><summary type="html">&lt;p&gt;如果你的 Pelican 剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，介紹一些常用的 Pelican 的設定參數用途。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
-&lt;hr&gt;
-&lt;p&gt;如果你的 Pelican 靜態網站剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，接著會介紹一些常用的 Pelican 的設定參數用途，希望能幫助到你。&lt;/p&gt;
-&lt;p&gt;另外如果你對如何架設 Pelican 、部署網站、使用 Pelican 的主題...等有疑慮的話，也歡迎你閱讀我前幾篇寫的文章，來幫助你更多認識唷。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://note.koko.guru/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://note.koko.guru/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;接著我們來進入正題！&lt;/p&gt;
-&lt;p&gt;&lt;br/&gt;
-&lt;br/&gt;&lt;/p&gt;
-&lt;h1&gt;設定 Favicon&lt;/h1&gt;
-&lt;hr&gt;
-&lt;p&gt;在使用 Pelican 時如果有注意到的話，會發現當我們透過 &lt;code&gt;make serve PORT=[number]&lt;/code&gt; 後，每當開啟網頁請求時，都會跳出，找不到 Favicon 的警告，如下圖：&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/warning-not-find-favicon.png" alt="warning-not-find-favicon" width="480px"/&gt;&lt;/p&gt;
-&lt;p&gt;Favicon 是網站圖示，主要被用在瀏覽器的網址搜尋列圖示或是書籤列圖示等等，尺寸通常在 100 多或 100 以下 Pixel 的大小 ( 更多介紹可以查看 &lt;a href="https://zh.wikipedia.org/wiki/Favicon"&gt;Wiki&lt;/a&gt; )，副檔名為 &lt;code&gt;ico&lt;/code&gt;。 而在 Pelican 中雖然不會影響，但是會被作為不完全的警告，因此我們接著來把 Favicon 加入進去。&lt;/p&gt;
-&lt;p&gt;另外 Favicon 有許多網站有在提供免費的圖像格式檔案轉換 ( png, jpg 轉 ico  )，例如我在這邊使用的是 &lt;a href="http://tw.faviconico.org/"&gt;Favicon 線上製作轉換工具&lt;/a&gt;，另外 Favicon 有不同的尺寸，有興趣的可以看此篇 - &lt;a href="https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16"&gt;Does a favicon have to be 32x32 or 16x16?&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;接著要開始設定 Pelican 的 Favicon 並顯示，有我們需要借助在 Pelican 文件中提到的 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 設定參數：&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/1-extra-path-metadata.png" alt="1-extra-path-metadata" width="360px"/&gt;&lt;/p&gt;
-&lt;p&gt;透過 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 參數加入想要的特定的檔案到來源目錄 &lt;code&gt;content&lt;/code&gt; 下，並在 &lt;code&gt;make html&lt;/code&gt; 輸出成 HTML 後，自動產生在輸出目錄 &lt;code&gt;output&lt;/code&gt; 指定的位置中。&lt;/p&gt;
-&lt;p&gt;不過 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 需要與 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 搭配，因為 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 會告知 Pelican 哪些檔案或目錄屬於靜態文件，唯有指定後，才會在輸出時複製檔案並且生效。&lt;/p&gt;
-&lt;p&gt;這個原因是因為一般的靜態網站，通常分為 HTML 內容與靜態文件 (Static Files)，這些文件則是資源檔案（圖片、影片、影訊檔案）、CSS 與 JS 檔案，而在 Pelican 中，因為也是靜態網站，所以 Pelican 需要知道哪些檔案或目錄，會被歸類成靜態文件，才能在輸出成 HTML 時作用並複製放到到輸出 HTML 的目錄下。&lt;/p&gt;
-&lt;p&gt;如下例子 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 中的 &lt;code&gt;'static/robots.txt'&lt;/code&gt; 是指在 &lt;code&gt;content&lt;/code&gt; 下 &lt;code&gt;static&lt;/code&gt; 的檔案，其投射到 HTML 時，被放置在 &lt;code&gt;output&lt;/code&gt; 的根目錄。&lt;/p&gt;
-&lt;p&gt;但是因為有指定該來源路徑的內容要被歸類在 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 中，因此輸出才會作用，Pelican 才會複製該檔案，並藉由 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 得知要放到根目錄中。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;static/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s1"&gt;&amp;#39;static/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;因此接著我們先把 Favicon 放到在 &lt;code&gt;content&lt;/code&gt; 底下建立的 &lt;code&gt;extra&lt;/code&gt; 目錄中（如果沒有建立直接建立此目錄）:&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/favicon-in-the-content.png" alt="favicon-in-the-content" width="240px"/&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
-&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;
-&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 extra/favicon.ico 會被投放對應的位置，這邊設定在根目錄下&lt;/span&gt;
-&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;因為 Pelican 預設會把 &lt;code&gt;images&lt;/code&gt; 目錄視為靜態文件放置輸出目錄下，所以在設定 &lt;code&gt;extra/favicon.ico&lt;/code&gt; 時不能省略。&lt;/p&gt;
-&lt;p&gt;之後設定 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt;，並指定要求輸出目錄後，放到根目錄下，如此在 HTML 輸出目錄後便會出現在根目錄當中。&lt;/p&gt;
-&lt;p&gt;接著我們 &lt;code&gt;make clean&lt;/code&gt; 後再輸入 &lt;code&gt;make html &amp;amp;&amp;amp; make serve PORT=[number]&lt;/code&gt; 執行，便會看到原本在 &lt;code&gt;content/extra/&lt;/code&gt; 的 &lt;code&gt;favicon.ico&lt;/code&gt; 也出現在 &lt;code&gt;output&lt;/code&gt; 下：&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/show-favicon-in-the-root.png" alt="show-favicon-in-the-root" width="240px"/&gt;&lt;/p&gt;
-&lt;p&gt;之所以會放到根目錄的原因是因為在 Pelican 中有提到像 &lt;code&gt;favicon.ico&lt;/code&gt;、&lt;code&gt;robot.txt&lt;/code&gt; 可以放在根目錄會直接作用，所以在上述的 &lt;code&gt;favicon.ico&lt;/code&gt; 在使用 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 設定路徑時，&lt;code&gt;path&lt;/code&gt; 直接放在最上層，所以在 &lt;code&gt;make html&lt;/code&gt; 時才會直接出現在 &lt;code&gt;output&lt;/code&gt; 下，接著透過 &lt;code&gt;make serve&lt;/code&gt; 執行後也會顯示該 &lt;code&gt;favicon.ico&lt;/code&gt; :&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/show-favicon.png" alt="show-favicon" width="240px"/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h1&gt;設定回首頁&lt;/h1&gt;
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h1&gt;參考資料&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog"&gt;How to add a favicon to a Pelican blog?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16"&gt;Does a favicon have to be 32x32 or 16x16?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://docs.getpelican.com/en/3.6.0/tips.html?highlight=favicon"&gt;Pelican - Tips&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>如何客製化 Pelican Theme 的 Flex 樣式</title><link href="https://note.koko.guru/custom-pelican-theme-flex-style.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-15:/custom-pelican-theme-flex-style.html</id><summary type="html">&lt;p&gt;如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Golang"></category><category term="Mac"></category><category term="GVM"></category></entry><entry><title>如何客製化 Pelican Theme 的 Flex 樣式</title><link href="https://note.koko.guru/custom-pelican-theme-flex-style.html" rel="alternate"></link><published>2019-03-18T00:00:00+08:00</published><updated>2019-03-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-18:/custom-pelican-theme-flex-style.html</id><summary type="html">&lt;p&gt;如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;
 &lt;h1&gt;讓 Flex Theme 讀取客製化樣式&lt;/h1&gt;
@@ -258,11 +197,11 @@ $ gvm use go1.12.7 --default
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
 &lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
   &lt;span class="s2"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
-  &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;
-  &lt;span class="s2"&gt;&amp;quot;extra/custom.css&amp;quot;&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;extra&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static&lt;/span&gt;
 &lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/README&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;README.md&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;extra/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -278,14 +217,6 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;接著開啟網站看預覽畫面，如下圖 &lt;code&gt;custom.css&lt;/code&gt; 生效囉！&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190315-pelican-flex-theme-custom-css/4-custom-css-review.png" alt="4-custom-css-review" /&gt;&lt;/p&gt;
 &lt;p&gt;之後喜歡這個主題的人就可以開始對這個 CSS 大改特改了。&lt;/p&gt;
-&lt;p&gt;對了，由於先前我們把 &lt;code&gt;custom.css&lt;/code&gt; 與 &lt;code&gt;favicon.ico&lt;/code&gt; 都放在 &lt;code&gt;extra&lt;/code&gt; 底下，因此當有多個檔案時，如果這些檔案未來都是要顯示設為靜態文件，可以直接對 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 改成指定目錄 ( 如同 &lt;code&gt;images&lt;/code&gt; ) ：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;extra&amp;quot;&lt;/span&gt;
-&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;調整 Flex 內文中的圖像樣式&lt;/h1&gt;
 &lt;hr&gt;
@@ -373,9 +304,10 @@ $ gvm use go1.12.7 --default
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 extra/koko-logo.png 會被投放對應的位置，這邊設定在 static&lt;/span&gt;
 &lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/README&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;README.md&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-     &lt;span class="s2"&gt;&amp;quot;extra/koko-logo.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/koko-logo.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;extra/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/koko-logo.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/koko-logo.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -526,7 +458,105 @@ notmyidea
 &lt;li&gt;&lt;a href="https://github.com/alexandrevicenzi/Flex/wiki"&gt;Flex - Wiki&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py"&gt;Flex - pelicanconf.py&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.liang2.tw/posts/2015/09/blog-internals/"&gt;設定部落格筆記&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>安裝 Python 2 在 Mac 上 (Python2.7.15 為例）</title><link href="https://note.koko.guru/python-install-python2-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-12:/python-install-python2-on-mac.html</id><summary type="html">&lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>Pelican - 常用參數設定介紹與功能設定</title><link href="https://note.koko.guru/pelican-settings-parameter-introudction.html" rel="alternate"></link><published>2019-03-15T00:00:00+08:00</published><updated>2019-03-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-15:/pelican-settings-parameter-introudction.html</id><summary type="html">&lt;p&gt;如果你的 Pelican 剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，介紹一些常用的 Pelican 的設定參數用途。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;如果你的 Pelican 靜態網站剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，接著會介紹一些常用的 Pelican 的設定參數用途，希望能幫助到你。&lt;/p&gt;
+&lt;p&gt;另外如果你對如何架設 Pelican 、部署網站、使用 Pelican 的主題...等有疑慮的話，也歡迎你閱讀我前幾篇寫的文章，來幫助你更多認識唷。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://note.koko.guru/mac-using-pelican-build-static-website.html"&gt;在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://note.koko.guru/deploy-pelican-static-webiste-to-github-page.html"&gt;使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;接著我們來進入正題！&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;
+&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;設定 Favicon&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;在使用 Pelican 時如果有注意到的話，會發現當我們透過 &lt;code&gt;make serve PORT=[number]&lt;/code&gt; 後，每當開啟網頁請求時，都會跳出，找不到 Favicon 的警告，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/warning-not-find-favicon.png" alt="warning-not-find-favicon" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;Favicon 是網站圖示，主要被用在瀏覽器的網址搜尋列圖示或是書籤列圖示等等，尺寸通常在 100 多或 100 以下 Pixel 的大小 ( 更多介紹可以查看 &lt;a href="https://zh.wikipedia.org/wiki/Favicon"&gt;Wiki&lt;/a&gt; )，副檔名為 &lt;code&gt;ico&lt;/code&gt;。 而在 Pelican 中雖然不會影響，但是會被作為不完全的警告，因此我們接著來把 Favicon 加入進去。&lt;/p&gt;
+&lt;p&gt;另外 Favicon 有許多網站有在提供免費的圖像格式檔案轉換 ( png, jpg 轉 ico  )，例如我在這邊使用的是 &lt;a href="http://tw.faviconico.org/"&gt;Favicon 線上製作轉換工具&lt;/a&gt;，另外 Favicon 有不同的尺寸，有興趣的可以看此篇 - &lt;a href="https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16"&gt;Does a favicon have to be 32x32 or 16x16?&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;接著要開始設定 Pelican 的 Favicon 並顯示，有我們需要借助在 Pelican 文件中提到的 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 設定參數：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/1-extra-path-metadata.png" alt="1-extra-path-metadata" width="360px"/&gt;&lt;/p&gt;
+&lt;p&gt;透過 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 參數加入想要的特定的檔案到來源目錄 &lt;code&gt;content&lt;/code&gt; 下，並在 &lt;code&gt;make html&lt;/code&gt; 輸出成 HTML 後，自動產生在輸出目錄 &lt;code&gt;output&lt;/code&gt; 指定的位置中。&lt;/p&gt;
+&lt;p&gt;不過 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 需要與 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 搭配，因為 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 會告知 Pelican 哪些檔案或目錄屬於靜態文件，唯有指定後，才會在輸出時複製檔案並且生效。&lt;/p&gt;
+&lt;p&gt;這個原因是因為一般的靜態網站，通常分為 HTML 內容與靜態文件 (Static Files)，這些文件則是資源檔案（圖片、影片、影訊檔案）、CSS 與 JS 檔案，而在 Pelican 中，因為也是靜態網站，所以 Pelican 需要知道哪些檔案或目錄，會被歸類成靜態文件，才能在輸出成 HTML 時作用並複製放到到輸出 HTML 的目錄下。&lt;/p&gt;
+&lt;p&gt;如下例子 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 中的 &lt;code&gt;'static/robots.txt'&lt;/code&gt; 是指在 &lt;code&gt;content&lt;/code&gt; 下 &lt;code&gt;static&lt;/code&gt; 的檔案，其投射到 HTML 時，被放置在 &lt;code&gt;output&lt;/code&gt; 的根目錄。&lt;/p&gt;
+&lt;p&gt;但是因為有指定該來源路徑的內容要被歸類在 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 中，因此輸出才會作用，Pelican 才會複製該檔案，並藉由 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 得知要放到根目錄中。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;static/robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;path&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;robots.txt&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;因此接著我們先把 Favicon 放到在 &lt;code&gt;content&lt;/code&gt; 底下建立的 &lt;code&gt;extra&lt;/code&gt; 目錄中（如果沒有建立直接建立此目錄）:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/favicon-in-the-content.png" alt="favicon-in-the-content" width="240px"/&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 extra/favicon.ico 會被投放對應的位置，這邊設定在根目錄下&lt;/span&gt;
+&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;因為 Pelican 預設會把 &lt;code&gt;images&lt;/code&gt; 目錄視為靜態文件放置輸出目錄下，所以在設定 &lt;code&gt;extra/favicon.ico&lt;/code&gt; 時不能省略。&lt;/p&gt;
+&lt;p&gt;之後設定 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt;，並指定要求輸出目錄後，放到根目錄下，如此在 HTML 輸出目錄後便會出現在根目錄當中。&lt;/p&gt;
+&lt;p&gt;接著我們 &lt;code&gt;make clean&lt;/code&gt; 後再輸入 &lt;code&gt;make html &amp;amp;&amp;amp; make serve PORT=[number]&lt;/code&gt; 執行，便會看到原本在 &lt;code&gt;content/extra/&lt;/code&gt; 的 &lt;code&gt;favicon.ico&lt;/code&gt; 也出現在 &lt;code&gt;output&lt;/code&gt; 下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/show-favicon-in-the-root.png" alt="show-favicon-in-the-root" width="240px"/&gt;&lt;/p&gt;
+&lt;p&gt;之所以會放到根目錄的原因是因為在 Pelican 中有提到像 &lt;code&gt;favicon.ico&lt;/code&gt;、&lt;code&gt;robot.txt&lt;/code&gt; 可以放在根目錄會直接作用，所以在上述的 &lt;code&gt;favicon.ico&lt;/code&gt; 在使用 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 設定路徑時，&lt;code&gt;path&lt;/code&gt; 直接放在最上層，所以在 &lt;code&gt;make html&lt;/code&gt; 時才會直接出現在 &lt;code&gt;output&lt;/code&gt; 下，接著透過 &lt;code&gt;make serve&lt;/code&gt; 執行後也會顯示該 &lt;code&gt;favicon.ico&lt;/code&gt; :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/show-favicon.png" alt="show-favicon" width="240px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;在 master 分支加入 README&lt;/h1&gt;
+&lt;p&gt;在使用 Pelican 建置靜態網站時，因為預設是使用 Markdown 來撰寫，所以 Pelican 會有功能協助我們在網站發佈成網頁時都需要轉換成 HTML 這個便利性。
+可是如果你的網站是放在 Github Page 中的 Repository &lt;code&gt;master&lt;/code&gt; 分支，那你可能也會希望如同往常使用 Github 一樣，當別人逛到該 Repository 也可以有一個 &lt;code&gt;README&lt;/code&gt; 認識該 Repository。&lt;/p&gt;
+&lt;p&gt;但現在卻因 Pelican 會需要轉換 Markdown 成 HTML 呈現網頁而造成衝突，那該如何是好呢？&lt;/p&gt;
+&lt;p&gt;不用擔心，在這裡我們一樣透過 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 與 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 參數，讓我們的網站的 &lt;code&gt;README&lt;/code&gt; 可以不被放在文章的 &lt;code&gt;content/posts&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;接著因為 Pelican 會檢查 markdown 副檔名的檔案，所以一開始也不能把檔案的副檔名也標示出來，最後藉由 Pelican 轉換時自己轉換檔案名稱就可以搞定囉，以下我們來看一下：&lt;/p&gt;
+&lt;p&gt;首先建立一個 &lt;code&gt;README&lt;/code&gt; 檔案，並放到 &lt;code&gt;content/extra&lt;/code&gt; 下，此時該 &lt;code&gt;README&lt;/code&gt; 不能有副檔名（ 但是內容需保持 Markdown 格式 ）:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/add-readme-in-extra-folder.png" alt="add-readme-in-extra-folder" width="240px"/&gt;&lt;/p&gt;
+&lt;p&gt;接著我們在 &lt;code&gt;pelicanconf.py&lt;/code&gt; 中添加此段：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/README&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 extra/README 會被投放對應的位置，這邊設定在根目錄下，並且關鍵是 Path 設定為 .md 副檔名&lt;/span&gt;
+&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/README&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;README.md&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以會看到我們添加了 &lt;code&gt;README&lt;/code&gt; 的部分，並且關鍵在於 &lt;code&gt;path&lt;/code&gt; 設定為 &lt;code&gt;.md&lt;/code&gt; 副檔名，之後一樣的 &lt;code&gt;make clean&lt;/code&gt; 再 &lt;code&gt;make html&lt;/code&gt; 就會看到檔案在 &lt;code&gt;output&lt;/code&gt; 這個根目錄下囉：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/readme-in-output-folder.png" alt="readme-in-output-folder" width="240px"/&gt;&lt;/p&gt;
+&lt;p&gt;最後我們在透過 &lt;code&gt;make github&lt;/code&gt; 把這個新版的內容部署到 Github 的 &lt;code&gt;master&lt;/code&gt; 上：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190318-pelican-setting-introduction/readme-on-github.png" alt="readme-on-github" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;也可以點擊我的 &lt;a href="https://github.com/kokokuo/kokokuo.github.io"&gt;Github Page&lt;/a&gt; 查看。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;另外由於先前我們把 &lt;code&gt;favicon.ico&lt;/code&gt; 與這個 &lt;code&gt;README&lt;/code&gt; 檔案都放在 &lt;code&gt;extra&lt;/code&gt; 底下，因此當有多個檔案時，如果這些檔案未來都是要顯示設為靜態文件，可以直接對 &lt;code&gt;STATIC_PATHS&lt;/code&gt; 改成指定目錄 ( 如同 &lt;code&gt;images&lt;/code&gt; ) ：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog"&gt;How to add a favicon to a Pelican blog?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16"&gt;Does a favicon have to be 32x32 or 16x16?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.getpelican.com/en/3.6.0/tips.html?highlight=favicon"&gt;Pelican - Tips&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>安裝 Python 2 在 Mac 上 (Python2.7.15 為例）</title><link href="https://note.koko.guru/python-install-python2-on-mac.html" rel="alternate"></link><published>2019-03-12T00:00:00+08:00</published><updated>2019-03-12T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-12:/python-install-python2-on-mac.html</id><summary type="html">&lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -1784,7 +1814,7 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;make html&lt;/strong&gt; : 把 &lt;strong&gt;content&lt;/strong&gt; 下所有的 Markdown 檔案轉為 HTML 網頁。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;make publish&lt;/strong&gt; : 如同 &lt;code&gt;make html&lt;/code&gt; 指令一樣是把 &lt;strong&gt;content&lt;/strong&gt; 下所有的 Markdown 檔案轉為 HTML 網頁，但唯一的差異在於透過此指令，會使用 &lt;code&gt;publishconf.py&lt;/code&gt; 的設定檔案，這個好處是幫助我們可以把撰寫測試中的設定與正式發佈網站的設定隔離。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;make clean&lt;/strong&gt; : 清除掉 &lt;strong&gt;output&lt;/strong&gt; 目錄下的所有內容。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;make clean&lt;/strong&gt; : 清除掉 &lt;strong&gt;output&lt;/strong&gt; 目錄下的所有內容，另外會建議如果檔案更新了，要確認是否有輸出到 &lt;code&gt;output&lt;/code&gt; 目錄的話，先執行一次 &lt;code&gt;make clean&lt;/code&gt; 再執行 &lt;code&gt;make html&lt;/code&gt; 或 &lt;code&gt;make publish&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;make regenerate&lt;/strong&gt; : 若是使用 &lt;code&gt;make html&lt;/code&gt; ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 &lt;code&gt;make html&lt;/code&gt; 才能產生看到的 HTML 內容並被看到，有時還需要搭配 &lt;code&gt;make clean&lt;/code&gt; 才會乾淨會頗麻煩，因此透過 &lt;code&gt;make regenerate&lt;/code&gt; 可以讓 Pelican 自動偵測檔案的改變並產生出 HTML 內容，如此便可以節省手動建置 HTML 的時間。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;make serve PORT=[port]&lt;/strong&gt; : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:[port] 來預覽與測試文章有無格式或排版問題，如果不指定 &lt;code&gt;PORT&lt;/code&gt; 的話預設會是 &lt;code&gt;8000&lt;/code&gt;。&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;make devserver&lt;/strong&gt; : 啟動開發用的本機伺服器，&lt;code&gt;與 make serve&lt;/code&gt; 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 &lt;code&gt;make regenerate&lt;/code&gt; 與 &lt;code&gt;make serve&lt;/code&gt;。&lt;/li&gt;

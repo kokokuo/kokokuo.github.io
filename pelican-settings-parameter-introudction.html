@@ -37,7 +37,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://note.koko.guru/pelican-settings-parameter-introudction.html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2019-03-18 00:00:00+08:00"/>
+<meta property="article:published_time" content="2019-03-15 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
 <meta property="article:section" content="posts"/>
@@ -89,7 +89,7 @@ Code / Web / Architecture
       
     <h1 id="pelican-settings-parameter-introudction">Pelican - 常用參數設定介紹與功能設定</h1>
     <p>
-          Posted on 一 18 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+          Posted on 五 15 3月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
 
 
     </p>
@@ -135,6 +135,7 @@ Code / Web / Architecture
 <p><img src="../images/20190318-pelican-setting-introduction/favicon-in-the-content.png" alt="favicon-in-the-content" width="240px"/></p>
 <div class="highlight"><pre><span></span><span class="c1"># 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下</span>
 <span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;images&quot;</span><span class="p">,</span>
     <span class="s2">&quot;extra/favicon.ico&quot;</span>
 <span class="p">]</span>
 <span class="c1"># 用來設定複製到輸出目錄時，該 extra/favicon.ico 會被投放對應的位置，這邊設定在根目錄下</span>
@@ -151,7 +152,43 @@ Code / Web / Architecture
 <p>之所以會放到根目錄的原因是因為在 Pelican 中有提到像 <code>favicon.ico</code>、<code>robot.txt</code> 可以放在根目錄會直接作用，所以在上述的 <code>favicon.ico</code> 在使用 <code>EXTRA_PATH_METADATA</code> 設定路徑時，<code>path</code> 直接放在最上層，所以在 <code>make html</code> 時才會直接出現在 <code>output</code> 下，接著透過 <code>make serve</code> 執行後也會顯示該 <code>favicon.ico</code> :</p>
 <p><img src="../images/20190318-pelican-setting-introduction/show-favicon.png" alt="show-favicon" width="240px"/></p>
 <p><br/></p>
-<h1>設定回首頁</h1>
+<h1>在 master 分支加入 README</h1>
+<p>在使用 Pelican 建置靜態網站時，因為預設是使用 Markdown 來撰寫，所以 Pelican 會有功能協助我們在網站發佈成網頁時都需要轉換成 HTML 這個便利性。
+可是如果你的網站是放在 Github Page 中的 Repository <code>master</code> 分支，那你可能也會希望如同往常使用 Github 一樣，當別人逛到該 Repository 也可以有一個 <code>README</code> 認識該 Repository。</p>
+<p>但現在卻因 Pelican 會需要轉換 Markdown 成 HTML 呈現網頁而造成衝突，那該如何是好呢？</p>
+<p>不用擔心，在這裡我們一樣透過 <code>EXTRA_PATH_METADATA</code> 與 <code>STATIC_PATHS</code> 參數，讓我們的網站的 <code>README</code> 可以不被放在文章的 <code>content/posts</code>。</p>
+<p>接著因為 Pelican 會檢查 markdown 副檔名的檔案，所以一開始也不能把檔案的副檔名也標示出來，最後藉由 Pelican 轉換時自己轉換檔案名稱就可以搞定囉，以下我們來看一下：</p>
+<p>首先建立一個 <code>README</code> 檔案，並放到 <code>content/extra</code> 下，此時該 <code>README</code> 不能有副檔名（ 但是內容需保持 Markdown 格式 ）:</p>
+<p><img src="../images/20190318-pelican-setting-introduction/add-readme-in-extra-folder.png" alt="add-readme-in-extra-folder" width="240px"/></p>
+<p>接著我們在 <code>pelicanconf.py</code> 中添加此段：</p>
+<div class="highlight"><pre><span></span><span class="c1"># 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下</span>
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;images&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extra/README&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extra/favicon.ico&quot;</span>
+<span class="p">]</span>
+<span class="c1"># 用來設定複製到輸出目錄時，該 extra/README 會被投放對應的位置，這邊設定在根目錄下，並且關鍵是 Path 設定為 .md 副檔名</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;extra/README&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;README.md&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;extra/favicon.ico&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;favicon.ico&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>以會看到我們添加了 <code>README</code> 的部分，並且關鍵在於 <code>path</code> 設定為 <code>.md</code> 副檔名，之後一樣的 <code>make clean</code> 再 <code>make html</code> 就會看到檔案在 <code>output</code> 這個根目錄下囉：</p>
+<p><img src="../images/20190318-pelican-setting-introduction/readme-in-output-folder.png" alt="readme-in-output-folder" width="240px"/></p>
+<p>最後我們在透過 <code>make github</code> 把這個新版的內容部署到 Github 的 <code>master</code> 上：</p>
+<p><img src="../images/20190318-pelican-setting-introduction/readme-on-github.png" alt="readme-on-github" width="480px"/></p>
+<p>也可以點擊我的 <a href="https://github.com/kokokuo/kokokuo.github.io">Github Page</a> 查看。</p>
+<p><br/></p>
+<p>另外由於先前我們把 <code>favicon.ico</code> 與這個 <code>README</code> 檔案都放在 <code>extra</code> 底下，因此當有多個檔案時，如果這些檔案未來都是要顯示設為靜態文件，可以直接對 <code>STATIC_PATHS</code> 改成指定目錄 ( 如同 <code>images</code> ) ：</p>
+<div class="highlight"><pre><span></span><span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;images&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extra&quot;</span>
+<span class="p">]</span>
+</pre></div>
+
+
 <p><br/></p>
 <h1>參考資料</h1>
 <ol>

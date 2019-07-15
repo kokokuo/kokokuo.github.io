@@ -231,7 +231,7 @@ kokokuo-note/&gt; <span class="nb">source</span> venv/bin/activate  <span class=
 <ul>
 <li><strong>make html</strong> : 把 <strong>content</strong> 下所有的 Markdown 檔案轉為 HTML 網頁。</li>
 <li><strong>make publish</strong> : 如同 <code>make html</code> 指令一樣是把 <strong>content</strong> 下所有的 Markdown 檔案轉為 HTML 網頁，但唯一的差異在於透過此指令，會使用 <code>publishconf.py</code> 的設定檔案，這個好處是幫助我們可以把撰寫測試中的設定與正式發佈網站的設定隔離。</li>
-<li><strong>make clean</strong> : 清除掉 <strong>output</strong> 目錄下的所有內容。</li>
+<li><strong>make clean</strong> : 清除掉 <strong>output</strong> 目錄下的所有內容，另外會建議如果檔案更新了，要確認是否有輸出到 <code>output</code> 目錄的話，先執行一次 <code>make clean</code> 再執行 <code>make html</code> 或 <code>make publish</code>。</li>
 <li><strong>make regenerate</strong> : 若是使用 <code>make html</code> ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 <code>make html</code> 才能產生看到的 HTML 內容並被看到，有時還需要搭配 <code>make clean</code> 才會乾淨會頗麻煩，因此透過 <code>make regenerate</code> 可以讓 Pelican 自動偵測檔案的改變並產生出 HTML 內容，如此便可以節省手動建置 HTML 的時間。</li>
 <li><strong>make serve PORT=[port]</strong> : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:[port] 來預覽與測試文章有無格式或排版問題，如果不指定 <code>PORT</code> 的話預設會是 <code>8000</code>。</li>
 <li><strong>make devserver</strong> : 啟動開發用的本機伺服器，<code>與 make serve</code> 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 <code>make regenerate</code> 與 <code>make serve</code>。</li>
