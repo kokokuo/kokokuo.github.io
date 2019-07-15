@@ -19,7 +19,6 @@
 
     <link href="/static/custom.css" rel="stylesheet">
 
-    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
 
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
@@ -139,20 +138,20 @@ kokokuo-note/&gt; <span class="nb">source</span> venv/bin/activate  <span class=
 </pre></div>
 
 
-<p><img alt="pipenv-create-virtualenv" src="../images/20190113-how-to-start-pelican/pipenv-create-virtualenv.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pipenv-create-virtualenv.png" alt="pipenv-create-virtualenv" width="480px"/></p>
 <div class="highlight"><pre><span></span>kokokuo-note/&gt; pipenv shell <span class="c1"># 進入虛擬環境</span>
 <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pipenv install pelican <span class="c1"># 當顯示 (kokokuo-note) 後表示我們已經在 kokokuo-note 這個專案目錄的虛擬環境中，安裝 Pelican </span>
 </pre></div>
 
 
-<p><img alt="pipenv-install-pelican" src="../images/20190113-how-to-start-pelican/pipenv-install-pelican.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pipenv-install-pelican.png" alt="pipenv-install-pelican" width="360px"/></p>
 <p>再來還需要安裝 markdown 與 typogrify：</p>
 <div class="highlight"><pre><span></span><span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pipenv install markdown <span class="c1"># 安裝 markdowan ，使 Pelican 的 markdown 語法作用，務必安裝，務必安裝</span>
 <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pipenv install typogrify  <span class="c1"># 安裝 typogrify，使 Pelican 的網誌在生成 HTML 時可以有更多樣化的，務必安裝排版</span>
 </pre></div>
 
 
-<p><img alt="pipenv-install-markdown" src="../images/20190113-how-to-start-pelican/pipenv-install-markdown.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pipenv-install-markdown.png" alt="pipenv-install-markdown" width="360px"/></p>
 <p>若是想要更多了解 <code>pipenv</code>，可以參考此篇 <a href="/python-pipenv-install-and-usage.html">Python - 使用 Pipenv 建立虛擬環境與安裝套件</a></p>
 <h3>(3.) 透過 Pelican 指定產生靜態網站檔案</h3>
 <p>當我們安裝好 Pelican 與所需要的套件後，再來便可以透過 Pelican 提供的指令 <code>pelican-quickstart</code> 來產生後續我們要的靜態網站範本：</p>
@@ -161,7 +160,7 @@ kokokuo-note/&gt; <span class="nb">source</span> venv/bin/activate  <span class=
 
 
 <p>之後 Pelican 會如下圖，依序詢問幾個問題，來幫忙建立屬於你要的範本：</p>
-<p><img alt="pipenv-pelican-to-generate" src="../images/20190113-how-to-start-pelican/pipenv-pelican-to-generate.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pipenv-pelican-to-generate.png" alt="pipenv-pelican-to-generate" width="480px"/></p>
 <p>上圖中的幾個問題分別是解說如下：</p>
 <div class="highlight"><pre><span></span>&gt; What will be the title of this web site?  <span class="c1"># 輸入你的網站名稱，未來也可以再改</span>
 &gt; Who will be the author of this web site? <span class="c1"># 輸入網站的作者名稱，未來也可以再改</span>
@@ -183,7 +182,7 @@ kokokuo-note/&gt; <span class="nb">source</span> venv/bin/activate  <span class=
 
 <p>上述關於時區的部分，可以參考 <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">wikipedia 的 List of tz database time zones</a>，裡面詳列的各國的時區碼供設定參考。</p>
 <p>完成後便會看到產生的檔案：</p>
-<p><img alt="pelican-defult-files" src="../images/20190113-how-to-start-pelican/pelican-default-files.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pelican-default-files.png" alt="pelican-defult-files" width="360px"/></p>
 <h3>(4.) Pelican 目錄檔案功用介紹</h3>
 <p>在上圖中，會看到 <code>pelican-quickstart</code> 執行並回答完問題後，會產生一些檔案與目錄，這些檔案與目錄便是之後這個網誌的架構，以下分別介紹每個目錄與檔案的作用：</p>
 <ul>
@@ -195,7 +194,7 @@ kokokuo-note/&gt; <span class="nb">source</span> venv/bin/activate  <span class=
 </ul>
 <h3>(5.) 開始使用 Pelican 撰寫第一篇網誌</h3>
 <p>完成上半部分後，我們終於可以開始編寫網誌了，一個 Pelican 用 Markdown 寫的網誌，簡易結構會如下：</p>
-<p><img alt="first-pelican-markdown-example" src="../images/20190113-how-to-start-pelican/first-markdown-example.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/first-markdown-example.png" alt="first-markdown-example" width="640px"/></p>
 <p>下半部的部分就是我們一般的 markdown 內容，也就是我們要寫的文章，而上半部的 Title, Date, Category, Tags, Slug, Authors, Summary 都是 Pelican 的 Metadata 關鍵字，這些關鍵字可以有也可以不提供，每一個關鍵字都會有其特殊的用途，以下常用的有：</p>
 <ul>
 <li><strong>Title</strong> : 文章的表題</li>
@@ -214,11 +213,11 @@ kokokuo-note/&gt; <span class="nb">source</span> venv/bin/activate  <span class=
 
 
 <p>透過上述的指令 <code>make html</code>  會幫助我們把剛剛所寫完的 markdown 文章，轉換並生出成 HTML 網頁，如下圖：</p>
-<p><img alt="pelican-make-html" src="../images/20190113-how-to-start-pelican/pelican-make-html.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pelican-make-html.png" alt="pelican-make-html" width="640px"/></p>
 <p>而產生後，我們可以進一步到 <strong>output</strong> 目錄下，會看到生出了許多的子目錄與檔案，包含 HTML/CSS 與 圖像檔案。</p>
-<p><img alt="pelican-output-html" src="../images/20190113-how-to-start-pelican/pelican-output-html.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pelican-output-html.png" alt="pelican-output-html" width="480px"/></p>
 <p>在 <code>output</code> 目錄中，會看到一個檔案是 <code>mac-using-pelican-build-static-website.html</code> ，這個檔案便是我們剛剛在寫 <code>hello-pelican</code> 第一篇網誌時，所設定的 <code>Slug</code> 網址名稱，而 Pelican 會幫我們以此為檔名產生出來。</p>
-<p><img alt="pelican-html-sample" src="../images/20190113-how-to-start-pelican/pelican-html-sample.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pelican-html-sample.png" alt="pelican-html-sample" width="640px"/></p>
 <p>而這個 <code>make html</code> 實際上便是最早在回答 <code>pelican-quickstart</code> 問題時其中提到的 <em>Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n)</em>，由於回答了 Yes，所以 <code>Pelican</code> 協助我們提供了 <code>task.py</code> 與 <code>Makefile</code> 。</p>
 <p>而上述的這兩個檔案是相輔相成的，核心功能寫在 <code>task.py</code>，並再透過 <code>Makefile</code> 來產生 <code>make html</code> 的功能。</p>
 <p>另外除了 <code>make html</code> 以外，這個 <code>task.py</code> 與 <code>Makefile</code> 還提供了很多其他的能力，我們可以在目錄下輸入 <code>make</code> 即可看到：</p>
@@ -226,20 +225,21 @@ kokokuo-note/&gt; <span class="nb">source</span> venv/bin/activate  <span class=
 </pre></div>
 
 
-<p><img alt="pelican-make-commands" src="../images/20190113-how-to-start-pelican/pelican-make-commands.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pelican-make-commands.png" alt="pelican-make-commands" width="640px"/></p>
 <p>以下介紹最常用的有幾個：</p>
 <ul>
 <li><strong>make html</strong> : 把 <strong>content</strong> 下所有的 Markdown 檔案轉為 HTML 網頁。</li>
+<li><strong>make publish</strong> : 如同 <code>make html</code> 指令一樣是把 <strong>content</strong> 下所有的 Markdown 檔案轉為 HTML 網頁，但唯一的差異在於透過此指令，會使用 <code>publishconf.py</code> 的設定檔案，這個好處是幫助我們可以把撰寫測試中的設定與正式發佈網站的設定隔離。</li>
 <li><strong>make clean</strong> : 清除掉 <strong>output</strong> 目錄下的所有內容。</li>
-<li><strong>make regenerate</strong> : 若是使用 <code>make html</code> ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 <code>make html</code> 才能產生看到的 HTML 內容並被看到。</li>
-<li><strong>make serve</strong> : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:8000 來預覽與測試文章有無格式或排版問提。</li>
+<li><strong>make regenerate</strong> : 若是使用 <code>make html</code> ，則每次更改 Markdown 文章內容或寫新的文章時，都要再次執行 <code>make html</code> 才能產生看到的 HTML 內容並被看到，有時還需要搭配 <code>make clean</code> 才會乾淨會頗麻煩，因此透過 <code>make regenerate</code> 可以讓 Pelican 自動偵測檔案的改變並產生出 HTML 內容，如此便可以節省手動建置 HTML 的時間。</li>
+<li><strong>make serve PORT=[port]</strong> : 建立本機端的伺服器(Local Server)，方便可以在網頁上透過 https://localhost:[port] 來預覽與測試文章有無格式或排版問題，如果不指定 <code>PORT</code> 的話預設會是 <code>8000</code>。</li>
 <li><strong>make devserver</strong> : 啟動開發用的本機伺服器，<code>與 make serve</code> 的差別在於，每次修改 Markdown 或是新增刪除文章時，Pelican 都會自己偵測並更新重跑伺服器，相當於合併 <code>make regenerate</code> 與 <code>make serve</code>。</li>
 </ul>
 <h3>(7.) 預覽編寫完的 Markdown 網誌</h3>
 <p>當完成 <code>make html</code> 產生網頁後，再來只要輸入 <code>make serve</code> 便可以預覽寫完的網頁：</p>
-<p><img alt="pelican-make-serve" src="../images/20190113-how-to-start-pelican/pelican-make-serve.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/pelican-make-serve.png" alt="pelican-make-serve" width="640px"/></p>
 <p>透過瀏覽器輸入 https://localhost:8000 便可以看到呈現的網頁：</p>
-<p><img alt="show-pelican-localhost-site" src="../images/20190113-how-to-start-pelican/show-pelican-localhost-site.png"></p>
+<p><img src="../images/20190113-how-to-start-pelican/show-pelican-localhost-site.png" alt="show-pelican-localhost-site" width="640px"/></p>
 <p>至此變完成的安裝 Pelican &gt; 撰寫 Markdown 文章 &gt; 產生 HTML 與預覽 的過程。</p>
 <p><br/></p>
 <h1>後記</h1>
