@@ -47,7 +47,7 @@ EXTRA_PATH_METADATA = {
     "extra/koko-logo.png": {"path": "static/koko-logo.png"},
     "extra/favicon.ico": {"path": "static/favicon.ico"},
     "extra/CNAME": {"path": "CNAME"},
-    "extra/README.md": {"path": "README.md"},
+    "extra/README": {"path": "README"},
 }
 # CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置
 CUSTOM_CSS = "static/custom.css"
