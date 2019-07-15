@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = "kokokuo"
 SITENAME = "koko's Note"
-SITEURL = "https://note.koko.guru"
+SITEURL = ""
 
 # Pelican 讀取的輸入目錄，也就是你的寫作目錄
 PATH = "content"
@@ -28,6 +28,9 @@ Code / Web / Architecture
 COPYRIGHT_NAME = "kokokuo"
 COPYRIGHT_YEAR = 2019
 
+# ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+# ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+
 FAVICON = "/static/favicon.ico"
 
 # SITELOGO = "https://avatars3.githubusercontent.com/u/5389253?s=460&v=4"
@@ -44,6 +47,7 @@ EXTRA_PATH_METADATA = {
     "extra/koko-logo.png": {"path": "static/koko-logo.png"},
     "extra/favicon.ico": {"path": "static/favicon.ico"},
     "extra/CNAME": {"path": "CNAME"},
+    "extra/README.md": {"path": "README.md"},
 }
 # CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置
 CUSTOM_CSS = "static/custom.css"
