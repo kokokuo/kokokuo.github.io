@@ -83,8 +83,9 @@ EXTRA_PATH_METADATA = {
 
 <br/>
 
-
 # 設定回首頁
+
+<br/>
 
 # 參考資料
 1. [How to add a favicon to a Pelican blog?](https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog)

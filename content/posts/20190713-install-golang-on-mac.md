@@ -177,6 +177,8 @@ $ gvm implode
 
 另外如果發現 `gvm implode` 無法移除 GVM ，可以手動刪除 `.gvm` 整個目錄，並把一開始安裝時寫入到 `zsh` 或 `bash` 環境變數中的指令移除即可。
 
+<br/>
+
 # 參考資料
 1. [GVM Github Repository](https://github.com/moovweb/gvm)
 2. [GVM - Go 的多版本管理工具，使用介绍](https://dryyun.com/2018/11/28/how-to-use-gvm/)

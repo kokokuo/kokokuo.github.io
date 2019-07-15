@@ -266,6 +266,8 @@ SITELOGO = "/static/koko-logo.png"
 
 到此 Pelican 相關的靜態網站主題會告一段落，若有想要詢問的人歡迎來在詢問。
 
+<br/>
+
 # 參考文章
 ---
 1. [Pelican Settings - Metadata](https://docs.getpelican.com/en/stable/settings.html#metadata)
