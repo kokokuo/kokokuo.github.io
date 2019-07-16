@@ -15,6 +15,8 @@ Summary: 使用 Github Page 架設個人的靜態網誌並寫了一些教學文�
 
 我從 GoDaddy 購買了 `koko.guru` 這個網域，接下來我將要設定子網域 `note.koko.guru` 來作為我 Github Page 的客製化網域。
 
+如果沒聽過子網域的話可以看 [GoDaddy 這篇介紹](](https://tw.godaddy.com/help/what-is-a-subdomain-296))
+
 ## 2. 在 Github Page 填上想要的客製化網域
 接著打開我們的 Github Page Repository，點擊右上角的 **Settings**，找到 **GitHub Pages** 區塊的 **Custom Domain**，並輸入要加入的客製化網域，如我在這裡輸入 `note.koko.guru` 並按下 **Save**。
 
@@ -36,7 +38,11 @@ Summary: 使用 Github Page 架設個人的靜態網誌並寫了一些教學文�
 
 
 ## 3. 透過 Pelican 產生 CNAME 檔案
-在 Pelican 中，我們一樣要先建立這個 `CNAME` 的檔案，並且藉由先前在 [Pelican - 常用參數設定介紹與功能設定]({filename}/posts/20190315-pelican-setting-introduction.md) 與 [Pelican - 如何客製化 Pelican Theme 的 Flex 樣式]({filename}/posts/20190318-pelican-flex-theme-custom-css.md) 文中提到的 `EXTRA_PATH_METADATA` 與 `STATIC_PATHS` ，讓檔案可以在輸出成 HTML 到 `output` 時也被放 `output` 根目錄下。
+在 Pelican 中，我們一樣要先建立這個 `CNAME` 的檔案，並且藉由先前在 [Pelican - 常用參數設定介紹與功能設定]({filename}/posts/20190315-pelican-setting-introduction.md) 與 [Pelican - 如何客製化 Pelican Theme 的 Flex 樣式]({filename}/posts/20190318-pelican-flex-theme-custom-css.md) 文中提到的 `EXTRA_PATH_METADATA` 與 `STATIC_PATHS` ，先把自己製作的 `CNAME` 檔案放到 `extra` 目錄下：
+
+<img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/add-cname-to-extra.png" alt="add-cname-to-extra" width="240px"/>
+
+接著設定 `EXTRA_PATH_METADATA` 與 `STATIC_PATHS`，使 `CNAME` 輸出時放到 `output` 根目錄下：
 
 ```python
 # 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
@@ -54,15 +60,46 @@ EXTRA_PATH_METADATA = {
 }
 ```
 
+最後透過 `make html` 輸出成 HTML 到 `output` 時也被放 `output` 根目錄下：
 
-接著我們就可以開始到網域所購買的網域提供商，讓域名指向 Github Page 路徑了。
+<img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/outout-cname.png" alt="outout-cname" width="320px"/>
 
-## 4. 只指向 Github Page
+看到檔案後在執行 `make github` 推到 Github Page 即可。
 
 
-所以「網域提供商」指的也就是所購買的網域的來源服務商，像我就是 GoDaddy。並且網註冊商
+但是到這一步還不夠，因為我們從網域註冊商購買的網域 還沒有指向這裡，所以接著我們要在網域註冊商設定才行。
+
+
+## 4. 設定網域註冊商的 CNAME 指向 Github Page
+
+
+「網域註冊商」一般都會有基本的託管功能，也就是管理你這個過買的域名要指向哪個 IP 位置，或是要採用 CNAME ( 別名指向 ），或是設置要讓網域給別的服務商託管，或有沒有子網域設置，這些子網域...等等。
+
+因為本篇不是介紹 DNS 以及設定 DNS 使用的不同種類紀錄方式，所以如果要了解可以先從 Google 的這篇認識 [DNS 基本資訊](https://support.google.com/a/answer/48090?hl=zh-Hant)
+
+因為我前面是使用 GoDaddy 所以我會接著在 GoDaddy 中對我所購買的 `koko.guru` 設定子網域 `note.koko.guru` 並採用 CNAME 的方式指向我在 Github Page 所建立的靜態網誌 `kokokuo.github.io` ，如下圖：
+
+<img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/godaddy-setup-cname-subdomain.png" alt="godaddy-setup-cname-subdomain" width="480px"/>
+
+
+如此當我輸入 [http://note.koko.guru](http://note.koko.guru) 便會指向我在  [https://kokokuo.github.io](https://kokokuo.github.io)。
+
+另外因為我在 Github Page 中有設定 **Custom Domain** 為 [http://note.koko.guru](http://note.koko.guru)，因此當我輸入 [https://kokokuo.github.io](https://kokokuo.github.io) 網址時跳轉到 [http://note.koko.guru](http://note.koko.guru) 。
+
+接著再藉由 GoDaddy 設定 CNAME 的關係Ｍ所以指向我在 Github Page 架構的 Pelican 靜態網誌，同時網址也會顯示 [http://note.koko.guru](http://note.koko.guru)，如下圖：
+
+
+<img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/github-page-custom-domain-http.png" alt="github-page-custom-domain-http" width="480px"/>
 
 # 二、設定 HTTPS
+但是你會發現原本使用 HTTPS 的 [https://kokokuo.github.io](https://kokokuo.github.io) SSL 安全傳輸加密協議的 Github Page 在設定成 Custom Domain 後便失效了。
+
+這個原因是因為原本 [https://kokokuo.github.io](https://kokokuo.github.io) 是由 Github 提供的，都歸類在 `github.io` 這個網域底下，Github 可能有購買萬用 SSL 憑證，而萬用 SSL 憑證能夠把屬於在 `github.io` 底下的第一層子網域都加上 SSL 協議，也就是我們 Github Page 使用時的網址格式 - `<username>.github.io` 都是第一層子網域。
+
+以前的話我們可能需要自己購買 SSL 協議，或是透過 CloudFlare 這類服務協助，但是因為後來有 Let's Encrypt 這個服務，可以幫助我們自動生成簡易且免費的 SSL 協議，因此 Github 也提供了這個服務進去。
+
+再次點擊自己的 Github Page 的 Repository，並點右上角的 **Settings** ，移動到 **Github Pages** 區塊並勾選 **Enforce HTTPS** ，看到打勾的符號後稍微等一下後，再次輸入網址便可以看到 HTTPS 哦！例如我的 [https://note.koko.guru](https://note.koko.guru)：
+
 
 # 參考資料
 1. [Quick start: Setting up a custom domain](https://help.github.com/en/articles/quick-start-setting-up-a-custom-domain)

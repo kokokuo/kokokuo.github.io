@@ -12,8 +12,8 @@ from pelicanconf import *
 
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
-# SITEURL = "https://note.koko.guru"
-SITEURL = "https://kokokuo.github.io"
+SITEURL = "https://note.koko.guru"
+# SITEURL = "https://kokokuo.github.io"
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = "feeds/all.atom.xml"
