@@ -98,7 +98,7 @@ STATIC_PATHS = [
 # 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static
 EXTRA_PATH_METADATA = {
     "extra/README": {"path": "README.md"},
-    "extra/favicon.ico": {"path": "static/favicon.ico"},
+    "extra/favicon.ico": {"path": "favicon.ico"},
     "extra/custom.css": {"path": "static/custom.css"},
 }
 # CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置
@@ -196,11 +196,14 @@ main article p img {
 ```python
 # 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下
 STATIC_PATHS = [
-    "extra/favicon.ico"
+    "images", 
+    "extra"
 ]
-# 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在根目錄下
+# 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在 static 下，在透過 Flex 提供的參數讀取
 EXTRA_PATH_METADATA = {
-    "extra/favicon.ico": {"path": "static/favicon.ico"},
+  "extra/README": {"path": "README.md"},
+  "extra/favicon.ico": {"path": "static/favicon.ico"},
+  "extra/custom.css": {"path": "static/custom.css"}
 }
 ```
 
