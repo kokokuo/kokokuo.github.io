@@ -10,16 +10,16 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="https://kokokuo.github.io/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
 
-    <link href="https://kokokuo.github.io/static/custom.css" rel="stylesheet">
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
 
-    <link href="https://kokokuo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
 
 
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
@@ -35,11 +35,11 @@
 <meta property="og:title" content="透過 Github Page 上傳靜態網站"/>
 <meta property="og:description" content="靜態網站 (Static Site) 因為檔案結構單純，架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://kokokuo.github.io/build-static-website-to-github-page.html"/>
+<meta property="og:url" content="https://note.koko.guru/build-static-website-to-github-page.html"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-02-08 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://kokokuo.github.io/author/kokokuo.html">
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
 <meta property="article:section" content="posts"/>
 <meta property="article:tag" content="靜態網站產生器"/>
 <meta property="og:image" content="/static/koko-logo.png">
@@ -50,10 +50,10 @@
 <body>
   <aside>
     <div>
-      <a href="https://kokokuo.github.io">
+      <a href="https://note.koko.guru">
         <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
       </a>
-      <h1><a href="https://kokokuo.github.io">koko's Note</a></h1>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
 
 <p>
 Code / Web / Architecture
@@ -88,7 +88,7 @@ Code / Web / Architecture
       
     <h1 id="build-static-website-to-github-page">透過 Github Page 上傳靜態網站</h1>
     <p>
-          Posted on 五 08 2月 2019 in <a href="https://kokokuo.github.io/category/posts.html">posts</a>
+          Posted on 五 08 2月 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
 
 
     </p>
@@ -141,7 +141,7 @@ Code / Web / Architecture
 <p>在 Github 中提供了兩種方式，第一種是透過 <strong>終端機(Terminal)</strong> 下指令，另外一種是下載他們提供的工具 <strong>Github Desktop</strong>，以視窗介面的形式上傳。</p>
 <p>不管是使用 Terminal 或是 <strong>Github Desktop</strong>，都需要安裝 Git 指令工具，但只有使用 Terminal 需要手動下載一下，至於 <strong>Github Desktop</strong> 會順便安裝進去，以下我們分別介紹：</p>
 <h2>1. 透過終端機 Terminal 指令上傳檔案</h2>
-<p>由於本人使用的是 Mac ，所以我們採用 <strong>Homebrew</strong> 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 <a href="https://kokokuo.github.io/mac-install-homebrew.html">Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</a></p>
+<p>由於本人使用的是 Mac ，所以我們採用 <strong>Homebrew</strong> 下載，不曉得 Homebrew 的人可以看一下我的這篇文章 <a href="https://note.koko.guru/mac-install-homebrew.html">Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具</a></p>
 <p>首先我們要安裝 <code>git</code> 這個指令工具，<code>git</code> 也就是前面提到的「版本控制系統」，而由於在 Github 上其網站的核心與提供的功能都已經包含，所以不用特別安裝。</p>
 <p>但是在我們自己的電腦上，為了可以跟 Github 溝通並上傳檔案，所以需要安裝，不過因為 <code>git</code> 這套系統其實只需要指令就可以執行，所以在 Mac 上我們可以直接以指令工具的形式安裝即可。</p>
 <div class="highlight"><pre><span></span>&gt; brew install git
@@ -213,11 +213,11 @@ Desktop/<span class="o">(</span>master<span class="o">)</span>&gt; git push orig
 <h1>後記</h1>
 <hr>
 <p>透過 Github Page 你可以快速且免費的搭建簡易的靜態網站，不過上述自己撰寫 HTML/CSS 等網頁是比較費時間的，此時你不妨可以考慮使用 <strong>態網站產生器 (Static Site Generator)</strong> 來快速搭建你的靜態網站，在直接上傳到 Github Page 上。</p>
-<p>而且目前靜態網站產生器的選擇上非常多樣化，如果你想要知道哪裡可以選擇靜態網站，以及更加認識什麼是靜態網站，可以接著閱讀 <a href="https://kokokuo.github.io/what-is-static-site-generator-and-when-to-use.html">什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)</a> 來了解更多。</p>
+<p>而且目前靜態網站產生器的選擇上非常多樣化，如果你想要知道哪裡可以選擇靜態網站，以及更加認識什麼是靜態網站，可以接著閱讀 <a href="https://note.koko.guru/what-is-static-site-generator-and-when-to-use.html">什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)</a> 來了解更多。</p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://kokokuo.github.io/tag/jing-tai-wang-zhan-chan-sheng-qi.html">靜態網站產生器</a>
+      <a href="https://note.koko.guru/tag/jing-tai-wang-zhan-chan-sheng-qi.html">靜態網站產生器</a>
     </p>
   </div>
 
@@ -241,7 +241,7 @@ Desktop/<span class="o">(</span>master<span class="o">)</span>&gt; git push orig
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " koko's Note ",
-  "url" : "https://kokokuo.github.io",
+  "url" : "https://note.koko.guru",
   "image": "/static/koko-logo.png",
   "description": ""
 }
