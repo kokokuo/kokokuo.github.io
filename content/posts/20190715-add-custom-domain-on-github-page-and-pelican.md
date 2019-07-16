@@ -1,4 +1,4 @@
-Title: Pelican - 設定客製化網域並顯示在 Github Page 上 
+Title: Pelican - 設定客製化網域並顯示在 Github Page 上
 Date: 2019-07-15
 Tags: Pelican, Github, Domain
 Slug: add-custom-domain-on-github-page-and-pelican
@@ -64,42 +64,63 @@ EXTRA_PATH_METADATA = {
 
 <img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/outout-cname.png" alt="outout-cname" width="320px"/>
 
-看到檔案後在執行 `make github` 推到 Github Page 即可。
+看到檔案後再執行 `make github` 推到 Github Page 即可。
 
-
-但是到這一步還不夠，因為我們從網域註冊商購買的網域 還沒有指向這裡，所以接著我們要在網域註冊商設定才行。
+但是到這一步還不夠，因為我們從網域註冊商購買的網域還沒有指向這裡，所以接著我們要在網域註冊商設定才行。
 
 
 ## 4. 設定網域註冊商的 CNAME 指向 Github Page
 
 
-「網域註冊商」一般都會有基本的託管功能，也就是管理你這個過買的域名要指向哪個 IP 位置，或是要採用 CNAME ( 別名指向 ），或是設置要讓網域給別的服務商託管，或有沒有子網域設置，這些子網域...等等。
+「網域註冊商」一般都會有基本的託管功能，也就是管理你過買的域名要指向哪個 IP 位置、或採用 CNAME ( 別名指向 ）、設置要讓網域給別的服務商託管、有沒有子網域設置...等等。
 
 因為本篇不是介紹 DNS 以及設定 DNS 使用的不同種類紀錄方式，所以如果要了解可以先從 Google 的這篇認識 [DNS 基本資訊](https://support.google.com/a/answer/48090?hl=zh-Hant)
 
-因為我前面是使用 GoDaddy 所以我會接著在 GoDaddy 中對我所購買的 `koko.guru` 設定子網域 `note.koko.guru` 並採用 CNAME 的方式指向我在 Github Page 所建立的靜態網誌 `kokokuo.github.io` ，如下圖：
+由於先前在前面的文章中，我是使用 GoDaddy 的服務，因此接下來會在 GoDaddy 中對我所購買的 `koko.guru` 設定子網域 `note.koko.guru` 並採用 CNAME 的方式指向我在 Github Page 所建立的靜態網誌 `kokokuo.github.io` ，如下圖是設定的部分：
 
 <img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/godaddy-setup-cname-subdomain.png" alt="godaddy-setup-cname-subdomain" width="480px"/>
 
 
-如此當我輸入 [http://note.koko.guru](http://note.koko.guru) 便會指向我在  [https://kokokuo.github.io](https://kokokuo.github.io)。
+按下儲存後，未來每當我輸入 `http://note.koko.guru` 便會指向我在 `https://kokokuo.github.io`。
 
-另外因為我在 Github Page 中有設定 **Custom Domain** 為 [http://note.koko.guru](http://note.koko.guru)，因此當我輸入 [https://kokokuo.github.io](https://kokokuo.github.io) 網址時跳轉到 [http://note.koko.guru](http://note.koko.guru) 。
+另外因為我在 Github Page 中有設定 **Custom Domain** 為 `http://note.koko.guru`，因此當我輸入 `https://kokokuo.github.io` 網址時跳轉到 `http://note.koko.guru`。
 
-接著再藉由 GoDaddy 設定 CNAME 的關係Ｍ所以指向我在 Github Page 架構的 Pelican 靜態網誌，同時網址也會顯示 [http://note.koko.guru](http://note.koko.guru)，如下圖：
+接著再藉由 GoDaddy 設定 CNAME 的關係Ｍ所以指向我在 Github Page 架構的 Pelican 靜態網誌，同時網址也會顯示 `http://note.koko.guru`，如下圖：
 
 
 <img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/github-page-custom-domain-http.png" alt="github-page-custom-domain-http" width="480px"/>
 
 # 二、設定 HTTPS
-但是你會發現原本使用 HTTPS 的 [https://kokokuo.github.io](https://kokokuo.github.io) SSL 安全傳輸加密協議的 Github Page 在設定成 Custom Domain 後便失效了。
+但是在上圖中你會發現原本使用 HTTPS 的 `https://kokokuo.github.io` SSL 安全傳輸加密協議的 Github Page 在設定成 Custom Domain 後便失效了。
 
-這個原因是因為原本 [https://kokokuo.github.io](https://kokokuo.github.io) 是由 Github 提供的，都歸類在 `github.io` 這個網域底下，Github 可能有購買萬用 SSL 憑證，而萬用 SSL 憑證能夠把屬於在 `github.io` 底下的第一層子網域都加上 SSL 協議，也就是我們 Github Page 使用時的網址格式 - `<username>.github.io` 都是第一層子網域。
+這個原因是因為原本的 Github Page 網址 - `https://kokokuo.github.io` 是由 Github 提供的。
 
-以前的話我們可能需要自己購買 SSL 協議，或是透過 CloudFlare 這類服務協助，但是因為後來有 Let's Encrypt 這個服務，可以幫助我們自動生成簡易且免費的 SSL 協議，因此 Github 也提供了這個服務進去。
+因為都歸類在 `github.io` 這個網域底下，所以 Github 可以比較容易的提供安全的 SSL 傳輸協議，例如只要購買萬用 SSL 憑證，便可以把 `github.io` 這個網域下的第一層子網域都可以看見 HTTPS。
 
-再次點擊自己的 Github Page 的 Repository，並點右上角的 **Settings** ，移動到 **Github Pages** 區塊並勾選 **Enforce HTTPS** ，看到打勾的符號後稍微等一下後，再次輸入網址便可以看到 HTTPS 哦！例如我的 [https://note.koko.guru](https://note.koko.guru)：
+如果沒聽過萬用 SSL 憑證的話，可以看一下 [GoDaddy 官方對萬用憑證](https://tw.godaddy.com/help/ssl-567)的介紹。
 
+而剛好的因為我們 Github Page 使用時的網址格式 - `<username>.github.io` 都是第一層子網域，所以也可能對比上。
+
+因此以前的話我們可能需要自己購買 SSL 協議，或是透過 [CloudFlare](https://www.cloudflare.com/zh-tw/) 來託管我們的網域，在藉由 CloudFlare 加裝 SSL 協議來達成 ( 即便這段協議是 DNS 系統到 CloudFlare 這段，對於 CloudFlare 至 Github 這段還是沒有安全協議但依然可以有一層保護 ) 。
+
+但是因為後來有 [Let's Encrypt](https://letsencrypt.org/) 這個服務，可以幫助我們自動生成簡易且免費的 SSL 協議，因此 Github 也提供了這個功能到 Github Page 的 Custom Domain 裡面。
+
+再次點擊自己的 Github Page 的 Repository，並點右上角的 **Settings** ，移動到 **Github Pages** 區塊並勾選 **Enforce HTTPS** ，看到打勾的符號後稍微等一下後，再次輸入網址便可以看到 HTTPS 哦！
+
+例如我的 [https://note.koko.guru](https://note.koko.guru)，你會看到鎖頭，以及 Let's Encrypt 頒發的憑證。
+
+<img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/setup-https-let-encrypt.png" alt="setup-https-let-encrypt" width="480px"/>
+
+<br/>
+
+# 後記
+雖然在 Github 官方的文件中有提到設定客製化網域的方式不只有 CNAME 這一種，也可以使用 A 紀錄，但在設定上會稍微繁瑣一些，所以目前主要以 CNAME 為大眾。
+
+另外如果有人好奇為何沒有綠色鎖頭的話，那是因為 Google 官方在 2018 年 9 月後對於新版的 Chrome 都拔掉綠鎖頭的圖示了，所以如果你的 Chrome 有在更新沒看到也是很正常的，想知道這件事可以[Google 官方部落格介紹](https://blog.chromium.org/2018/05/evolving-chromes-security-indicators.html)。
+
+那麼到這裡 Github Page 相關的設定也告一段落了，除了 Pelican 有逐漸補強會寫一些文章外，其餘會回到技術上的文章正軌，也會花一些時間把舊的兩個網誌也併過來。
+
+<br/>
 
 # 參考資料
 1. [Quick start: Setting up a custom domain](https://help.github.com/en/articles/quick-start-setting-up-a-custom-domain)
