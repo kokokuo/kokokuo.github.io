@@ -106,9 +106,34 @@ Code / Web / Architecture
 <h2>2. 在 Github Page 填上想要的客製化網域</h2>
 <p>接著打開我們的 Github Page Repository，點擊右上角的 <strong>Settings</strong>，找到 <strong>GitHub Pages</strong> 區塊的 <strong>Custom Domain</strong>，並輸入要加入的客製化網域，如我在這裡輸入 <code>note.koko.guru</code> 並按下 <strong>Save</strong>。</p>
 <p><img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/github-page-setting-add-custom-domain.png" alt="github-page-setting-add-custom-domain" width="480px"/></p>
-<p>接著我們就可以開始設定網域提供商。</p>
-<h2>3. 設定網域提供商指向 Github Page</h2>
-<p>這篇的「網域提供商」指的也就是所購買的網域的來源服務商，像我就是 GoDaddy。</p>
+<p>接著當你再次回到 Repository 下的時候就會看到 <code>CNAME</code> 出現在 <code>master</code> 分支中：</p>
+<p><img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/cname-file-in-master.png" alt="cname-file-in-master" width="640px"/></p>
+<p>點擊 <code>CNAME</code> 檔案觀看時會發現該檔案其實很單純，只是打上的我們在 <strong>GitHub Pages</strong> 區塊的 <strong>Custom Domain</strong> 所填寫的 <code>note.koko.guru</code> 內容而已。</p>
+<p><img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/cname-file-content.png" alt="cname-file-content" width="640px"/></p>
+<p>上述這種方式雖然很簡單，但是透過 Github 的 <strong>Custom Domain</strong> Settings 是只有一次性的建立 CNAME 而已。</p>
+<p>若未來我們的網誌更新，再次藉由 Pelican 提供的 <code>make github</code> 推版上去 <code>master</code> 的 Repository 時，就會被整個覆蓋掉，所以這並不是長久之計。</p>
+<p>因此我們最好的方式是在 Pelican 的靜態網站每次更新並推版到 <code>master</code> 時把這個 <code>CNAME</code> 也放在裡面部署上去，以下來介紹如何透過 Pelican 產生。</p>
+<h2>3. 透過 Pelican 產生 CNAME 檔案</h2>
+<p>在 Pelican 中，我們一樣要先建立這個 <code>CNAME</code> 的檔案，並且藉由先前在 <a href="https://kokokuo.github.io/pelican-settings-parameter-introudction.html">Pelican - 常用參數設定介紹與功能設定</a> 與 <a href="https://kokokuo.github.io/custom-pelican-theme-flex-style.html">Pelican - 如何客製化 Pelican Theme 的 Flex 樣式</a> 文中提到的 <code>EXTRA_PATH_METADATA</code> 與 <code>STATIC_PATHS</code> ，讓檔案可以在輸出成 HTML 到 <code>output</code> 時也被放 <code>output</code> 根目錄下。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下</span>
+<span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;images&quot;</span><span class="p">,</span> 
+  <span class="s2">&quot;extra&quot;</span>
+<span class="p">]</span>
+<span class="c1"># 用來設定複製到輸出目錄時，該 extra/CNAME 會被投放對應的位置，這邊設定在 根目錄</span>
+<span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;extra/CNAME&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;CNAME&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;extra/README&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;README.md&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;extra/favicon.ico&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/favicon.ico&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;extra/custom.css&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/custom.css&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;extra/koko-logo.png&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/koko-logo.png&quot;</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>接著我們就可以開始到網域所購買的網域提供商，讓域名指向 Github Page 路徑了。</p>
+<h2>4. 只指向 Github Page</h2>
+<p>所以「網域提供商」指的也就是所購買的網域的來源服務商，像我就是 GoDaddy。並且網註冊商</p>
 <h1>二、設定 HTTPS</h1>
 <h1>參考資料</h1>
 <ol>

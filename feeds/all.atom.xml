@@ -14,9 +14,34 @@ Code / Web / Architecture
 &lt;h2&gt;2. 在 Github Page 填上想要的客製化網域&lt;/h2&gt;
 &lt;p&gt;接著打開我們的 Github Page Repository，點擊右上角的 &lt;strong&gt;Settings&lt;/strong&gt;，找到 &lt;strong&gt;GitHub Pages&lt;/strong&gt; 區塊的 &lt;strong&gt;Custom Domain&lt;/strong&gt;，並輸入要加入的客製化網域，如我在這裡輸入 &lt;code&gt;note.koko.guru&lt;/code&gt; 並按下 &lt;strong&gt;Save&lt;/strong&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/github-page-setting-add-custom-domain.png" alt="github-page-setting-add-custom-domain" width="480px"/&gt;&lt;/p&gt;
-&lt;p&gt;接著我們就可以開始設定網域提供商。&lt;/p&gt;
-&lt;h2&gt;3. 設定網域提供商指向 Github Page&lt;/h2&gt;
-&lt;p&gt;這篇的「網域提供商」指的也就是所購買的網域的來源服務商，像我就是 GoDaddy。&lt;/p&gt;
+&lt;p&gt;接著當你再次回到 Repository 下的時候就會看到 &lt;code&gt;CNAME&lt;/code&gt; 出現在 &lt;code&gt;master&lt;/code&gt; 分支中：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/cname-file-in-master.png" alt="cname-file-in-master" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;點擊 &lt;code&gt;CNAME&lt;/code&gt; 檔案觀看時會發現該檔案其實很單純，只是打上的我們在 &lt;strong&gt;GitHub Pages&lt;/strong&gt; 區塊的 &lt;strong&gt;Custom Domain&lt;/strong&gt; 所填寫的 &lt;code&gt;note.koko.guru&lt;/code&gt; 內容而已。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/cname-file-content.png" alt="cname-file-content" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;上述這種方式雖然很簡單，但是透過 Github 的 &lt;strong&gt;Custom Domain&lt;/strong&gt; Settings 是只有一次性的建立 CNAME 而已。&lt;/p&gt;
+&lt;p&gt;若未來我們的網誌更新，再次藉由 Pelican 提供的 &lt;code&gt;make github&lt;/code&gt; 推版上去 &lt;code&gt;master&lt;/code&gt; 的 Repository 時，就會被整個覆蓋掉，所以這並不是長久之計。&lt;/p&gt;
+&lt;p&gt;因此我們最好的方式是在 Pelican 的靜態網站每次更新並推版到 &lt;code&gt;master&lt;/code&gt; 時把這個 &lt;code&gt;CNAME&lt;/code&gt; 也放在裡面部署上去，以下來介紹如何透過 Pelican 產生。&lt;/p&gt;
+&lt;h2&gt;3. 透過 Pelican 產生 CNAME 檔案&lt;/h2&gt;
+&lt;p&gt;在 Pelican 中，我們一樣要先建立這個 &lt;code&gt;CNAME&lt;/code&gt; 的檔案，並且藉由先前在 &lt;a href="https://kokokuo.github.io/pelican-settings-parameter-introudction.html"&gt;Pelican - 常用參數設定介紹與功能設定&lt;/a&gt; 與 &lt;a href="https://kokokuo.github.io/custom-pelican-theme-flex-style.html"&gt;Pelican - 如何客製化 Pelican Theme 的 Flex 樣式&lt;/a&gt; 文中提到的 &lt;code&gt;EXTRA_PATH_METADATA&lt;/code&gt; 與 &lt;code&gt;STATIC_PATHS&lt;/code&gt; ，讓檔案可以在輸出成 HTML 到 &lt;code&gt;output&lt;/code&gt; 時也被放 &lt;code&gt;output&lt;/code&gt; 根目錄下。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+  &lt;span class="s2"&gt;&amp;quot;extra&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 extra/CNAME 會被投放對應的位置，這邊設定在 根目錄&lt;/span&gt;
+&lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/CNAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;CNAME&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/README&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;README.md&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/koko-logo.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/koko-logo.png&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;接著我們就可以開始到網域所購買的網域提供商，讓域名指向 Github Page 路徑了。&lt;/p&gt;
+&lt;h2&gt;4. 只指向 Github Page&lt;/h2&gt;
+&lt;p&gt;所以「網域提供商」指的也就是所購買的網域的來源服務商，像我就是 GoDaddy。並且網註冊商&lt;/p&gt;
 &lt;h1&gt;二、設定 HTTPS&lt;/h1&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
 &lt;ol&gt;
@@ -219,7 +244,7 @@ $ gvm use go1.12.7 --default
 &lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static&lt;/span&gt;
 &lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;extra/README&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;README.md&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
     &lt;span class="s2"&gt;&amp;quot;extra/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="c1"&gt;# CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置&lt;/span&gt;
@@ -293,11 +318,14 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;而剛好的 &lt;code&gt;Flex&lt;/code&gt; 這套 Theme 就可以在 &lt;code&gt;pelicanconf.py&lt;/code&gt; 中設定參數 &lt;code&gt;FAVICON&lt;/code&gt;，參考 &lt;a href="https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings"&gt;Flex - Custom Settings&lt;/a&gt;。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下&lt;/span&gt;
 &lt;span class="n"&gt;STATIC_PATHS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;images&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; 
+    &lt;span class="s2"&gt;&amp;quot;extra&amp;quot;&lt;/span&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在根目錄下&lt;/span&gt;
+&lt;span class="c1"&gt;# 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在 static 下，在透過 Flex 提供的參數讀取&lt;/span&gt;
 &lt;span class="n"&gt;EXTRA_PATH_METADATA&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;extra/README&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;README.md&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;extra/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/favicon.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="s2"&gt;&amp;quot;extra/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;path&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static/custom.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 

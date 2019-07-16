@@ -175,7 +175,7 @@ Code / Web / Architecture
 <span class="c1"># 用來設定複製到輸出目錄時，該 extra/custom.css 會被投放對應的位置，這邊設定在 static</span>
 <span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;extra/README&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;README.md&quot;</span><span class="p">},</span>
-    <span class="s2">&quot;extra/favicon.ico&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/favicon.ico&quot;</span><span class="p">},</span>
+    <span class="s2">&quot;extra/favicon.ico&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;favicon.ico&quot;</span><span class="p">},</span>
     <span class="s2">&quot;extra/custom.css&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/custom.css&quot;</span><span class="p">},</span>
 <span class="p">}</span>
 <span class="c1"># CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置</span>
@@ -249,11 +249,14 @@ Code / Web / Architecture
 <p>而剛好的 <code>Flex</code> 這套 Theme 就可以在 <code>pelicanconf.py</code> 中設定參數 <code>FAVICON</code>，參考 <a href="https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings">Flex - Custom Settings</a>。</p>
 <div class="highlight"><pre><span></span><span class="c1"># 設定哪些目錄或檔案，要被視為靜態文件，並且放置到輸出目錄下</span>
 <span class="n">STATIC_PATHS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;extra/favicon.ico&quot;</span>
+    <span class="s2">&quot;images&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;extra&quot;</span>
 <span class="p">]</span>
-<span class="c1"># 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在根目錄下</span>
+<span class="c1"># 用來設定複製到輸出目錄時，該 favicon.ico 會被投放對應的位置，這邊設定在 static 下，在透過 Flex 提供的參數讀取</span>
 <span class="n">EXTRA_PATH_METADATA</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;extra/favicon.ico&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/favicon.ico&quot;</span><span class="p">},</span>
+  <span class="s2">&quot;extra/README&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;README.md&quot;</span><span class="p">},</span>
+  <span class="s2">&quot;extra/favicon.ico&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/favicon.ico&quot;</span><span class="p">},</span>
+  <span class="s2">&quot;extra/custom.css&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;static/custom.css&quot;</span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
