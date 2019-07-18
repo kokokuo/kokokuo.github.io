@@ -97,26 +97,25 @@ Code / Web / Architecture
 
   <div>
     <h1>前言</h1>
-<hr>
 <p>剛開始學習使用 Vim，因為習慣了 GUI 的 IDE 特別是剛從號稱 Windows 的地表最強 IDE - Visual Studio 跳過來，整個非常不容易，所以這裡記錄了一些剛使用 Vundle 時下載 Plugin 的小須知</p>
+<p><br/></p>
 <h1>安裝 Vundle</h1>
-<hr>
 <p>要安裝 Vundle 的方式便是透過 Git 下載來安裝：</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 </pre></div>
 
 
 <p>下載好後，在 Home 目錄下修改 <code>.vimrc</code> (如果沒有就新建出來此檔案)，可以先參考<a href="https://github.com/gmarik/vundle">Github 上 Vundle 的介紹</a>，使用它的 Configuration 範例完成安裝。</p>
+<p><br/></p>
 <h1><a href="http://vim-scripts.org/vim/scripts.html">vim-script</a> 下載時要注意名稱含有 .vim</h1>
-<hr>
 <p>在 <code>vim-script</code> 上的有些 Repository 名稱會包含 <code>.vim</code>，如 <code>taglist.vim</code> 等
 所以在編輯 .vimrc 時,要記得補上 <code>.vim</code>，如下：</p>
 <div class="highlight"><pre><span></span>Plugin <span class="s1">&#39;taglist.vim&#39;</span>
 </pre></div>
 
 
+<p><br/></p>
 <h1>使用 Vundle 提供的 <code>vimrc</code> 範例小注意</h1>
-<hr>
 <p>在 Github 中提供的 <code>.vimrc</code> 範例有兩行：</p>
 <div class="highlight"><pre><span></span><span class="s2">&quot; Git plugin not hosted on GitHub</span>
 <span class="s2">Plugin &#39;git://git.wincent.com/command-t.git&#39;</span>
@@ -128,8 +127,8 @@ Plugin <span class="s1">&#39;file:///home/gmarik/path/to/plugin&#39;</span>
 <p>第二行則表示如果你是自己下載 Plugin Repository 到自己主機上，才需要去指定 local 端自己電腦的下載下來放置的 Repository 位置
 所以預設如果有裝 Git，沒有下載下來 Plugin，此行是不需要的。</p>
 <p>而第一行的 <code>git.wincent.com/command-t.git</code> 是一種套件，名叫 <strong>CommandT</strong>，詳細資訊可以參考<a href="github.com/wincent/Command-T">官方</a></p>
+<p><br/></p>
 <h1>Plugin &amp; Bundle 指令</h1>
-<hr>
 <p>目前 Vundle 已經把指令都改成 Plugin 開頭，但仍支援 Bundle 指令，以下用 <code>taglist.vim</code> 作為例子：</p>
 <div class="highlight"><pre><span></span>Plugin <span class="s1">&#39;taglist.vim&#39;</span>
 </pre></div>
@@ -140,8 +139,8 @@ Plugin <span class="s1">&#39;file:///home/gmarik/path/to/plugin&#39;</span>
 </pre></div>
 
 
+<p><br/></p>
 <h1>參考資料</h1>
-<hr>
 <ol>
 <li><a href="http://www.gtwang.org/2014/04/vundle-vim-bundle-plugin-manager.html">Vundle：Vim Plugin 自動下載、安裝、更新與管理工具（Vim Bundle）</a></li>
 <li><a href="http://stackoverflow.com/questions/20394142/error-in-installing-bundle-for-vim">Error in installing Bundle for Vim</a></li>

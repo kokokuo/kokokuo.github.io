@@ -1912,31 +1912,77 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Python - 使用 py2exe 製作 Python exe 執行檔</title><link href="https://note.koko.guru/build-python-exe-using-py2exe%20Authors:%20kokokuo.html" rel="alternate"></link><published>2015-01-03T00:00:00+08:00</published><updated>2015-01-03T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-03:/build-python-exe-using-py2exe Authors: kokokuo.html</id><summary type="html">&lt;p&gt;用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，此文章這邊我先選擇 py2exe 做使用與測試。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
-&lt;hr&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔</title><link href="https://note.koko.guru/python-build-gui-app-pyqt-using-py2exe.html" rel="alternate"></link><published>2015-01-04T00:00:00+08:00</published><updated>2015-01-04T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-04:/python-build-gui-app-pyqt-using-py2exe.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/build-python-exe-using-py2exe Authors: kokokuo.html"&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/a&gt; 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/build-python-exe-using-py2exe Authors: kokokuo.html"&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/a&gt; 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;Python 環境&lt;/h1&gt;
+&lt;p&gt;我所使用的環境如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Windows 8.1 x64&lt;/li&gt;
+&lt;li&gt;Python 2.7.9 32bit&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.3/PyQt4-4.11.3-gpl-Py2.7-Qt4.8.6-x32.exe/download"&gt;PyQt4-4.11.3-gpl-Py2.7-Qt4.8.6-x32&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.7.exe/download?use_mirror=nchc&amp;amp;download="&gt;py2exe-0.6.9.win32-py2.7&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;使用 PyQt 製作 GUI 視窗的 &lt;code&gt;setup.py&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;以下我以這隻協助尋找 Windows 上連線並儲存過 WiFi 密碼的尋找程式 - &lt;a href="https://github.com/kokokuo/PyQt-FMWPTools"&gt;PyQt-FMWPTools&lt;/a&gt; 為例。&lt;/p&gt;
+&lt;p&gt;我需要製作成可執行檔的檔案名稱叫做 &lt;code&gt;FWMPModel.py&lt;/code&gt;，而我會另外 import 同在 &lt;code&gt;FWMPModel.py&lt;/code&gt; 路徑資料夾下的 &lt;code&gt;fmwp_mainwindow.py&lt;/code&gt;.
+&lt;code&gt;fmwp_mainwindow.py&lt;/code&gt; 此檔案是 Qt 的 ui 檔，經過 PyQt 的轉換指令產生的 &lt;code&gt;.py&lt;/code&gt; 檔案，檔案位在 &lt;code&gt;FWMPTools&lt;/code&gt; 資料夾下，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150104-python-build-gui-app-pyqt-using-py2exe/pyqt-code-files.png" alt="pyqt-code-files" width="200px"/&gt;&lt;/p&gt;
+&lt;p&gt;需要改變的地方有：&lt;/p&gt;
+&lt;h2&gt;1. 把 console 改成 windows 程式&lt;/h2&gt;
+&lt;p&gt;把原本的 console 改成 windows 後則不會有命令提示字元出現，而是只剩下程式本身的視窗，否則視窗與命令提示字元都會出現&lt;/p&gt;
+&lt;h2&gt;2. 使用 &lt;code&gt;PyQt&lt;/code&gt; 製作的 GUI 程式需要 &lt;code&gt;sip&lt;/code&gt; 這個模組&lt;/h2&gt;
+&lt;p&gt;要製作 &lt;code&gt;PyQt&lt;/code&gt; 開發的程式需要 &lt;code&gt;sip&lt;/code&gt; 這個模組。 在 &lt;a href="https://zh.wikipedia.org/wiki/PyQt"&gt;Wiki 的 PytQt&lt;/a&gt; 中有提到 SIP 為是一個自動為 C 和 C++ 庫生成 Python 擴充功能模組的工具。 為了方便開發 PyQt，SIP 於 1998 被「Riverbank Computing」公司創造出來。不過，SIP 不專用於 PyQt，而是適用於所有的 C 和 C++庫 ( 其他介紹可以參考 &lt;a href="https://riverbankcomputing.com/software/sip/intro"&gt;PyQt&lt;/a&gt; 網站與 &lt;a href="https://wiki.python.org/moin/SIP"&gt;PyPI&lt;/a&gt; )。&lt;/p&gt;
+&lt;p&gt;所以 SIP 可以說是 PyQt 的底層，沒有這隻檔案便無法製作 exe 執行檔。不過我們不需要另外下載，因為 SIP 已經包含在 PyQt 中，我們只需要在 &lt;code&gt;setup.py&lt;/code&gt; 中把它放到 &lt;code&gt;includes&lt;/code&gt; 參數。&lt;/p&gt;
+&lt;h2&gt;3. 加入打包的其他引入 Python 檔案&lt;/h2&gt;
+&lt;p&gt;因為我有在 &lt;code&gt;FMWPModel.py&lt;/code&gt; 中透過 &lt;code&gt;import&lt;/code&gt; 加入視窗的 UI 定義檔案  &lt;code&gt;fmwp_mainwindow.py&lt;/code&gt;，因此也需要把此檔案加入至 &lt;code&gt;includes&lt;/code&gt; 中。 &lt;code&gt;includes&lt;/code&gt; 只需要加入所有打包檔需要的其他 &lt;code&gt;module&lt;/code&gt; 檔案即可，並且只需標示名稱 - &lt;strong&gt;list of module names to include&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;所以 &lt;code&gt;setup.py&lt;/code&gt; 如下: &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;distutils.core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;py2exe&lt;/span&gt;
+
+&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;py2exe&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;bundle_files&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;compressed&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;&amp;quot;includes&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;sip&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;fmwp_mainwindow&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="p"&gt;}},&lt;/span&gt;
+    &lt;span class="n"&gt;windows&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;script&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;FMWPModel.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;icon_resources&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;find.ico&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)]}],&lt;/span&gt;
+    &lt;span class="n"&gt;zipfile&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;結果畫面 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150104-python-build-gui-app-pyqt-using-py2exe/result.png" alt="result" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.py2exe.org/index.cgi/Py2exeAndPyQt"&gt;Py2exeAndPyQt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.pythoner.com/111.html"&gt;使用 Py2exe 将 PyQt 程序打包为 exe 文件&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pythontips.com/2014/03/03/using-py2exe-the-right-way/"&gt;Using py2exe the right way&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="py2exe"></category><category term="PyQt"></category></entry><entry><title>Python - 使用 py2exe 製作 Python exe 執行檔</title><link href="https://note.koko.guru/build-python-exe-using-py2exe%20Authors:%20kokokuo.html" rel="alternate"></link><published>2015-01-03T00:00:00+08:00</published><updated>2015-01-03T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-03:/build-python-exe-using-py2exe Authors: kokokuo.html</id><summary type="html">&lt;p&gt;用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，此文章這邊我先選擇 py2exe 做使用與測試。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。
 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，而這邊我先選擇 py2exe 做使用與測試。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;Python 的製作安裝執行檔工具介紹&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;在 PyPI 上有介紹幾款知名的製作執行檔的工具，這邊並且有支援開發 PyQt，有興趣的話可以去了解看看 – &lt;a href="https://wiki.python.org/moin/PyQt/Deploying_PyQt_Applications"&gt;Deploying PyQt Applications&lt;/a&gt;，但是在這邊先以介紹 py2exe 為主。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;事前環境準備&lt;/h1&gt;
-&lt;hr&gt;
-&lt;p&gt;我所使用的環境如下：
-1. Windows 8.1 x64
-2. Python 2.7.9 32bit
-3. py2exe-0.6.9.win32-py2.7&lt;/p&gt;
+&lt;p&gt;我所使用的環境如下 :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Windows 8.1 x64&lt;/li&gt;
+&lt;li&gt;Python 2.7.9 32bit&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://href.li/?http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.7.exe/download?use_mirror=nchc&amp;amp;download="&gt;py2exe-0.6.9.win32-py2.7&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;安裝步驟&lt;/h1&gt;
-&lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;下載並選擇與 Python 對應的位元檔(32bit 或 64bit)，並且安裝好 py2exe。&lt;/li&gt;
 &lt;li&gt;把開發的 Python 專案所在目錄打開，新建一個 setup.py 檔案在此目錄下(也就是與你編寫所要打包成 exe 的 Python .py 檔案還有你寫的 module、package 等等)，例如寫了一個 Script 是 Hello.py，並且放置在 HelloPy 目錄下，則 setup.py 也是在 HelloPy 下。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;製作 Console 程式的執行檔&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;py2exe 可以製作 GUI 與 Console 的 exe 執行檔，以下分別介紹：&lt;/p&gt;
 &lt;h2&gt;撰寫 setup.py 設定檔案&lt;/h2&gt;
 &lt;h3&gt;1. 先 import 使用 p2exe 製作 setup 的所需要的 Package&lt;/h3&gt;
@@ -1973,7 +2019,6 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;p&gt;&lt;img src="../images/20150103-build-python-exe-using-py2exe/3-run-exe-file-show-result.png" alt="3-run-exe-file-show-result"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;py2exe 製作 setup 的其他設定參數&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;在 py2exe 中有提供一個 Option，而 Option 中許多其他的參數用來協助你編寫 &lt;code&gt;setup.py&lt;/code&gt;，可以參考此 &lt;a href="http://www.py2exe.org/index.cgi/ListOfOptions"&gt;py2exe ListOfOptions&lt;/a&gt;。&lt;/p&gt;
 &lt;h2&gt;打包成單一執行檔&lt;/h2&gt;
 &lt;p&gt;如上的 Console 製作 exe 檔案，你會發現 &lt;code&gt;dist&lt;/code&gt; 中還有許多其他的檔案存在，如果希望那些 &lt;code&gt;.pyd&lt;/code&gt; 或 &lt;code&gt;.dll&lt;/code&gt; 檔都打包進去，可以一個檔案著走，我們可以使用 Option 中的 &lt;code&gt;bundle_files&lt;/code&gt; 參數，解說如下：&lt;/p&gt;
@@ -2048,7 +2093,6 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 或是下載 &lt;a href="https://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;amp;id=29"&gt;Microsoft Visual C++ 2008 Redistributable Package (x86)&lt;/a&gt; 並安裝後，複製此 &lt;code&gt;MSVCP90.dll&lt;/code&gt; 加入至 Python 目錄下的 DLLs。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
-&lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="http://www.108kb.com/index.php/archives/64"&gt;w9xpopen.exe 是干什么的&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.py2exe.org/index.cgi/ListOfOptions"&gt;List of Options&lt;/a&gt;&lt;/li&gt;
@@ -2056,26 +2100,25 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://mf99coding.logdown.com/posts/206237-package-your-python-script-into-exe-executable"&gt;將 Python script 打包成 exe 執行檔&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://stackoverflow.com/questions/112698/py2exe-generate-single-executable-file#113014"&gt;py2exe - generate single executable file&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content><category term="Python"></category><category term="py2exe"></category></entry><entry><title>Vundle 安裝與安裝 Plugin 時的注意事項</title><link href="https://note.koko.guru/install-vundle-and-notice.html" rel="alternate"></link><published>2015-01-02T00:00:00+08:00</published><updated>2015-01-02T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-02:/install-vundle-and-notice.html</id><summary type="html">&lt;p&gt;剛開始學習使用 Vim，因為習慣了 GUI 的 IDE 特別是剛從號稱 Windows 的地表最強 IDE - Visual Studio 跳過來，整個好不容易，所以這裡記錄了一些剛使用 Vundle 時下載 Plugin 的小須知&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;剛開始學習使用 Vim，因為習慣了 GUI 的 IDE 特別是剛從號稱 Windows 的地表最強 IDE - Visual Studio 跳過來，整個非常不容易，所以這裡記錄了一些剛使用 Vundle 時下載 Plugin 的小須知&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;安裝 Vundle&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;要安裝 Vundle 的方式便是透過 Git 下載來安裝：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;下載好後，在 Home 目錄下修改 &lt;code&gt;.vimrc&lt;/code&gt; (如果沒有就新建出來此檔案)，可以先參考&lt;a href="https://github.com/gmarik/vundle"&gt;Github 上 Vundle 的介紹&lt;/a&gt;，使用它的 Configuration 範例完成安裝。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;&lt;a href="http://vim-scripts.org/vim/scripts.html"&gt;vim-script&lt;/a&gt; 下載時要注意名稱含有 .vim&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;在 &lt;code&gt;vim-script&lt;/code&gt; 上的有些 Repository 名稱會包含 &lt;code&gt;.vim&lt;/code&gt;，如 &lt;code&gt;taglist.vim&lt;/code&gt; 等
 所以在編輯 .vimrc 時,要記得補上 &lt;code&gt;.vim&lt;/code&gt;，如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Plugin &lt;span class="s1"&gt;&amp;#39;taglist.vim&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;使用 Vundle 提供的 &lt;code&gt;vimrc&lt;/code&gt; 範例小注意&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;在 Github 中提供的 &lt;code&gt;.vimrc&lt;/code&gt; 範例有兩行：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot; Git plugin not hosted on GitHub&lt;/span&gt;
 &lt;span class="s2"&gt;Plugin &amp;#39;git://git.wincent.com/command-t.git&amp;#39;&lt;/span&gt;
@@ -2087,8 +2130,8 @@ Plugin &lt;span class="s1"&gt;&amp;#39;file:///home/gmarik/path/to/plugin&amp;#3
 &lt;p&gt;第二行則表示如果你是自己下載 Plugin Repository 到自己主機上，才需要去指定 local 端自己電腦的下載下來放置的 Repository 位置
 所以預設如果有裝 Git，沒有下載下來 Plugin，此行是不需要的。&lt;/p&gt;
 &lt;p&gt;而第一行的 &lt;code&gt;git.wincent.com/command-t.git&lt;/code&gt; 是一種套件，名叫 &lt;strong&gt;CommandT&lt;/strong&gt;，詳細資訊可以參考&lt;a href="github.com/wincent/Command-T"&gt;官方&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;Plugin &amp;amp; Bundle 指令&lt;/h1&gt;
-&lt;hr&gt;
 &lt;p&gt;目前 Vundle 已經把指令都改成 Plugin 開頭，但仍支援 Bundle 指令，以下用 &lt;code&gt;taglist.vim&lt;/code&gt; 作為例子：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Plugin &lt;span class="s1"&gt;&amp;#39;taglist.vim&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -2099,8 +2142,8 @@ Plugin &lt;span class="s1"&gt;&amp;#39;file:///home/gmarik/path/to/plugin&amp;#3
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
-&lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="http://www.gtwang.org/2014/04/vundle-vim-bundle-plugin-manager.html"&gt;Vundle：Vim Plugin 自動下載、安裝、更新與管理工具（Vim Bundle）&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://stackoverflow.com/questions/20394142/error-in-installing-bundle-for-vim"&gt;Error in installing Bundle for Vim&lt;/a&gt;&lt;/li&gt;

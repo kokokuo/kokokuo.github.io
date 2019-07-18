@@ -98,30 +98,27 @@ Code / Web / Architecture
 
   <div>
     <h1>前言</h1>
-<hr>
 <p>用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。
 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，而這邊我先選擇 py2exe 做使用與測試。</p>
 <p><br/></p>
 <h1>Python 的製作安裝執行檔工具介紹</h1>
-<hr>
 <p>在 PyPI 上有介紹幾款知名的製作執行檔的工具，這邊並且有支援開發 PyQt，有興趣的話可以去了解看看 – <a href="https://wiki.python.org/moin/PyQt/Deploying_PyQt_Applications">Deploying PyQt Applications</a>，但是在這邊先以介紹 py2exe 為主。</p>
 <p><br/></p>
 <h1>事前環境準備</h1>
-<hr>
-<p>我所使用的環境如下：
-1. Windows 8.1 x64
-2. Python 2.7.9 32bit
-3. py2exe-0.6.9.win32-py2.7</p>
+<p>我所使用的環境如下 :</p>
+<ol>
+<li>Windows 8.1 x64</li>
+<li>Python 2.7.9 32bit</li>
+<li><a href="https://href.li/?http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.7.exe/download?use_mirror=nchc&amp;download=">py2exe-0.6.9.win32-py2.7</a></li>
+</ol>
 <p><br/></p>
 <h1>安裝步驟</h1>
-<hr>
 <ol>
 <li>下載並選擇與 Python 對應的位元檔(32bit 或 64bit)，並且安裝好 py2exe。</li>
 <li>把開發的 Python 專案所在目錄打開，新建一個 setup.py 檔案在此目錄下(也就是與你編寫所要打包成 exe 的 Python .py 檔案還有你寫的 module、package 等等)，例如寫了一個 Script 是 Hello.py，並且放置在 HelloPy 目錄下，則 setup.py 也是在 HelloPy 下。</li>
 </ol>
 <p><br/></p>
 <h1>製作 Console 程式的執行檔</h1>
-<hr>
 <p>py2exe 可以製作 GUI 與 Console 的 exe 執行檔，以下分別介紹：</p>
 <h2>撰寫 setup.py 設定檔案</h2>
 <h3>1. 先 import 使用 p2exe 製作 setup 的所需要的 Package</h3>
@@ -158,7 +155,6 @@ Code / Web / Architecture
 <p><img src="../images/20150103-build-python-exe-using-py2exe/3-run-exe-file-show-result.png" alt="3-run-exe-file-show-result"/></p>
 <p><br/></p>
 <h1>py2exe 製作 setup 的其他設定參數</h1>
-<hr>
 <p>在 py2exe 中有提供一個 Option，而 Option 中許多其他的參數用來協助你編寫 <code>setup.py</code>，可以參考此 <a href="http://www.py2exe.org/index.cgi/ListOfOptions">py2exe ListOfOptions</a>。</p>
 <h2>打包成單一執行檔</h2>
 <p>如上的 Console 製作 exe 檔案，你會發現 <code>dist</code> 中還有許多其他的檔案存在，如果希望那些 <code>.pyd</code> 或 <code>.dll</code> 檔都打包進去，可以一個檔案著走，我們可以使用 Option 中的 <code>bundle_files</code> 參數，解說如下：</p>
@@ -233,7 +229,6 @@ Code / Web / Architecture
 或是下載 <a href="https://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=29">Microsoft Visual C++ 2008 Redistributable Package (x86)</a> 並安裝後，複製此 <code>MSVCP90.dll</code> 加入至 Python 目錄下的 DLLs。</p>
 <p><br/></p>
 <h1>參考資料</h1>
-<hr>
 <ol>
 <li><a href="http://www.108kb.com/index.php/archives/64">w9xpopen.exe 是干什么的</a></li>
 <li><a href="http://www.py2exe.org/index.cgi/ListOfOptions">List of Options</a></li>
