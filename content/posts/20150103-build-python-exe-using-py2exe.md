@@ -5,35 +5,32 @@ Slug: build-python-exe-using-py2exe Authors: kokokuo
 Summary: 用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，此文章這邊我先選擇 py2exe 做使用與測試。
 
 # 前言
----
 用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。
 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，而這邊我先選擇 py2exe 做使用與測試。
 
 <br/>
 
 # Python 的製作安裝執行檔工具介紹
----
 在 PyPI 上有介紹幾款知名的製作執行檔的工具，這邊並且有支援開發 PyQt，有興趣的話可以去了解看看 – [Deploying PyQt Applications](https://wiki.python.org/moin/PyQt/Deploying_PyQt_Applications)，但是在這邊先以介紹 py2exe 為主。
 
 <br/>
+
 # 事前環境準備
----
-我所使用的環境如下：
+我所使用的環境如下 :
+
 1. Windows 8.1 x64
 2. Python 2.7.9 32bit
-3. py2exe-0.6.9.win32-py2.7
+3. [py2exe-0.6.9.win32-py2.7](https://href.li/?http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.7.exe/download?use_mirror=nchc&download=)
 
 <br/>
 
 # 安裝步驟
----
 1. 下載並選擇與 Python 對應的位元檔(32bit 或 64bit)，並且安裝好 py2exe。
 2. 把開發的 Python 專案所在目錄打開，新建一個 setup.py 檔案在此目錄下(也就是與你編寫所要打包成 exe 的 Python .py 檔案還有你寫的 module、package 等等)，例如寫了一個 Script 是 Hello.py，並且放置在 HelloPy 目錄下，則 setup.py 也是在 HelloPy 下。
 
 <br/>
 
 # 製作 Console 程式的執行檔
----
 py2exe 可以製作 GUI 與 Console 的 exe 執行檔，以下分別介紹：
 
 ## 撰寫 setup.py 設定檔案
@@ -81,7 +78,6 @@ setup(
 <br/>
 
 # py2exe 製作 setup 的其他設定參數
----
 在 py2exe 中有提供一個 Option，而 Option 中許多其他的參數用來協助你編寫 `setup.py`，可以參考此 [py2exe ListOfOptions](http://www.py2exe.org/index.cgi/ListOfOptions)。
 
 ## 打包成單一執行檔
@@ -170,7 +166,6 @@ setup(
 <br/>
 
 # 參考資料
----
 1. [w9xpopen.exe 是干什么的](http://www.108kb.com/index.php/archives/64)
 2. [List of Options](http://www.py2exe.org/index.cgi/ListOfOptions)
 3. [PPT python2exe](https://www.ptt.cc/bbs/Python/M.1278481498.A.403.html)
