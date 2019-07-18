@@ -1,5 +1,5 @@
 Title: Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔
-Date: 2015-01-03
+Date: 2015-01-04
 Tags: Python, py2exe, PyQt
 Slug: python-build-gui-app-pyqt-using-py2exe
 Authors: kokokuo 
@@ -27,7 +27,7 @@ Summary: 在前一篇 [Python - 使用 py2exe 製作 Python exe 執行檔]({file
 我需要製作成可執行檔的檔案名稱叫做 `FWMPModel.py`，而我會另外 import 同在 `FWMPModel.py` 路徑資料夾下的 `fmwp_mainwindow.py`.
 `fmwp_mainwindow.py` 此檔案是 Qt 的 ui 檔，經過 PyQt 的轉換指令產生的 `.py` 檔案，檔案位在 `FWMPTools` 資料夾下，如下圖：
 
-<img src="../images/2015-01-03-python-build-gui-app-pyqt-using-py2exe/pyqt-code-files.png" alt="pyqt-code-files" width="200px"/>
+<img src="../images/20150104-python-build-gui-app-pyqt-using-py2exe/pyqt-code-files.png" alt="pyqt-code-files" width="200px"/>
 
 需要改變的地方有：
 ## 1. 把 console 改成 windows 程式
@@ -61,7 +61,7 @@ setup(
 
 結果畫面 :
 
-<img src="../images/2015-01-03-python-build-gui-app-pyqt-using-py2exe/result.png" alt="result" width="480px"/>
+<img src="../images/20150104-python-build-gui-app-pyqt-using-py2exe/result.png" alt="result" width="480px"/>
 
 <br/>
 
