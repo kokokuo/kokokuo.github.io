@@ -1912,7 +1912,60 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔</title><link href="https://note.koko.guru/python-build-gui-app-pyqt-using-py2exe.html" rel="alternate"></link><published>2015-01-04T00:00:00+08:00</published><updated>2015-01-04T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-04:/python-build-gui-app-pyqt-using-py2exe.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/build-python-exe-using-py2exe Authors: kokokuo.html"&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/a&gt; 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Pelican - 在 Windows 上使用 PyQt 開發 Python GUI 視窗程式</title><link href="https://note.koko.guru/pyqt-install-develop-python-gui.html" rel="alternate"></link><published>2015-01-05T00:00:00+08:00</published><updated>2015-01-05T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-05:/pyqt-install-develop-python-gui.html</id><summary type="html">&lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。&lt;/p&gt;</summary><content type="html">&lt;p&gt;而其中由於 Qt 的資源很多，也是可以跨平台開發與使用，而 在 Python 上開發 Qt 則有 &lt;code&gt;PyQt&lt;/code&gt; 可以選擇，如果有商業用途，則可以選擇 &lt;code&gt;PySide&lt;/code&gt; －提供和 &lt;code&gt;PyQt&lt;/code&gt; 類似的功能，並相容 API。但與 &lt;code&gt;PyQt&lt;/code&gt; 不同處為使用 LGPL 授權，所以可以作為商業用途的軟體引用開發。&lt;/p&gt;
+&lt;p&gt;而本文即是使用 &lt;code&gt;PyQt&lt;/code&gt; 作為 GUI 的開發。&lt;/p&gt;
+&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。
+而其中由於 Qt 的資源很多，也是可以跨平台開發與使用，而 在 Python 上開發 Qt 則有 &lt;code&gt;PyQt&lt;/code&gt; 可以選擇，如果有商業用途，則可以選擇 &lt;code&gt;PySide&lt;/code&gt; －提供和 &lt;code&gt;PyQt&lt;/code&gt; 類似的功能，並相容 API。但與 &lt;code&gt;PyQt&lt;/code&gt; 不同處為使用 LGPL 授權，所以可以作為商業用途的軟體引用開發。&lt;/p&gt;
+&lt;p&gt;而本文即是使用 &lt;code&gt;PyQt&lt;/code&gt; 作為 GUI 的開發。&lt;/p&gt;
+&lt;h1&gt;ㄧ、安裝 PyQt&lt;/h1&gt;
+&lt;p&gt;對照安裝好的 Python 版本是 2.7 還是 3.3 與位元版本 選擇對應的 PyQt，這邊我的環境是 Python 2.7.9 32bit，所以選擇 &lt;code&gt;PyQt4&lt;/code&gt; 的 &lt;a href="http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.3/PyQt4-4.11.3-gpl-Py2.7-Qt4.8.6-x32.exe/download"&gt;PyQt4-4.11.3-gpl-Py2.7-Qt4.8.6-x32&lt;/a&gt;，此安裝檔內已經包含 SIP 與 &lt;code&gt;Qt4.8.6&lt;/code&gt;，所以事先不需要安裝 SIP 與 Qt&lt;/p&gt;
+&lt;p&gt;安裝完後，預設會自動在系統環境變數中加入 PyQt 的路徑:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;C:&lt;span class="se"&gt;\P&lt;/span&gt;ython27&lt;span class="se"&gt;\L&lt;/span&gt;ib&lt;span class="se"&gt;\s&lt;/span&gt;ite-packages&lt;span class="se"&gt;\P&lt;/span&gt;yQt4
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/system-env-path.png" alt="system-env-path.png" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;二、使用 Qt 的 &lt;code&gt;.ui&lt;/code&gt; 檔做 UI 設計&lt;/h1&gt;
+&lt;p&gt;如果要開發給 Python 用的 UI 檔案，可以使用 &lt;strong&gt;Qt Creator&lt;/strong&gt; 來設計 UI，在 PyQt 中會提供 &lt;code&gt;designer.exe&lt;/code&gt; 這個程式，該程式是 Qt 的一部分，一起提供進來方便做 UI 的開發，如下兩圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/design-exe.png" alt="design-exe.png" width="ˇ240px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/qt-designer-view.png" alt="qt-designer-view.png" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;三、轉換 &lt;code&gt;.ui&lt;/code&gt; 檔為 &lt;code&gt;.py&lt;/code&gt; 檔作為 module 使用&lt;/h1&gt;
+&lt;p&gt;產生完後的 &lt;code&gt;.ui&lt;/code&gt; 檔，&lt;code&gt;PyQt&lt;/code&gt; 還提供一個 Command 指令可以把 ui 檔案轉換成 &lt;code&gt;.py&lt;/code&gt; 檔，方便我們直接在 Python 中調用。使用 CMD 切換到設計好的 ui 所在目錄下，執行此指令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;pyuic4&lt;/span&gt; &lt;span class="n"&gt;your_qt_ui&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ui&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;output_name&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;即可產生出 py 檔，&lt;code&gt;pyuic4&lt;/code&gt; 是 PyQt 預設代的指令，此檔案的路徑在 &lt;code&gt;C:\Python27\Lib\site-packages\PyQt4&lt;/code&gt; 中，為一個 &lt;code&gt;.bat&lt;/code&gt; 檔案，但是實際調用的是 &lt;code&gt;C:\Python27\Lib\site-packages\PyQt4\uic\&lt;/code&gt; 下的 &lt;code&gt;pyuic.py&lt;/code&gt; 檔案。&lt;/p&gt;
+&lt;h2&gt;載入 UI 的範例&lt;/h2&gt;
+&lt;p&gt;這邊我把原先的 &lt;code&gt;.ui&lt;/code&gt; 檔案名稱改為 &lt;code&gt;fmwp_mainwindow.ui&lt;/code&gt;，產生完的名稱是 &lt;code&gt;fmwp_mainwindow.py&lt;/code&gt;，這邊我的主要 Script 檔案為 &lt;code&gt;FMWPModel.py&lt;/code&gt;
+於是在 &lt;code&gt;FMWPModel.py&lt;/code&gt; 中一開始使用 &lt;code&gt;fmwp_mainwindow.py&lt;/code&gt; 的程式如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;fmwp_mainwindow&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fmwp_mainwindow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Ui_MainWindow&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PyQt4.QtGui&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QMainWindow&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MainWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QMainWindow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Ui_MainWindow&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;parent&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MainWindow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setupUi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fmwp_mainwindow&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QtGui&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QApplication&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MainWindow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exec_&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如此即可完成，再執行 &lt;code&gt;FMWPModel.py&lt;/code&gt; 就會顯示 GUI 視窗了！&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://href.li/?http://stackoverflow.com/questions/18429452/convert-pyqt-ui-to-python"&gt;Convert pyQt UI to python&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Windows"></category><category term="PyQt"></category></entry><entry><title>Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔</title><link href="https://note.koko.guru/python-build-gui-app-pyqt-using-py2exe.html" rel="alternate"></link><published>2015-01-04T00:00:00+08:00</published><updated>2015-01-04T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-04:/python-build-gui-app-pyqt-using-py2exe.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/build-python-exe-using-py2exe Authors: kokokuo.html"&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/a&gt; 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/build-python-exe-using-py2exe Authors: kokokuo.html"&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/a&gt; 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;Python 環境&lt;/h1&gt;
