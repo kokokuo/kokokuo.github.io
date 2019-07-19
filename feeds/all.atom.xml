@@ -1912,7 +1912,142 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Pelican - 在 Windows 上使用 PyQt 開發 Python GUI 視窗程式</title><link href="https://note.koko.guru/pyqt-install-develop-python-gui.html" rel="alternate"></link><published>2015-01-05T00:00:00+08:00</published><updated>2015-01-05T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-05:/pyqt-install-develop-python-gui.html</id><summary type="html">&lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。&lt;/p&gt;</summary><content type="html">&lt;p&gt;而其中由於 Qt 的資源很多，也是可以跨平台開發與使用，而 在 Python 上開發 Qt 則有 &lt;code&gt;PyQt&lt;/code&gt; 可以選擇，如果有商業用途，則可以選擇 &lt;code&gt;PySide&lt;/code&gt; －提供和 &lt;code&gt;PyQt&lt;/code&gt; 類似的功能，並相容 API。但與 &lt;code&gt;PyQt&lt;/code&gt; 不同處為使用 LGPL 授權，所以可以作為商業用途的軟體引用開發。&lt;/p&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Mac - 使 Mac Terminal 有顏色 ( Prompt 與 ls )</title><link href="https://note.koko.guru/mac-terminal-bash-color.html" rel="alternate"></link><published>2015-01-06T00:00:00+08:00</published><updated>2015-01-06T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-06:/mac-terminal-bash-color.html</id><summary type="html">&lt;p&gt;開始學習使用終端機（ Terminal ），但是預設的 Terminal 只有兩種顏色，通常都是黑白配色，而 Mac 的終端機雖然可以有編輯配色，但是依然還是很單調，所以這邊要來筆記一下，如何更改配色。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;開始學習使用終端機（ Terminal ），但是預設的 Terminal 只有兩種顏色，通常都是黑白配色，而 Mac 的終端機雖然可以有編輯配色，但是依然還是很單調，所以這邊要來筆記一下，如何更改配色。&lt;/p&gt;
+&lt;h1&gt;使用現有的配色方案－以 solarized 為例&lt;/h1&gt;
+&lt;p&gt;在網路上已經有許多提供給終端機的配色方案，而這邊以算是滿 popular 的 &lt;code&gt;solarized&lt;/code&gt; 為例，介紹如何安裝網路上提供的現有配色方案。&lt;/p&gt;
+&lt;h2&gt;1. 下載 solarized 配置檔&lt;/h2&gt;
+&lt;p&gt;首先我們下載 &lt;a href="http://ethanschoonover.com/solarized"&gt;solarized&lt;/a&gt; 配置檔並解壓縮後，會看到 &lt;code&gt;solarized&lt;/code&gt; 提供了許多可以配置的環境：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/solarized-files.png" alt="solarized-files" width="480px"/&gt;&lt;/p&gt;
+&lt;h2&gt;2. 執行配色檔案&lt;/h2&gt;
+&lt;p&gt;在上圖你會看到 &lt;code&gt;solarized/osx-terminal.app-colors-solarized&lt;/code&gt; 這個目錄下有一些檔案。如果是使用 Terminal，則直接點擊 &lt;code&gt;Solarized Dark ansi.terminal&lt;/code&gt; 與 &lt;code&gt;Solarized Light ansi.terminal&lt;/code&gt;，透過安裝配色檔案到 Terminal 中即可完成了。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/terminal-solarized.png" alt="terminal-solarized" width="480px"/&gt;&lt;/p&gt;
+&lt;h1&gt;修改執行 &lt;code&gt;ls&lt;/code&gt; 指令時顯示的配色&lt;/h1&gt;
+&lt;p&gt;如果我們希望顯示的資料夾或檔案依據不同類型而有配色時，那我們便需要對 &lt;code&gt;ls&lt;/code&gt; 這個指令做修改。&lt;/p&gt;
+&lt;h2&gt;1. 啟動 &lt;code&gt;ls&lt;/code&gt; 配色功能&lt;/h2&gt;
+&lt;p&gt;首先在 Home 中開啟 &lt;code&gt;.bash_profile&lt;/code&gt; ( 如果沒有則新建 )
+在檔案中加入以下此行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;CLICOLOR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;true&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;儲存後，再重新開啟 Terminal 打入 &lt;code&gt;ls&lt;/code&gt; 便會發現顏色不同。&lt;/p&gt;
+&lt;h2&gt;2. 客製化 &lt;code&gt;ls&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;不過上述設定 &lt;code&gt;CLICOLOR&lt;/code&gt; 是開啟預設的配色，如果要客製化怎麼辦？ 那麼我們就可以透過 &lt;code&gt;LSCOLORS&lt;/code&gt; 來手動修改，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LSCOLORS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;fxexbxdxcxegedabagacad&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;不過上述這很長的字串是什麼呀？ 這是 Terminal 的 &lt;code&gt;ls&lt;/code&gt; 指令配色格式， &lt;code&gt;LSCOLORS&lt;/code&gt; 需要照著順序設定顏色，依序是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;directory&lt;/li&gt;
+&lt;li&gt;symbolic link&lt;/li&gt;
+&lt;li&gt;socket&lt;/li&gt;
+&lt;li&gt;pipe&lt;/li&gt;
+&lt;li&gt;executable&lt;/li&gt;
+&lt;li&gt;block special&lt;/li&gt;
+&lt;li&gt;character special&lt;/li&gt;
+&lt;li&gt;executable with setuid bit set&lt;/li&gt;
+&lt;li&gt;executable with setgid bit set&lt;/li&gt;
+&lt;li&gt;directory writable to others, with sticky bit&lt;/li&gt;
+&lt;li&gt;directory writable to others, without sticky bit&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;顏色的對應值如下，例如 &lt;code&gt;a&lt;/code&gt; 表示黑色，&lt;code&gt;b&lt;/code&gt; 表示紅色，以此類推。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a = black&lt;/li&gt;
+&lt;li&gt;b = red&lt;/li&gt;
+&lt;li&gt;c = green&lt;/li&gt;
+&lt;li&gt;d = brown&lt;/li&gt;
+&lt;li&gt;e = blue&lt;/li&gt;
+&lt;li&gt;f = magenta&lt;/li&gt;
+&lt;li&gt;g = cyan&lt;/li&gt;
+&lt;li&gt;h = light grey&lt;/li&gt;
+&lt;li&gt;A = bold black, usually shows up as dark grey&lt;/li&gt;
+&lt;li&gt;B = bold red&lt;/li&gt;
+&lt;li&gt;C = bold green&lt;/li&gt;
+&lt;li&gt;D = bold brown, usually shows up as yellow&lt;/li&gt;
+&lt;li&gt;E = bold blue&lt;/li&gt;
+&lt;li&gt;F = bold magenta&lt;/li&gt;
+&lt;li&gt;G = bold cyan&lt;/li&gt;
+&lt;li&gt;H = bold light grey; looks like bright white&lt;/li&gt;
+&lt;li&gt;x = default foreground or background&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;而因為每種類型文件都有兩種顏色 - &lt;strong&gt;前景色&lt;/strong&gt;與&lt;strong&gt;背景色&lt;/strong&gt;，所以上述這串 &lt;code&gt;LSCOLORS&lt;/code&gt; 的設定如果數算下來會是剛好 22 個字元長度。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;LSCOLORS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;fxexbxdxcxegedabagacad&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;像是的開頭 &lt;code&gt;fx&lt;/code&gt; 表示目錄的前景色是 &lt;strong&gt;magenta&lt;/strong&gt;，背景底色是原先 Terminal 的底色以此類推，設定完後如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/custom-ls-color.png" alt="custom-ls-color" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;另外，如果覺得這長串的配色很難設定，也可以參考此&lt;a href="http://geoff.greer.fm/lscolors/"&gt;網站&lt;/a&gt;，透過所見即所得來協助產生 &lt;code&gt;LSCOLORS&lt;/code&gt; 的配色字串。&lt;/p&gt;
+&lt;h1&gt;顯示執行 &lt;code&gt;ls&lt;/code&gt; 時，各種檔案目錄所夾帶的額外訊息&lt;/h1&gt;
+&lt;p&gt;其實也就是預設包含 &lt;code&gt;-F&lt;/code&gt; 指令，使其輸入 &lt;code&gt;ls&lt;/code&gt; 時，如果是目錄可以看到 &lt;strong&gt;slash(/)&lt;/strong&gt;，如果是執行檔可以看到 &lt;strong&gt;(*)&lt;/strong&gt; 等功能，一樣編輯 &lt;code&gt;.bash_profile&lt;/code&gt; 並加入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;ls&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ls -Fh&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最後重新開啟 Terminal 即可，如下&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/custom-ls-color-sign.png" alt="custom-ls-color-sign" width="480px"/&gt;&lt;/p&gt;
+&lt;h1&gt;修改 Termnial bash Prompt 的顯示內容與順序&lt;/h1&gt;
+&lt;p&gt;這部分是可以用來修改 Terminal 的 Prompt 顏色與順序，原先如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/default-prompt.png" alt="default-prompt" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;首先我們可以改變顯示的順序與規則，例如我要修改成下圖這樣的排列：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/custom-prompt.png" alt="custom-prompt" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;我們要從修改 &lt;code&gt;.bash_profile&lt;/code&gt; 檔案動刀，開啟此檔案並編輯加入此行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;[\u@\h:\w] $ &amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;完成後再重新開啟 Terminal 即會完成。&lt;/p&gt;
+&lt;p&gt;其中這些符號代表的意思如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;PS1&lt;/code&gt;: 主要的 Prompt，其他還有 &lt;code&gt;PS2&lt;/code&gt;、&lt;code&gt;PS3&lt;/code&gt; 與 &lt;code&gt;PS4&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\u&lt;/code&gt;: 代表現在操作的使用者名稱&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\h&lt;/code&gt;: 主機名稱&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\w&lt;/code&gt;: 表示目前所在的目錄&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;至於 &lt;code&gt;@&lt;/code&gt;, &lt;code&gt;:&lt;/code&gt;, &lt;code&gt;$&lt;/code&gt; 還有 &lt;code&gt;[]&lt;/code&gt;只是用來分隔使用者名稱、主機名稱與目錄用的符號而已。
+更多的參數如下圖，來源 &lt;a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt"&gt;Color Bash Prompt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/prompt-parameter.png" alt="prompt-parameter" width="640px"/&gt;&lt;/p&gt;
+&lt;h1&gt;修改 Prompt 的顏色&lt;/h1&gt;
+&lt;p&gt;而修改顏色的部分，則是在上述的參數在另外補上顏色參數：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PS1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;[\[\e[0;96m\]\u\[\e[0m\]@\[\e[0;92m\]\h\e[0m\]:\w] \e[0;93m\]$\[\e[0m\] &amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用的顏色有：
+- Cyan: &lt;code&gt;\e[0;96m&lt;/code&gt;
+- Green: &lt;code&gt;\e[0;92m&lt;/code&gt;
+- Yellow: &lt;code&gt;\e[0;93m&lt;/code&gt;
+- Text Rest: &lt;code&gt;\e[0m&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;此外要使用顏色需要在上述的顏色符號前後加上 &lt;code&gt;[&lt;/code&gt; 與 &lt;code&gt;]&lt;/code&gt; 來作為一個標記，所以如果要在 &lt;code&gt;\u&lt;/code&gt; 也就是操作使用者字串上加上顏色，會變成如下的格式 :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="se"&gt;\[\e&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;96m&lt;span class="se"&gt;\]\u&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是上述還會造成一個問題，就是 Cyan 這個顏色會影響到 &lt;code&gt;＠&lt;/code&gt; 符號，因為顏色會被繼續使用下去，此時便會需要使用到 Text Rest 來重置。
+如果你只想要某個符號只有 Cyan，當你配好顏色後要記得在後面補上 &lt;code&gt;\e[0m&lt;/code&gt;，同時也要在前後加上 &lt;code&gt;[&lt;/code&gt; 與 &lt;code&gt;]&lt;/code&gt; 變成所以最後結果會是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;\u&lt;/code&gt; 變成 =&amp;gt; &lt;code&gt;[\e[0;96m]\u[\e[0m]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;\h&lt;/code&gt; 變成=&amp;gt; &lt;code&gt;[\e[0;92m]\h\e[0m]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$&lt;/code&gt; 變成=&amp;gt; &lt;code&gt;\e[0;93m]$[\e[0m]&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其他部分保持不變。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/custom-ls-color-and-prompt-final.png" alt="custom-ls-color-and-prompt-final" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;完成。&lt;/p&gt;
+&lt;p&gt;更多的顏色配色參數如下 ( 來源 &lt;a href="https://href.li/?https://wiki.archlinux.org/index.php/Color_Bash_Prompt"&gt;Color Bash Prompt&lt;/a&gt; ):&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/prompt-color-parameter-list-1.png" alt="prompt-color-parameter-list-1" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150106-mac-terminal-bash-color/prompt-color-parameter-list-2.png" alt="prompt-color-parameter-list-2" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://www.vpsee.com/2013/09/use-the-solarized-color-theme-on-mac-os-x-terminal/"&gt;在 Mac OS X 终端里使用 Solarized 配色方案&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://sodahau.logdown.com/posts/18879-mac-ls"&gt;Mac 讓終端機 ls 有顏色&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://osxdaily.com/2013/02/05/improve-terminal-appearance-mac-os-x/"&gt;Simple Tricks to Improve the Terminal Appearance in Mac OS X&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html"&gt;How to: Change / Setup bash custom prompt (PS1)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt"&gt;Color Bash Prompt&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Mac"></category><category term="Terminal"></category></entry><entry><title>Pelican - 在 Windows 上使用 PyQt 開發 Python GUI 視窗程式</title><link href="https://note.koko.guru/pyqt-install-develop-python-gui.html" rel="alternate"></link><published>2015-01-05T00:00:00+08:00</published><updated>2015-01-05T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-05:/pyqt-install-develop-python-gui.html</id><summary type="html">&lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。&lt;/p&gt;</summary><content type="html">&lt;p&gt;而其中由於 Qt 的資源很多，也是可以跨平台開發與使用，而 在 Python 上開發 Qt 則有 &lt;code&gt;PyQt&lt;/code&gt; 可以選擇，如果有商業用途，則可以選擇 &lt;code&gt;PySide&lt;/code&gt; －提供和 &lt;code&gt;PyQt&lt;/code&gt; 類似的功能，並相容 API。但與 &lt;code&gt;PyQt&lt;/code&gt; 不同處為使用 LGPL 授權，所以可以作為商業用途的軟體引用開發。&lt;/p&gt;
 &lt;p&gt;而本文即是使用 &lt;code&gt;PyQt&lt;/code&gt; 作為 GUI 的開發。&lt;/p&gt;
 &lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。
@@ -1925,13 +2060,13 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/system-env-path.png" alt="system-env-path.png" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/system-env-path.png" alt="system-env-path" width="320px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;二、使用 Qt 的 &lt;code&gt;.ui&lt;/code&gt; 檔做 UI 設計&lt;/h1&gt;
 &lt;p&gt;如果要開發給 Python 用的 UI 檔案，可以使用 &lt;strong&gt;Qt Creator&lt;/strong&gt; 來設計 UI，在 PyQt 中會提供 &lt;code&gt;designer.exe&lt;/code&gt; 這個程式，該程式是 Qt 的一部分，一起提供進來方便做 UI 的開發，如下兩圖：&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/design-exe.png" alt="design-exe.png" width="ˇ240px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/design-exe.png" alt="design-exe" width="ˇ240px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/qt-designer-view.png" alt="qt-designer-view.png" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/qt-designer-view.png" alt="qt-designer-view" width="480px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;三、轉換 &lt;code&gt;.ui&lt;/code&gt; 檔為 &lt;code&gt;.py&lt;/code&gt; 檔作為 module 使用&lt;/h1&gt;
 &lt;p&gt;產生完後的 &lt;code&gt;.ui&lt;/code&gt; 檔，&lt;code&gt;PyQt&lt;/code&gt; 還提供一個 Command 指令可以把 ui 檔案轉換成 &lt;code&gt;.py&lt;/code&gt; 檔，方便我們直接在 Python 中調用。使用 CMD 切換到設計好的 ui 所在目錄下，執行此指令：&lt;/p&gt;
