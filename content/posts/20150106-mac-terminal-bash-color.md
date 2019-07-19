@@ -14,12 +14,12 @@ Summary: 開始學習使用終端機（ Terminal ），但是預設的 Terminal 
 ## 1. 下載 solarized 配置檔
 首先我們下載 [solarized](http://ethanschoonover.com/solarized) 配置檔並解壓縮後，會看到 `solarized` 提供了許多可以配置的環境：
 
-<img src="../images/20150106-mac-terminal-bash-color/solarized-files.png" alt="solarized-files" width="360px"/>
+<img src="../images/20150106-mac-terminal-bash-color/solarized-files.png" alt="solarized-files" width="480px"/>
 
 ## 2. 執行配色檔案
 在上圖你會看到 `solarized/osx-terminal.app-colors-solarized` 這個目錄下有一些檔案。如果是使用 Terminal，則直接點擊 `Solarized Dark ansi.terminal` 與 `Solarized Light ansi.terminal`，透過安裝配色檔案到 Terminal 中即可完成了。
 
-<img src="../images/20150106-mac-terminal-bash-color/terminal-solarized.png" alt="terminal-solarized" width="360px"/>
+<img src="../images/20150106-mac-terminal-bash-color/terminal-solarized.png" alt="terminal-solarized" width="480px"/>
 
 # 修改執行 `ls` 指令時顯示的配色
 如果我們希望顯示的資料夾或檔案依據不同類型而有配色時，那我們便需要對 `ls` 這個指令做修改。
@@ -104,11 +104,11 @@ alias ls='ls -Fh'
 
 這部分是可以用來修改 Terminal 的 Prompt 顏色與順序，原先如下圖：
 
-<img src="../images/20150106-mac-terminal-bash-color/default-prompt.png" alt="default-prompt" width="240px"/>
+<img src="../images/20150106-mac-terminal-bash-color/default-prompt.png" alt="default-prompt" width="320px"/>
 
 首先我們可以改變顯示的順序與規則，例如我要修改成下圖這樣的排列：
 
-<img src="../images/20150106-mac-terminal-bash-color/custom-prompt.png" alt="custom-prompt" width="240px"/>
+<img src="../images/20150106-mac-terminal-bash-color/custom-prompt.png" alt="custom-prompt" width="320px"/>
 
 我們要從修改 `.bash_profile` 檔案動刀，開啟此檔案並編輯加入此行：
 
