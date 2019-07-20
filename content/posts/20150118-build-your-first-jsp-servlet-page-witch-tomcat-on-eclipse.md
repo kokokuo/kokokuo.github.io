@@ -10,6 +10,7 @@ Summary: 因為專案的關係，第一次觸碰 JSP，所以筆記一下如何�
 
 # 環境準備
 為了在使用 Java 開發 JSP 網頁，並且透過 Tomcat 啟動，所以我們需要以下工具：
+
 1. **JDK** : Java 的開發環境，基本上使用 SE 就可以，需要多的功能再安裝 EE，這裡我是配合專案的環境使用 [JDK 6u33](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html)
 2. **Tomcat** : 去 Tomcat 官網下載 Core 版本，依照作業系統選擇，這邊也是為了配合專案使用 [6.0.43](http://tomcat.apache.org/download-60.cgi)
 3. **IDE 工具** : 市面上有很多好用的開發工具，這邊先以 Eclipse IDE for J2EE 版本為主。
