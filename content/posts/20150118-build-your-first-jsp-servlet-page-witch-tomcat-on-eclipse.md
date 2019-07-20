@@ -100,7 +100,8 @@ Summary: 因為專案的關係，第一次觸碰 JSP，所以筆記一下如何�
 當專案比較大的時候，然後又有啟動 Debug 模式時，很容易會因為建置時間過長，使 Tomcat 發生 Timeout 導致啟動失敗，所以可以在此調整時間。
 
 ## 4. 第一個 JSP 網頁
-當完成上述的設定後，我們便可以進入網頁的開發。在 Eclispe 新增專案，選擇 `Web` > `Dynamic web project`，然後會看到 `Project Explorer` 中有 `WebContent` 目錄，在此目錄下新增 JSP 網頁。
+當完成上述的設定後，我們便可以進入網頁的開發。
+在 Eclispe 新增專案，選擇 `Web` > `Dynamic web project`，然後會看到 `Project Explorer` 中有 `WebContent` 目錄，在此目錄下新增 JSP 網頁。
 
 接著在 `body` 標籤中，輸入 `JSP` 標籤，如下：
 
