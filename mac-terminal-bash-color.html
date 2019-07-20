@@ -200,11 +200,13 @@ Code / Web / Architecture
 </pre></div>
 
 
-<p>使用的顏色有：
-- Cyan: <code>\e[0;96m</code>
-- Green: <code>\e[0;92m</code>
-- Yellow: <code>\e[0;93m</code>
-- Text Rest: <code>\e[0m</code></p>
+<p>使用的顏色有：</p>
+<ul>
+<li>Cyan: <code>\e[0;96m</code></li>
+<li>Green: <code>\e[0;92m</code></li>
+<li>Yellow: <code>\e[0;93m</code></li>
+<li>Text Rest: <code>\e[0m</code></li>
+</ul>
 <p>此外要使用顏色需要在上述的顏色符號前後加上 <code>[</code> 與 <code>]</code> 來作為一個標記，所以如果要在 <code>\u</code> 也就是操作使用者字串上加上顏色，會變成如下的格式 :</p>
 <div class="highlight"><pre><span></span><span class="se">\[\e</span><span class="o">[</span><span class="m">0</span><span class="p">;</span>96m<span class="se">\]\u</span>
 </pre></div>

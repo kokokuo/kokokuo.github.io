@@ -1912,7 +1912,79 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Mac - 使 Mac Terminal 有顏色 ( Prompt 與 ls )</title><link href="https://note.koko.guru/mac-terminal-bash-color.html" rel="alternate"></link><published>2015-01-06T00:00:00+08:00</published><updated>2015-01-06T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-06:/mac-terminal-bash-color.html</id><summary type="html">&lt;p&gt;開始學習使用終端機（ Terminal ），但是預設的 Terminal 只有兩種顏色，通常都是黑白配色，而 Mac 的終端機雖然可以有編輯配色，但是依然還是很單調，所以這邊要來筆記一下，如何更改配色。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Windows - 透過 Eclipse 建置 JSP 網頁在 Tomcat 上</title><link href="https://note.koko.guru/build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse.html" rel="alternate"></link><published>2015-01-18T00:00:00+08:00</published><updated>2015-01-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-18:/build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse.html</id><summary type="html">&lt;p&gt;因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁。&lt;/p&gt;
+&lt;h1&gt;環境準備&lt;/h1&gt;
+&lt;p&gt;為了在使用 Java 開發 JSP 網頁，並且透過 Tomcat 啟動，所以我們需要以下工具：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;JDK&lt;/strong&gt; : Java 的開發環境，基本上使用 SE 就可以，需要多的功能再安裝 EE，這裡我是配合專案的環境使用 &lt;a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html"&gt;JDK 6u33&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tomcat&lt;/strong&gt; : 去 Tomcat 官網下載 Core 版本，依照作業系統選擇，這邊也是為了配合專案使用 &lt;a href="http://tomcat.apache.org/download-60.cgi"&gt;6.0.43&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IDE 工具&lt;/strong&gt; : 市面上有很多好用的開發工具，這邊先以 Eclipse IDE for J2EE 版本為主。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;安裝環境與設定&lt;/h1&gt;
+&lt;h2&gt;1. 安裝 JDK&lt;/h2&gt;
+&lt;p&gt;下載並安裝完 JDK 後，首先我們需要來設置環境變數，分別設置 &lt;code&gt;JAVA_HOME&lt;/code&gt; 與 &lt;code&gt;JRE_HOME&lt;/code&gt;，使系統找得到 Java SDK 與執行 JAVA 程式的路徑。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;JAVA_HOME&lt;/code&gt; 如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/JAVA_HOME.png" alt="JAVA_HOME" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;JRE_HOME&lt;/code&gt; 如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/JRE_HOME.png" alt="JRE_HOME" width="480px"/&gt;&lt;/p&gt;
+&lt;h2&gt;2. 啟動 Tomcat&lt;/h2&gt;
+&lt;p&gt;下載的 Tomcat 在解壓縮後會直接包含執行檔與相關檔案，此時只要啟動 &lt;code&gt;bin&lt;/code&gt; 目錄底下的 &lt;code&gt;startup.bat&lt;/code&gt; 腳本，便會開始執行，成功後會如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/Run-Tomcat.png" alt="Run-Tomcat" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;預設的 Tomcat 會使用 &lt;code&gt;8080&lt;/code&gt; Port，因此輸入網址 &lt;a href="http://127.0.0.1:8080"&gt;http://127.0.0.1:8080&lt;/a&gt; 會出預設的 Tomcat 的伺服器啟動畫面 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/tomcat-startup-success.png" alt="tomcat-startup-success" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;接著我們來設置 IDE 的 Eclipase 環境，讓我們在透過 Eclipse 在開發 Java 的 Web 程式時，可以執行使 Eclipse 找到 Tomcat 並啟動 Tomcat 來除錯 Java 的 Web。&lt;/p&gt;
+&lt;h2&gt;3. 在 Eclispe 上設置 Tomcat Server&lt;/h2&gt;
+&lt;p&gt;如上所述，為了開發與 Debug 的便利性，我們直接透過 Eclipse 設定 Tomcat，方便我們直接透過 Eclispe 來執行 Tomcat Server 並看到執行結果。&lt;/p&gt;
+&lt;h3&gt;(1.) 設定 Runtime Server&lt;/h3&gt;
+&lt;p&gt;開啓 Eclipse 後，選擇 &lt;code&gt;Windows&lt;/code&gt; &amp;gt; &lt;code&gt;Preferences&lt;/code&gt; &amp;gt; 點選 &lt;code&gt;Server&lt;/code&gt; 展開後，選擇 &lt;code&gt;Runtime Environments&lt;/code&gt; &amp;gt; 點選 &lt;code&gt;Apache&lt;/code&gt; 目錄，選擇你下載 &lt;code&gt;Apache Tomcat&lt;/code&gt; 的版本，勾選 &lt;code&gt;Create a new local server&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/eclipse-add-tomcat-server.png" alt="eclipse-add-tomcat-server" width="360px"/&gt;&lt;/p&gt;
+&lt;h3&gt;(2.) 指定 Tomcat 目錄位置&lt;/h3&gt;
+&lt;p&gt;如下圖，指定你下載的後解開的目錄路徑，Eclispe 預設可選的 Tomcat 版本名稱，並非是所下版的版本號的話，不用擔心可以照樣指定：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/eclipse-add-tomcat-path.png" alt="eclipse-add-tomcat-path" width="360px"/&gt;&lt;/p&gt;
+&lt;p&gt;之所以會有預設版本號，只是當 Eclipse 沒有找到時，會預設下載此版。&lt;/p&gt;
+&lt;p&gt;完成後便會在 &lt;code&gt;Project Explorer&lt;/code&gt; 看到 &lt;code&gt;Servers&lt;/code&gt; 資料夾，裡面存放 Eclipse 所用的 Tomcat Local 端 config 資料，如 &lt;code&gt;web.xml&lt;/code&gt;, &lt;code&gt;server.xml&lt;/code&gt; 等。&lt;/p&gt;
+&lt;h3&gt;(3. ) Eclispe 的 Tomcat Server 設定&lt;/h3&gt;
+&lt;p&gt;再來，我們可以為這個 Eclipse 上的 Server 做一些設定，因為這個 Server 是 Eclipse 另外產生的一份，所以編寫好的程式專案不會預設放在真的 Tomcat Server 上，而且 Server 的一些 &lt;code&gt;server.xml&lt;/code&gt; 與 &lt;code&gt;web.xml&lt;/code&gt; 等設定檔案也是另外 copy 的一份，不會影響到原先真正的 Tomcat Server，除非你指定，那麼這部分便是做 Tomcat 的細部設定，在這裏有做部分轉載備份，更多詳細的教學可以參考此 &lt;a href="https://dotblogs.com.tw/alantsai/archive/2013/09/30/eclipse-work_with_tomcat.aspx"&gt;Eclispe 與 Tomcat 結合使用文章&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;首先我們開啟 Servers 的 view，如果找不到，則透過 &lt;code&gt;Windows&lt;/code&gt; &amp;gt; &lt;code&gt;Show View&lt;/code&gt; 去尋找 Servers，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/Open-Setting-Servers-view.png" alt="Open-Setting-Servers-view" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;便會開啟此畫面：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/Tomcat-Sever-configuration.png" alt="Tomcat-Sever-configuration" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;在上圖中可以稍微注意一下幾個設定：&lt;/p&gt;
+&lt;h4&gt;Server Locations&lt;/h4&gt;
+&lt;p&gt;如果改成 &lt;code&gt;Tomcat Installation&lt;/code&gt;，則會把預設放在 &lt;code&gt;workspaces&lt;/code&gt; 下的 &lt;code&gt;.metadata/.plugins/org.eclipse.wst.server.core/tmp0&lt;/code&gt; 內指向的預設網站位置直接改成在 Tomcat Server 底下。&lt;/p&gt;
+&lt;p&gt;而發佈的路徑如果沒有修改，則是放在 Eclipse 預設的 &lt;code&gt;wtpwebapps&lt;/code&gt; 目錄下，而這樣修改後我們就可以在 Eclipse 外面啟動 Tomcat Server ( startup.bat 檔案 ) 直接來瀏覽我們的網站。&lt;/p&gt;
+&lt;p&gt;如果不能夠修改放置位置，那是因為你那個 Server 目前有 Module，只要把 Module 刪除了就能夠修改，而 Module 的路徑便是原先指定的 &lt;code&gt;metadata/.plugins/org.eclipse.wst.server.core/tmp0&lt;/code&gt; 下。&lt;/p&gt;
+&lt;p&gt;以下稍微介紹一下 Tomcat 子目錄：
+- &lt;code&gt;lib&lt;/code&gt; : 存放 JAVA 的類別庫
+- &lt;code&gt;bin&lt;/code&gt; : 存放各種平臺下啟動和關閉 Tomcat 的指令檔
+- webapps : 實際要部署的 WEB 應用程式存放的地方。 Java 開發的 Web 網站或 war 檔放入這個目錄下就可以通過 Tomcat 伺服器訪問
+- &lt;code&gt;conf&lt;/code&gt; =&amp;gt; Tomcat server 的主要設定檔，如 &lt;code&gt;web.xml&lt;/code&gt;, &lt;code&gt;server.xml&lt;/code&gt;, &lt;code&gt;tomcat-user.xml&lt;/code&gt; 檔案
+- &lt;code&gt;work&lt;/code&gt; =&amp;gt; JSP 網頁編譯為 Servlet 過後的 &lt;code&gt;.java&lt;/code&gt; 檔案與 &lt;code&gt;.class&lt;/code&gt; 執行檔案&lt;/p&gt;
+&lt;p&gt;更多細節可以參考此文章 &lt;a href="https://fecbob.pixnet.net/blog/post/38258415-tomcat%E5%90%84%E5%80%8B%E8%B3%87%E6%96%99%E5%A4%BE%E7%9A%84%E4%BD%9C%E7%94%A8"&gt;tomcat 各個資料夾的作用&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;Server Options&lt;/h4&gt;
+&lt;p&gt;如果無勾選 &lt;strong&gt;「 Serve modules without publishing 」&lt;/strong&gt; 表示直接在 Eclispe 下執行專案時，會先複製該專案資源一份，並提供給 Server 會使用。
+這樣的好處是如果我們網站有修改某個資源，例如更新設定檔案 &lt;code&gt;web.xml&lt;/code&gt;、&lt;code&gt;server.xml&lt;/code&gt; 或是 &lt;code&gt;tomcat-user.xml&lt;/code&gt; 時不會真的影響到我們專案；而如果勾選了，則是直接使用專案的資源而不另外拷貝一份。&lt;/p&gt;
+&lt;h4&gt;修改 Port&lt;/h4&gt;
+&lt;p&gt;預設 Tomcat 的 Port 是 &lt;code&gt;8080&lt;/code&gt;，如果想要更換 Port 時可以透過此位置修改，或是直接開啟 &lt;code&gt;server.xml&lt;/code&gt; 檔案，修改也可。&lt;/p&gt;
+&lt;h4&gt;Publishing&lt;/h4&gt;
+&lt;p&gt;是否當專案資源修改後便會自動更新部署到 Server 上面。&lt;/p&gt;
+&lt;h4&gt;Timeout&lt;/h4&gt;
+&lt;p&gt;當專案比較大的時候，然後又有啟動 Debug 模式時，很容易會因為建置時間過長，使 Tomcat 發生 Timeout 導致啟動失敗，所以可以在此調整時間。&lt;/p&gt;
+&lt;h2&gt;4. 第一個 JSP 網頁&lt;/h2&gt;
+&lt;p&gt;當完成上述的設定後，我們便可以進入網頁的開發。
+在 Eclispe 新增專案，選擇 &lt;code&gt;Web&lt;/code&gt; &amp;gt; &lt;code&gt;Dynamic web project&lt;/code&gt;，然後會看到 &lt;code&gt;Project Explorer&lt;/code&gt; 中有 &lt;code&gt;WebContent&lt;/code&gt; 目錄，在此目錄下新增 JSP 網頁。&lt;/p&gt;
+&lt;p&gt;接著在 &lt;code&gt;body&lt;/code&gt; 標籤中，輸入 &lt;code&gt;JSP&lt;/code&gt; 標籤，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;%=&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;%&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;body&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;上述的是 JSP 的表達式標簽，會把資訊透過字串的方式直接顯示在網頁上，完成後點選執行便會如下圖結果：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/JSP-hello.png" alt="JSP-hello" width="640px"/&gt;&lt;/p&gt;</content><category term="Windows"></category><category term="JSP"></category><category term="Servlet"></category><category term="Tomcat"></category><category term="Eclipse"></category></entry><entry><title>Mac - 使 Mac Terminal 有顏色 ( Prompt 與 ls )</title><link href="https://note.koko.guru/mac-terminal-bash-color.html" rel="alternate"></link><published>2015-01-06T00:00:00+08:00</published><updated>2015-01-06T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-06:/mac-terminal-bash-color.html</id><summary type="html">&lt;p&gt;開始學習使用終端機（ Terminal ），但是預設的 Terminal 只有兩種顏色，通常都是黑白配色，而 Mac 的終端機雖然可以有編輯配色，但是依然還是很單調，所以這邊要來筆記一下，如何更改配色。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;開始學習使用終端機（ Terminal ），但是預設的 Terminal 只有兩種顏色，通常都是黑白配色，而 Mac 的終端機雖然可以有編輯配色，但是依然還是很單調，所以這邊要來筆記一下，如何更改配色。&lt;/p&gt;
 &lt;h1&gt;使用現有的配色方案－以 solarized 為例&lt;/h1&gt;
 &lt;p&gt;在網路上已經有許多提供給終端機的配色方案，而這邊以算是滿 popular 的 &lt;code&gt;solarized&lt;/code&gt; 為例，介紹如何安裝網路上提供的現有配色方案。&lt;/p&gt;
@@ -2015,11 +2087,13 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;使用的顏色有：
-- Cyan: &lt;code&gt;\e[0;96m&lt;/code&gt;
-- Green: &lt;code&gt;\e[0;92m&lt;/code&gt;
-- Yellow: &lt;code&gt;\e[0;93m&lt;/code&gt;
-- Text Rest: &lt;code&gt;\e[0m&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用的顏色有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cyan: &lt;code&gt;\e[0;96m&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Green: &lt;code&gt;\e[0;92m&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Yellow: &lt;code&gt;\e[0;93m&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Text Rest: &lt;code&gt;\e[0m&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;此外要使用顏色需要在上述的顏色符號前後加上 &lt;code&gt;[&lt;/code&gt; 與 &lt;code&gt;]&lt;/code&gt; 來作為一個標記，所以如果要在 &lt;code&gt;\u&lt;/code&gt; 也就是操作使用者字串上加上顏色，會變成如下的格式 :&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="se"&gt;\[\e&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;96m&lt;span class="se"&gt;\]\u&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;

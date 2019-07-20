@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁" />
+<meta name="keywords" content="Windows, JSP, Servlet, Tomcat, Eclipse">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Windows - 透過 Eclipse 建置 JSP 網頁在 Tomcat 上"/>
+<meta property="og:description" content="因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-01-18 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Windows"/>
+<meta property="article:tag" content="JSP"/>
+<meta property="article:tag" content="Servlet"/>
+<meta property="article:tag" content="Tomcat"/>
+<meta property="article:tag" content="Eclipse"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Windows - 透過 Eclipse 建置 JSP 網頁在 Tomcat 上</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse">Windows - 透過 Eclipse 建置 JSP 網頁在 Tomcat 上</h1>
+    <p>
+          Posted on 日 18 1月 2015 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁。</p>
+<h1>環境準備</h1>
+<p>為了在使用 Java 開發 JSP 網頁，並且透過 Tomcat 啟動，所以我們需要以下工具：</p>
+<ol>
+<li><strong>JDK</strong> : Java 的開發環境，基本上使用 SE 就可以，需要多的功能再安裝 EE，這裡我是配合專案的環境使用 <a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html">JDK 6u33</a></li>
+<li><strong>Tomcat</strong> : 去 Tomcat 官網下載 Core 版本，依照作業系統選擇，這邊也是為了配合專案使用 <a href="http://tomcat.apache.org/download-60.cgi">6.0.43</a></li>
+<li><strong>IDE 工具</strong> : 市面上有很多好用的開發工具，這邊先以 Eclipse IDE for J2EE 版本為主。</li>
+</ol>
+<h1>安裝環境與設定</h1>
+<h2>1. 安裝 JDK</h2>
+<p>下載並安裝完 JDK 後，首先我們需要來設置環境變數，分別設置 <code>JAVA_HOME</code> 與 <code>JRE_HOME</code>，使系統找得到 Java SDK 與執行 JAVA 程式的路徑。</p>
+<p><code>JAVA_HOME</code> 如下：</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/JAVA_HOME.png" alt="JAVA_HOME" width="480px"/></p>
+<p><code>JRE_HOME</code> 如下：</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/JRE_HOME.png" alt="JRE_HOME" width="480px"/></p>
+<h2>2. 啟動 Tomcat</h2>
+<p>下載的 Tomcat 在解壓縮後會直接包含執行檔與相關檔案，此時只要啟動 <code>bin</code> 目錄底下的 <code>startup.bat</code> 腳本，便會開始執行，成功後會如下圖：</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/Run-Tomcat.png" alt="Run-Tomcat" width="480px"/></p>
+<p>預設的 Tomcat 會使用 <code>8080</code> Port，因此輸入網址 <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> 會出預設的 Tomcat 的伺服器啟動畫面 :</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/tomcat-startup-success.png" alt="tomcat-startup-success" width="480px"/></p>
+<p>接著我們來設置 IDE 的 Eclipase 環境，讓我們在透過 Eclipse 在開發 Java 的 Web 程式時，可以執行使 Eclipse 找到 Tomcat 並啟動 Tomcat 來除錯 Java 的 Web。</p>
+<h2>3. 在 Eclispe 上設置 Tomcat Server</h2>
+<p>如上所述，為了開發與 Debug 的便利性，我們直接透過 Eclipse 設定 Tomcat，方便我們直接透過 Eclispe 來執行 Tomcat Server 並看到執行結果。</p>
+<h3>(1.) 設定 Runtime Server</h3>
+<p>開啓 Eclipse 後，選擇 <code>Windows</code> &gt; <code>Preferences</code> &gt; 點選 <code>Server</code> 展開後，選擇 <code>Runtime Environments</code> &gt; 點選 <code>Apache</code> 目錄，選擇你下載 <code>Apache Tomcat</code> 的版本，勾選 <code>Create a new local server</code>:</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/eclipse-add-tomcat-server.png" alt="eclipse-add-tomcat-server" width="360px"/></p>
+<h3>(2.) 指定 Tomcat 目錄位置</h3>
+<p>如下圖，指定你下載的後解開的目錄路徑，Eclispe 預設可選的 Tomcat 版本名稱，並非是所下版的版本號的話，不用擔心可以照樣指定：</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/eclipse-add-tomcat-path.png" alt="eclipse-add-tomcat-path" width="360px"/></p>
+<p>之所以會有預設版本號，只是當 Eclipse 沒有找到時，會預設下載此版。</p>
+<p>完成後便會在 <code>Project Explorer</code> 看到 <code>Servers</code> 資料夾，裡面存放 Eclipse 所用的 Tomcat Local 端 config 資料，如 <code>web.xml</code>, <code>server.xml</code> 等。</p>
+<h3>(3. ) Eclispe 的 Tomcat Server 設定</h3>
+<p>再來，我們可以為這個 Eclipse 上的 Server 做一些設定，因為這個 Server 是 Eclipse 另外產生的一份，所以編寫好的程式專案不會預設放在真的 Tomcat Server 上，而且 Server 的一些 <code>server.xml</code> 與 <code>web.xml</code> 等設定檔案也是另外 copy 的一份，不會影響到原先真正的 Tomcat Server，除非你指定，那麼這部分便是做 Tomcat 的細部設定，在這裏有做部分轉載備份，更多詳細的教學可以參考此 <a href="https://dotblogs.com.tw/alantsai/archive/2013/09/30/eclipse-work_with_tomcat.aspx">Eclispe 與 Tomcat 結合使用文章</a>。</p>
+<p>首先我們開啟 Servers 的 view，如果找不到，則透過 <code>Windows</code> &gt; <code>Show View</code> 去尋找 Servers，如下：</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/Open-Setting-Servers-view.png" alt="Open-Setting-Servers-view" width="480px"/></p>
+<p>便會開啟此畫面：</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/Tomcat-Sever-configuration.png" alt="Tomcat-Sever-configuration" width="640px"/></p>
+<p>在上圖中可以稍微注意一下幾個設定：</p>
+<h4>Server Locations</h4>
+<p>如果改成 <code>Tomcat Installation</code>，則會把預設放在 <code>workspaces</code> 下的 <code>.metadata/.plugins/org.eclipse.wst.server.core/tmp0</code> 內指向的預設網站位置直接改成在 Tomcat Server 底下。</p>
+<p>而發佈的路徑如果沒有修改，則是放在 Eclipse 預設的 <code>wtpwebapps</code> 目錄下，而這樣修改後我們就可以在 Eclipse 外面啟動 Tomcat Server ( startup.bat 檔案 ) 直接來瀏覽我們的網站。</p>
+<p>如果不能夠修改放置位置，那是因為你那個 Server 目前有 Module，只要把 Module 刪除了就能夠修改，而 Module 的路徑便是原先指定的 <code>metadata/.plugins/org.eclipse.wst.server.core/tmp0</code> 下。</p>
+<p>以下稍微介紹一下 Tomcat 子目錄：
+- <code>lib</code> : 存放 JAVA 的類別庫
+- <code>bin</code> : 存放各種平臺下啟動和關閉 Tomcat 的指令檔
+- webapps : 實際要部署的 WEB 應用程式存放的地方。 Java 開發的 Web 網站或 war 檔放入這個目錄下就可以通過 Tomcat 伺服器訪問
+- <code>conf</code> =&gt; Tomcat server 的主要設定檔，如 <code>web.xml</code>, <code>server.xml</code>, <code>tomcat-user.xml</code> 檔案
+- <code>work</code> =&gt; JSP 網頁編譯為 Servlet 過後的 <code>.java</code> 檔案與 <code>.class</code> 執行檔案</p>
+<p>更多細節可以參考此文章 <a href="https://fecbob.pixnet.net/blog/post/38258415-tomcat%E5%90%84%E5%80%8B%E8%B3%87%E6%96%99%E5%A4%BE%E7%9A%84%E4%BD%9C%E7%94%A8">tomcat 各個資料夾的作用</a></p>
+<h4>Server Options</h4>
+<p>如果無勾選 <strong>「 Serve modules without publishing 」</strong> 表示直接在 Eclispe 下執行專案時，會先複製該專案資源一份，並提供給 Server 會使用。
+這樣的好處是如果我們網站有修改某個資源，例如更新設定檔案 <code>web.xml</code>、<code>server.xml</code> 或是 <code>tomcat-user.xml</code> 時不會真的影響到我們專案；而如果勾選了，則是直接使用專案的資源而不另外拷貝一份。</p>
+<h4>修改 Port</h4>
+<p>預設 Tomcat 的 Port 是 <code>8080</code>，如果想要更換 Port 時可以透過此位置修改，或是直接開啟 <code>server.xml</code> 檔案，修改也可。</p>
+<h4>Publishing</h4>
+<p>是否當專案資源修改後便會自動更新部署到 Server 上面。</p>
+<h4>Timeout</h4>
+<p>當專案比較大的時候，然後又有啟動 Debug 模式時，很容易會因為建置時間過長，使 Tomcat 發生 Timeout 導致啟動失敗，所以可以在此調整時間。</p>
+<h2>4. 第一個 JSP 網頁</h2>
+<p>當完成上述的設定後，我們便可以進入網頁的開發。
+在 Eclispe 新增專案，選擇 <code>Web</code> &gt; <code>Dynamic web project</code>，然後會看到 <code>Project Explorer</code> 中有 <code>WebContent</code> 目錄，在此目錄下新增 JSP 網頁。</p>
+<p>接著在 <code>body</code> 標籤中，輸入 <code>JSP</code> 標籤，如下：</p>
+<div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;%=</span>
+        <span class="s">&quot;hello world&quot;</span>
+    <span class="o">&lt;%</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>上述的是 JSP 的表達式標簽，會把資訊透過字串的方式直接顯示在網頁上，完成後點選執行便會如下圖結果：</p>
+<p><img src="../images/20150118-build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse/JSP-hello.png" alt="JSP-hello" width="640px"/></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/windows.html">Windows</a>
+      <a href="https://note.koko.guru/tag/jsp.html">JSP</a>
+      <a href="https://note.koko.guru/tag/servlet.html">Servlet</a>
+      <a href="https://note.koko.guru/tag/tomcat.html">Tomcat</a>
+      <a href="https://note.koko.guru/tag/eclipse.html">Eclipse</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
