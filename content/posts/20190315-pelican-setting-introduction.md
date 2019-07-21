@@ -18,7 +18,6 @@ Summary: 如果你的 Pelican 剛架好，並且正在苦思一些設定，例�
 接著我們來進入正題！
 
 <br/>
-<br/>
 
 # 設定 Favicon
 ---
@@ -85,6 +84,7 @@ EXTRA_PATH_METADATA = {
 <br/>
 
 # 在 master 分支加入 README
+---
 在使用 Pelican 建置靜態網站時，因為預設是使用 Markdown 來撰寫，所以 Pelican 會有功能協助我們在網站發佈成網頁時都需要轉換成 HTML 這個便利性。
 可是如果你的網站是放在 Github Page 中的 Repository `master` 分支，那你可能也會希望如同往常使用 Github 一樣，當別人逛到該 Repository 也可以有一個 `README` 認識該 Repository。
 
@@ -138,6 +138,7 @@ STATIC_PATHS = [
 <br/>
 
 # 參考資料
+---
 1. [How to add a favicon to a Pelican blog?](https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog)
 2. [Does a favicon have to be 32x32 or 16x16?](https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16)
 3. [Pelican - Tips](http://docs.getpelican.com/en/3.6.0/tips.html?highlight=favicon)

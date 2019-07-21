@@ -5,9 +5,14 @@ Slug: add-custom-domain-on-github-page-and-pelican
 Authors: kokokuo
 Summary: 使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 `<username>.github.io` 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！
 
+# 前言
+---
+使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 `<username>.github.io` 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！
+
+<br/>
 
 # 一、設置化網域設定
-
+---
 ## 1. 購買想要的域名
 購買網域名稱這部分，在網路上有諸多的服務可以購買，如國產中華電信，全球較知名的網路註冊商[Godaddy](https://tw.godaddy.com),、[NameCheap](https://www.namecheap.com/)、[Gandi.net](https://www.gandi.net)，或是熟知的幾大雲端服務也會提供，如 [AWS Route53](https://docs.aws.amazon.com/zh_cn/Route53/latest/DeveloperGuide/registrar.html)、[Google Domain](https://domains.google/#/)、Azure，甚至一些比較小眾或是特別網域才買得到註冊商，像是本人用過 [Registr.TO](https://register.to/) ... 等等，都能購買。
 

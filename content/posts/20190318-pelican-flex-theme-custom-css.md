@@ -11,6 +11,7 @@ Summary: 如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個�
 ---
 在前一篇 [Python - 安裝 Pelican Theme 來改變你的靜態網站主題]({filename}/posts/20190314-install-pelican-theme.md)，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。
 
+<br/>
 
 # 讓 Flex Theme 讀取客製化樣式
 ---
