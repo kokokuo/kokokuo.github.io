@@ -53,7 +53,7 @@ public final class index_jsp  extends org.apache.jasper.runtime.HttpJspBase impl
     // 略...
 ```
 
-# 2. Scriptlet 指令標籤
+## 2. Scriptlet 指令標籤
 標籤符號：`<% Java 陳述句 %>`
 標籤功能：在標籤之間所包括的內容，將被轉譯為 Servlet 原始碼 `_jspService()` 方法中的內容
 標籤範例：
@@ -103,7 +103,7 @@ public final class login_jsp
 }
 ```
 
-## 運算式（ Expression ）標籤
+## 3. 運算式（ Expression ）標籤
 標籤符號：`<%= Java運算式 %>`
 標籤功能：運算式元素中撰寫 Java 運算式，運算式的運算結果將直接輸出為網頁的一部份。
 標籤範例：
