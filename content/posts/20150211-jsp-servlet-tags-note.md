@@ -123,7 +123,7 @@ out.print(new Date());
 # 解說
 而上述在 JSP 轉換成 Servlet 的過程中，便會有些物件被自動產生，這些物件的名稱與生命週期使用都被定義，並且存在於 Servlet 中的方法 `_jspService()` 裡，這些物件被稱為隱含物件，如下表：
 
-<img src="../images/20150211-jsp-servlet-tags-note/JSP-implict-object.png" alt="JSP-implict-object" width="480px"/>
+<img src="../images/20150211-jsp-servlet-tags-note/JSP-implict-object.png" alt="JSP-implict-object" width="640px"/>
 
 因此當使用 JSP 標籤時要小心。
 
