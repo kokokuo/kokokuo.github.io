@@ -6,7 +6,12 @@ Code / Web / Architecture
 你需要非常多的努力
 &lt;br/&gt;
 才能看起來毫不費力
-</subtitle><entry><title>Pelican - 設定客製化網域並顯示在 Github Page 上</title><link href="https://note.koko.guru/add-custom-domain-on-github-page-and-pelican.html" rel="alternate"></link><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-15:/add-custom-domain-on-github-page-and-pelican.html</id><summary type="html">&lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;一、設置化網域設定&lt;/h1&gt;
+</subtitle><entry><title>Pelican - 設定客製化網域並顯示在 Github Page 上</title><link href="https://note.koko.guru/add-custom-domain-on-github-page-and-pelican.html" rel="alternate"></link><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-15:/add-custom-domain-on-github-page-and-pelican.html</id><summary type="html">&lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;一、設置化網域設定&lt;/h1&gt;
+&lt;hr&gt;
 &lt;h2&gt;1. 購買想要的域名&lt;/h2&gt;
 &lt;p&gt;購買網域名稱這部分，在網路上有諸多的服務可以購買，如國產中華電信，全球較知名的網路註冊商&lt;a href="https://tw.godaddy.com"&gt;Godaddy&lt;/a&gt;,、&lt;a href="https://www.namecheap.com/"&gt;NameCheap&lt;/a&gt;、&lt;a href="https://www.gandi.net"&gt;Gandi.net&lt;/a&gt;，或是熟知的幾大雲端服務也會提供，如 &lt;a href="https://docs.aws.amazon.com/zh_cn/Route53/latest/DeveloperGuide/registrar.html"&gt;AWS Route53&lt;/a&gt;、&lt;a href="https://domains.google/#/"&gt;Google Domain&lt;/a&gt;、Azure，甚至一些比較小眾或是特別網域才買得到註冊商，像是本人用過 &lt;a href="https://register.to/"&gt;Registr.TO&lt;/a&gt; ... 等等，都能購買。&lt;/p&gt;
 &lt;p&gt;不過因為網路上有太多的相關文章介紹與分享，所以這邊就直接跳過此段。且由於我本人比較常用也熟悉 GoDaddy 的服務，所以接下來的設定為以 GoDaddy 為例，如果有想要了解的部分也可以在聯繫我，我會嘗試為你解答。&lt;/p&gt;
@@ -78,7 +83,9 @@ Code / Web / Architecture
 &lt;li&gt;&lt;a href="https://help.github.com/en/articles/adding-or-removing-a-custom-domain-for-your-github-pages-site"&gt;Adding or removing a custom domain for your GitHub Pages site&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://blog.dmoon.tw/github-pages-custom-domain/index.html"&gt;Github Pages 自訂域名 - 輕鬆擁有 https 綠鎖頭 (1)&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;</content><category term="Pelican"></category><category term="Github"></category><category term="Domain"></category></entry><entry><title>Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上</title><link href="https://note.koko.guru/golang-install-on-mac-with-gvm.html" rel="alternate"></link><published>2019-07-13T00:00:00+08:00</published><updated>2019-07-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-13:/golang-install-on-mac-with-gvm.html</id><summary type="html">&lt;p&gt;最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
 &lt;p&gt;最近開始摸 Golang，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 &lt;code&gt;hombrew&lt;/code&gt; 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;透過 GVM 安裝並管理 Go 版本&lt;/h1&gt;
 &lt;hr&gt;
 &lt;h2&gt;1. 什麼是 GVM ( Go Version Management )&lt;/h2&gt;
@@ -198,6 +205,7 @@ $ gvm use go1.12.7 --default
 &lt;/ol&gt;</content><category term="Golang"></category><category term="Mac"></category><category term="GVM"></category></entry><entry><title>Pelican - 如何客製化 Pelican Theme 的 Flex 樣式</title><link href="https://note.koko.guru/custom-pelican-theme-flex-style.html" rel="alternate"></link><published>2019-03-18T00:00:00+08:00</published><updated>2019-03-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-18:/custom-pelican-theme-flex-style.html</id><summary type="html">&lt;p&gt;如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;，分享了如何在 Pelican 上安裝主題，而如果你使用 Pelican 靜態產生器，剛好也選擇 Flex 這個主題，你可能會想要對該主題做一些調整。例如 Flex 主題預設的樣式，在文字的排版上，行與行之間會比較擠，文字會比較小會顯得比較擠，因此如果你想要調整一下預設的樣式的話，那你可以參考此篇。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;讓 Flex Theme 讀取客製化樣式&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在 Flex 主題提供的 &lt;a href="https://github.com/alexandrevicenzi/Flex/wiki"&gt;Wiki&lt;/a&gt; 文件中， Custom Settings 有提及一個 &lt;code&gt;CUSTOM_CSS&lt;/code&gt; 設定參數，該參數的意思如下：&lt;/p&gt;
@@ -416,8 +424,7 @@ $ gvm use go1.12.7 --default
 &lt;li&gt;&lt;a href="https://note.koko.guru/install-pelican-theme.html"&gt;Python - 安裝 Pelican Theme 來改變你的靜態網站主題&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;接著我們來進入正題！&lt;/p&gt;
-&lt;p&gt;&lt;br/&gt;
-&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;設定 Favicon&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在使用 Pelican 時如果有注意到的話，會發現當我們透過 &lt;code&gt;make serve PORT=[number]&lt;/code&gt; 後，每當開啟網頁請求時，都會跳出，找不到 Favicon 的警告，如下圖：&lt;/p&gt;
@@ -462,6 +469,7 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;&lt;img src="../images/20190315-pelican-setting-introduction/show-favicon.png" alt="show-favicon" width="240px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;在 master 分支加入 README&lt;/h1&gt;
+&lt;hr&gt;
 &lt;p&gt;在使用 Pelican 建置靜態網站時，因為預設是使用 Markdown 來撰寫，所以 Pelican 會有功能協助我們在網站發佈成網頁時都需要轉換成 HTML 這個便利性。
 可是如果你的網站是放在 Github Page 中的 Repository &lt;code&gt;master&lt;/code&gt; 分支，那你可能也會希望如同往常使用 Github 一樣，當別人逛到該 Repository 也可以有一個 &lt;code&gt;README&lt;/code&gt; 認識該 Repository。&lt;/p&gt;
 &lt;p&gt;但現在卻因 Pelican 會需要轉換 Markdown 成 HTML 呈現網頁而造成衝突，那該如何是好呢？&lt;/p&gt;
@@ -500,6 +508,7 @@ $ gvm use go1.12.7 --default
 
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;hr&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/31270373/how-to-add-a-favicon-to-a-pelican-blog"&gt;How to add a favicon to a Pelican blog?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://stackoverflow.com/questions/4014823/does-a-favicon-have-to-be-32x32-or-16x16"&gt;Does a favicon have to be 32x32 or 16x16?&lt;/a&gt;&lt;/li&gt;
