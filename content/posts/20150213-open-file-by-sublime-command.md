@@ -12,7 +12,7 @@ Summary: 最近使用 Sublime 開發，但是因為本身習慣用 Command 做�
 
 # 設定步驟
 
-## 1.把 Sublime 的指令放到 `usr/local/bin` 目錄下
+### 1.把 Sublime 的指令放到 `usr/local/bin` 目錄下
 
 一般預設而言，下載 Sublime 並安裝在 Mac 後，如果是 Text2 預設路徑會在：
 
@@ -43,7 +43,7 @@ ln -s /Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl /usr/lo
 ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 ```
 
-## 2. 把 `usr/local/bin` 路徑加入致環境變數
+### 2. 把 `usr/local/bin` 路徑加入致環境變數
 
 若是 `/usr/local/bin/` 不存在於環境變數 PATH 中，請把此路徑加入至用戶的環境變數設定檔中，如 `.bash_profile` ( 如果沒有請在 Home 目錄建置 )。
 
