@@ -1,6 +1,6 @@
 Title: JSP 標籤與隱含物件注意
 Date: 2015-02-11
-Tags: Windows, JSP, Servlet, Tomcat, Eclipse
+Tags: JSP, Servlet
 Slug: jsp-servlet-tags-note
 Authors: kokokuo
 Summary: 前陣子在寫 Java Servlet 的範例，作為提供給客戶參考如何以 Java 程式呼寫的 WebService。但是到現場才發現客戶是使用 JSP，因為當時自己本身是寫 C# 與 .Net 於是不熟悉 JSP，為了解決客戶的需要仍硬著頭皮，在對方現有的程式碼大海中想辦法銜接，也因此遇到了這個問題。
