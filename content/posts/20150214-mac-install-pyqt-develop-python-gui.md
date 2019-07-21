@@ -66,6 +66,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 <img src="../images/20150214-mac-install-pyqt-develop-python-gui/pyqt-pyuic4.png" alt="pyqt-pyuic4" width="480px"/>
 
+<br/>
+
 # 透過 Qt4 的 QtDesigner 設計視窗程式的 UI 介面
 在我們安裝好 Qt4 後，可以在路徑 `/usr/local/Cellar/qt/4.8.6` 找到 `QtDesigner.app` 這個軟體。
 
