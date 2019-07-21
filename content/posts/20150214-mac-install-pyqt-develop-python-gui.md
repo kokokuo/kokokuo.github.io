@@ -3,10 +3,10 @@ Date: 2015-02-14
 Tags: Mac, Python, PyQt
 Slug: 20150214-mac-install-pyqt-develop-python-gui
 Authors: kokokuo
-Summary: 在前一篇 [Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式]({filename}/posts/20150105-windows-pyqt-install-develop-python-gui) 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。
+Summary: 在前一篇 [Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式]({filename}/posts/20150105-windows-pyqt-install-develop-python-gui.md) 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。
 
 # 前言
-在前一篇 [Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式]({filename}/posts/20150105-windows-pyqt-install-develop-python-gui) 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。
+在前一篇 [Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式]({filename}/posts/20150105-windows-pyqt-install-develop-python-gui.md) 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。
 
 <br/>
 
