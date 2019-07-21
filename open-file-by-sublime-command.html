@@ -28,12 +28,12 @@
 
 
 <meta name="author" content="kokokuo" />
-<meta name="description" content="使用 Sublime 開發但是懶得用 UI 點擊開，習慣用 Command 做事情，所以決定尋找 Sublime是否有指令可以做，以下紀錄設定過程。" />
+<meta name="description" content="最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。" />
 <meta name="keywords" content="Mac, Sublime">
 
 <meta property="og:site_name" content="koko's Note"/>
 <meta property="og:title" content="Mac - 使用指令以 Sublime 開啟檔案"/>
-<meta property="og:description" content="使用 Sublime 開發但是懶得用 UI 點擊開，習慣用 Command 做事情，所以決定尋找 Sublime是否有指令可以做，以下紀錄設定過程。"/>
+<meta property="og:description" content="最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://note.koko.guru/open-file-by-sublime-command.html"/>
 <meta property="og:type" content="article"/>
@@ -97,7 +97,42 @@ Code / Web / Architecture
 
 
   <div>
-    
+    <h1>前言</h1>
+<p>最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。</p>
+<p><br/></p>
+<h1>設定步驟</h1>
+<h3>1.把 Sublime 的指令放到 <code>usr/local/bin</code> 目錄下</h3>
+<p>一般預設而言，下載 Sublime 並安裝在 Mac 後，如果是 Text2 預設路徑會在：</p>
+<div class="highlight"><pre><span></span>/Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span><span class="m">2</span>.app/Contents/SharedSupport/bin/
+</pre></div>
+
+
+<p>如果是 Text3 則是：</p>
+<div class="highlight"><pre><span></span>/Applications/Sublime<span class="se">\ </span>Text.app/Contents/SharedSupport/bin/
+</pre></div>
+
+
+<p>而不管是 Text2 或 Text3 的 <code>bin</code> 目錄底下，都會有一個 <code>subl</code> 執行檔案。
+因此我們要把此執行檔加至環境變數，如果才能讓 Terminal 在輸入 <code>subl</code> 時找到該程式，並以此程式開啟檔案。</p>
+<p>而為了方便檔案的管理，接著採用 symlink 捷徑的方式放到 <code>/usr/local/bin</code> 目錄下管理（ 系統管理員在本機自行安裝自己下載的軟體( 非 distribution 預設提供者 )）。</p>
+<p>所以若是 Text2 請在 Terminal 中輸入此行執行：</p>
+<div class="highlight"><pre><span></span>ln -s /Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span><span class="m">2</span>.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+</pre></div>
+
+
+<p>若是版本是 Text3 則在 Terminal 中輸入此行執行：</p>
+<div class="highlight"><pre><span></span>ln -s /Applications/Sublime<span class="se">\ </span>Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+</pre></div>
+
+
+<h3>2. 把 <code>usr/local/bin</code> 路徑加入致環境變數</h3>
+<p>若是 <code>/usr/local/bin/</code> 不存在於環境變數 PATH 中，請把此路徑加入至用戶的環境變數設定檔中，如 <code>.bash_profile</code> ( 如果沒有請在 Home 目錄建置 )。</p>
+<p>完成後，重啟 Terminal 後 sublime 便會被系統環境偵測到，如果要查看指令，因為我們的 symlink 是改成 sublime，所以下 <code>sublime -h</code> 即可。</p>
+<p><br/></p>
+<h1>參考資料</h1>
+<ol>
+<li><a href="https://gist.github.com/artero/1236170">Launch Sublime Text 2 from the Mac OS X Terminal</a></li>
+</ol>
   </div>
   <div class="tag-cloud">
     <p>
