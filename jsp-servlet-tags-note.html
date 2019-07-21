@@ -29,7 +29,7 @@
 
 <meta name="author" content="kokokuo" />
 <meta name="description" content="前陣子在寫 Java Servlet 的範例，作為提供給客戶參考如何以 Java 程式呼寫的 WebService。但是到現場才發現客戶是使用 JSP，因為當時自己本身是寫 C# 與 .Net 於是不熟悉 JSP，為了解決客戶的需要仍硬著頭皮，在對方現有的程式碼大海中想辦法銜接，也因此遇到了這個問題。" />
-<meta name="keywords" content="Windows, JSP, Servlet, Tomcat, Eclipse">
+<meta name="keywords" content="JSP, Servlet">
 
 <meta property="og:site_name" content="koko's Note"/>
 <meta property="og:title" content="JSP 標籤與隱含物件注意"/>
@@ -41,11 +41,8 @@
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
 <meta property="article:section" content="posts"/>
-<meta property="article:tag" content="Windows"/>
 <meta property="article:tag" content="JSP"/>
 <meta property="article:tag" content="Servlet"/>
-<meta property="article:tag" content="Tomcat"/>
-<meta property="article:tag" content="Eclipse"/>
 <meta property="og:image" content="/static/koko-logo.png">
 
   <title>koko's Note &ndash; JSP 標籤與隱含物件注意</title>
@@ -204,7 +201,7 @@ Code / Web / Architecture
 <p><br/></p>
 <h1>解說</h1>
 <p>而上述在 JSP 轉換成 Servlet 的過程中，便會有些物件被自動產生，這些物件的名稱與生命週期使用都被定義，並且存在於 Servlet 中的方法 <code>_jspService()</code> 裡，這些物件被稱為隱含物件，如下表：</p>
-<p><img src="../images/20180211-jsp-servlet-tags-note/JSP-implict-object.png" alt="JSP-implict-object" width="480px"/></p>
+<p><img src="../images/20150211-jsp-servlet-tags-note/JSP-implict-object.png" alt="JSP-implict-object" width="640px"/></p>
 <p>因此當使用 JSP 標籤時要小心。</p>
 <p>如果是使用 <strong>Scriptlet 元素的標籤</strong>：<code>&lt;% Java 陳述句 %&gt;</code>，要注意使用的變數和物件名稱，因為其轉換時，JSP 撰寫的程式會轉換至 <code>_jspService()</code> 裡，因此上述的隱含物件名稱如：<code>request</code>、<code>response</code> ... 等名稱會存在。</p>
 <p>若是自己開發的 JSP 網頁中，使用 Scriptlet 元素的標籤也使用上述一樣的名稱，便會出現錯誤 <strong>Duplicate Local Variable</strong> 的錯誤，因此請記得避開這些名稱。</p>
@@ -219,11 +216,8 @@ Code / Web / Architecture
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://note.koko.guru/tag/windows.html">Windows</a>
       <a href="https://note.koko.guru/tag/jsp.html">JSP</a>
       <a href="https://note.koko.guru/tag/servlet.html">Servlet</a>
-      <a href="https://note.koko.guru/tag/tomcat.html">Tomcat</a>
-      <a href="https://note.koko.guru/tag/eclipse.html">Eclipse</a>
     </p>
   </div>
 
