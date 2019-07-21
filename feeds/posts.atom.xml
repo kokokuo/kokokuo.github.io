@@ -1912,7 +1912,88 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Mac - 使用指令以 Sublime 開啟檔案</title><link href="https://note.koko.guru/open-file-by-sublime-command.html" rel="alternate"></link><published>2015-02-13T00:00:00+08:00</published><updated>2015-02-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-13:/open-file-by-sublime-command.html</id><summary type="html">&lt;p&gt;最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Python - 在 Mac 上安裝 PyQt 開發 GUI 視窗程式</title><link href="https://note.koko.guru/20150214-mac-install-pyqt-develop-python-gui.html" rel="alternate"></link><published>2015-02-14T00:00:00+08:00</published><updated>2015-02-14T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-14:/20150214-mac-install-pyqt-develop-python-gui.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/windows-pyqt-install-develop-python-gui.html"&gt;Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式&lt;/a&gt; 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/windows-pyqt-install-develop-python-gui.html"&gt;Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式&lt;/a&gt; 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;事前安裝須知&lt;/h1&gt;
+&lt;p&gt;在 Mac 上安裝 PyQt 不像在 Windows 上方便可以直接到 PyQt 官網下載整合在一起的安裝檔，必須要額外自行安裝一些工具才行，包含 :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Qt&lt;/strong&gt; : Qt 開發工具，因為 PyQt 是建構在 Qt 上所以需要相依函式庫&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sip&lt;/strong&gt; : SIP 是一個自動為 C 和 C++ 庫生成 Python 擴充功能模組的工具。為了方便開發 PyQt 用，因此 PyQt 官網也有提到需要先安裝 SIP&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;因此我們需要先安裝完上述兩個套件後才能安裝 PyQt。&lt;/p&gt;
+&lt;p&gt;另外，PyQt 中目前分成 PyQt4 與 PyQt5，對應到的是 Qt4 與 Qt5 兩個版本；而 Python 的版本上目前分成 &lt;code&gt;2.7&lt;/code&gt; 與 &lt;code&gt;3.4&lt;/code&gt; 兩種，&lt;code&gt;2.7&lt;/code&gt; 主要是可以在 Qt4 上執行，&lt;code&gt;3.4&lt;/code&gt; 則是對應 Qt5。&lt;/p&gt;
+&lt;p&gt;所以在版本的考量上我們可以選擇：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;選擇 Python 2.7 : 下載 Qt4 與 PyQt4 &lt;/li&gt;
+&lt;li&gt;選擇 Python 3.4 : 下載 Qt5 與 PyQt5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;了解後，我們便準備開始在 Mac 上安裝吧。&lt;/p&gt;
+&lt;p&gt;而此文章會使用架構在 Homebrew 上的 Cakebrew 套件來做方便我們以圖形化的軟體瀏覽與安裝套件，當然如果覺得沒有 GUI 呈現的 Cakebrew 也沒差，直接安裝 Homebrew 在下指令即可。&lt;/p&gt;
+&lt;p&gt;在本篇文章中，選擇安裝 Python2.7.9，所以在 PyQt 的版本選擇 PyQt4，而且目前 Resource 也是 PyQt4 相對好找。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;安裝流程&lt;/h1&gt;
+&lt;h2&gt;1. 安裝 Homebrew&lt;/h2&gt;
+&lt;p&gt;到 Homebrew 官網複製下載的代碼，然後開啟 Terminal 輸入以這段下載的代碼 :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ruby -e &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;由於 Mac 內建 Ruby 的指令，所以可以直接執行。&lt;/p&gt;
+&lt;h2&gt;2. 安裝 Cakebrew&lt;/h2&gt;
+&lt;p&gt;到 &lt;a href="https://www.cakebrew.com/"&gt;Cakebrew 官網&lt;/a&gt; 下載 Cakebrew 並安裝。安裝好後接著如下圖，搜尋 Qt 並選擇 &lt;code&gt;qt&lt;/code&gt;，預設是下載 &lt;code&gt;qt4.8.6&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/install-qt-by-cakebrew.png" alt="install-qt-by-cakebrew" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;透過 Cakebrew 下載的套件會統一放在 &lt;code&gt;/usr/local/Cellar/&lt;/code&gt; 這個路徑的目錄下做方便管理，如這邊 &lt;code&gt;qt&lt;/code&gt; 則是安置在 &lt;code&gt;/usr/local/Cellar/qt/&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;3. 安裝 SIP&lt;/h2&gt;
+&lt;p&gt;如下圖，安裝 SIP :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/install-sip-by-cakebrew.png" alt="install-sip-by-cakebrew" width="480px"/&gt;&lt;/p&gt;
+&lt;h2&gt;4. 最後安裝 PyQt&lt;/h2&gt;
+&lt;p&gt;選擇 &lt;code&gt;pyqt&lt;/code&gt; 下載 &lt;code&gt;pyqt4&lt;/code&gt; 的版本 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/install-pyqt-by-cakebrew.png" alt="install-pyqt-by-cakebrew" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;一樣可以到 &lt;code&gt;/usr/local/Cellar/&lt;/code&gt; 下尋找有無 &lt;code&gt;pyqt&lt;/code&gt; 的目錄，並且 &lt;code&gt;/usr/local/Cellar/pyqt/4.11.1/bin&lt;/code&gt; 中是否有 &lt;code&gt;pyuic4&lt;/code&gt; ( 此時的版本剛好是 &lt;code&gt;4.11.1&lt;/code&gt; )&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/pyqt-pyuic4.png" alt="pyqt-pyuic4" width="480px"/&gt;&lt;/p&gt;
+&lt;h1&gt;透過 Qt4 的 QtDesigner 設計視窗程式的 UI 介面&lt;/h1&gt;
+&lt;p&gt;在我們安裝好 Qt4 後，可以在路徑 &lt;code&gt;/usr/local/Cellar/qt/4.8.6&lt;/code&gt; 找到 &lt;code&gt;QtDesigner.app&lt;/code&gt; 這個軟體。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/QtDesigner-in-Qt4.png" alt="QtDesigner-in-Qt4" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;如同 &lt;code&gt;QtDesigner.app&lt;/code&gt; 的功用，藉由 &lt;code&gt;QtDesigner.app&lt;/code&gt; 協助我們直接設計視窗程式的 UI 介面，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/QtDesigner.png" alt="QtDesigner" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;或是若已經有安裝 &lt;code&gt;Qt Creator&lt;/code&gt; 開發環境，也可以直接使用裡面的 &lt;code&gt;QtDesigner&lt;/code&gt; 來設計 UI 介面並保存該檔案。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;轉換 Qt Designer UI 檔案為 &lt;code&gt;.py&lt;/code&gt; 擋&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;pyuic4&lt;/code&gt; 協助我們把透過 Qt Creator 或是 &lt;code&gt;QtDesigner.app&lt;/code&gt; 產生好的 UI 元件定義檔案，轉換成 Python 的元件定義檔案。 因此我們可以透過 PyQt 提供的指令 &lt;code&gt;pyuic4&lt;/code&gt; 來做轉產生 &lt;code&gt;.py&lt;/code&gt; 檔案作為 Module。&lt;/p&gt;
+&lt;p&gt;指令如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$&amp;gt; pyuic4 &amp;lt;yourUI.ui&amp;gt; -o &amp;lt;yourUI.py&amp;gt; 
+$&amp;gt; pyuic4 pyqtminwindow.ui -o pyqtminwindow.py &lt;span class="c1"&gt;# 範例&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;藉由把上述的 &lt;code&gt;pyqtminwindow.ui&lt;/code&gt; 轉換為 &lt;code&gt;pyqtminwindow.py&lt;/code&gt; 檔案後，再把這 Python 的 UI 元件定義檔案，以 &lt;code&gt;import&lt;/code&gt; 的方式提供給主程式使用 :&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pyqtminwindow&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pyqtminwindow&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt;  &lt;span class="n"&gt;Ui_MainWindow&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PyQt4.QtGui&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;QMainWindow&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MainWindow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QMainWindow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Ui_MainWindow&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;parent&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MainWindow&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;setupUi&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pyqtminwindow&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QtGui&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QApplication&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;window&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MainWindow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;window&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exec_&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://stevenyue.com/2011/10/27/install-pyqt4-qt-4-7-on-mac-osx-lion/"&gt;INSTALL PYQT4, QT 4.7 ON MAC OSX LION&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.riverbankcomputing.com/software/pyqt/intro"&gt;What is PyQt?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/13103879/setup-qmake-for-qt-creator-on-mac"&gt;Setup qmake for Qt Creator on Mac&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/15713682/cannot-make-new-project-in-qt-on-mac-osx"&gt;Cannot make new project in QT on mac osx&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Mac"></category><category term="Python"></category><category term="PyQt"></category></entry><entry><title>Mac - 使用指令以 Sublime 開啟檔案</title><link href="https://note.koko.guru/open-file-by-sublime-command.html" rel="alternate"></link><published>2015-02-13T00:00:00+08:00</published><updated>2015-02-13T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-13:/open-file-by-sublime-command.html</id><summary type="html">&lt;p&gt;最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;設定步驟&lt;/h1&gt;
@@ -2271,7 +2352,7 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://osxdaily.com/2013/02/05/improve-terminal-appearance-mac-os-x/"&gt;Simple Tricks to Improve the Terminal Appearance in Mac OS X&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html"&gt;How to: Change / Setup bash custom prompt (PS1)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Color_Bash_Prompt"&gt;Color Bash Prompt&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Mac"></category><category term="Terminal"></category></entry><entry><title>Pelican - 在 Windows 上使用 PyQt 開發 Python GUI 視窗程式</title><link href="https://note.koko.guru/pyqt-install-develop-python-gui.html" rel="alternate"></link><published>2015-01-05T00:00:00+08:00</published><updated>2015-01-05T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-05:/pyqt-install-develop-python-gui.html</id><summary type="html">&lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。&lt;/p&gt;</summary><content type="html">&lt;p&gt;而其中由於 Qt 的資源很多，也是可以跨平台開發與使用，而 在 Python 上開發 Qt 則有 &lt;code&gt;PyQt&lt;/code&gt; 可以選擇，如果有商業用途，則可以選擇 &lt;code&gt;PySide&lt;/code&gt; －提供和 &lt;code&gt;PyQt&lt;/code&gt; 類似的功能，並相容 API。但與 &lt;code&gt;PyQt&lt;/code&gt; 不同處為使用 LGPL 授權，所以可以作為商業用途的軟體引用開發。&lt;/p&gt;
+&lt;/ol&gt;</content><category term="Mac"></category><category term="Terminal"></category></entry><entry><title>Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式</title><link href="https://note.koko.guru/windows-pyqt-install-develop-python-gui.html" rel="alternate"></link><published>2015-01-05T00:00:00+08:00</published><updated>2015-01-05T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-05:/windows-pyqt-install-develop-python-gui.html</id><summary type="html">&lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。&lt;/p&gt;</summary><content type="html">&lt;p&gt;而其中由於 Qt 的資源很多，也是可以跨平台開發與使用，而 在 Python 上開發 Qt 則有 &lt;code&gt;PyQt&lt;/code&gt; 可以選擇，如果有商業用途，則可以選擇 &lt;code&gt;PySide&lt;/code&gt; －提供和 &lt;code&gt;PyQt&lt;/code&gt; 類似的功能，並相容 API。但與 &lt;code&gt;PyQt&lt;/code&gt; 不同處為使用 LGPL 授權，所以可以作為商業用途的軟體引用開發。&lt;/p&gt;
 &lt;p&gt;而本文即是使用 &lt;code&gt;PyQt&lt;/code&gt; 作為 GUI 的開發。&lt;/p&gt;
 &lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;Python 上最常用來開發 GUI 視窗的有 &lt;code&gt;thinker&lt;/code&gt;、&lt;code&gt;PyGTK&lt;/code&gt;、&lt;code&gt;wxPython&lt;/code&gt; 與 &lt;code&gt;PyQt&lt;/code&gt; / &lt;code&gt;PySide&lt;/code&gt; 等等。
@@ -2284,13 +2365,13 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/system-env-path.png" alt="system-env-path" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-windows-pyqt-install-develop-python-gui/system-env-path.png" alt="system-env-path" width="320px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;二、使用 Qt 的 &lt;code&gt;.ui&lt;/code&gt; 檔做 UI 設計&lt;/h1&gt;
 &lt;p&gt;如果要開發給 Python 用的 UI 檔案，可以使用 &lt;strong&gt;Qt Creator&lt;/strong&gt; 來設計 UI，在 PyQt 中會提供 &lt;code&gt;designer.exe&lt;/code&gt; 這個程式，該程式是 Qt 的一部分，一起提供進來方便做 UI 的開發，如下兩圖：&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/design-exe.png" alt="design-exe" width="ˇ240px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-windows-pyqt-install-develop-python-gui/design-exe.png" alt="design-exe" width="ˇ240px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20150105-pyqt-install-develop-python-gui/qt-designer-view.png" alt="qt-designer-view" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150105-windows-pyqt-install-develop-python-gui/qt-designer-view.png" alt="qt-designer-view" width="480px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;三、轉換 &lt;code&gt;.ui&lt;/code&gt; 檔為 &lt;code&gt;.py&lt;/code&gt; 檔作為 module 使用&lt;/h1&gt;
 &lt;p&gt;產生完後的 &lt;code&gt;.ui&lt;/code&gt; 檔，&lt;code&gt;PyQt&lt;/code&gt; 還提供一個 Command 指令可以把 ui 檔案轉換成 &lt;code&gt;.py&lt;/code&gt; 檔，方便我們直接在 Python 中調用。使用 CMD 切換到設計好的 ui 所在目錄下，執行此指令：&lt;/p&gt;
