@@ -1912,7 +1912,122 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Windows - 透過 Eclipse 建置 JSP 網頁在 Tomcat 上</title><link href="https://note.koko.guru/build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse.html" rel="alternate"></link><published>2015-01-18T00:00:00+08:00</published><updated>2015-01-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-18:/build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse.html</id><summary type="html">&lt;p&gt;因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>JSP 標籤與隱含物件注意</title><link href="https://note.koko.guru/jsp-servlet-tags-note.html" rel="alternate"></link><published>2015-02-11T00:00:00+08:00</published><updated>2015-02-11T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-11:/jsp-servlet-tags-note.html</id><summary type="html">&lt;p&gt;前陣子在寫 Java Servlet 的範例，作為提供給客戶參考如何以 Java 程式呼寫的 WebService。但是到現場才發現客戶是使用 JSP，因為當時自己本身是寫 C# 與 .Net 於是不熟悉 JSP，為了解決客戶的需要仍硬著頭皮，在對方現有的程式碼大海中想辦法銜接，也因此遇到了這個問題。&lt;/p&gt;</summary><content type="html">&lt;p&gt;原來在寫 JSP 時要依據使用的標籤，需要考慮到&lt;strong&gt;隱含物件&lt;/strong&gt;的名稱，否則會發生衝突並產生 Duplicate Local Variable，以下紀錄筆記。&lt;/p&gt;
+&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;前陣子在寫 Java Servlet 的範例，作為提供給客戶參考如何以 Java 程式呼寫的 WebService。但是到現場才發現客戶是使用 JSP，因為當時自己本身是寫 C# 與 .Net 於是不熟悉 JSP，為了解決客戶的需要仍硬著頭皮，在對方現有的程式碼大海中想辦法銜接，也因此遇到了這個問題。&lt;/p&gt;
+&lt;p&gt;原來在寫 JSP 時要依據使用的標籤，需要考慮到&lt;strong&gt;隱含物件&lt;/strong&gt;的名稱，否則會發生衝突並產生 Duplicate Local Variable，雖然現場當下解決，但也學到了一些知識所以紀錄筆記一下避免以後發生。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;JSP 與 Servlet 關係 以及 JSP 的標籤&lt;/h1&gt;
+&lt;p&gt;JSP 在被執行前，是被 JSP 編譯器編譯成 Java Servlets。而一個 JSP 編譯器可以把 JSP 編譯成 Java 程式寫的 &lt;code&gt;servlet&lt;/code&gt; 然後再由 Java 編譯器來編譯成機器碼，也可以直接編譯成二進位碼。所以在撰寫 JSP 時，會跟 Servlet 有關係。&lt;/p&gt;
+&lt;p&gt;而 JSP 的標籤主要分成三類(以下資料來自&lt;a href="https://openhome.cc/Gossip/ServletJSP/DeclarationScriptletExpression.html"&gt;良葛格的文章&lt;/a&gt;)：&lt;/p&gt;
+&lt;h2&gt;1. 宣告（ Declaration ）標籤&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;標籤符號：&lt;code&gt;&amp;lt;%! 類別成員宣告或方法宣告 %&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;標籤功能：在之間宣告的程式碼，都將轉譯為 Servlet 中的類別成員或方法&lt;/li&gt;
+&lt;li&gt;標籤範例：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;%!&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;caterpillar&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;123456&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+
+    &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="nf"&gt;checkUser&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;equals&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; 
+                 &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;password&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;equals&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;    
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;轉換為 Servlet 後為：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="nn"&gt;org.apache.jsp&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;// 略...&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;index_jsp&lt;/span&gt;  &lt;span class="kd"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;apache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jasper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runtime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;HttpJspBase&lt;/span&gt; &lt;span class="kd"&gt;implements&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;apache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jasper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runtime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;JspSourceDependent&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;caterpillar&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;123456&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+    &lt;span class="kt"&gt;boolean&lt;/span&gt; &lt;span class="nf"&gt;checkUser&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;name&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;equals&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; 
+                 &lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;password&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;equals&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="c1"&gt;// 略...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;2. Scriptlet 指令標籤&lt;/h2&gt;
+&lt;p&gt;標籤符號：&lt;code&gt;&amp;lt;% Java 陳述句 %&amp;gt;&lt;/code&gt;
+標籤功能：在標籤之間所包括的內容，將被轉譯為 Servlet 原始碼 &lt;code&gt;_jspService()&lt;/code&gt; 方法中的內容
+標籤範例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;%&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;checkUser&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="o"&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;登入成功&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;%&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+&lt;span class="o"&gt;%&amp;gt;&lt;/span&gt;
+    &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;登入失敗&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;h1&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;%&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這段 JSP 中的 Scriptlet，在轉譯為 Servlet 後，會有以下對應的原始碼：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="nn"&gt;org.apache.jsp&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;// 略...&lt;/span&gt;
+&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;final&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;login_jsp&lt;/span&gt; 
+    &lt;span class="kd"&gt;extends&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;apache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jasper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runtime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;HttpJspBase&lt;/span&gt;
+    &lt;span class="kd"&gt;implements&lt;/span&gt; &lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;apache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;jasper&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;runtime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;JspSourceDependent&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// 略...&lt;/span&gt;
+  &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;_jspService&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;HttpServletRequest&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; 
+                               &lt;span class="n"&gt;HttpServletResponse&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+        &lt;span class="kd"&gt;throws&lt;/span&gt; &lt;span class="n"&gt;java&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;io&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;IOException&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ServletException&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// 略…&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;getParameter&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;password&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;checkUser&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;password&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;write&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;write&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;    &amp;lt;h1&amp;gt;登入成功&amp;lt;/h1&amp;gt;\n&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;write&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+        &lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;write&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;    &amp;lt;h1&amp;gt;登入失敗&amp;lt;/h1&amp;gt;\n&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
+    &lt;span class="o"&gt;}&lt;/span&gt;
+    &lt;span class="c1"&gt;// 略...&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;3. 運算式（ Expression ）標籤&lt;/h2&gt;
+&lt;p&gt;標籤符號：&lt;code&gt;&amp;lt;%= Java運算式 %&amp;gt;&lt;/code&gt;
+標籤功能：運算式元素中撰寫 Java 運算式，運算式的運算結果將直接輸出為網頁的一部份。
+標籤範例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nl"&gt;現在時間:&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;%=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt; &lt;span class="o"&gt;%&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這個運算式元素在轉譯為 Servlet 之後，會在 &lt;code&gt;_jspService()&lt;/code&gt; 中產生以下的陳述句：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;out&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;print&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;());&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;解說&lt;/h1&gt;
+&lt;p&gt;而上述在 JSP 轉換成 Servlet 的過程中，便會有些物件被自動產生，這些物件的名稱與生命週期使用都被定義，並且存在於 Servlet 中的方法 &lt;code&gt;_jspService()&lt;/code&gt; 裡，這些物件被稱為隱含物件，如下表：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20180211-jsp-servlet-tags-note/JSP-implict-object.png" alt="JSP-implict-object" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;因此當使用 JSP 標籤時要小心。&lt;/p&gt;
+&lt;p&gt;如果是使用 &lt;strong&gt;Scriptlet 元素的標籤&lt;/strong&gt;：&lt;code&gt;&amp;lt;% Java 陳述句 %&amp;gt;&lt;/code&gt;，要注意使用的變數和物件名稱，因為其轉換時，JSP 撰寫的程式會轉換至 &lt;code&gt;_jspService()&lt;/code&gt; 裡，因此上述的隱含物件名稱如：&lt;code&gt;request&lt;/code&gt;、&lt;code&gt;response&lt;/code&gt; ... 等名稱會存在。&lt;/p&gt;
+&lt;p&gt;若是自己開發的 JSP 網頁中，使用 Scriptlet 元素的標籤也使用上述一樣的名稱，便會出現錯誤 &lt;strong&gt;Duplicate Local Variable&lt;/strong&gt; 的錯誤，因此請記得避開這些名稱。&lt;/p&gt;
+&lt;p&gt;而若是使用 &lt;strong&gt;宣告（Declaration）元素的標籤&lt;/strong&gt;：&lt;code&gt;&amp;lt;%! 類別成員宣告或方法宣告 %&amp;gt;&lt;/code&gt;，由於在轉換成 Servlet 時是 Servlet 得成員變數或方法，所以不會與 &lt;code&gt;_jspService()&lt;/code&gt; 裡的隱含物件衝突到。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://openhome.cc/Gossip/ServletJSP/DeclarationScriptletExpression.html"&gt;Servlet/JSP Gossip: 宣告、Scriptlet 與運算式元素&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://openhome.cc/Gossip/ServletJSP/JSPLifeCycle.html"&gt;Servlet/JSP Gossip: JSP 生命週期&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.w3cschool.cc/jsp/jsp-syntax.html"&gt;JSP 語法&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Windows"></category><category term="JSP"></category><category term="Servlet"></category><category term="Tomcat"></category><category term="Eclipse"></category></entry><entry><title>Windows - 透過 Eclipse 建置 JSP 網頁在 Tomcat 上</title><link href="https://note.koko.guru/build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse.html" rel="alternate"></link><published>2015-01-18T00:00:00+08:00</published><updated>2015-01-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-01-18:/build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse.html</id><summary type="html">&lt;p&gt;因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁。&lt;/p&gt;
 &lt;h1&gt;環境準備&lt;/h1&gt;
 &lt;p&gt;為了在使用 Java 開發 JSP 網頁，並且透過 Tomcat 啟動，所以我們需要以下工具：&lt;/p&gt;
