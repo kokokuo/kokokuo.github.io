@@ -1952,6 +1952,7 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/install-pyqt-by-cakebrew.png" alt="install-pyqt-by-cakebrew" width="480px"/&gt;&lt;/p&gt;
 &lt;p&gt;一樣可以到 &lt;code&gt;/usr/local/Cellar/&lt;/code&gt; 下尋找有無 &lt;code&gt;pyqt&lt;/code&gt; 的目錄，並且 &lt;code&gt;/usr/local/Cellar/pyqt/4.11.1/bin&lt;/code&gt; 中是否有 &lt;code&gt;pyuic4&lt;/code&gt; ( 此時的版本剛好是 &lt;code&gt;4.11.1&lt;/code&gt; )&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/pyqt-pyuic4.png" alt="pyqt-pyuic4" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;透過 Qt4 的 QtDesigner 設計視窗程式的 UI 介面&lt;/h1&gt;
 &lt;p&gt;在我們安裝好 Qt4 後，可以在路徑 &lt;code&gt;/usr/local/Cellar/qt/4.8.6&lt;/code&gt; 找到 &lt;code&gt;QtDesigner.app&lt;/code&gt; 這個軟體。&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20150214-mac-install-pyqt-develop-python-gui/QtDesigner-in-Qt4.png" alt="QtDesigner-in-Qt4" width="480px"/&gt;&lt;/p&gt;
