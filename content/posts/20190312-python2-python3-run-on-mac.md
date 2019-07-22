@@ -1,6 +1,6 @@
 Title: Python2 與 Python 3 共存的設定 (以 Mac 為例）
 Date: 2019-03-12
-Tags: Python2, Mac, Python3
+Tags: Python2, Mac, Python3, Python
 Slug: python2-python3-run-on-mac
 Authors: kokokuo
 Summary: 當你的 Mac 系統要同時使用到 Python 2 與 Python 3 的專案時，就會遇到需要同時安裝多個 Python 版本在電腦中，可是此時要如何設定透過指令啟動不同的版本，以下我們以 **Python 2.7.15** 與 **Python 3.6.5** 為例子，並舉出兩個常見的 Python 2 與 Python 3 例子。
