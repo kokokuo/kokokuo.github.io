@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="使用 Sublime 撰寫 Python 程式時，若使用 raw_input 函式，當操作 Sublime 內建的 Termial ( 透過 Command + B ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 EOF when reading a line，而本篇會介紹如何解決此問題。" />
+<meta name="keywords" content="Mac, Python">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="使用 SublimeREPL 解決 Python 在 Sublime 內操作 Termial 控制台時出現 EOF when reading a line"/>
+<meta property="og:description" content="使用 Sublime 撰寫 Python 程式時，若使用 raw_input 函式，當操作 Sublime 內建的 Termial ( 透過 Command + B ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 EOF when reading a line，而本篇會介紹如何解決此問題。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/sublime-python-eof-when-reading-line-sublimerepl.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-02-18 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Python"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; 使用 SublimeREPL 解決 Python 在 Sublime 內操作 Termial 控制台時出現 EOF when reading a line</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="sublime-python-eof-when-reading-line-sublimerepl">使用 SublimeREPL 解決 Python 在 Sublime 內操作 Termial 控制台時出現 EOF when reading a line</h1>
+    <p>
+          Posted on 三 18 2月 2015 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<hr>
+<p>使用 Sublime 撰寫 Python 程式時，若使用 <code>raw_input</code> 函式，當操作 Sublime 內建的 Termial ( 透過 <code>Command + B</code> ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 <code>EOF when reading a line</code>，而本篇會介紹如何解決此問題。</p>
+<p><br/></p>
+<h1>如何處理</h1>
+<hr>
+<p>其實上述中提到的問題 <code>EOF when reading a line</code> 是因為 Sublime 沒有支援輸入的參數。</p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Show-EOF-When-reading-line-error.png" alt="Show-EOF-When-reading-line-error" width="360px"/></p>
+<p>其實這個問題可以透過一個插件 - <a href="https://github.com/wuub/SublimeREPL">SublimeREPL</a> 來處理。
+<strong>SublimeREPL</strong> 中的 REPL 全名為 <strong>read-evaluation-print-loop</strong>，負責處理解釋型語言編譯運行的過程。裝了 SublimeREPL 插件後也支持了編輯器上直接的編譯運行和交互。</p>
+<p><br/></p>
+<h1>安裝 SublimeREPL</h1>
+<p>SublimeREPL 是一個可以提供許多 Sublime 可以執行許多腳本語言的直譯器環境，在套件官網的介紹有提到，像是 <code>Lua</code>, <code>NodeJS</code>, <code>Python</code>, <code>R</code>, <code>Ruby</code>, <code>Scala</code> ... 等皆可：</p>
+<blockquote>
+<p>Run an interpreter inside ST2 (Clojure, CoffeeScript, F#, Groovy, Haskell, Lua, MozRepl, NodeJS, Python, R, Ruby, Scala, shell or configure one yourself) </p>
+</blockquote>
+<p>因此也提供了可以在 Sublime 中執行 Python 直譯器的環境，也可以如在 Terminal 下執行。</p>
+<h2>安裝步驟與使用方式</h2>
+<ol>
+<li>在 Sublime 的控制台中安裝 <code>Package Control</code></li>
+<li>鍵盤按下 <code>Shift + Command + P</code> 開啟指令面板 ( Command Palette )，輸入 <code>Install Package</code> 並按下確認後，再輸入 <code>SublimeREPL</code> 安裝並重啟即可。</li>
+</ol>
+<p>開啟後在點選 <code>Tool</code> &gt; <code>選擇 SublimeREPL</code> &gt; <code>Python</code>，如果要執行現在的檔案 選擇 <code>run current file</code> 或是直些啟動 Python 終端機 :</p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Use-SublimeREPL-Interpeter.png" alt="Use-SublimeREPL-Interpeter" width="480px"/></p>
+<p><br/></p>
+<h1>Python 版本設定</h1>
+<hr>
+<p>因為 Mac 本身內建 Python，而其版本並非後來安裝的版本，因此如果你想要使用自己下載的 Python 可以做一些設定來修改應的版本。</p>
+<h2>1. 開啟 <code>Main.sublime-menu</code> 檔案</h2>
+<p>點選 <code>Browse Package</code>，並進入到 <code>Package</code> 目錄下，接著依序尋找 <code>SublimeREPL</code> &gt; <code>config</code> &gt; <code>Python</code> &gt; <code>Main.sublime-menu</code>，找到 <code>Main.sublime-menu</code> 後開啟。</p>
+<p>若是在 Mac 中路徑如下 :</p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Changed-SublimeREPL-Python-Path.png" alt="Changed-SublimeREPL-Python-Path" width="480px"/></p>
+<h2>2. 編輯 <code>cmd</code> 的參數</h2>
+<p>開啟此份文件後，你會發現他有四個 <code>caption Key</code> 值，分別對應到的變數 Sublime 中 SublimeREPL 列表下 Python 顯示的六種執行直譯器方式，如下圖：</p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Use-SublimeREPL-Interpeter.png" alt="Use-SublimeREPL-Interpeter" width="480px"/></p>
+<p>因此我們可以針對不同執行 Python 直譯器的使用方式選擇所要的 Python 版本，並修改 <code>cmd</code> 的第一個參數值即可。</p>
+<h2>3. 修改 Sublime 中的 <code>PythonTerminal</code> 直譯器版本</h2>
+<p>例如，若要直接修改 Sublime 中啟用的 Python 直譯器（類似 Terminal 的方式)。</p>
+<h3>(1.) 尋找 <code>caption</code> 為 Python 的數值</h3>
+<p><code>caption</code> 的數值便是顯示在在 Sublime 中實際顯示在軟體上的文字，因此變透過此文字尋找你要修改的類型。</p>
+<h3>(2.) 修改 cmd 第一個參數</h3>
+<p><code>cmd</code> 的第一個參數是 Python 直譯器的路徑，並且預設的 Python 參數會去撈取預設的 Mac Python，因此若有需要，可以把第一個參數修改成自己安裝的 Python 版本，例如自己安裝的 Python 版本所在的路徑是：</p>
+<div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/2.7/bin/python
+</pre></div>
+
+
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/sublime-main-python-path.png" alt="sublime-main-python-path" width="640px"/></p>
+<h2>4. 修改 Sublime 中的目前 Python 檔案執行所要的版本</h2>
+<p>若是要修改目前正在開發的 Python 檔案所使用的 Python 直譯器版本，可以選擇 <code>Python – RUN current file</code> 的 <code>caption</code> 數值，並且一樣的修改 <code>cmd</code> 參數即可，如下：</p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Current-Python-File-Path.png" alt="Current-Python-File-Path" width="640px"/></p>
+<p>完成後，再透過 <code>Tool</code> &gt; <code>SublimeREPL</code>，選擇 <code>Python</code> 或是 <code>Python – RUN current file</code> 執行一次即可 :</p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Changed-Result.png" alt="Changed-Result" width="480px"/></p>
+<p><br/></p>
+<h1>附註 – 使 Python 直譯器的執行畫面不會開視窗的處理</h1>
+<hr>
+<p>這樣另開一個視窗不太方便，此時便可以選擇 <code>View</code> &gt; <code>Layout</code> 來選擇想要切分的畫面。自己習慣分成上下兩個的視窗，所以選 ROW</p>
+<p>或是輸入：</p>
+<div class="highlight"><pre><span></span><span class="nb">shift</span> + alt + <span class="nb">command</span> + <span class="m">2</span>
+</pre></div>
+
+
+<p>亦可以切割成上下兩個視窗。</p>
+<p><br/></p>
+<h1>補上參數 <code>-i</code> 進行終端機互動</h1>
+<hr>
+<p>如果補上參數 <code>-i</code> 則可以使程式在直譯完後，進入終端機的互動模式。</p>
+<p>以下是官方介紹：</p>
+<blockquote>
+<p>When a script is passed as first argument or the -c option is used, enter interactive mode after executing the script or the command, even when sys.stdin does not appear to be a terminal. The PYTHONSTARTUP file is not read.</p>
+<p>This can be useful to inspect global variables or a stack trace when a script raises an exception. See also PYTHONINSPECT.</p>
+</blockquote>
+<p>因此我們可以開啟 <code>Main.sublime-menu</code> 並在 <code>cmd</code>指令的參數中，加上 <code>-i</code> 來與 Terminal 互動。</p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/-i-parameter.png" alt="-i-parameter" width="640px"/></p>
+<p><br/></p>
+<p><img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/-i-result.png" alt="-i-result" width="480px"/></p>
+<p><br/></p>
+<h1>參考資料</h1>
+<hr>
+<ol>
+<li>
+<p><a href="http://www.crifan.com/python_sublime_text_2_eoferror_eof_when_reading_a_line/">【已解决】Sublime 中运行带 input 或 raw_input 的 Python 代码出错：EOFError: EOF when reading a line</a></p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/10712390/directing-sublime-text-2-packages-to-the-correct-python-installation">Directing Sublime Text 2 Packages to the correct python installation</a></p>
+</li>
+<li>
+<p><a href="https://sublimerepl.readthedocs.org/en/latest/">SublimREPL 文件</a></p>
+</li>
+<li>
+<p><a href="http://www.99ya.net/234.html">四步將 sublime 打造成 python 開發 IDE</a></p>
+</li>
+<li>
+<p><a href="http://blog.sina.com.cn/s/blog_6476250d0101a881.html">【計算機】SublimeREPL 配置 python 交互式終端快捷鍵</a></p>
+</li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/mac.html">Mac</a>
+      <a href="https://note.koko.guru/tag/python.html">Python</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

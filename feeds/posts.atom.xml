@@ -1,12 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>koko's Note - posts</title><link href="https://note.koko.guru/" rel="alternate"></link><link href="https://note.koko.guru/feeds/posts.atom.xml" rel="self"></link><id>https://note.koko.guru/</id><updated>2019-07-15T00:00:00+08:00</updated><subtitle>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>koko's Note - posts</title><link href="https://note.koko.guru/" rel="alternate"></link><link href="https://note.koko.guru/feeds/posts.atom.xml" rel="self"></link><id>https://note.koko.guru/</id><updated>2019-07-22T00:00:00+08:00</updated><subtitle>
 Code / Web / Architecture
 &lt;br/&gt;
 &lt;br/&gt;
 你需要非常多的努力
 &lt;br/&gt;
 才能看起來毫不費力
-</subtitle><entry><title>Pelican - 設定客製化網域並顯示在 Github Page 上</title><link href="https://note.koko.guru/add-custom-domain-on-github-page-and-pelican.html" rel="alternate"></link><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-15:/add-custom-domain-on-github-page-and-pelican.html</id><summary type="html">&lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+</subtitle><entry><title>Pelican - 出現 RuntimeError: File XXX.html is to be overwritten</title><link href="https://note.koko.guru/pelican-runtime-error-when-html-overwritten.html" rel="alternate"></link><published>2019-07-22T00:00:00+08:00</published><updated>2019-07-22T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-22:/pelican-runtime-error-when-html-overwritten.html</id><summary type="html">&lt;p&gt;在使用 Pelican 撰寫 Markdown 文章並要透過 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 輸出 HTML 並查看 Localhost 時，卻出現了 &lt;code&gt;RuntimeError: File XXX.html is to be overwritten&lt;/code&gt; 的錯誤，由於這是沒有遇過寫網路上沒有什麼網友分享解決方法的錯誤訊息，因此稍微紀錄一下也為了之後可能遇到的其他朋友做參考。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;在使用 Pelican 撰寫 Markdown 文章並要透過 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 輸出 HTML 並查看 Localhost 時，卻出現了 &lt;code&gt;RuntimeError: File XXX.html is to be overwritten&lt;/code&gt; 的錯誤，由於這是沒有遇過寫網路上沒有什麼網友分享解決方法的錯誤訊息，因此稍微紀錄一下也為了之後可能遇到的其他朋友做參考。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;解析錯誤訊息&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;先讓我們來理解一下錯誤訊息的意思，這是輸入 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 吐出的訊息&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CRITICAL: RuntimeError: File /Users/koko/Code/SideProj/EasonBlogs/kokokuo-note/output/tag/python2.html is to be overwritten
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;從中會發現出現問題的在這個 &lt;code&gt;output/tag/python2.html&lt;/code&gt; 目錄下的 HTML 檔案，根據描述&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/output-tag-html.png" alt="output-tag-html" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;如果打開該 &lt;code&gt;python2.html&lt;/code&gt; 並以 Browser 瀏覽單純的 HTML 會看到有一篇文章是指向 &lt;strong&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/strong&gt;，如下圖 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/error-html-output-python2-tag.png" alt="error-html-output-python2-tag" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;但是很奇怪的，這篇文章在當時使用的 Tag 是 &lt;code&gt;Python&lt;/code&gt; 與 &lt;code&gt;py2exe&lt;/code&gt;，那怎麼會被歸類在 &lt;code&gt;python2.html&lt;/code&gt; 這個 &lt;code&gt;Python2&lt;/code&gt; 的 Tag 呢？&lt;/p&gt;
+&lt;p&gt;為了查證與對照，所以我們先來確認一下目前在 Github 上執行正常的 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 的 &lt;code&gt;Python2&lt;/code&gt; Tag :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/correct-site-python2-tag.png" alt="correct-site-python2-tag" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;在上述用了深綠色匡起來的 Tag 標籤與網頁所看到的是正確使用 &lt;code&gt;Python2&lt;/code&gt; Tag 的文章，所以換句話說問題出在標籤產生錯誤了，而且原本在 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 網站上該 &lt;strong&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/strong&gt; 文章是運作正常的，如下圖 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/correct-post-build-python-exe-using-py2exe.png" alt="correct-post-build-python-exe-using-py2exe" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;而且在這次修改與輸出 HTML 時並沒有更動，那為何會反而這篇文章卻被放到錯誤的 Tag 中了？&lt;/p&gt;
+&lt;p&gt;其實如果稍微聯想與觀察一下原本輸出的錯誤訊息便可嘗試以推論出原因 : &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CRITICAL: RuntimeError: File /Users/koko/Code/SideProj/EasonBlogs/kokokuo-note/output/tag/python2.html is to be overwritten
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這是因為文章的量變多，因此導致文章&lt;strong&gt;可能&lt;/strong&gt;產生分頁並且這個分頁已不正確的命名為 &lt;code&gt;python2.html&lt;/code&gt; 並把原本 &lt;code&gt;python2.html&lt;/code&gt; 標籤中文章給覆蓋掉了，所以才會出現 &lt;code&gt;output/tag/python2.html is to be overwritten&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;換句話來看，也就是原本的 &lt;code&gt;/tag/python.html&lt;/code&gt; 下的文章量&lt;strong&gt;超過所限制的一個分頁所呈現的數量&lt;/strong&gt;所以才產生了 &lt;code&gt;python2.html&lt;/code&gt; 這個分頁，而我們也可以對照一下原本 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 網站上的 &lt;code&gt;/tag/python.html&lt;/code&gt; 最後幾篇:&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/original-site-python-tag-post-list.png" alt="original-site-python-tag-post-list" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;那麼我們要如何解決呢？&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;快速解決方法&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;在上述中我們有提到這個原因是因為文章量&lt;strong&gt;超過所限制的一個分頁所呈現的數量&lt;/strong&gt;，所以我們要來問一個問題，我們原本預設的分頁參數是多少？ 又在哪設置呢？&lt;/p&gt;
+&lt;p&gt;其實這個參數就在 &lt;code&gt;pelicanconf.py&lt;/code&gt; 中的 &lt;code&gt;DEFAULT_PAGINATION&lt;/code&gt;，預設一般可能是 &lt;code&gt;10&lt;/code&gt; 或 &lt;code&gt;15&lt;/code&gt;，所以如果嘗試把這個量改成 &lt;code&gt;20&lt;/code&gt; 在重跑一次呢？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;解決了，如下圖你會看到我的 &lt;code&gt;localhost&lt;/code&gt; 有出現 &lt;strong&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/strong&gt; ，而且我們新文章也出現了。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/success-increase-default-pagination-size.png" alt="success-increase-default-pagination-size" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;但這不會是一個好的處理方式，而且 &lt;code&gt;DEFAULT_PAGINATION&lt;/code&gt; 的設定不只影響到 Tag 的分頁，也影響到一般文章產生的排序分頁量，所以我們依然要解決的問題是分頁問題。&lt;/p&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>Pelican - 設定客製化網域並顯示在 Github Page 上</title><link href="https://note.koko.guru/add-custom-domain-on-github-page-and-pelican.html" rel="alternate"></link><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-15:/add-custom-domain-on-github-page-and-pelican.html</id><summary type="html">&lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
@@ -897,7 +939,7 @@ $&amp;gt; python3
 &lt;p&gt;因此未來便可以透過修改 &lt;code&gt;.bash_profile&lt;/code&gt; 去做預設 &lt;code&gt;python&lt;/code&gt; 指令讀取設定的開關：&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190312-python2-python3-run-on-mac/14-bash-profile-setting.png" alt="14-bash-profile-setting" width="480px" /&gt;&lt;/p&gt;
 &lt;p&gt;最後觀察一下環境變數，分別設定完成。&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190312-python2-python3-run-on-mac/15-readable-system-path.png" alt="15-readable-system-path"/&gt;&lt;/p&gt;</content><category term="Python2"></category><category term="Mac"></category><category term="Python3"></category></entry><entry><title>Python - 透過 .venv 管理 Pipenv 虛擬環境的來源</title><link href="https://note.koko.guru/pipenv-use-dot-venv-folder.html" rel="alternate"></link><published>2019-03-11T00:00:00+08:00</published><updated>2019-03-11T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-11:/pipenv-use-dot-venv-folder.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/python-pipenv-install-and-usage.html"&gt;Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv&lt;/a&gt; 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;&lt;img src="../images/20190312-python2-python3-run-on-mac/15-readable-system-path.png" alt="15-readable-system-path"/&gt;&lt;/p&gt;</content><category term="Python2"></category><category term="Mac"></category><category term="Python3"></category><category term="Python"></category></entry><entry><title>Python - 透過 .venv 管理 Pipenv 虛擬環境的來源</title><link href="https://note.koko.guru/pipenv-use-dot-venv-folder.html" rel="alternate"></link><published>2019-03-11T00:00:00+08:00</published><updated>2019-03-11T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-03-11:/pipenv-use-dot-venv-folder.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/python-pipenv-install-and-usage.html"&gt;Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv&lt;/a&gt; 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/python-pipenv-install-and-usage.html"&gt;Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv&lt;/a&gt; 中提到透過 Pipenv 建立好的虛擬環境都會放在用戶家目錄下的 &lt;code&gt;.local/share/ virtualenvs/&lt;/code&gt; 路徑，並且統一管理。&lt;/p&gt;
 &lt;p&gt;但是如果用編輯器像是 VSCode 開發時，還要設定虛擬目錄的來源很麻煩（因為每個虛擬目錄的命名都不同）所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。&lt;/p&gt;
@@ -1921,7 +1963,101 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Mac - 內建 Python 與自行安裝 Python 所在路徑</title><link href="https://note.koko.guru/mac-builtin-python-and-install-python-path.html" rel="alternate"></link><published>2015-02-15T00:00:00+08:00</published><updated>2015-02-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-15:/mac-builtin-python-and-install-python-path.html</id><summary type="html">&lt;p&gt;Mac 基本上內建了各程式語言，如 Ruby、C++，而 Python 也在其中，因此如果另外自行安裝 Python 則會有兩個不同的路徑。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>使用 SublimeREPL 解決 Python 在 Sublime 內操作 Termial 控制台時出現 EOF when reading a line</title><link href="https://note.koko.guru/sublime-python-eof-when-reading-line-sublimerepl.html" rel="alternate"></link><published>2015-02-18T00:00:00+08:00</published><updated>2015-02-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-18:/sublime-python-eof-when-reading-line-sublimerepl.html</id><summary type="html">&lt;p&gt;使用 Sublime 撰寫 Python 程式時，若使用 &lt;code&gt;raw_input&lt;/code&gt; 函式，當操作 Sublime 內建的 Termial ( 透過 &lt;code&gt;Command + B&lt;/code&gt; ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 &lt;code&gt;EOF when reading a line&lt;/code&gt;，而本篇會介紹如何解決此問題。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;使用 Sublime 撰寫 Python 程式時，若使用 &lt;code&gt;raw_input&lt;/code&gt; 函式，當操作 Sublime 內建的 Termial ( 透過 &lt;code&gt;Command + B&lt;/code&gt; ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 &lt;code&gt;EOF when reading a line&lt;/code&gt;，而本篇會介紹如何解決此問題。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;如何處理&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;其實上述中提到的問題 &lt;code&gt;EOF when reading a line&lt;/code&gt; 是因為 Sublime 沒有支援輸入的參數。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Show-EOF-When-reading-line-error.png" alt="Show-EOF-When-reading-line-error" width="360px"/&gt;&lt;/p&gt;
+&lt;p&gt;其實這個問題可以透過一個插件 - &lt;a href="https://github.com/wuub/SublimeREPL"&gt;SublimeREPL&lt;/a&gt; 來處理。
+&lt;strong&gt;SublimeREPL&lt;/strong&gt; 中的 REPL 全名為 &lt;strong&gt;read-evaluation-print-loop&lt;/strong&gt;，負責處理解釋型語言編譯運行的過程。裝了 SublimeREPL 插件後也支持了編輯器上直接的編譯運行和交互。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;安裝 SublimeREPL&lt;/h1&gt;
+&lt;p&gt;SublimeREPL 是一個可以提供許多 Sublime 可以執行許多腳本語言的直譯器環境，在套件官網的介紹有提到，像是 &lt;code&gt;Lua&lt;/code&gt;, &lt;code&gt;NodeJS&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;, &lt;code&gt;R&lt;/code&gt;, &lt;code&gt;Ruby&lt;/code&gt;, &lt;code&gt;Scala&lt;/code&gt; ... 等皆可：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Run an interpreter inside ST2 (Clojure, CoffeeScript, F#, Groovy, Haskell, Lua, MozRepl, NodeJS, Python, R, Ruby, Scala, shell or configure one yourself) &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此也提供了可以在 Sublime 中執行 Python 直譯器的環境，也可以如在 Terminal 下執行。&lt;/p&gt;
+&lt;h2&gt;安裝步驟與使用方式&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Sublime 的控制台中安裝 &lt;code&gt;Package Control&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;鍵盤按下 &lt;code&gt;Shift + Command + P&lt;/code&gt; 開啟指令面板 ( Command Palette )，輸入 &lt;code&gt;Install Package&lt;/code&gt; 並按下確認後，再輸入 &lt;code&gt;SublimeREPL&lt;/code&gt; 安裝並重啟即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;開啟後在點選 &lt;code&gt;Tool&lt;/code&gt; &amp;gt; &lt;code&gt;選擇 SublimeREPL&lt;/code&gt; &amp;gt; &lt;code&gt;Python&lt;/code&gt;，如果要執行現在的檔案 選擇 &lt;code&gt;run current file&lt;/code&gt; 或是直些啟動 Python 終端機 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Use-SublimeREPL-Interpeter.png" alt="Use-SublimeREPL-Interpeter" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;Python 版本設定&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;因為 Mac 本身內建 Python，而其版本並非後來安裝的版本，因此如果你想要使用自己下載的 Python 可以做一些設定來修改應的版本。&lt;/p&gt;
+&lt;h2&gt;1. 開啟 &lt;code&gt;Main.sublime-menu&lt;/code&gt; 檔案&lt;/h2&gt;
+&lt;p&gt;點選 &lt;code&gt;Browse Package&lt;/code&gt;，並進入到 &lt;code&gt;Package&lt;/code&gt; 目錄下，接著依序尋找 &lt;code&gt;SublimeREPL&lt;/code&gt; &amp;gt; &lt;code&gt;config&lt;/code&gt; &amp;gt; &lt;code&gt;Python&lt;/code&gt; &amp;gt; &lt;code&gt;Main.sublime-menu&lt;/code&gt;，找到 &lt;code&gt;Main.sublime-menu&lt;/code&gt; 後開啟。&lt;/p&gt;
+&lt;p&gt;若是在 Mac 中路徑如下 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Changed-SublimeREPL-Python-Path.png" alt="Changed-SublimeREPL-Python-Path" width="480px"/&gt;&lt;/p&gt;
+&lt;h2&gt;2. 編輯 &lt;code&gt;cmd&lt;/code&gt; 的參數&lt;/h2&gt;
+&lt;p&gt;開啟此份文件後，你會發現他有四個 &lt;code&gt;caption Key&lt;/code&gt; 值，分別對應到的變數 Sublime 中 SublimeREPL 列表下 Python 顯示的六種執行直譯器方式，如下圖：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Use-SublimeREPL-Interpeter.png" alt="Use-SublimeREPL-Interpeter" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;因此我們可以針對不同執行 Python 直譯器的使用方式選擇所要的 Python 版本，並修改 &lt;code&gt;cmd&lt;/code&gt; 的第一個參數值即可。&lt;/p&gt;
+&lt;h2&gt;3. 修改 Sublime 中的 &lt;code&gt;PythonTerminal&lt;/code&gt; 直譯器版本&lt;/h2&gt;
+&lt;p&gt;例如，若要直接修改 Sublime 中啟用的 Python 直譯器（類似 Terminal 的方式)。&lt;/p&gt;
+&lt;h3&gt;(1.) 尋找 &lt;code&gt;caption&lt;/code&gt; 為 Python 的數值&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;caption&lt;/code&gt; 的數值便是顯示在在 Sublime 中實際顯示在軟體上的文字，因此變透過此文字尋找你要修改的類型。&lt;/p&gt;
+&lt;h3&gt;(2.) 修改 cmd 第一個參數&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;cmd&lt;/code&gt; 的第一個參數是 Python 直譯器的路徑，並且預設的 Python 參數會去撈取預設的 Mac Python，因此若有需要，可以把第一個參數修改成自己安裝的 Python 版本，例如自己安裝的 Python 版本所在的路徑是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/Library/Frameworks/Python.framework/Versions/2.7/bin/python
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/sublime-main-python-path.png" alt="sublime-main-python-path" width="640px"/&gt;&lt;/p&gt;
+&lt;h2&gt;4. 修改 Sublime 中的目前 Python 檔案執行所要的版本&lt;/h2&gt;
+&lt;p&gt;若是要修改目前正在開發的 Python 檔案所使用的 Python 直譯器版本，可以選擇 &lt;code&gt;Python – RUN current file&lt;/code&gt; 的 &lt;code&gt;caption&lt;/code&gt; 數值，並且一樣的修改 &lt;code&gt;cmd&lt;/code&gt; 參數即可，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Current-Python-File-Path.png" alt="Current-Python-File-Path" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;完成後，再透過 &lt;code&gt;Tool&lt;/code&gt; &amp;gt; &lt;code&gt;SublimeREPL&lt;/code&gt;，選擇 &lt;code&gt;Python&lt;/code&gt; 或是 &lt;code&gt;Python – RUN current file&lt;/code&gt; 執行一次即可 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/Changed-Result.png" alt="Changed-Result" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;附註 – 使 Python 直譯器的執行畫面不會開視窗的處理&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;這樣另開一個視窗不太方便，此時便可以選擇 &lt;code&gt;View&lt;/code&gt; &amp;gt; &lt;code&gt;Layout&lt;/code&gt; 來選擇想要切分的畫面。自己習慣分成上下兩個的視窗，所以選 ROW&lt;/p&gt;
+&lt;p&gt;或是輸入：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;shift&lt;/span&gt; + alt + &lt;span class="nb"&gt;command&lt;/span&gt; + &lt;span class="m"&gt;2&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;亦可以切割成上下兩個視窗。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;補上參數 &lt;code&gt;-i&lt;/code&gt; 進行終端機互動&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;如果補上參數 &lt;code&gt;-i&lt;/code&gt; 則可以使程式在直譯完後，進入終端機的互動模式。&lt;/p&gt;
+&lt;p&gt;以下是官方介紹：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When a script is passed as first argument or the -c option is used, enter interactive mode after executing the script or the command, even when sys.stdin does not appear to be a terminal. The PYTHONSTARTUP file is not read.&lt;/p&gt;
+&lt;p&gt;This can be useful to inspect global variables or a stack trace when a script raises an exception. See also PYTHONINSPECT.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此我們可以開啟 &lt;code&gt;Main.sublime-menu&lt;/code&gt; 並在 &lt;code&gt;cmd&lt;/code&gt;指令的參數中，加上 &lt;code&gt;-i&lt;/code&gt; 來與 Terminal 互動。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/-i-parameter.png" alt="-i-parameter" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150218-sublime-python-eof-when-reading-line-sublimerepl/-i-result.png" alt="-i-result" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.crifan.com/python_sublime_text_2_eoferror_eof_when_reading_a_line/"&gt;【已解决】Sublime 中运行带 input 或 raw_input 的 Python 代码出错：EOFError: EOF when reading a line&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://stackoverflow.com/questions/10712390/directing-sublime-text-2-packages-to-the-correct-python-installation"&gt;Directing Sublime Text 2 Packages to the correct python installation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://sublimerepl.readthedocs.org/en/latest/"&gt;SublimREPL 文件&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.99ya.net/234.html"&gt;四步將 sublime 打造成 python 開發 IDE&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://blog.sina.com.cn/s/blog_6476250d0101a881.html"&gt;【計算機】SublimeREPL 配置 python 交互式終端快捷鍵&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Mac"></category><category term="Python"></category></entry><entry><title>Mac - 內建 Python 與自行安裝 Python 所在路徑</title><link href="https://note.koko.guru/mac-builtin-python-and-install-python-path.html" rel="alternate"></link><published>2015-02-15T00:00:00+08:00</published><updated>2015-02-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-15:/mac-builtin-python-and-install-python-path.html</id><summary type="html">&lt;p&gt;Mac 基本上內建了各程式語言，如 Ruby、C++，而 Python 也在其中，因此如果另外自行安裝 Python 則會有兩個不同的路徑。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;Mac 基本上內建了各程式語言，如 Ruby、C++，而 Python 也在其中，因此如果另外自行安裝 Python 則會有兩個不同的路徑。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
