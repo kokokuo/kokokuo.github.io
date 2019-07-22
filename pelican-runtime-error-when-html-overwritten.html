@@ -140,11 +140,45 @@ Code / Web / Architecture
 <p>解決了，如下圖你會看到我的 <code>localhost</code> 有出現 <strong>Python - 使用 py2exe 製作 Python exe 執行檔</strong> ，而且我們新文章也出現了。</p>
 <p><img src="../images/20190722-pelican-runtime-error-when-html-overwritten/success-increase-default-pagination-size.png" alt="success-increase-default-pagination-size" width="480px"/></p>
 <p>但這不會是一個好的處理方式，而且 <code>DEFAULT_PAGINATION</code> 的設定不只影響到 Tag 的分頁，也影響到一般文章產生的排序分頁量，所以我們依然要解決的問題是分頁問題。</p>
+<p><br/></p>
+<h1>設定分頁的命名格式</h1>
+<hr>
+<p>在一開始提到的當文章量<strong>超過所限制的一個分頁所呈現的數量</strong>時，分頁會自動產生，而原本的 <code>python.html</code> 產生了 <code>python2.html</code> 第二個分頁，但是卻與該 Tag 衝突到。</p>
+<p>所以問題出在要如何讓分頁產生時不會與 Tag 的 HTML 檔案和 URL 衝突到才是這個核心解法。</p>
+<p>在 Pelican 中，URL 與 HTML 檔案產生時的名稱格式是根據 <a href="http://docs.getpelican.com/en/4.1.0/settings.html#using-pagination-patterns">Using Pagination Patterns</a> 參數設定中的預設參數，如下圖 :</p>
+<p><img src="../images/20190722-pelican-runtime-error-when-html-overwritten/default-pagination-pattern.png" alt="default-pagination-pattern" width="480px"/></p>
+<p>而在文件中也有提到預設產生的結果，以及如何更改 <code>PAGINATION_PATTERNS</code> :</p>
+<p><img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-introudction.png" alt="pagination-pattern-introudction" width="640px"/></p>
+<h2><code>PAGINATION_PATTERNS</code> 參數介紹</h2>
+<p>在 <code>PAGINATION_PATTERNS</code> 的參數設定方式會由 3 個參數值組成的 Tuple 格式來設定，其中一訓設定的順序會是 :</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>minimum_page, page_url, page_save_as,<span class="o">)</span>
+</pre></div>
+
+
+<p>這三個參數中，影響到 URL 的模樣以及分頁時，保存的標籤檔案會是 <code>page_url</code> 與 <code>page_save_as</code>。而這兩個參數會需要由一些關鍵字參數組成，如下分別介紹 :</p>
+<ul>
+<li><code>{url}</code> : 這個變數會對應的是 <code>*_URL</code> 參數所填寫的數值，例如我的 <code>TAG_URL</code> 是 <code>tag/{slug}.html</code>，那麼便會呈現 <code>tag/{slug}.html</code> 的網址。</li>
+<li><code>{save_as}</code> : 這個變數會呈現的是 <code>*_SAVE_AS</code> 參數所填寫的數值，例如我的 <code>TAG_SAVE_AS</code> 是 <code>tag/{slug}.html</code>，那麼在透過 <code>make html</code> 輸出時便會以 <code>{slug}.html</code> 的名稱產生並保存在 <code>tag</code> 目錄下。</li>
+<li><code>{name}</code> : 該變數的數值會根據 <code>{save_as}</code> 的結果來擷取檔案名稱，例如範例中當透過<code>make html</code> 輸出時 <code>foo/bar.html</code>，那便會以 <code>foo/bar</code> 直接作為 <code>{name}</code></li>
+<li><code>{extension}</code> : 也就是 <code>{name}</code> 後半段的副檔名，在 <code>foo/bar.html</code> 是 <code>.html</code></li>
+<li><code>{base_name}</code> : 與 <code>{name}</code> 相同，但是如果有 <code>/index</code> 存在，會跳脫 <code>/index</code></li>
+<li><code>{number}</code> : 頁面的數值</li>
+</ul>
+<p><br/></p>
+<p>所以如果我們來對照一下預設 <code>PAGINATION_PATTERNS</code>，當分為第一頁時，因為 <code>page_url</code> 與 <code>page_save_as</code> 皆為 <code>{name}{extension}</code> ，所以就會如同原先的 <code>localhost:7000/tags/python.html</code>，而產生的 HTML 檔案以 <code>python.html</code> 的名稱放在 <code>tags</code> 目錄下的</p>
+<div class="highlight"><pre><span></span><span class="n">PAGINATION_PATTERNS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;{name}{extension}&#39;</span><span class="p">,</span> <span class="s1">&#39;{name}{extension}&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;{name}{number}{extension}&#39;</span><span class="p">,</span> <span class="s1">&#39;{name}{number}{extension}&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>而當頁數超過一頁時，<code>page_url</code> 與 <code>page_save_as</code> 皆改變為 <code>{name}{number}{extension}</code> ，也就會讓第二頁的 URL 變為 <code>tags/python2.html</code>，而保存的 HTML 覆蓋掉了原先的 <code>Python2</code> Tag 的 HTML 檔案。</p>
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://note.koko.guru/tag/pelican.html">Pelican</a>
-      <a href="https://note.koko.guru/tag/python.html">Python</a>
+      <a href="https://note.koko.guru/tag/pelican/">Pelican</a>
+      <a href="https://note.koko.guru/tag/python/">Python</a>
     </p>
   </div>
 
