@@ -1,6 +1,6 @@
 Title: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 Date: 2019-02-05
-Tags: Python, Pelican, Github, 靜態網站產生器
+Tags: Python, Pelican, Github, Static Site Generator
 Slug: deploy-pelican-static-webiste-to-github-page
 Authors: kokokuo
 Summary: 在前一篇 [在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌]({filename}/posts/20190113-mac-using-pelican-build-static-website.md) 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。

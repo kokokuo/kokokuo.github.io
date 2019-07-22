@@ -28,6 +28,25 @@ Code / Web / Architecture
 COPYRIGHT_NAME = "kokokuo"
 COPYRIGHT_YEAR = 2019
 
+"""
+Tag 設置參數，其他未出現的參數保持預設可以參考。
+http://docs.getpelican.com/en/4.1.0/settings.html#url-settings
+"""
+# 目前 TAG_URL, TAG_SAVE_AS, TAGS_SAVE_AS 皆保持預設
+TAG_URL = 'tag/{slug}/'
+TAG_SAVE_AS = 'tag/{slug}.html'
+TAGS_SAVE_AS = 'tags.html'
+
+
+"""
+Pagination 設置參數，未出現的參數為預設狀態，可以參考
+http://docs.getpelican.com/en/4.1.0/settings.html#pagination
+"""
+PAGINATION_PATTERNS = (
+    (1, "{url}", "{save_as}"),
+    (2, "{base_name}/page/{number}/", "{base_name}/page/{number}/index.html"),
+)
+
 # ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 # ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
@@ -72,7 +91,7 @@ AUTHOR_FEED_RSS = None
 SOCIAL = (('github', 'https://github.com/kokokuo'),
           ('linkedin', 'https://www.linkedin.com/in/easonkuo'),)
 
-DEFAULT_PAGINATION = 20
+DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

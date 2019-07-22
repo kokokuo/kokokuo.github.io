@@ -73,3 +73,54 @@ DEFAULT_PAGINATION = 20
 <img src="../images/20190722-pelican-runtime-error-when-html-overwritten/success-increase-default-pagination-size.png" alt="success-increase-default-pagination-size" width="480px"/>
 
 但這不會是一個好的處理方式，而且 `DEFAULT_PAGINATION` 的設定不只影響到 Tag 的分頁，也影響到一般文章產生的排序分頁量，所以我們依然要解決的問題是分頁問題。
+
+<br/>
+
+# 設定分頁的命名格式
+---
+在一開始提到的當文章量**超過所限制的一個分頁所呈現的數量**時，分頁會自動產生，而原本的 `python.html` 產生了 `python2.html` 第二個分頁，但是卻與該 Tag 衝突到。
+
+所以問題出在要如何讓分頁產生時不會與 Tag 的 HTML 檔案和 URL 衝突到才是這個核心解法。
+
+在 Pelican 中，URL 與 HTML 檔案產生時的名稱格式是根據 [Using Pagination Patterns](http://docs.getpelican.com/en/4.1.0/settings.html#using-pagination-patterns) 參數設定中的預設參數，如下圖 :
+
+<img src="../images/20190722-pelican-runtime-error-when-html-overwritten/default-pagination-pattern.png" alt="default-pagination-pattern" width="480px"/>
+
+而在文件中也有提到預設產生的結果，以及如何更改 `PAGINATION_PATTERNS` :
+
+<img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-introudction.png" alt="pagination-pattern-introudction" width="640px"/>
+
+## `PAGINATION_PATTERNS` 參數介紹
+
+在 `PAGINATION_PATTERNS` 的參數設定方式會由 3 個參數值組成的 Tuple 格式來設定，其中一訓設定的順序會是 :
+
+```bash
+(minimum_page, page_url, page_save_as,)
+```
+
+這三個參數中，影響到 URL 的模樣以及分頁時，保存的標籤檔案會是 `page_url` 與 `page_save_as`。而這兩個參數會需要由一些關鍵字參數組成，如下分別介紹 :
+
+- `{url}` : 這個變數會對應的是 `*_URL` 參數所填寫的數值，例如我的 `TAG_URL` 是 `tag/{slug}.html`，那麼便會呈現 `tag/{slug}.html` 的網址。
+- `{save_as}` : 這個變數會呈現的是 `*_SAVE_AS` 參數所填寫的數值，例如我的 `TAG_SAVE_AS` 是 `tag/{slug}.html`，那麼在透過 `make html` 輸出時便會以 `{slug}.html` 的名稱產生並保存在 `tag` 目錄下。
+- `{name}` : 該變數的數值會根據 `{save_as}` 的結果來擷取檔案名稱，例如範例中當透過`make html` 輸出時 `foo/bar.html`，那便會以 `foo/bar` 直接作為 `{name}`
+- `{extension}` : 也就是 `{name}` 後半段的副檔名，在 `foo/bar.html` 是 `.html`
+- `{base_name}` : 與 `{name}` 相同，但是如果有 `/index` 存在，會跳脫 `/index`
+- `{number}` : 頁面的數值
+
+<br/>
+
+所以如果我們來對照一下預設 `PAGINATION_PATTERNS`，當分為第一頁時，因為 `page_url` 與 `page_save_as` 皆為 `{name}{extension}` ，所以就會如同原先的 `localhost:7000/tags/python.html`，而產生的 HTML 檔案以 `python.html` 的名稱放在 `tags` 目錄下的
+
+```python
+PAGINATION_PATTERNS = (
+    (1, '{name}{extension}', '{name}{extension}'),
+    (2, '{name}{number}{extension}', '{name}{number}{extension}'),
+)
+```
+
+而當頁數超過一頁時，`page_url` 與 `page_save_as` 皆改變為 `{name}{number}{extension}` ，也就會讓第二頁的 URL 變為 `tags/python2.html`，而保存的 HTML 覆蓋掉了原先的 `Python2` Tag 的 HTML 檔案。
+
+
+
+
+
