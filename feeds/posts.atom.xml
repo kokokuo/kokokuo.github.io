@@ -1921,7 +1921,40 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Python - 在 Mac 上安裝 PyQt 開發 GUI 視窗程式</title><link href="https://note.koko.guru/20150214-mac-install-pyqt-develop-python-gui.html" rel="alternate"></link><published>2015-02-14T00:00:00+08:00</published><updated>2015-02-14T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-14:/20150214-mac-install-pyqt-develop-python-gui.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/windows-pyqt-install-develop-python-gui.html"&gt;Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式&lt;/a&gt; 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Mac - 內建 Python 與自行安裝 Python 所在路徑</title><link href="https://note.koko.guru/mac-builtin-python-and-install-python-path.html" rel="alternate"></link><published>2015-02-15T00:00:00+08:00</published><updated>2015-02-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-15:/mac-builtin-python-and-install-python-path.html</id><summary type="html">&lt;p&gt;Mac 基本上內建了各程式語言，如 Ruby、C++，而 Python 也在其中，因此如果另外自行安裝 Python 則會有兩個不同的路徑。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;Mac 基本上內建了各程式語言，如 Ruby、C++，而 Python 也在其中，因此如果另外自行安裝 Python 則會有兩個不同的路徑。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;路徑所在位置&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;Mac 內建的 Python 依照 Unix 的目錄，預設會在 &lt;code&gt;/usr/bin&lt;/code&gt; 下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Python Path on Mac
+&lt;span class="c1"&gt;# Apple-supplied Python 2.6 in OS X 10.6&lt;/span&gt;
+$ /usr/bin/python
+Python &lt;span class="m"&gt;2&lt;/span&gt;.6.1 &lt;span class="o"&gt;(&lt;/span&gt;r261:67515, Jun &lt;span class="m"&gt;24&lt;/span&gt; &lt;span class="m"&gt;2010&lt;/span&gt;, &lt;span class="m"&gt;21&lt;/span&gt;:47:49&lt;span class="o"&gt;)&lt;/span&gt; 
+&lt;span class="o"&gt;[&lt;/span&gt;GCC &lt;span class="m"&gt;4&lt;/span&gt;.2.1 &lt;span class="o"&gt;(&lt;/span&gt;Apple Inc. build &lt;span class="m"&gt;5646&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt; on darwin
+Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; more information.
+&amp;gt;&amp;gt;&amp;gt; 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;至於 自行安裝的則會在 &lt;code&gt;/Library/Frameworks/Python.framework/Versions/2.7/bin&lt;/code&gt; 下，並且在 &lt;code&gt;/usr/local/bin&lt;/code&gt; 產生 &lt;em&gt;&lt;em&gt;symblic&lt;/em&gt; &lt;/em&gt;連結檔案。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# python.org Python 2.7.8 (also built with newer gcc)&lt;/span&gt;
+Python &lt;span class="m"&gt;2&lt;/span&gt;.7.8 &lt;span class="o"&gt;(&lt;/span&gt;v2.7.8:ee879c0ffa11, Jun &lt;span class="m"&gt;29&lt;/span&gt; &lt;span class="m"&gt;2014&lt;/span&gt;, &lt;span class="m"&gt;21&lt;/span&gt;:07:35&lt;span class="o"&gt;)&lt;/span&gt; 
+&lt;span class="o"&gt;[&lt;/span&gt;GCC &lt;span class="m"&gt;4&lt;/span&gt;.2.1 &lt;span class="o"&gt;(&lt;/span&gt;Apple Inc. build &lt;span class="m"&gt;5666&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;dot &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)]&lt;/span&gt; on darwin
+Type &lt;span class="s2"&gt;&amp;quot;help&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;credits&amp;quot;&lt;/span&gt; or &lt;span class="s2"&gt;&amp;quot;license&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; more information.
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;在 Termnial 輸入 python 指令時是執行哪個版本&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;這部分可以直接去看環境變數 PATH。為了使後來安裝的 Python 可以直接使用，所以會加入 Python 執行檔於 PATH 中，一般如果加在最前頭，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/Library/Frameworks/Python.framework/Versions/2.7/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;則會先抓到 &lt;code&gt;/Library/Frameworks/Python.framework/Versions/2.7/bin&lt;/code&gt; 下的版本。&lt;/p&gt;</content><category term="Mac"></category><category term="Python"></category></entry><entry><title>Python - 在 Mac 上安裝 PyQt 開發 GUI 視窗程式</title><link href="https://note.koko.guru/mac-install-pyqt-develop-python-gui.html" rel="alternate"></link><published>2015-02-14T00:00:00+08:00</published><updated>2015-02-14T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-14:/mac-install-pyqt-develop-python-gui.html</id><summary type="html">&lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/windows-pyqt-install-develop-python-gui.html"&gt;Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式&lt;/a&gt; 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;p&gt;在前一篇 &lt;a href="https://note.koko.guru/windows-pyqt-install-develop-python-gui.html"&gt;Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式&lt;/a&gt; 介紹了在 Windows 上開發 PyQt 的視窗程式，而因為本人也有在使用 Mac 所以也要筆記一下如何安裝囉。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;事前安裝須知&lt;/h1&gt;
