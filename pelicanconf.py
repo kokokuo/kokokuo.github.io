@@ -72,7 +72,7 @@ AUTHOR_FEED_RSS = None
 SOCIAL = (('github', 'https://github.com/kokokuo'),
           ('linkedin', 'https://www.linkedin.com/in/easonkuo'),)
 
-DEFAULT_PAGINATION = 15
+DEFAULT_PAGINATION = 20
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
