@@ -1997,7 +1997,43 @@ kokokuo-note/&amp;gt; &lt;span class="nb"&gt;source&lt;/span&gt; venv/bin/activa
 &lt;li&gt;&lt;a href="http://chenjiee815.github.io/pelicanru-men-zhi-nan.html"&gt;Pelican 入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.xycoding.com/articles/2013/11/21/blog-create/"&gt;使用 Pelican 和 GitHub Pages 搭建个人博客 —— 基础篇&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.getpelican.com/en/stable/content.html"&gt;Pelican Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>使用 SublimeREPL 解決 Python 在 Sublime 內操作 Termial 控制台時出現 EOF when reading a line</title><link href="https://note.koko.guru/sublime-python-eof-when-reading-line-sublimerepl.html" rel="alternate"></link><published>2015-02-18T00:00:00+08:00</published><updated>2015-02-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-18:/sublime-python-eof-when-reading-line-sublimerepl.html</id><summary type="html">&lt;p&gt;使用 Sublime 撰寫 Python 程式時，若使用 &lt;code&gt;raw_input&lt;/code&gt; 函式，當操作 Sublime 內建的 Termial ( 透過 &lt;code&gt;Command + B&lt;/code&gt; ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 &lt;code&gt;EOF when reading a line&lt;/code&gt;，而本篇會介紹如何解決此問題。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;/ol&gt;</content><category term="Python"></category><category term="Pelican"></category></entry><entry><title>解決在 Mac 下使用 Sublime 無法處理 Ctrl + Space 的自動補齊與提示功能</title><link href="https://note.koko.guru/20150228-mac-sublime-ctrlspace-auto-completeion.html" rel="alternate"></link><published>2015-02-28T00:00:00+08:00</published><updated>2015-02-28T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-28:/20150228-mac-sublime-ctrlspace-auto-completeion.html</id><summary type="html">&lt;p&gt;Sublime 本身內建基本的 &lt;strong&gt;Auto Complete&lt;/strong&gt; 功能，不過主要是的使用過的單字才會提示，而且如果現在打到一半，通常想要顯示提示時，Sublime 會有快捷鍵可以叫出，但是這個快捷鍵的指令是 &lt;strong&gt;Ctrl + Space&lt;/strong&gt; 好巧不巧的與 Mac 的快捷鍵衝突到，會叫出 &lt;strong&gt;Spotlight&lt;/strong&gt; 搜尋...&lt;/p&gt;</summary><content type="html">&lt;p&gt;而且很多插件，也會預設使用 Sublime 的 &lt;strong&gt;Auto Complete&lt;/strong&gt; 快捷鍵，所以我們需要來處理一下在 Mac 中如何使 Sublime 能夠順利的使用 Auto Complete 功能。&lt;/p&gt;
+&lt;h1&gt;前言&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;Sublime 本身內建基本的 &lt;strong&gt;Auto Complete&lt;/strong&gt; 功能，不過主要是的使用過的單字才會提示，而且如果現在打到一半，通常想要顯示提示時，Sublime 會有快捷鍵可以叫出，但是這個快捷鍵的指令是 &lt;strong&gt;Ctrl + Space&lt;/strong&gt; 好巧不巧的與 Mac 的快捷鍵衝突到，會叫出 &lt;strong&gt;Spotlight&lt;/strong&gt; 搜尋...&lt;/p&gt;
+&lt;p&gt;而且很多插件，也會預設使用 Sublime 的 &lt;strong&gt;Auto Complete&lt;/strong&gt; 快捷鍵，所以我們需要來處理一下在 Mac 中如何使 Sublime 能夠順利的使用 Auto Complete 功能。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;解決方式&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;處理方式不外乎就是修改預設的 &lt;strong&gt;Ctrl + Space&lt;/strong&gt; 比較保險，而 Sublime 中修改快捷鍵的位置在 &lt;code&gt;Preference&lt;/code&gt; &amp;gt; &lt;code&gt;Key Binding – Default&lt;/code&gt; 底下。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/Open-Default-Key-Binding-keymap.png" alt="Open-Default-Key-Binding-keymap" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;開啟後會是預設的指令設定，而且該內容是&lt;strong&gt;唯讀不可編輯&lt;/strong&gt;，但如果從一般的目錄檔案下硬去更改編輯的話也是可以，只不過會影響到整個 Sublime。
+因此 Sublime 對每一個 settings 都會提供一個給 User 的設定，所以我們可以開啟 &lt;strong&gt;Key Binding User&lt;/strong&gt; 然後把 &lt;strong&gt;Key Binding – Default&lt;/strong&gt; 中的 &lt;code&gt;command&lt;/code&gt; 為 &lt;code&gt;auto_complete&lt;/code&gt; 的整行指令複製到 &lt;strong&gt;Key Binding – User&lt;/strong&gt; 中並修改 &lt;code&gt;key&lt;/code&gt; 值，如這邊我是修改成 &lt;code&gt;ctrl + escape&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;
+
+    &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;keys&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;ctrl+escape&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;command&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;auto_complete&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/changed-auto-complete-key-user-settings.png" alt="changed-auto-complete-key-user-settings" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;直接修改 Default&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;上述有提到 &lt;strong&gt;Key Binding – Default&lt;/strong&gt; 中的內容是 Sublime 預設的設定，而且&lt;strong&gt;唯讀不可編輯&lt;/strong&gt;，可是我們卻可以從一般的目錄檔案下硬去更改編輯的話也是可以，只不過會影響到整個 Sublime。&lt;/p&gt;
+&lt;p&gt;那麼如果要編輯究竟要去哪改呢？&lt;/p&gt;
+&lt;p&gt;只要把 Default 檔案另存新檔 ( Save As ) 到 &lt;code&gt;Packages&lt;/code&gt; &amp;gt; &lt;code&gt;Default&lt;/code&gt; 目錄下，檔案名稱不變即可，若是沒有 &lt;code&gt;Default&lt;/code&gt; 目錄則新建目錄並放置 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/saved-the-new-default-keymap.png" alt="saved-the-new-default-keymap" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;然後便可以編輯了 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/modify-auto-complete-keymap-default-sublime.png" alt="modify-auto-complete-keymap-default-sublime" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;接著重新開啟後，按下 &lt;code&gt;ctrl + escape&lt;/code&gt; 就會彈出自動補齊的彈出匡了。&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/17413163/unmap-ctrlspace-in-sublime-text-3"&gt;Unmap ctrl+space in Sublime Text 3&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Mac"></category><category term="Sublime"></category></entry><entry><title>使用 SublimeREPL 解決 Python 在 Sublime 內操作 Termial 控制台時出現 EOF when reading a line</title><link href="https://note.koko.guru/sublime-python-eof-when-reading-line-sublimerepl.html" rel="alternate"></link><published>2015-02-18T00:00:00+08:00</published><updated>2015-02-18T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2015-02-18:/sublime-python-eof-when-reading-line-sublimerepl.html</id><summary type="html">&lt;p&gt;使用 Sublime 撰寫 Python 程式時，若使用 &lt;code&gt;raw_input&lt;/code&gt; 函式，當操作 Sublime 內建的 Termial ( 透過 &lt;code&gt;Command + B&lt;/code&gt; ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 &lt;code&gt;EOF when reading a line&lt;/code&gt;，而本篇會介紹如何解決此問題。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;使用 Sublime 撰寫 Python 程式時，若使用 &lt;code&gt;raw_input&lt;/code&gt; 函式，當操作 Sublime 內建的 Termial ( 透過 &lt;code&gt;Command + B&lt;/code&gt; ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 &lt;code&gt;EOF when reading a line&lt;/code&gt;，而本篇會介紹如何解決此問題。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;

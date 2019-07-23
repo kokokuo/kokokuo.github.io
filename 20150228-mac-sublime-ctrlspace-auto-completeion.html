@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="Sublime 本身內建基本的 Auto Complete 功能，不過主要是的使用過的單字才會提示，而且如果現在打到一半，通常想要顯示提示時，Sublime 會有快捷鍵可以叫出，但是這個快捷鍵的指令是 Ctrl + Space 好巧不巧的與 Mac 的快捷鍵衝突到，會叫出 Spotlight 搜尋..." />
+<meta name="keywords" content="Mac, Sublime">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="解決在 Mac 下使用 Sublime 無法處理 Ctrl + Space 的自動補齊與提示功能"/>
+<meta property="og:description" content="Sublime 本身內建基本的 Auto Complete 功能，不過主要是的使用過的單字才會提示，而且如果現在打到一半，通常想要顯示提示時，Sublime 會有快捷鍵可以叫出，但是這個快捷鍵的指令是 Ctrl + Space 好巧不巧的與 Mac 的快捷鍵衝突到，會叫出 Spotlight 搜尋..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/20150228-mac-sublime-ctrlspace-auto-completeion.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-02-28 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Sublime"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; 解決在 Mac 下使用 Sublime 無法處理 Ctrl + Space 的自動補齊與提示功能</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="20150228-mac-sublime-ctrlspace-auto-completeion">解決在 Mac 下使用 Sublime 無法處理 Ctrl + Space 的自動補齊與提示功能</h1>
+    <p>
+          Posted on 六 28 2月 2015 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>而且很多插件，也會預設使用 Sublime 的 <strong>Auto Complete</strong> 快捷鍵，所以我們需要來處理一下在 Mac 中如何使 Sublime 能夠順利的使用 Auto Complete 功能。</p>
+<h1>前言</h1>
+<hr>
+<p>Sublime 本身內建基本的 <strong>Auto Complete</strong> 功能，不過主要是的使用過的單字才會提示，而且如果現在打到一半，通常想要顯示提示時，Sublime 會有快捷鍵可以叫出，但是這個快捷鍵的指令是 <strong>Ctrl + Space</strong> 好巧不巧的與 Mac 的快捷鍵衝突到，會叫出 <strong>Spotlight</strong> 搜尋...</p>
+<p>而且很多插件，也會預設使用 Sublime 的 <strong>Auto Complete</strong> 快捷鍵，所以我們需要來處理一下在 Mac 中如何使 Sublime 能夠順利的使用 Auto Complete 功能。</p>
+<p><br/></p>
+<h1>解決方式</h1>
+<hr>
+<p>處理方式不外乎就是修改預設的 <strong>Ctrl + Space</strong> 比較保險，而 Sublime 中修改快捷鍵的位置在 <code>Preference</code> &gt; <code>Key Binding – Default</code> 底下。</p>
+<p><img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/Open-Default-Key-Binding-keymap.png" alt="Open-Default-Key-Binding-keymap" width="480px"/></p>
+<p>開啟後會是預設的指令設定，而且該內容是<strong>唯讀不可編輯</strong>，但如果從一般的目錄檔案下硬去更改編輯的話也是可以，只不過會影響到整個 Sublime。
+因此 Sublime 對每一個 settings 都會提供一個給 User 的設定，所以我們可以開啟 <strong>Key Binding User</strong> 然後把 <strong>Key Binding – Default</strong> 中的 <code>command</code> 為 <code>auto_complete</code> 的整行指令複製到 <strong>Key Binding – User</strong> 中並修改 <code>key</code> 值，如這邊我是修改成 <code>ctrl + escape</code>：</p>
+<div class="highlight"><pre><span></span><span class="p">[</span>
+
+    <span class="p">{</span> <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ctrl+escape&quot;</span><span class="p">],</span> <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;auto_complete&quot;</span> <span class="p">}</span>
+
+<span class="p">]</span>
+</pre></div>
+
+
+<p><img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/changed-auto-complete-key-user-settings.png" alt="changed-auto-complete-key-user-settings" width="640px"/></p>
+<p><br/></p>
+<h1>直接修改 Default</h1>
+<hr>
+<p>上述有提到 <strong>Key Binding – Default</strong> 中的內容是 Sublime 預設的設定，而且<strong>唯讀不可編輯</strong>，可是我們卻可以從一般的目錄檔案下硬去更改編輯的話也是可以，只不過會影響到整個 Sublime。</p>
+<p>那麼如果要編輯究竟要去哪改呢？</p>
+<p>只要把 Default 檔案另存新檔 ( Save As ) 到 <code>Packages</code> &gt; <code>Default</code> 目錄下，檔案名稱不變即可，若是沒有 <code>Default</code> 目錄則新建目錄並放置 :</p>
+<p><img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/saved-the-new-default-keymap.png" alt="saved-the-new-default-keymap" width="480px"/></p>
+<p>然後便可以編輯了 :</p>
+<p><img src="../images/20150228-mac-sublime-ctrlspace-auto-completeion/modify-auto-complete-keymap-default-sublime.png" alt="modify-auto-complete-keymap-default-sublime" width="640px"/></p>
+<p>接著重新開啟後，按下 <code>ctrl + escape</code> 就會彈出自動補齊的彈出匡了。</p>
+<p><br/></p>
+<h1>參考資料</h1>
+<hr>
+<ol>
+<li><a href="https://stackoverflow.com/questions/17413163/unmap-ctrlspace-in-sublime-text-3">Unmap ctrl+space in Sublime Text 3</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/mac">Mac</a>
+      <a href="https://note.koko.guru/tag/sublime">Sublime</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
