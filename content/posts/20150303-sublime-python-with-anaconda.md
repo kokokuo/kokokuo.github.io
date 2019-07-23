@@ -88,7 +88,7 @@ JavaScript, Mason, XBL, XUL, RHTML, SCSS, Python, HTML, Ruby, Python3, XML, XSLT
 ## 1. 安裝插件
 透過 `Packae Control` 輸入 `Anaconda` 後即可安裝完成。
 
-<img src="../images/20150303-sublime-python-with-anaconda/anaconda-install-package.png" alt="anaconda-install-package" width="480px"/>
+<img src="../images/20150303-sublime-python-with-anaconda/anaconda-install-package.png" alt="anaconda-install-package" width="640px"/>
 
 
 ## 2. 設定檔參數
