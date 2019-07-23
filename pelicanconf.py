@@ -33,7 +33,7 @@ Tag 設置參數，其他未出現的參數保持預設可以參考。
 http://docs.getpelican.com/en/4.1.0/settings.html#url-settings
 """
 # 目前 TAG_URL, TAG_SAVE_AS, TAGS_SAVE_AS 皆保持預設
-TAG_URL = 'tag/{slug}'
+# TAG_URL = 'tag/{slug}'
 TAG_SAVE_AS = 'tag/{slug}.html'
 TAGS_SAVE_AS = 'tags.html'
 

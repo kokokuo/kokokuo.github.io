@@ -90,7 +90,9 @@ DEFAULT_PAGINATION = 20
 
 <img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-introudction.png" alt="pagination-pattern-introudction" width="640px"/>
 
-## `PAGINATION_PATTERNS` 參數介紹
+<br/>
+
+# `PAGINATION_PATTERNS` 參數介紹
 
 在 `PAGINATION_PATTERNS` 的參數設定方式會由 3 個參數值組成的 Tuple 格式來設定，其中一訓設定的順序會是 :
 
@@ -109,7 +111,7 @@ DEFAULT_PAGINATION = 20
 
 <br/>
 
-所以如果我們來對照一下預設 `PAGINATION_PATTERNS`，當分為第一頁時，因為 `page_url` 與 `page_save_as` 皆為 `{name}{extension}` ，所以就會如同原先的 `localhost:7000/tags/python.html`，而產生的 HTML 檔案以 `python.html` 的名稱放在 `tags` 目錄下的
+根據上述的間間自參數，我們來對照一下預設 `PAGINATION_PATTERNS`，當分為第一頁時，因為 `page_url` 與 `page_save_as` 皆為 `{name}{extension}` ，所以就會如同原先的 `localhost:7000/tags/python.html`，而產生的 HTML 檔案以 `python.html` 的名稱放在 `tags` 目錄下的
 
 ```python
 PAGINATION_PATTERNS = (
@@ -118,9 +120,59 @@ PAGINATION_PATTERNS = (
 )
 ```
 
-而當頁數超過一頁時，`page_url` 與 `page_save_as` 皆改變為 `{name}{number}{extension}` ，也就會讓第二頁的 URL 變為 `tags/python2.html`，而保存的 HTML 覆蓋掉了原先的 `Python2` Tag 的 HTML 檔案。
+<br/>
+
+而當頁數超過一頁時，`page_url` 與 `page_save_as` 皆改變為 `{name}{number}{extension}` ，也就會讓第二頁的 URL 變為 `tags/python2.html`，而保存的 HTML 覆蓋掉了原先的 `Python2` Tag 的 HTML 檔案，也就會發生先前的錯誤訊息。
+
+如果要更換掉預設的參數要怎麼換呢？在 Pelican 的文件中其實有給了一個範例，我們可以來研究一下 :
+
+<img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-usage-sample.png" alt="pagination-pattern-usage-sample" width="640px"/>
 
 
+```python
+PAGINATION_PATTERNS = (
+    (1, "{url}", "{save_as}"),
+    (2, "{base_name}/page/{number}/", "{base_name}/page/{number}/index.html"),
+)
+```
+
+<br/>
+
+當頁數只有第一頁時，`page_url` 是填入 `{url}`，所以會根據 `TAG_URL` 的設定值來給定 `page_url` 的網址。如果我們沒有改過 `TAG_URL` 預設值會是 `tag/{slug}.html` 所以顯示依然 `tag/python.html`。
+
+<img src="../images/20190722-pelican-runtime-error-when-html-overwritten/sample-tag-page.png" alt="sample-tag-page" width="640px"/>
+
+<br/>
+
+而 `page_save_as` 是 `{save_as}` 所以會是 `TAG_SAVE_AS` 的數值，同樣的預設沒有更改的話會是 `tag/{slug}.html`，所以會被建立為 `python.html` 檔案並保存在 `tag` 目錄下。
+
+但是當頁數到了超過一頁時就不同了，因為 `page_url` 設定為 `{base_name}/page/{number}/`，因此根據 `{base_name}` 的描述，會顯示 `python`，而 `{number}` 會顯示 `2` ，因此網址會有大幅的改變，變成 `python/page/2`。至於 `page_save_as` 的保存方式，則是會建立一個 `python` 的目錄與 `page` 子目錄，並建立一個 `2.html` 保存該分頁的內容。
+
+所以如果我們設定成以上的結果，把 HTML 清掉後再透過 `make clean && make serve PORT=7000` 來看看，你會發現透過 `localhost` 瀏覽 `Python` 標籤的分頁到了第二頁的確改變了 : 
+
+<img src="../images/20190722-pelican-runtime-error-when-html-overwritten/sample-tag-pagination-work.png" alt="sample-tag-pagination-work" width="640px"/>
+
+而且 HTML 輸出的檔案也的確以 `2.html` 建立在 `output/python/page` 目錄下 :
+
+<img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-sample-save-as-directory.png" alt="pagination-pattern-sample-save-as-directory" width="320px"/>
+
+<br/>
+
+# `PAGINATION_PATTERNS` 的影響性
+
+這也就是 `PAGINATION_PATTERNS` 參數好用的地方，方便我們定義分頁的網址與保存目錄位置。
+
+但是像先前所說， `PAGINATION_PATTERNS` 的影響是全面性的，像上述我們依照 Pelican 給的範例修改後，不只有 Tag 部分，Category 以及 Index 都會以相同的形式呈現分頁，例如下圖是 Index 頁面的第二頁：
+
+<img src="../images/20190722-pelican-runtime-error-when-html-overwritten/index-pagination-influence.png" alt="index-pagination-influence" width="640px"/>
+
+
+<br/>
+
+# 參考資料
+---
+1. [Pelican - Using Pagination Patterns](http://docs.getpelican.com/en/4.1.0/settings.html#using-pagination-patterns)
+2. [Error when attempting to manually overwrite a category page #1223](https://github.com/getpelican/pelican/issues/1223)
 
 
 
