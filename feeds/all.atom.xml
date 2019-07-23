@@ -58,7 +58,8 @@ Code / Web / Architecture
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/default-pagination-pattern.png" alt="default-pagination-pattern" width="480px"/&gt;&lt;/p&gt;
 &lt;p&gt;而在文件中也有提到預設產生的結果，以及如何更改 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; :&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-introudction.png" alt="pagination-pattern-introudction" width="640px"/&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 參數介紹&lt;/h2&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 參數介紹&lt;/h1&gt;
 &lt;p&gt;在 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的參數設定方式會由 3 個參數值組成的 Tuple 格式來設定，其中一訓設定的順序會是 :&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;minimum_page, page_url, page_save_as,&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -74,7 +75,7 @@ Code / Web / Architecture
 &lt;li&gt;&lt;code&gt;{number}&lt;/code&gt; : 頁面的數值&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;所以如果我們來對照一下預設 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt;，當分為第一頁時，因為 &lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆為 &lt;code&gt;{name}{extension}&lt;/code&gt; ，所以就會如同原先的 &lt;code&gt;localhost:7000/tags/python.html&lt;/code&gt;，而產生的 HTML 檔案以 &lt;code&gt;python.html&lt;/code&gt; 的名稱放在 &lt;code&gt;tags&lt;/code&gt; 目錄下的&lt;/p&gt;
+&lt;p&gt;根據上述的間間自參數，我們來對照一下預設 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt;，當分為第一頁時，因為 &lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆為 &lt;code&gt;{name}{extension}&lt;/code&gt; ，所以就會如同原先的 &lt;code&gt;localhost:7000/tags/python.html&lt;/code&gt;，而產生的 HTML 檔案以 &lt;code&gt;python.html&lt;/code&gt; 的名稱放在 &lt;code&gt;tags&lt;/code&gt; 目錄下的&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;PAGINATION_PATTERNS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{number}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{number}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -82,7 +83,39 @@ Code / Web / Architecture
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;而當頁數超過一頁時，&lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆改變為 &lt;code&gt;{name}{number}{extension}&lt;/code&gt; ，也就會讓第二頁的 URL 變為 &lt;code&gt;tags/python2.html&lt;/code&gt;，而保存的 HTML 覆蓋掉了原先的 &lt;code&gt;Python2&lt;/code&gt; Tag 的 HTML 檔案。&lt;/p&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>Pelican - 設定客製化網域並顯示在 Github Page 上</title><link href="https://note.koko.guru/add-custom-domain-on-github-page-and-pelican.html" rel="alternate"></link><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-15:/add-custom-domain-on-github-page-and-pelican.html</id><summary type="html">&lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;而當頁數超過一頁時，&lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆改變為 &lt;code&gt;{name}{number}{extension}&lt;/code&gt; ，也就會讓第二頁的 URL 變為 &lt;code&gt;tags/python2.html&lt;/code&gt;，而保存的 HTML 覆蓋掉了原先的 &lt;code&gt;Python2&lt;/code&gt; Tag 的 HTML 檔案，也就會發生先前的錯誤訊息。&lt;/p&gt;
+&lt;p&gt;如果要更換掉預設的參數要怎麼換呢？在 Pelican 的文件中其實有給了一個範例，我們可以來研究一下 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-usage-sample.png" alt="pagination-pattern-usage-sample" width="640px"/&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;PAGINATION_PATTERNS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;{url}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;{save_as}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;{base_name}/page/{number}/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;{base_name}/page/{number}/index.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;當頁數只有第一頁時，&lt;code&gt;page_url&lt;/code&gt; 是填入 &lt;code&gt;{url}&lt;/code&gt;，所以會根據 &lt;code&gt;TAG_URL&lt;/code&gt; 的設定值來給定 &lt;code&gt;page_url&lt;/code&gt; 的網址。如果我們沒有改過 &lt;code&gt;TAG_URL&lt;/code&gt; 預設值會是 &lt;code&gt;tag/{slug}.html&lt;/code&gt; 所以顯示依然 &lt;code&gt;tag/python.html&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/sample-tag-page.png" alt="sample-tag-page" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;而 &lt;code&gt;page_save_as&lt;/code&gt; 是 &lt;code&gt;{save_as}&lt;/code&gt; 所以會是 &lt;code&gt;TAG_SAVE_AS&lt;/code&gt; 的數值，同樣的預設沒有更改的話會是 &lt;code&gt;tag/{slug}.html&lt;/code&gt;，所以會被建立為 &lt;code&gt;python.html&lt;/code&gt; 檔案並保存在 &lt;code&gt;tag&lt;/code&gt; 目錄下。&lt;/p&gt;
+&lt;p&gt;但是當頁數到了超過一頁時就不同了，因為 &lt;code&gt;page_url&lt;/code&gt; 設定為 &lt;code&gt;{base_name}/page/{number}/&lt;/code&gt;，因此根據 &lt;code&gt;{base_name}&lt;/code&gt; 的描述，會顯示 &lt;code&gt;python&lt;/code&gt;，而 &lt;code&gt;{number}&lt;/code&gt; 會顯示 &lt;code&gt;2&lt;/code&gt; ，因此網址會有大幅的改變，變成 &lt;code&gt;python/page/2&lt;/code&gt;。至於 &lt;code&gt;page_save_as&lt;/code&gt; 的保存方式，則是會建立一個 &lt;code&gt;python&lt;/code&gt; 的目錄與 &lt;code&gt;page&lt;/code&gt; 子目錄，並建立一個 &lt;code&gt;2.html&lt;/code&gt; 保存該分頁的內容。&lt;/p&gt;
+&lt;p&gt;所以如果我們設定成以上的結果，把 HTML 清掉後再透過 &lt;code&gt;make clean &amp;amp;&amp;amp; make serve PORT=7000&lt;/code&gt; 來看看，你會發現透過 &lt;code&gt;localhost&lt;/code&gt; 瀏覽 &lt;code&gt;Python&lt;/code&gt; 標籤的分頁到了第二頁的確改變了 : &lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/sample-tag-pagination-work.png" alt="sample-tag-pagination-work" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;而且 HTML 輸出的檔案也的確以 &lt;code&gt;2.html&lt;/code&gt; 建立在 &lt;code&gt;output/python/page&lt;/code&gt; 目錄下 :&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-sample-save-as-directory.png" alt="pagination-pattern-sample-save-as-directory" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;&lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的影響性&lt;/h1&gt;
+&lt;p&gt;這也就是 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 參數好用的地方，方便我們定義分頁的網址與保存目錄位置。&lt;/p&gt;
+&lt;p&gt;但是像先前所說， &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的影響是全面性的，像上述我們依照 Pelican 給的範例修改後，不只有 Tag 部分，Category 以及 Index 都會以相同的形式呈現分頁，例如下圖是 Index 頁面的第二頁：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/index-pagination-influence.png" alt="index-pagination-influence" width="640px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h1&gt;參考資料&lt;/h1&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="http://docs.getpelican.com/en/4.1.0/settings.html#using-pagination-patterns"&gt;Pelican - Using Pagination Patterns&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/getpelican/pelican/issues/1223"&gt;Error when attempting to manually overwrite a category page #1223&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Pelican"></category><category term="Python"></category></entry><entry><title>Pelican - 設定客製化網域並顯示在 Github Page 上</title><link href="https://note.koko.guru/add-custom-domain-on-github-page-and-pelican.html" rel="alternate"></link><published>2019-07-15T00:00:00+08:00</published><updated>2019-07-15T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-15:/add-custom-domain-on-github-page-and-pelican.html</id><summary type="html">&lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 &lt;code&gt;&amp;lt;username&amp;gt;.github.io&lt;/code&gt; 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
