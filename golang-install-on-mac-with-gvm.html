@@ -109,13 +109,20 @@ Code / Web / Architecture
 <p>這樣的管理器，如果有寫過其他語言的人一定不陌生，例如 Ruby 的 <a href="https://github.com/rvm/rvm">RVM</a>，Python 的 <a href="https://github.com/pyenv/pyenv">pyenv</a>，Node.js 的 <a href="https://github.com/nvm-sh/nvm">nvm</a> ...等等。</p>
 <p>而在 Go 語言上也有這樣方便好用的版本管理器，安裝非常簡單，以下我們來看一下。</p>
 <h2>2. 安裝 GVM</h2>
+<h3>事前安裝 gcc</h3>
+<p>在安裝 GVM 前，須先確認是否有 gcc，若沒有則須先安裝，可以透過 Homebrew 安裝：</p>
+<div class="highlight"><pre><span></span>$ brew install gcc
+</pre></div>
+
+
 <h3>安裝到 Bash 中</h3>
+<p>Mac 要安裝 GVM 無法使用 Homebrew  的指令，需要輸入一串腳本指令才行：</p>
 <p>輸入以下指令安裝：</p>
 <div class="highlight"><pre><span></span>$ bash &lt; &lt;<span class="o">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span class="o">)</span>
 </pre></div>
 
 
-<p>透過執行這段指令，GVM 會被安裝到 <code>~/.gvm</code> 目錄下，此外自動為我們寫入此段指令到 bash 的用戶環境變數中：</p>
+<p>透過上述的安裝指令，GVM 會被安裝到 <code>~/.gvm</code> 目錄下，並且自動為我們寫入以下這段指令到 bash 的用戶環境變數中：</p>
 <div class="highlight"><pre><span></span><span class="o">[[</span> -s <span class="s2">&quot;/Users/&lt;username&gt;/.gvm/scripts/gvm&quot;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">source</span> <span class="s2">&quot;/Users/&lt;username&gt;/.gvm/scripts/gvm&quot;</span>
 </pre></div>
 
@@ -124,13 +131,13 @@ Code / Web / Architecture
 <p><img src="../images/20190713-install-golang-on-mac/bash-profile-gvm-settings.png" alt="bash-profile-gvm-settings" width="480px"/></p>
 <p><br/></p>
 <h3>安裝到 Zsh 中</h3>
-<p>然而若是使用 <code>zsh</code>，則可以改成下載套件並設定到 <code>zsh</code> 中：</p>
+<p>若是使用 <code>zsh</code>，則可以改成下載套件並設定到 <code>zsh</code> 中：</p>
 <div class="highlight"><pre><span></span>$ zsh &lt; &lt;<span class="o">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span class="o">)</span>
 </pre></div>
 
 
 <p><img src="../images/20190713-install-golang-on-mac/install-gvm-to-zsh.png" alt="install-gvm-to-zsh" width="480px"/></p>
-<p>打開 <code>~/.zshrc</code> 可以看到 <code>[[ -s "/Users/&lt;username&gt;/.gvm/scripts/gvm" ]] &amp;&amp; source "/Users/&lt;username&gt;/.gvm/scripts/gvm"</code> 被設定進去。</p>
+<p>打開 <code>~/.zshrc</code> 可以看到 <code>[[ -s "/Users/&lt;username&gt;/.gvm/scripts/gvm" ]] &amp;&amp; source "/Users/&lt;username&gt;/.gvm/scripts/gvm"</code> ㄧ樣被寫入進去。</p>
 <p><img src="../images/20190713-install-golang-on-mac/zshrc-show-gmv-env-settings.png" alt="zshrc-show-gmv-env-setting" width="480px"/></p>
 <h2>3. 啟動 GVM 安裝 Golang</h2>
 <p>在上述安裝完並檢查環境變數有指向 GVM 後，接著可以透過重新啟動 Ternimal 或是手動以 <code>source</code> 指令來啟動 GVＭ：</p>
@@ -148,46 +155,67 @@ Code / Web / Architecture
 
 
 <p><img src="../images/20190713-install-golang-on-mac/gvm-listall.png" alt="gvm-listall" width="240px"/></p>
-<h3>(2.) 安奘想要的版本</h3>
+<h3>(2.) 安裝想要的版本</h3>
 <div class="highlight"><pre><span></span>$ gvm install &lt;輸入你想要安裝的版本&gt;
+</pre></div>
 
-<span class="c1"># 例如在這邊我安裝了兩個版本：</span>
-$ gvm install go1.12.7
-$ gvm install go1.11.12
+
+<p>其他額外的參數：</p>
+<div class="highlight"><pre><span></span>Usage: gvm install <span class="o">[</span>version<span class="o">]</span> <span class="o">[</span>options<span class="o">]</span>
+    -s,  --source<span class="o">=</span>SOURCE      Install Go from specified source.
+    -n,  --name<span class="o">=</span>NAME          Override the default name <span class="k">for</span> this version.
+    -pb, --with-protobuf      Install Go protocol buffers.
+    -b,  --with-build-tools   Install package build tools.
+    -B,  --binary             Only install from binary.
+         --prefer-binary      Attempt a binary install, falling back to source.
+    -h,  --help               Display this message.
+</pre></div>
+
+
+<p>例如在這邊我安裝 1.14.3 版本：</p>
+<p><img src="../images/20190713-install-golang-on-mac/go-gvm-install-1-14-3-compile-failed.png" alt="gvm-install-14-3-compiled-failed" width="480px"/></p>
+<p>結果卻看到錯誤的訊息，而這是因為 Go 1.4 版以後在工具鏈中移除了 C 的編譯器，並改為用 Go 寫的 C 編譯器放進去的原因。</p>
+<h4>Go 1.5+ 要做編譯</h4>
+<p>以下是官方套件的介紹：</p>
+<blockquote>
+<p>Go 1.5+ removed the C compilers from the toolchain and replaced them with one written in Go. Obviously, this creates a bootstrapping problem if you don't already have a working Go install. In order to compile Go 1.5+, make sure Go 1.4 is installed first.</p>
+</blockquote>
+<p>因此安裝 Go 1.4 版以後的版本要改用參數 -B ，來直接安裝 binary 的版本才行：</p>
+<div class="highlight"><pre><span></span>$ gvm install <span class="o">[</span>Go 版本<span class="o">]</span> -B
 </pre></div>
 
 
 <h3>(3.) 查看目前電腦所安裝的版本</h3>
-<p>接著我們可以透過 <code>list</code> 來得知目前系統上已經安裝的版本號。</p>
+<p>要查看已經安裝的版本，可以透過 <code>list</code> 來得知所有已經安裝的版本號。</p>
 <div class="highlight"><pre><span></span>$ gvm list
 </pre></div>
 
 
 <p>如下我們便會看到了已經安裝的版本。</p>
-<p><img src="../images/20190713-install-golang-on-mac/gvm-list.png" alt="gvm-list" width="240px"/></p>
+<p><img src="../images/20190713-install-golang-on-mac/gvm-list.png" alt="gvm-list" width="320px"/></p>
 <h3>(4.) 指定使用的 Go 語言版本</h3>
-<p>雖然在上述我們安裝了多個 Go 的版本，但是卻不曉得要使用哪個版本，如果要指定使用的版本 (或切換版本)，可以透過 <code>use</code> 指令來設定</p>
-<div class="highlight"><pre><span></span>$ gvm use &lt;要指定切換的 Go 版本&gt;
-$ gvm use go1.11.12
+<p>如果要指定使用的版本 (或切換版本)，可以透過 <code>use</code> 指令來指定。</p>
+<div class="highlight"><pre><span></span>$ gvm use &lt;已安裝要指定切換的 Go 版本&gt;
+$ gvm use go1.13.11
 </pre></div>
 
 
 <p>設定好後，我們可以透過 <code>go version</code> 來檢查是否找得到指定的版本：</p>
-<p><img src="../images/20190713-install-golang-on-mac/gvm-use-go-for-the-shell.png" alt="gvm-use-go-for-the-shell" width="240px"/></p>
+<p><img src="../images/20190713-install-golang-on-mac/gvm-use-go-for-the-shell.png" alt="gvm-use-go-for-the-shell" width="320px"/></p>
 <p>此外透過 <code>gvm list</code> 也可以看到目前我們所使用的版本。</p>
 <p>但是透過 <code>gvm use</code> 只能針對目前這個 Shell，所以當我們開了一個 Shell 後，便會找不到剛剛設定的 Go，如下圖我開了一個新的 <code>tty</code>：</p>
 <p><img src="../images/20190713-install-golang-on-mac/new-shell-no-find-go.png" alt="new-shell-no-find-go" width="320px"/></p>
 <p>輸入 <code>go version</code> 或 <code>go env</code> (<code>env</code> 參數可以看到 Go 所使用的環境變數，例如 Go 被安裝到哪)，你會發現找不到該 Go 版本。</p>
 <p>那麼如果要讓指定的版本永久作用的話要如何是好？</p>
-<h3>(5.) 指定 Go 預設的使用版本</h3>
+<h3>(5.) 指定 Go 預設使用的版本</h3>
 <p>我們可以在 <code>gvm use</code> 後便加上選擇性參數 <code>--default</code> 來告訴 GVM 這個版本被設為永久性預設的版本，當新開一個 Shell 後也會預設使用這個版本號：</p>
 <div class="highlight"><pre><span></span>$ gvm use &lt;要指定切換的 Go 版本&gt; --default
-$ gvm use go1.12.7 --default
+$ gvm use go1.14.3 --default
 </pre></div>
 
 
-<p><img src="../images/20190713-install-golang-on-mac/gvm-use-go-permanently.png" alt="gvm-use-go-permanently" width="280px"/></p>
-<p>我們再次開了一個新的 Shell ，你會看到他預設指定 <code>1.12.7</code> 版。</p>
+<p><img src="../images/20190713-install-golang-on-mac/gvm-use-go-permanently.png" alt="gvm-use-go-permanently" width="320px"/></p>
+<p>我們再次開了一個新的 Shell ，你會看到他預設指定 1.14.3 版。</p>
 <p><img src="../images/20190713-install-golang-on-mac/new-shell-use-default-go-version.png" alt="new-shell-use-default-go-version" width="280px"/></p>
 <h3>(6.) GVM 下載安裝的 Go 被放到哪裡</h3>
 <p>另外這些透過 GVM 所安裝的各個 Go 版本，會安放到哪呢？這時我們可以透過先前提到的 <code>go env</code> 查看與 Go 有關的環境變數：</p>
@@ -201,8 +229,6 @@ $ gvm use go1.12.7 --default
 </pre></div>
 
 
-<p>以下透過一個例子來觀看，你會發現後來安裝的 <code>go1.13beta1</code> 被移除掉。</p>
-<p><img src="../images/20190713-install-golang-on-mac/gvm-uninstall-go.png" alt="gvm-uninstall-go" width="280px"/></p>
 <h3>(8.) 移除 GVM</h3>
 <p>如果要把 GVM 整個移除可以透過 <code>implode</code> 指令移除：</p>
 <div class="highlight"><pre><span></span>$ gvm implode
@@ -212,6 +238,23 @@ $ gvm use go1.12.7 --default
 <p>當透過這個指令移除 GVM 後，所有透過 GVM 所安裝的 Go 版本也會移除，因為先前提到所有透過 GVM 所安裝的 Go 都會安放在 <code>~/.gvm/pkgsets</code> 目錄下。</p>
 <p>另外如果發現 <code>gvm implode</code> 無法移除 GVM ，可以手動刪除 <code>.gvm</code> 整個目錄，並把一開始安裝時寫入到 <code>zsh</code> 或 <code>bash</code> 環境變數中的指令移除即可。</p>
 <p><br/></p>
+<h3>(9.) 指定預設編譯器來編譯未來新安裝的 Go 版本</h3>
+<p>前半段有提到，Go 在 1.5+ 版以後都要做編譯，因此如果不希望 Go 1.4 版後的語言每次安裝都要帶入參數 -B 可以先安裝 1.4 版本，並設定 <code>GOROOT_BOOTSTRAP</code>：</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">GOROOT_BOOTSTRAP</span><span class="o">=</span><span class="nv">$GOROOT</span>
+</pre></div>
+
+
+<p>會需要做此動作，是因為 Go 1.4 以後實現了 Go 寫的 C 編譯器，並且為了讓後續的語言都通過該 1.4 版本的編譯器來編譯完新版本好的語言，因此需要設定，如此未來安裝 Go 時就需要再帶入 -B ，如下：</p>
+<div class="highlight"><pre><span></span>$ gvm install go1.4 -B
+$ gvm use go1.4
+$ <span class="nb">export</span> <span class="nv">GOROOT_BOOTSTRAP</span><span class="o">=</span><span class="nv">$GOROOT</span>
+$ gvm install go1.5
+</pre></div>
+
+
+<p>如下圖是安裝 1.14.3 版本的例子：</p>
+<p><img src="../images/20190713-install-golang-on-mac/go-using-previous-compiler-build-current-version.png" alt="go-using-previous-compiler-build-current-version" width="320px"/></p>
+<p>以上就是 GVM 的介紹囉。</p>
 <h1>參考資料</h1>
 <ol>
 <li><a href="https://github.com/moovweb/gvm">GVM Github Repository</a></li>

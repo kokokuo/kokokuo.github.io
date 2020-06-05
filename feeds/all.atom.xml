@@ -6,34 +6,34 @@ Code / Web / Architecture
 你需要非常多的努力
 &lt;br/&gt;
 才能看起來毫不費力
-</subtitle><entry><title>Pelican - 出現 RuntimeError: File XXX.html is to be overwritten</title><link href="https://note.koko.guru/pelican-runtime-error-when-html-overwritten.html" rel="alternate"></link><published>2019-07-22T00:00:00+08:00</published><updated>2019-07-22T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-22:/pelican-runtime-error-when-html-overwritten.html</id><summary type="html">&lt;p&gt;在使用 Pelican 撰寫 Markdown 文章並要透過 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 輸出 HTML 並查看 Localhost 時，卻出現了 &lt;code&gt;RuntimeError: File XXX.html is to be overwritten&lt;/code&gt; 的錯誤，由於這是沒有遇過寫網路上沒有什麼網友分享解決方法的錯誤訊息，因此稍微紀錄一下也為了之後可能遇到的其他朋友做參考。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+</subtitle><entry><title>Pelican - 出現 RuntimeError: File XXX.html is to be overwritten</title><link href="https://note.koko.guru/pelican-runtime-error-when-html-overwritten.html" rel="alternate"></link><published>2019-07-22T00:00:00+08:00</published><updated>2019-07-22T00:00:00+08:00</updated><author><name>kokokuo</name></author><id>tag:note.koko.guru,2019-07-22:/pelican-runtime-error-when-html-overwritten.html</id><summary type="html">&lt;p&gt;在使用 Pelican 撰寫 Markdown 文章並要透過 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 輸出 HTML 並查看 Localhost 時，卻出現了 &lt;code&gt;RuntimeError: File XXX.html is to be overwritten&lt;/code&gt; 的錯誤，由於這是沒有遇過的現象，且網路上沒有看到任何網友分享遇到相同的情況，也沒看到解決的方法，因此稍微紀錄一下，也為了之後可能遇到的人提供參考。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
 &lt;hr&gt;
-&lt;p&gt;在使用 Pelican 撰寫 Markdown 文章並要透過 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 輸出 HTML 並查看 Localhost 時，卻出現了 &lt;code&gt;RuntimeError: File XXX.html is to be overwritten&lt;/code&gt; 的錯誤，由於這是沒有遇過寫網路上沒有什麼網友分享解決方法的錯誤訊息，因此稍微紀錄一下也為了之後可能遇到的其他朋友做參考。&lt;/p&gt;
+&lt;p&gt;在使用 Pelican 撰寫 Markdown 文章並要透過 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 輸出 HTML 並查看 Localhost 時，卻出現了 &lt;code&gt;RuntimeError: File XXX.html is to be overwritten&lt;/code&gt; 的錯誤，由於這是沒有遇過的現象，且網路上沒有看到任何網友分享遇到相同的情況，也沒看到解決的方法，因此稍微紀錄一下，也為了之後可能遇到的人提供參考。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;h1&gt;解析錯誤訊息&lt;/h1&gt;
+&lt;h1&gt;解析錯誤訊息 - 分頁名稱覆蓋標籤頁名稱&lt;/h1&gt;
 &lt;hr&gt;
 &lt;p&gt;先讓我們來理解一下錯誤訊息的意思，這是輸入 &lt;code&gt;make html &amp;amp;&amp;amp; make serve&lt;/code&gt; 吐出的訊息&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CRITICAL: RuntimeError: File /Users/koko/Code/SideProj/EasonBlogs/kokokuo-note/output/tag/python2.html is to be overwritten
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;從中會發現出現問題的在這個 &lt;code&gt;output/tag/python2.html&lt;/code&gt; 目錄下的 HTML 檔案，根據描述&lt;/p&gt;
+&lt;p&gt;從中會發現，錯誤的訊息指出問題在這個 &lt;code&gt;output/tag/python2.html&lt;/code&gt; 目錄下的 HTML 檔案。此外，根據描述&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/output-tag-html.png" alt="output-tag-html" width="480px"/&gt;&lt;/p&gt;
 &lt;p&gt;如果打開該 &lt;code&gt;python2.html&lt;/code&gt; 並以 Browser 瀏覽單純的 HTML 會看到有一篇文章是指向 &lt;strong&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/strong&gt;，如下圖 :&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/error-html-output-python2-tag.png" alt="error-html-output-python2-tag" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/error-html-output-python2-tag.png" alt="error-html-output-python2-tag" width="640px"/&gt;&lt;/p&gt;
 &lt;p&gt;但是很奇怪的，這篇文章在當時使用的 Tag 是 &lt;code&gt;Python&lt;/code&gt; 與 &lt;code&gt;py2exe&lt;/code&gt;，那怎麼會被歸類在 &lt;code&gt;python2.html&lt;/code&gt; 這個 &lt;code&gt;Python2&lt;/code&gt; 的 Tag 呢？&lt;/p&gt;
 &lt;p&gt;為了查證與對照，所以我們先來確認一下目前在 Github 上執行正常的 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 的 &lt;code&gt;Python2&lt;/code&gt; Tag :&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/correct-site-python2-tag.png" alt="correct-site-python2-tag" width="480px"/&gt;&lt;/p&gt;
-&lt;p&gt;在上述用了深綠色匡起來的 Tag 標籤與網頁所看到的是正確使用 &lt;code&gt;Python2&lt;/code&gt; Tag 的文章，所以換句話說問題出在標籤產生錯誤了，而且原本在 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 網站上該 &lt;strong&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/strong&gt; 文章是運作正常的，如下圖 :&lt;/p&gt;
+&lt;p&gt;在上述用了深綠色匡起來的 Tag 標籤與網頁所看到的是正確使用 &lt;code&gt;Python2&lt;/code&gt; Tag 的文章，所以換句話說，問題是出在標籤產生的錯誤，而且原本在 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 網站上該 &lt;strong&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/strong&gt; 文章是運作正常的，如下圖 :&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/correct-post-build-python-exe-using-py2exe.png" alt="correct-post-build-python-exe-using-py2exe" width="480px"/&gt;&lt;/p&gt;
-&lt;p&gt;而且在這次修改與輸出 HTML 時並沒有更動，那為何會反而這篇文章卻被放到錯誤的 Tag 中了？&lt;/p&gt;
+&lt;p&gt;並且在這次修改與輸出 HTML 時並沒有更動，那為何這篇文章卻反而被放到錯誤的 Tag 中了？&lt;/p&gt;
 &lt;p&gt;其實如果稍微聯想與觀察一下原本輸出的錯誤訊息便可嘗試以推論出原因 : &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;CRITICAL: RuntimeError: File /Users/koko/Code/SideProj/EasonBlogs/kokokuo-note/output/tag/python2.html is to be overwritten
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;這是因為文章的量變多，因此導致文章&lt;strong&gt;可能&lt;/strong&gt;產生分頁並且這個分頁已不正確的命名為 &lt;code&gt;python2.html&lt;/code&gt; 並把原本 &lt;code&gt;python2.html&lt;/code&gt; 標籤中文章給覆蓋掉了，所以才會出現 &lt;code&gt;output/tag/python2.html is to be overwritten&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;換句話來看，也就是原本的 &lt;code&gt;/tag/python.html&lt;/code&gt; 下的文章量&lt;strong&gt;超過所限制的一個分頁所呈現的數量&lt;/strong&gt;所以才產生了 &lt;code&gt;python2.html&lt;/code&gt; 這個分頁，而我們也可以對照一下原本 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 網站上的 &lt;code&gt;/tag/python.html&lt;/code&gt; 最後幾篇:&lt;/p&gt;
+&lt;p&gt;這是因為文章的量變多，因此導致文章&lt;strong&gt;可能&lt;/strong&gt;產生「分頁」， 並且這個分頁被不正確的命名為 &lt;code&gt;python2.html&lt;/code&gt; 並把原本 &lt;code&gt;python2.html&lt;/code&gt; 標籤中文章給覆蓋掉了，所以才會出現 &lt;code&gt;output/tag/python2.html is to be overwritten&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;換句話來看，也就是原本的 &lt;code&gt;/tag/python.html&lt;/code&gt; 下的文章量&lt;strong&gt;超過一個分頁所限制呈現的文章數量&lt;/strong&gt;，因此自己生成了 &lt;code&gt;python2.html&lt;/code&gt; 這個分頁，而我們也可以對照一下原本 &lt;a href="https:///note.koko.guru"&gt;note.koko.guru&lt;/a&gt; 網站上的 &lt;code&gt;/tag/python.html&lt;/code&gt; 最後幾篇:&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/original-site-python-tag-post-list.png" alt="original-site-python-tag-post-list" width="480px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;p&gt;那麼我們要如何解決呢？&lt;/p&gt;
@@ -48,7 +48,7 @@ Code / Web / Architecture
 
 &lt;p&gt;解決了，如下圖你會看到我的 &lt;code&gt;localhost&lt;/code&gt; 有出現 &lt;strong&gt;Python - 使用 py2exe 製作 Python exe 執行檔&lt;/strong&gt; ，而且我們新文章也出現了。&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/success-increase-default-pagination-size.png" alt="success-increase-default-pagination-size" width="480px"/&gt;&lt;/p&gt;
-&lt;p&gt;但這不會是一個好的處理方式，而且 &lt;code&gt;DEFAULT_PAGINATION&lt;/code&gt; 的設定不只影響到 Tag 的分頁，也影響到一般文章產生的排序分頁量，所以我們依然要解決的問題是分頁問題。&lt;/p&gt;
+&lt;p&gt;但這不會是一個好的處理方式，而且 &lt;code&gt;DEFAULT_PAGINATION&lt;/code&gt; 的設定不只影響到 Tag 的分頁，也影響到一般文章產生的排序分頁量，所以我們依然要解決分頁名稱覆蓋標籤頁名稱的問題。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;設定分頁的命名格式&lt;/h1&gt;
 &lt;hr&gt;
@@ -60,22 +60,22 @@ Code / Web / Architecture
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-introudction.png" alt="pagination-pattern-introudction" width="640px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;&lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 參數介紹&lt;/h1&gt;
-&lt;p&gt;在 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的參數設定方式會由 3 個參數值組成的 Tuple 格式來設定，其中一訓設定的順序會是 :&lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的參數設定方式會由 3 個參數值組成的 Tuple 格式來設定，而設定的參數順序為 :&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;minimum_page, page_url, page_save_as,&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;這三個參數中，影響到 URL 的模樣以及分頁時，保存的標籤檔案會是 &lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt;。而這兩個參數會需要由一些關鍵字參數組成，如下分別介紹 :&lt;/p&gt;
+&lt;p&gt;這三個參數中，會與 URL 網址名稱、出現分頁時的分頁名稱，以及標籤關聯頁名稱所呈現的格式相關的參數為 &lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt;。而這兩個參數會需要由一些關鍵字參數組成，如下分別介紹 :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;{url}&lt;/code&gt; : 這個變數會對應的是 &lt;code&gt;*_URL&lt;/code&gt; 參數所填寫的數值，例如我的 &lt;code&gt;TAG_URL&lt;/code&gt; 是 &lt;code&gt;tag/{slug}.html&lt;/code&gt;，那麼便會呈現 &lt;code&gt;tag/{slug}.html&lt;/code&gt; 的網址。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;{save_as}&lt;/code&gt; : 這個變數會呈現的是 &lt;code&gt;*_SAVE_AS&lt;/code&gt; 參數所填寫的數值，例如我的 &lt;code&gt;TAG_SAVE_AS&lt;/code&gt; 是 &lt;code&gt;tag/{slug}.html&lt;/code&gt;，那麼在透過 &lt;code&gt;make html&lt;/code&gt; 輸出時便會以 &lt;code&gt;{slug}.html&lt;/code&gt; 的名稱產生並保存在 &lt;code&gt;tag&lt;/code&gt; 目錄下。&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;{name}&lt;/code&gt; : 該變數的數值會根據 &lt;code&gt;{save_as}&lt;/code&gt; 的結果來擷取檔案名稱，例如範例中當透過&lt;code&gt;make html&lt;/code&gt; 輸出時 &lt;code&gt;foo/bar.html&lt;/code&gt;，那便會以 &lt;code&gt;foo/bar&lt;/code&gt; 直接作為 &lt;code&gt;{name}&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;{extension}&lt;/code&gt; : 也就是 &lt;code&gt;{name}&lt;/code&gt; 後半段的副檔名，在 &lt;code&gt;foo/bar.html&lt;/code&gt; 是 &lt;code&gt;.html&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;{base_name}&lt;/code&gt; : 與 &lt;code&gt;{name}&lt;/code&gt; 相同，但是如果有 &lt;code&gt;/index&lt;/code&gt; 存在，會跳脫 &lt;code&gt;/index&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;{number}&lt;/code&gt; : 頁面的數值&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;{number}&lt;/code&gt; : 頁數&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;根據上述的間間自參數，我們來對照一下預設 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt;，當分為第一頁時，因為 &lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆為 &lt;code&gt;{name}{extension}&lt;/code&gt; ，所以就會如同原先的 &lt;code&gt;localhost:7000/tags/python.html&lt;/code&gt;，而產生的 HTML 檔案以 &lt;code&gt;python.html&lt;/code&gt; 的名稱放在 &lt;code&gt;tags&lt;/code&gt; 目錄下的&lt;/p&gt;
+&lt;p&gt;根據上述的介紹，我們來對照一下預設的 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 設定解說。當分頁為第一頁時，因為 &lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆為 &lt;code&gt;{name}{extension}&lt;/code&gt; ，所以就會如同原先的 &lt;code&gt;localhost:7000/tags/python.html&lt;/code&gt;，而產生的 HTML 檔案以 &lt;code&gt;python.html&lt;/code&gt; 的名稱放在 &lt;code&gt;tags&lt;/code&gt; 目錄下的&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;PAGINATION_PATTERNS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
     &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{number}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;{name}{number}{extension}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -84,7 +84,7 @@ Code / Web / Architecture
 
 
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;而當頁數超過一頁時，&lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆改變為 &lt;code&gt;{name}{number}{extension}&lt;/code&gt; ，也就會讓第二頁的 URL 變為 &lt;code&gt;tags/python2.html&lt;/code&gt;，而保存的 HTML 覆蓋掉了原先的 &lt;code&gt;Python2&lt;/code&gt; Tag 的 HTML 檔案，也就會發生先前的錯誤訊息。&lt;/p&gt;
+&lt;p&gt;而當頁數超過一頁時，&lt;code&gt;page_url&lt;/code&gt; 與 &lt;code&gt;page_save_as&lt;/code&gt; 皆改變為 &lt;code&gt;{name}{number}{extension}&lt;/code&gt; ，也就會讓第二頁的 URL 變為 &lt;code&gt;tags/python2.html&lt;/code&gt;，而保存的 HTML 便會覆蓋掉了原先保存 Tag 為 &lt;code&gt;Python2&lt;/code&gt; 的文章的 HTML 檔案，也就會發生先前的錯誤訊息。&lt;/p&gt;
 &lt;p&gt;如果要更換掉預設的參數要怎麼換呢？在 Pelican 的文件中其實有給了一個範例，我們可以來研究一下 :&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-usage-sample.png" alt="pagination-pattern-usage-sample" width="640px"/&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;PAGINATION_PATTERNS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
@@ -94,11 +94,10 @@ Code / Web / Architecture
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;當頁數只有第一頁時，&lt;code&gt;page_url&lt;/code&gt; 是填入 &lt;code&gt;{url}&lt;/code&gt;，所以會根據 &lt;code&gt;TAG_URL&lt;/code&gt; 的設定值來給定 &lt;code&gt;page_url&lt;/code&gt; 的網址。如果我們沒有改過 &lt;code&gt;TAG_URL&lt;/code&gt; 預設值會是 &lt;code&gt;tag/{slug}.html&lt;/code&gt; 所以顯示依然 &lt;code&gt;tag/python.html&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;當頁數只有一頁時，&lt;code&gt;page_url&lt;/code&gt; 是填入 &lt;code&gt;{url}&lt;/code&gt;，所以會根據 &lt;code&gt;TAG_URL&lt;/code&gt; 的設定值來給定 &lt;code&gt;page_url&lt;/code&gt; 的網址。如果我們沒有改過 &lt;code&gt;TAG_URL&lt;/code&gt; ，那麼預設值會是 &lt;code&gt;tag/{slug}.html&lt;/code&gt; ，所以顯示依然為 &lt;code&gt;tag/python.html&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/sample-tag-page.png" alt="sample-tag-page" width="640px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
-&lt;p&gt;而 &lt;code&gt;page_save_as&lt;/code&gt; 是 &lt;code&gt;{save_as}&lt;/code&gt; 所以會是 &lt;code&gt;TAG_SAVE_AS&lt;/code&gt; 的數值，同樣的預設沒有更改的話會是 &lt;code&gt;tag/{slug}.html&lt;/code&gt;，所以會被建立為 &lt;code&gt;python.html&lt;/code&gt; 檔案並保存在 &lt;code&gt;tag&lt;/code&gt; 目錄下。&lt;/p&gt;
+&lt;p&gt;而 &lt;code&gt;page_save_as&lt;/code&gt; 是 &lt;code&gt;{save_as}&lt;/code&gt; 這個變數，所以會是 &lt;code&gt;TAG_SAVE_AS&lt;/code&gt; 的值。同樣的，預設沒有更改的話會是 &lt;code&gt;tag/{slug}.html&lt;/code&gt;，所以會被建立為 &lt;code&gt;python.html&lt;/code&gt; 檔案並保存在 &lt;code&gt;tag&lt;/code&gt; 目錄下。&lt;/p&gt;
 &lt;p&gt;但是當頁數到了超過一頁時就不同了，因為 &lt;code&gt;page_url&lt;/code&gt; 設定為 &lt;code&gt;{base_name}/page/{number}/&lt;/code&gt;，因此根據 &lt;code&gt;{base_name}&lt;/code&gt; 的描述，會顯示 &lt;code&gt;python&lt;/code&gt;，而 &lt;code&gt;{number}&lt;/code&gt; 會顯示 &lt;code&gt;2&lt;/code&gt; ，因此網址會有大幅的改變，變成 &lt;code&gt;python/page/2&lt;/code&gt;。至於 &lt;code&gt;page_save_as&lt;/code&gt; 的保存方式，則是會建立一個 &lt;code&gt;python&lt;/code&gt; 的目錄與 &lt;code&gt;page&lt;/code&gt; 子目錄，並建立一個 &lt;code&gt;2.html&lt;/code&gt; 保存該分頁的內容。&lt;/p&gt;
 &lt;p&gt;所以如果我們設定成以上的結果，把 HTML 清掉後再透過 &lt;code&gt;make clean &amp;amp;&amp;amp; make serve PORT=7000&lt;/code&gt; 來看看，你會發現透過 &lt;code&gt;localhost&lt;/code&gt; 瀏覽 &lt;code&gt;Python&lt;/code&gt; 標籤的分頁到了第二頁的確改變了 : &lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/sample-tag-pagination-work.png" alt="sample-tag-pagination-work" width="640px"/&gt;&lt;/p&gt;
@@ -106,10 +105,11 @@ Code / Web / Architecture
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/pagination-pattern-sample-save-as-directory.png" alt="pagination-pattern-sample-save-as-directory" width="320px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;&lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的影響性&lt;/h1&gt;
-&lt;p&gt;這也就是 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 參數好用的地方，方便我們定義分頁的網址與保存目錄位置。&lt;/p&gt;
+&lt;p&gt;這也就是 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 參數好用的地方，方便我們定義分頁的網址格式與保存的目錄位置。&lt;/p&gt;
 &lt;p&gt;但是像先前所說， &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的影響是全面性的，像上述我們依照 Pelican 給的範例修改後，不只有 Tag 部分，Category 以及 Index 都會以相同的形式呈現分頁，例如下圖是 Index 頁面的第二頁：&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190722-pelican-runtime-error-when-html-overwritten/index-pagination-influence.png" alt="index-pagination-influence" width="640px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;那麼以上就是這次遇到的問題，以及 &lt;code&gt;PAGINATION_PATTERNS&lt;/code&gt; 的妙用說明。&lt;/p&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
 &lt;hr&gt;
 &lt;ol&gt;
@@ -202,13 +202,20 @@ Code / Web / Architecture
 &lt;p&gt;這樣的管理器，如果有寫過其他語言的人一定不陌生，例如 Ruby 的 &lt;a href="https://github.com/rvm/rvm"&gt;RVM&lt;/a&gt;，Python 的 &lt;a href="https://github.com/pyenv/pyenv"&gt;pyenv&lt;/a&gt;，Node.js 的 &lt;a href="https://github.com/nvm-sh/nvm"&gt;nvm&lt;/a&gt; ...等等。&lt;/p&gt;
 &lt;p&gt;而在 Go 語言上也有這樣方便好用的版本管理器，安裝非常簡單，以下我們來看一下。&lt;/p&gt;
 &lt;h2&gt;2. 安裝 GVM&lt;/h2&gt;
+&lt;h3&gt;事前安裝 gcc&lt;/h3&gt;
+&lt;p&gt;在安裝 GVM 前，須先確認是否有 gcc，若沒有則須先安裝，可以透過 Homebrew 安裝：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ brew install gcc
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h3&gt;安裝到 Bash 中&lt;/h3&gt;
+&lt;p&gt;Mac 要安裝 GVM 無法使用 Homebrew  的指令，需要輸入一串腳本指令才行：&lt;/p&gt;
 &lt;p&gt;輸入以下指令安裝：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ bash &amp;lt; &amp;lt;&lt;span class="o"&gt;(&lt;/span&gt;curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;透過執行這段指令，GVM 會被安裝到 &lt;code&gt;~/.gvm&lt;/code&gt; 目錄下，此外自動為我們寫入此段指令到 bash 的用戶環境變數中：&lt;/p&gt;
+&lt;p&gt;透過上述的安裝指令，GVM 會被安裝到 &lt;code&gt;~/.gvm&lt;/code&gt; 目錄下，並且自動為我們寫入以下這段指令到 bash 的用戶環境變數中：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[[&lt;/span&gt; -s &lt;span class="s2"&gt;&amp;quot;/Users/&amp;lt;username&amp;gt;/.gvm/scripts/gvm&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;/Users/&amp;lt;username&amp;gt;/.gvm/scripts/gvm&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -217,13 +224,13 @@ Code / Web / Architecture
 &lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/bash-profile-gvm-settings.png" alt="bash-profile-gvm-settings" width="480px"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h3&gt;安裝到 Zsh 中&lt;/h3&gt;
-&lt;p&gt;然而若是使用 &lt;code&gt;zsh&lt;/code&gt;，則可以改成下載套件並設定到 &lt;code&gt;zsh&lt;/code&gt; 中：&lt;/p&gt;
+&lt;p&gt;若是使用 &lt;code&gt;zsh&lt;/code&gt;，則可以改成下載套件並設定到 &lt;code&gt;zsh&lt;/code&gt; 中：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ zsh &amp;lt; &amp;lt;&lt;span class="o"&gt;(&lt;/span&gt;curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/install-gvm-to-zsh.png" alt="install-gvm-to-zsh" width="480px"/&gt;&lt;/p&gt;
-&lt;p&gt;打開 &lt;code&gt;~/.zshrc&lt;/code&gt; 可以看到 &lt;code&gt;[[ -s "/Users/&amp;lt;username&amp;gt;/.gvm/scripts/gvm" ]] &amp;amp;&amp;amp; source "/Users/&amp;lt;username&amp;gt;/.gvm/scripts/gvm"&lt;/code&gt; 被設定進去。&lt;/p&gt;
+&lt;p&gt;打開 &lt;code&gt;~/.zshrc&lt;/code&gt; 可以看到 &lt;code&gt;[[ -s "/Users/&amp;lt;username&amp;gt;/.gvm/scripts/gvm" ]] &amp;amp;&amp;amp; source "/Users/&amp;lt;username&amp;gt;/.gvm/scripts/gvm"&lt;/code&gt; ㄧ樣被寫入進去。&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/zshrc-show-gmv-env-settings.png" alt="zshrc-show-gmv-env-setting" width="480px"/&gt;&lt;/p&gt;
 &lt;h2&gt;3. 啟動 GVM 安裝 Golang&lt;/h2&gt;
 &lt;p&gt;在上述安裝完並檢查環境變數有指向 GVM 後，接著可以透過重新啟動 Ternimal 或是手動以 &lt;code&gt;source&lt;/code&gt; 指令來啟動 GVＭ：&lt;/p&gt;
@@ -241,46 +248,67 @@ Code / Web / Architecture
 
 
 &lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-listall.png" alt="gvm-listall" width="240px"/&gt;&lt;/p&gt;
-&lt;h3&gt;(2.) 安奘想要的版本&lt;/h3&gt;
+&lt;h3&gt;(2.) 安裝想要的版本&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm install &amp;lt;輸入你想要安裝的版本&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
 
-&lt;span class="c1"&gt;# 例如在這邊我安裝了兩個版本：&lt;/span&gt;
-$ gvm install go1.12.7
-$ gvm install go1.11.12
+
+&lt;p&gt;其他額外的參數：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Usage: gvm install &lt;span class="o"&gt;[&lt;/span&gt;version&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt;options&lt;span class="o"&gt;]&lt;/span&gt;
+    -s,  --source&lt;span class="o"&gt;=&lt;/span&gt;SOURCE      Install Go from specified source.
+    -n,  --name&lt;span class="o"&gt;=&lt;/span&gt;NAME          Override the default name &lt;span class="k"&gt;for&lt;/span&gt; this version.
+    -pb, --with-protobuf      Install Go protocol buffers.
+    -b,  --with-build-tools   Install package build tools.
+    -B,  --binary             Only install from binary.
+         --prefer-binary      Attempt a binary install, falling back to source.
+    -h,  --help               Display this message.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;例如在這邊我安裝 1.14.3 版本：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/go-gvm-install-1-14-3-compile-failed.png" alt="gvm-install-14-3-compiled-failed" width="480px"/&gt;&lt;/p&gt;
+&lt;p&gt;結果卻看到錯誤的訊息，而這是因為 Go 1.4 版以後在工具鏈中移除了 C 的編譯器，並改為用 Go 寫的 C 編譯器放進去的原因。&lt;/p&gt;
+&lt;h4&gt;Go 1.5+ 要做編譯&lt;/h4&gt;
+&lt;p&gt;以下是官方套件的介紹：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Go 1.5+ removed the C compilers from the toolchain and replaced them with one written in Go. Obviously, this creates a bootstrapping problem if you don't already have a working Go install. In order to compile Go 1.5+, make sure Go 1.4 is installed first.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此安裝 Go 1.4 版以後的版本要改用參數 -B ，來直接安裝 binary 的版本才行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm install &lt;span class="o"&gt;[&lt;/span&gt;Go 版本&lt;span class="o"&gt;]&lt;/span&gt; -B
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;h3&gt;(3.) 查看目前電腦所安裝的版本&lt;/h3&gt;
-&lt;p&gt;接著我們可以透過 &lt;code&gt;list&lt;/code&gt; 來得知目前系統上已經安裝的版本號。&lt;/p&gt;
+&lt;p&gt;要查看已經安裝的版本，可以透過 &lt;code&gt;list&lt;/code&gt; 來得知所有已經安裝的版本號。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm list
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;如下我們便會看到了已經安裝的版本。&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-list.png" alt="gvm-list" width="240px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-list.png" alt="gvm-list" width="320px"/&gt;&lt;/p&gt;
 &lt;h3&gt;(4.) 指定使用的 Go 語言版本&lt;/h3&gt;
-&lt;p&gt;雖然在上述我們安裝了多個 Go 的版本，但是卻不曉得要使用哪個版本，如果要指定使用的版本 (或切換版本)，可以透過 &lt;code&gt;use&lt;/code&gt; 指令來設定&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm use &amp;lt;要指定切換的 Go 版本&amp;gt;
-$ gvm use go1.11.12
+&lt;p&gt;如果要指定使用的版本 (或切換版本)，可以透過 &lt;code&gt;use&lt;/code&gt; 指令來指定。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm use &amp;lt;已安裝要指定切換的 Go 版本&amp;gt;
+$ gvm use go1.13.11
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;設定好後，我們可以透過 &lt;code&gt;go version&lt;/code&gt; 來檢查是否找得到指定的版本：&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-use-go-for-the-shell.png" alt="gvm-use-go-for-the-shell" width="240px"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-use-go-for-the-shell.png" alt="gvm-use-go-for-the-shell" width="320px"/&gt;&lt;/p&gt;
 &lt;p&gt;此外透過 &lt;code&gt;gvm list&lt;/code&gt; 也可以看到目前我們所使用的版本。&lt;/p&gt;
 &lt;p&gt;但是透過 &lt;code&gt;gvm use&lt;/code&gt; 只能針對目前這個 Shell，所以當我們開了一個 Shell 後，便會找不到剛剛設定的 Go，如下圖我開了一個新的 &lt;code&gt;tty&lt;/code&gt;：&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/new-shell-no-find-go.png" alt="new-shell-no-find-go" width="320px"/&gt;&lt;/p&gt;
 &lt;p&gt;輸入 &lt;code&gt;go version&lt;/code&gt; 或 &lt;code&gt;go env&lt;/code&gt; (&lt;code&gt;env&lt;/code&gt; 參數可以看到 Go 所使用的環境變數，例如 Go 被安裝到哪)，你會發現找不到該 Go 版本。&lt;/p&gt;
 &lt;p&gt;那麼如果要讓指定的版本永久作用的話要如何是好？&lt;/p&gt;
-&lt;h3&gt;(5.) 指定 Go 預設的使用版本&lt;/h3&gt;
+&lt;h3&gt;(5.) 指定 Go 預設使用的版本&lt;/h3&gt;
 &lt;p&gt;我們可以在 &lt;code&gt;gvm use&lt;/code&gt; 後便加上選擇性參數 &lt;code&gt;--default&lt;/code&gt; 來告訴 GVM 這個版本被設為永久性預設的版本，當新開一個 Shell 後也會預設使用這個版本號：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm use &amp;lt;要指定切換的 Go 版本&amp;gt; --default
-$ gvm use go1.12.7 --default
+$ gvm use go1.14.3 --default
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-use-go-permanently.png" alt="gvm-use-go-permanently" width="280px"/&gt;&lt;/p&gt;
-&lt;p&gt;我們再次開了一個新的 Shell ，你會看到他預設指定 &lt;code&gt;1.12.7&lt;/code&gt; 版。&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-use-go-permanently.png" alt="gvm-use-go-permanently" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;我們再次開了一個新的 Shell ，你會看到他預設指定 1.14.3 版。&lt;/p&gt;
 &lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/new-shell-use-default-go-version.png" alt="new-shell-use-default-go-version" width="280px"/&gt;&lt;/p&gt;
 &lt;h3&gt;(6.) GVM 下載安裝的 Go 被放到哪裡&lt;/h3&gt;
 &lt;p&gt;另外這些透過 GVM 所安裝的各個 Go 版本，會安放到哪呢？這時我們可以透過先前提到的 &lt;code&gt;go env&lt;/code&gt; 查看與 Go 有關的環境變數：&lt;/p&gt;
@@ -294,8 +322,6 @@ $ gvm use go1.12.7 --default
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;以下透過一個例子來觀看，你會發現後來安裝的 &lt;code&gt;go1.13beta1&lt;/code&gt; 被移除掉。&lt;/p&gt;
-&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/gvm-uninstall-go.png" alt="gvm-uninstall-go" width="280px"/&gt;&lt;/p&gt;
 &lt;h3&gt;(8.) 移除 GVM&lt;/h3&gt;
 &lt;p&gt;如果要把 GVM 整個移除可以透過 &lt;code&gt;implode&lt;/code&gt; 指令移除：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm implode
@@ -305,6 +331,23 @@ $ gvm use go1.12.7 --default
 &lt;p&gt;當透過這個指令移除 GVM 後，所有透過 GVM 所安裝的 Go 版本也會移除，因為先前提到所有透過 GVM 所安裝的 Go 都會安放在 &lt;code&gt;~/.gvm/pkgsets&lt;/code&gt; 目錄下。&lt;/p&gt;
 &lt;p&gt;另外如果發現 &lt;code&gt;gvm implode&lt;/code&gt; 無法移除 GVM ，可以手動刪除 &lt;code&gt;.gvm&lt;/code&gt; 整個目錄，並把一開始安裝時寫入到 &lt;code&gt;zsh&lt;/code&gt; 或 &lt;code&gt;bash&lt;/code&gt; 環境變數中的指令移除即可。&lt;/p&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
+&lt;h3&gt;(9.) 指定預設編譯器來編譯未來新安裝的 Go 版本&lt;/h3&gt;
+&lt;p&gt;前半段有提到，Go 在 1.5+ 版以後都要做編譯，因此如果不希望 Go 1.4 版後的語言每次安裝都要帶入參數 -B 可以先安裝 1.4 版本，並設定 &lt;code&gt;GOROOT_BOOTSTRAP&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GOROOT_BOOTSTRAP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$GOROOT&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;會需要做此動作，是因為 Go 1.4 以後實現了 Go 寫的 C 編譯器，並且為了讓後續的語言都通過該 1.4 版本的編譯器來編譯完新版本好的語言，因此需要設定，如此未來安裝 Go 時就需要再帶入 -B ，如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ gvm install go1.4 -B
+$ gvm use go1.4
+$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GOROOT_BOOTSTRAP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$GOROOT&lt;/span&gt;
+$ gvm install go1.5
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如下圖是安裝 1.14.3 版本的例子：&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/20190713-install-golang-on-mac/go-using-previous-compiler-build-current-version.png" alt="go-using-previous-compiler-build-current-version" width="320px"/&gt;&lt;/p&gt;
+&lt;p&gt;以上就是 GVM 的介紹囉。&lt;/p&gt;
 &lt;h1&gt;參考資料&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="https://github.com/moovweb/gvm"&gt;GVM Github Repository&lt;/a&gt;&lt;/li&gt;
@@ -1756,9 +1799,9 @@ kokokuo-note&amp;gt; pipenv shell
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;h1&gt;三、Github Page 發布的分支設定&lt;/h1&gt;
 &lt;p&gt;之所以我們的 Github Page 能顯示 &lt;code&gt;README&lt;/code&gt; 檔案的內容，是因為 Github Page Repository 預設會去尋找 &lt;code&gt;master&lt;/code&gt; 或 &lt;code&gt;gh-pages&lt;/code&gt; 分支底下的 &lt;code&gt;index.html&lt;/code&gt; 檔案，作為 https://username.github.io 呈現的內容。&lt;/p&gt;
-&lt;p&gt;不過對於個用戶或組織的帳戶建立的 Github Page 網頁，只能在 &lt;code&gt;master&lt;/code&gt; 分支生效 (e.g: &lt;code&gt;username.github.io&lt;/code&gt; 這種格式），而 &lt;code&gt;gh-pages&lt;/code&gt;，則針對在程式碼專案的部分&lt;/p&gt;
+&lt;p&gt;不過對於個用戶或組織的帳戶建立的 Github Page 網頁，只能在 &lt;code&gt;master&lt;/code&gt; 分支生效 (e.g: &lt;code&gt;username.github.io&lt;/code&gt; 這種格式），而 &lt;code&gt;gh-pages&lt;/code&gt;，則針對在程式碼專案所使用的 Github Page，讓每個 Github 上的 Git Repository 專案都可以分別透過 &lt;code&gt;gh-pages&lt;/code&gt; 分支建立各自的 Github Page (不過網址仍會以  https://username.github.io 為主)&lt;/p&gt;
 &lt;p&gt;另外若是都沒有 &lt;code&gt;index.html&lt;/code&gt; 的話，則會優先顯示 &lt;code&gt;README&lt;/code&gt; 這個檔案的內容。&lt;/p&gt;
-&lt;p&gt;而在此篇我們介紹個人用戶的靜態網站，所以會以 &lt;code&gt;master&lt;/code&gt; 為主，至於專案的 &lt;code&gt;gh-pages&lt;/code&gt; 以後會再介紹。&lt;/p&gt;
+&lt;p&gt;而在此篇我們介紹個人用戶的靜態網站，所以會以 &lt;code&gt;master&lt;/code&gt; 為主，至於專案用的 &lt;code&gt;gh-pages&lt;/code&gt; 以後會再介紹。&lt;/p&gt;
 &lt;h2&gt;使用 master 作為發布分支的設定&lt;/h2&gt;
 &lt;p&gt;由於 Pelican 產生出來的 HTML/CSS 這些靜態檔案是放在 &lt;strong&gt;output&lt;/strong&gt; 目錄中的，因此如果整個 Pelican 專案上傳到預設的 &lt;code&gt;master&lt;/code&gt; 分支 時，因為靜態檔案被放在 &lt;strong&gt;output&lt;/strong&gt; ，所以會無法讀取顯示成功。&lt;/p&gt;
 &lt;p&gt;因此我們需要把這些 &lt;strong&gt;output&lt;/strong&gt; 中的靜態檔案放到 &lt;code&gt;master&lt;/code&gt; 中，而原本包含了 &lt;strong&gt;content&lt;/strong&gt; 目錄、Makefile 與 pelicanconf.py 等的這些建立 Pelican 檔案時的來源檔案，我們要放到另外一個分支作為網存與記錄用。&lt;/p&gt;
