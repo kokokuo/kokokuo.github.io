@@ -119,11 +119,11 @@ kokokuo-note> pipenv shell
 
 之所以我們的 Github Page 能顯示 `README` 檔案的內容，是因為 Github Page Repository 預設會去尋找 `master` 或 `gh-pages` 分支底下的 `index.html` 檔案，作為 https://username.github.io 呈現的內容。
 
-不過對於個用戶或組織的帳戶建立的 Github Page 網頁，只能在 `master` 分支生效 (e.g: `username.github.io` 這種格式），而 `gh-pages`，則針對在程式碼專案的部分
+不過對於個用戶或組織的帳戶建立的 Github Page 網頁，只能在 `master` 分支生效 (e.g: `username.github.io` 這種格式），而 `gh-pages`，則針對在程式碼專案所使用的 Github Page，讓每個 Github 上的 Git Repository 專案都可以分別透過 `gh-pages` 分支建立各自的 Github Page (不過網址仍會以  https://username.github.io 為主)
 
 另外若是都沒有 `index.html` 的話，則會優先顯示 `README` 這個檔案的內容。
 
-而在此篇我們介紹個人用戶的靜態網站，所以會以 `master` 為主，至於專案的 `gh-pages` 以後會再介紹。
+而在此篇我們介紹個人用戶的靜態網站，所以會以 `master` 為主，至於專案用的 `gh-pages` 以後會再介紹。
 
 ## 使用 master 作為發布分支的設定
 由於 Pelican 產生出來的 HTML/CSS 這些靜態檔案是放在 **output** 目錄中的，因此如果整個 Pelican 專案上傳到預設的 `master` 分支 時，因為靜態檔案被放在 **output** ，所以會無法讀取顯示成功。
