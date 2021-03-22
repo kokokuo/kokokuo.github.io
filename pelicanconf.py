@@ -13,8 +13,10 @@ TIMEZONE = "Asia/Taipei"
 
 DEFAULT_LANG = "en"
 
+
 # Flex Theme Settings : Indicate installed theme by pelican-themes command
-THEME = "Flex"
+THEME = "themes/Flex"
+
 SITETITLE = "koko's Note"
 SITESUBTITLE = """
 Code / Web / Architecture

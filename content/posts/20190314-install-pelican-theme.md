@@ -43,9 +43,9 @@ Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供�
 下載後先把下載的位置與目錄記錄下來。例如選擇了 [Flex](https://github.com/alexandrevicenzi/Flex) 這個主題，並透過 `git clone` 放在家目錄下：
 
 ```bash
-~/> git clone https://github.com/alexandrevicenzi/Flex
-~/> cd Flex
-~/(master)Flex/>
+$ ~/> git clone https://github.com/alexandrevicenzi/Flex
+$ ~/> cd Flex
+$ ~/(master)Flex/>
 ```
 
 <img src="../images/20190314-install-pelican-theme/4-clone-or-download-candidate-theme.png" alt="4-clone-or-download-candidate-theme" width="480px"/>
@@ -55,7 +55,7 @@ Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供�
 之後回到自己的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令
 
 ```bash
-(kokokuo-note)kokokuo-note/> pelican-themes -h
+$ (kokokuo-note)kokokuo-note/> pelican-themes -h
 usage: pelican-themes [-h] [-l | -p | -V] [-i theme path [theme path ...]]
                       [-r theme name [theme name ...]]
                       [-U theme path [theme path ...]]
@@ -85,28 +85,42 @@ optional arguments:
 以上是 Pelican 套件提供的主題指令，協助你查詢你用 Pelican 架設的靜態網站中，你如你可以透過 `pelican-themes -l` 來查詢你目前所有安裝的套件：
 
 ```bash
-(kokokuo-note)kokokuo-note/> pelican-themes -l
+$ (kokokuo-note)kokokuo-note/> pelican-themes -l
 simple
 notmyidea
 ```
 
-你會發現原來 Pelican 有預設幫你安裝了兩個主題，並且設定使用其中一個，所以你再啟動網站時才會看到，而在指令中也有提到安裝主題，這也是我們剛剛下載主題的原因，因為 **pelican-themes 是需要指定安裝的路徑來源，因此不能從網路上指定，需要先下載那來才行**，所以如下我們指令他的路徑，並安裝：
+你會發現原來 Pelican 有預設幫你安裝了兩個主題，並且設定使用其中一個，所以你再啟動網站時才會看到，而在指令中也有提到安裝主題，這也是我們剛剛下載主題的原因，因為 **pelican-themes 是指定需要安裝的來源路徑，而非指直接從網路上下載安裝**，所以我們才會需要如上述先手動 clone 抓下來，接著指定來源位置為 `git clone` 下來的位置。
+
+
+如下我們指令他的路徑，並安裝：
 
 ```bash
-(kokokuo-note)kokokuo-note/> pelican-themes --install ~/Flex --verbose # 使用 --verbose 查看細節過程資訊
+# 使用 --verbose 查看細節過程資訊
+$ (kokokuo-note)kokokuo-note/> pelican-themes --install ~/Flex --verbose
 ```
 
 透過 `--verbose` 參數來查看安裝的過程資訊，如果沒有這個參數的話，安裝時你會看不到安裝的過程與安裝到哪裡，除此之外你也可以透過縮寫指令來安裝：
 
 ```bash
-(kokokuo-note)kokokuo-note/> pelican-themes -vi ~/Flex # --install 與 --verbose 的簡短輸入方式
+# --install 與 --verbose 的簡短輸入方式
+$ (kokokuo-note)kokokuo-note/> pelican-themes -vi ~/Flex
 ```
 
 然後安裝完，你可以透過 `pelican-themes -l` 查看是否有安裝，只不過如果你想知道他安裝在哪裡，你可以也加入 `--verbose` 或 `-v` 看到：
 
 <img src="../images/20190314-install-pelican-theme/5-pelican-theme-install-command.png" alt="5-pelican-theme-install-command" />
 
-你會發現，不管是預設的主題，還是安裝的主題，都會被放置到虛擬環境下 `pelican/themes/` 的位置。
+你會發現，不管是預設的主題，還是安裝的主題，都會被放置到**虛擬環境目錄 .venv** 下的 `pelican/themes/` 的位置。
+
+由於哪天我們可能會自己不小心砍掉 `.venv` 虛擬環境，所以比較建議的方式是 Copy 一份到自己的網站目錄下，例如 `themes` 下：
+
+```bash
+# 此為範例，假設安裝在 Python 3.7 虛擬環境下...
+$ (kokokuo-note)kokokuo-note/> mkdir themes
+$ (kokokuo-note)kokokuo-note/> cp -r .venv/lib/python3.7/site-packages/pelican/themes/Flex themes/Flex
+```
+
 
 ### (3.) 移除安裝的 Theme
 
@@ -118,15 +132,17 @@ notmyidea
 當你安裝好主題後，此時我們需要讓我們的 Pelican 網站採用此主題才行，打開 `pelicanconf.py`，並添加此行：
 
 ```python
-Theme = 'Flex' # Flex 是你透過 pelican-themes 指令安裝的主題名稱
+# Flex 是你透過 pelican-themes 指令安裝的主題名稱, 因為安裝在 themes 目錄下，所以需指定 prefix 為 themes
+Theme = 'themes/Flex'
 ```
 
 此參數的設定來自 [Pelican Setttings](https://docs.getpelican.com/en/stable/settings.html#themes) 文件中的介紹，在 Pelican 的教學文件中有列出對於安裝的主題，有哪些參數可以使用。
 
-在 `pelicanconf.py` 加上 `Theme = 'Flex'` 後，再來我們就可以重新輸出一次 HTML 網頁並來預覽查看，透過 `make html` 與 `make serve [port]` 指令來生出新的 HTML 檔案，並開啟一個測試用的簡易伺服器協助測試與預覽：
+在 `pelicanconf.py` 加上 `Theme = 'Flex'` 後，再來我們就可以重新輸出一次 HTML 網頁並來預覽查看，透過 `make html` 指令來生出新的 HTML 檔案，並藉由 `make serve [PORT]` 開啟一個測試用的簡易伺服器協助測試與預覽：
 
 ```bash
-(kokokuo-note)kokokuo-note/> make html && make serve 8000
+# 生成 HTML 並 啟動服務
+$ (kokokuo-note)kokokuo-note/> make html && make serve PORT=5000
 ```
 
 如下圖，你會看到修改後的畫面，成功！
@@ -138,7 +154,7 @@ Theme = 'Flex' # Flex 是你透過 pelican-themes 指令安裝的主題名稱
 例如以下是我的一些簡易設定：
 
 ```python
-THEME = "Flex"
+THEME = "themes/Flex"
 SITETITLE = "Hello Titile"
 SITESUBTITLE = "This is sample"
 SITELOGO = "https://avatars3.githubusercontent.com/u/5389253?s=460&v=4"

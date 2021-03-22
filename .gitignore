@@ -5,7 +5,6 @@
 
 ## Pelican output ##
 output/
-themes/
 ### macOS ###
 # General
 .DS_Store

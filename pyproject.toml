@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "kokokuo-note"
+version = "0.1.0"
+description = "kokokuo's note static website"
+authors = ["kokokuo <v6610688@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pelican = "^4.0.1"
+markdown = "^3.1.1"
+typogrify = "^2.0.7"
+ghp-import = "^0.5.5"
+invoke = "^1.2.0"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.812"
+flake8 = "^3.9.0"
+pytest = "^6.2.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
