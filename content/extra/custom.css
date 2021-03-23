@@ -38,6 +38,12 @@ h6 {
   font-size: 1.08em
 }
 
+ul.list {
+    padding: 1em 0 1em 0;
+    font-size: 0.8em;
+}
+
+
 /* 調整單行指令區塊的寬度與大小 */
 main article *:not(pre)>code {
   font-size: .9em;

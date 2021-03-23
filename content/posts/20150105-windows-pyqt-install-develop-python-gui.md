@@ -1,6 +1,7 @@
 Title: Python - 在 Windows 上使用 PyQt 開發 Python 視窗程式
 Date: 2015-01-05
 Tags: Python, Windows, PyQt
+Category: Python
 Slug: windows-pyqt-install-develop-python-gui
 Authors: kokokuo
 Summary: Python 上最常用來開發 GUI 視窗的有 `thinker`、`PyGTK`、`wxPython` 與 `PyQt` / `PySide` 等等。

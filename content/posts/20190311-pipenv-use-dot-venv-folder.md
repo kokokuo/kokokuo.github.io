@@ -1,6 +1,7 @@
 Title: Python - 透過 .venv 管理 Pipenv 虛擬環境的來源
 Date: 2019-03-11
 Tags: Python, Pipenv, Virtualenv
+Category: Python
 Slug: pipenv-use-dot-venv-folder
 Authors: kokokuo
 Summary: 在前一篇 [Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv]({filename}/posts/20190308-python-pipenv-install-and-usage.md) 中提到透過 Pipenv 建立好的虛擬環境都會放在家目錄下的隱藏路徑統一管理，但是開發時如果使用編輯器像是 VSCode ，則需要一個一個設定以外，如果想要查看檔案也不方，所以能不能夠把建立好的專案虛擬目錄放在自己的專案下呢？答案是可以的，如果你正需要的話可以參考此篇。

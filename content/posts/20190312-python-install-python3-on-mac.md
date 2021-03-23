@@ -1,6 +1,7 @@
 Title: Python - 安裝 Python3 在 Mac 上 (Python 3.6.5 為例）
 Date: 2019-03-12
 Tags: Python, Mac, Python3
+Category: Python
 Slug: python-install-python3-on-mac
 Authors: kokokuo
 Summary: 由於 Python 2.7 的核心開發團隊公布 2020 年確定會捨棄 2.7 版本，因此會有越來越多人開始轉移到 Python 3 版本，所以下面我們來介紹安裝 Python 3 在 Mac 的話如何處理。

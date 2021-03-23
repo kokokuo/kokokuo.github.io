@@ -1,6 +1,7 @@
 Title: Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔
 Date: 2015-01-04
 Tags: Python, py2exe, PyQt
+Category: Python
 Slug: python-build-gui-app-pyqt-using-py2exe
 Authors: kokokuo 
 Summary: 在前一篇 [Python - 使用 py2exe 製作 Python exe 執行檔]({filename}/posts/20150103-build-python-exe-using-py2exe.md) 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作

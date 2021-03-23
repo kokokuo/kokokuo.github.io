@@ -1,6 +1,7 @@
 Title: Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv
 Date: 2019-03-07
 Tags: Python, 虛擬環境
+Category: Python
 Slug: python-virtualenv-install-and-usage
 Authors: kokokuo
 Summary: 在開發 Python 的程式時，時不時就會透過 `pip` 從 PyPI 上安許多的套件來 `import` 使用，但是因為 Python 是裝在整個電腦的系統環境的，所以當我們之後寫的專案變多，每個不同的專案都因為有各自的需要 `pip install` 了不同的套件，最後整個 Python 的系統環境所安裝的套件就會非常多且雜亂！ 那麼要如何讓每個專案安裝的套件都只有自己的專案擁有，且不會弄亂系統的 Python 環境呢？ 這時候就需要虛擬環境了！

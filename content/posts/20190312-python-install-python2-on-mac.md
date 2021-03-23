@@ -1,6 +1,7 @@
 Title: 安裝 Python 2 在 Mac 上 (Python2.7.15 為例）
 Date: 2019-03-12
 Tags: Python, Mac, Python2
+Category: Python
 Slug: python-install-python2-on-mac
 Authors: kokokuo
 Summary: 對於使用 Mac 的開發者而言，雖然 Python 都會有內建在系統中，但是可能因為 Mac 出產時間，所以版本會過舊，如果想要自己安裝 Python 的話，可以參考此篇文章，如何在 Mac 上安裝 Python 2 到系統中，並且可以被讀取到安裝的 Python 版本，而不是系統原本內建的。

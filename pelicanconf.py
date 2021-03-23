@@ -3,20 +3,10 @@
 from __future__ import unicode_literals
 
 AUTHOR = "kokokuo"
+
+# Website Information Setting ===
 SITENAME = "koko's Note"
 SITEURL = ""
-
-# Pelican 讀取的輸入目錄，也就是你的寫作目錄
-PATH = "content"
-
-TIMEZONE = "Asia/Taipei"
-
-DEFAULT_LANG = "en"
-
-
-# Flex Theme Settings : Indicate installed theme by pelican-themes command
-THEME = "themes/Flex"
-
 SITETITLE = "koko's Note"
 SITESUBTITLE = """
 Code / Web / Architecture
@@ -30,20 +20,37 @@ Code / Web / Architecture
 COPYRIGHT_NAME = "kokokuo"
 COPYRIGHT_YEAR = 2019
 
-"""
-Tag 設置參數，其他未出現的參數保持預設可以參考。
-http://docs.getpelican.com/en/4.1.0/settings.html#url-settings
-"""
+TIMEZONE = "Asia/Taipei"
+DEFAULT_LANG = "en"
+
+# Theme Settings =====
+# Indicate installed theme by pelican-themes command, used Flex
+THEME = "themes/Flex"
+
+# Input Content Root Setting ======
+# 讀取的輸入目錄，也就是你的寫作目錄
+PATH = "content"
+
+# Category Setting =====
+DEFAULT_CATEGORY = "category"
+USE_FOLDER_AS_CATEGORY = True
+DISPLAY_CATEGORIES_ON_MENU = True
+
+# Pages Setting =====
+DISPLAY_PAGES_ON_MENU = True
+
+# Tags Setting =====
+# Tag 設置參數，其他未出現的參數保持預設可以參考。
+# http://docs.getpelican.com/en/4.1.0/settings.html#url-settings
 # 目前 TAG_URL, TAG_SAVE_AS, TAGS_SAVE_AS 皆保持預設
 # TAG_URL = 'tag/{slug}'
 TAG_SAVE_AS = 'tag/{slug}.html'
 TAGS_SAVE_AS = 'tags.html'
 
 
-"""
-Pagination 設置參數，未出現的參數為預設狀態，可以參考
-http://docs.getpelican.com/en/4.1.0/settings.html#pagination
-"""
+# Pagination Setting ====
+# Pagination 設置參數，未出現的參數為預設狀態，可以參考
+# http://docs.getpelican.com/en/4.1.0/settings.html#pagination
 PAGINATION_PATTERNS = (
     (1, "{url}", "{save_as}"),
     # (1, "{base_name}", "{base_name}/index.html"),

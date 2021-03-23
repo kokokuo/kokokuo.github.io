@@ -1,6 +1,6 @@
 Title: Sublime - 使用 Anaconda 打造 Python 開發環境
 Date: 2015-03-03
-Tags: Mac, Sublime
+Tags: Mac, Sublime, Python
 Slug: sublime-python-with-anaconda
 Authors: kokokuo
 Summary: 因為 Sublime 有著很彈性的擴充插件可以打造開發環境，而自己為了往後的 Python 學習，所以選擇了 Anaconda 加上 Sublime Text3 作為開發的環境，因此本篇會介紹為何選擇這套 Anaconda 以及還有其他哪幾套也不錯的 Python 開發環境插件 ( 結果 VSCode 在一個月後出來我就索性換掉了 )。

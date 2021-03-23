@@ -1,6 +1,7 @@
 Title: Python - 結合 pip 與 virtualenv 的虛擬環境與套件管理的二合一新利器 Pipenv
 Date: 2019-03-08
 Tags: Python, Pipenv, Virtualenv
+Category: Python
 Slug: python-pipenv-install-and-usage
 Authors: kokokuo
 Summary: 使用 Python 做開發的人，多數都會使用虛擬環境，特別是 `virtualenv` 作為建立開發並隔離環境的方式，但是使用一段時間後都會遇到一些管理或是協作上的問題，為了解決這些困擾，新的套件 **Pipenv** 誕生了，不僅解決了所有問題，在使用上還非常方便，此篇就來深入了解與學習如何使用  **Pipenv**  吧
