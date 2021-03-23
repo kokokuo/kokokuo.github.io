@@ -38,6 +38,25 @@ h6 {
   font-size: 1.08em
 }
 
+/* 調整上面 Navbar 文字大小 */
+main nav {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Source Sans Pro','Roboto','Open Sans','Liberation Sans','DejaVu Sans','Verdana','Helvetica','Arial',sans-serif;
+  font-weight: 600;
+  font-size: 1.05em;
+  padding: 14px 0 14px 0;
+  border-bottom: #eeeeee 1px solid;
+}
+
+/* 調整上面 Navbar 中的文字顏色 */
+main nav a {
+  padding: 0 4px 0 4px;
+  border-left: #eeeeee 1px solid;
+  border-right: #eeeeee 1px solid;
+  color: rgba(48, 47, 47, 0.8);
+}
+
 ul.list {
     padding: 1em 0 1em 0;
     font-size: 0.8em;
