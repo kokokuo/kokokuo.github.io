@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？" />
+<meta name="keywords" content="Python, Mac, Python3">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Python - 安裝 Pelican Theme 來改變你的靜態網站主題"/>
+<meta property="og:description" content="由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/install-pelican-theme"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-03-14 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Python3"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Python - 安裝 Pelican Theme 來改變你的靜態網站主題</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/pages/archive.html">文章列表</a>
+      <a href="/pages/tags.html">標籤</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+      <a href="/pages/other-topics.html">其他主題</a>
+
+      <a href="https://note.koko.guru/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="install-pelican-theme">Python - 安裝 Pelican Theme 來改變你的靜態網站主題</h1>
+    <p>
+          Posted on Thu 14 March 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<hr>
+<p>在前兩篇 <a href="https://note.koko.guru/posts/mac-using-pelican-build-static-website">在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌</a> 與 <a href="20190205-deploy-pelican-static-website-to-github-page.md">使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例</a> 我們知道了要如何使用 Pelican 來架設靜態網站。</p>
+<p>但由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？</p>
+<p>放心，Pelican 有提供給我們更換網誌外觀的功能哦，以下我們接著來設定。</p>
+<p><br/></p>
+<h1>安裝與設定 Pelican Theme</h1>
+<hr>
+<p>在 Pelican 中提供了許多可以更換你靜態網站的樣式外觀，這些樣式與外觀被稱作 <strong>「主題」( Theme )</strong>，許多的靜態產生器或是網站可能也都使用相同的詞彙。</p>
+<p>而在 Pelican 中要安裝與設定非常容易，讓我們來執行以下步驟。</p>
+<h2>1. 挑選你喜歡的 Pelican Theme</h2>
+<p>有許多設計師設計了許多出色的主題，並且統一放在 <a href="http://www.pelicanthemes.com/">Pelican 官網的 Theme 頁面中</a>，如下圖：</p>
+<p><img src="../images/20190314-install-pelican-theme/1-pelican-themes-website.png" alt="1-pelican-themes-website" /></p>
+<p>當你從中挑選了你喜歡的主題，你可以點擊此主題的名稱連結，該連結多半會導到其主題的個人設計師官網或是這些主題所存放的 Github Repository，如下：</p>
+<p><img src="../images/20190314-install-pelican-theme/2-other-designer-repository.png" alt="2-other-designer-repository" width="480px" /></p>
+<p>除此之外這些主題的 Repository 也有提供一個連結讓 <a href="https://github.com/getpelican/pelican-themes">Pelican Themes 的 Repository</a> 統一管理，這個 Repository 你可以從 Pelican Themes 的官網中找到其連結。</p>
+<p><img src="../images/20190314-install-pelican-theme/3-pelican-themes-repository.png" alt="3-pelican-themes-repository" width="480px"/></p>
+<p>進入到挑選的主題的 Repository 後，透過 <code>git clone</code> 或是點擊 <strong>Clone or download</strong> 下載檔案解壓縮。</p>
+<h2>2. 安裝 Theme 到你的 Pelican 網站中</h2>
+<h3>(1.) 下載想要的 Theme</h3>
+<p>下載後先把下載的位置與目錄記錄下來。例如選擇了 <a href="https://github.com/alexandrevicenzi/Flex">Flex</a> 這個主題，並透過 <code>git clone</code> 放在家目錄下：</p>
+<div class="highlight"><pre><span></span><code>$ ~/&gt; git clone https://github.com/alexandrevicenzi/Flex
+$ ~/&gt; <span class="nb">cd</span> Flex
+$ ~/<span class="o">(</span>master<span class="o">)</span>Flex/&gt;
+</code></pre></div>
+
+<p><img src="../images/20190314-install-pelican-theme/4-clone-or-download-candidate-theme.png" alt="4-clone-or-download-candidate-theme" width="480px"/></p>
+<h3>(2.) 安裝已下載的 Theme 到 Pelican 網站中</h3>
+<p>之後回到自己的 Pelican 網站，並且進入你的虛擬環境後確保 Pelican 的套件有安裝，Pelican 的指令能夠作用下，輸入以下指令</p>
+<div class="highlight"><pre><span></span><code>$ <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes -h
+usage: pelican-themes <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-l <span class="p">|</span> -p <span class="p">|</span> -V<span class="o">]</span> <span class="o">[</span>-i theme path <span class="o">[</span>theme path ...<span class="o">]]</span>
+                      <span class="o">[</span>-r theme name <span class="o">[</span>theme name ...<span class="o">]]</span>
+                      <span class="o">[</span>-U theme path <span class="o">[</span>theme path ...<span class="o">]]</span>
+                      <span class="o">[</span>-s theme path <span class="o">[</span>theme path ...<span class="o">]]</span> <span class="o">[</span>-c<span class="o">]</span> <span class="o">[</span>-v<span class="o">]</span>
+
+Install themes <span class="k">for</span> Pelican
+
+optional arguments:
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -l, --list            Show the themes already installed and <span class="nb">exit</span>
+  -p, --path            Show the themes path and <span class="nb">exit</span>
+  -V, --version         Print the version of this script
+  -i theme path <span class="o">[</span>theme path ...<span class="o">]</span>, --install theme path <span class="o">[</span>theme path ...<span class="o">]</span>
+                        The themes to install
+  -r theme name <span class="o">[</span>theme name ...<span class="o">]</span>, --remove theme name <span class="o">[</span>theme name ...<span class="o">]</span>
+                        The themes to remove
+  -U theme path <span class="o">[</span>theme path ...<span class="o">]</span>, --upgrade theme path <span class="o">[</span>theme path ...<span class="o">]</span>
+                        The themes to upgrade
+  -s theme path <span class="o">[</span>theme path ...<span class="o">]</span>, --symlink theme path <span class="o">[</span>theme path ...<span class="o">]</span>
+                        Same as <span class="sb">`</span>--install<span class="err">&#39;</span>, but create a symbolic link
+                        instead of copying the theme. Useful <span class="k">for</span> theme
+                        development
+  -c, --clean           Remove the broken symbolic links of the theme path
+  -v, --verbose         Verbose output
+</code></pre></div>
+
+<p>以上是 Pelican 套件提供的主題指令，協助你查詢你用 Pelican 架設的靜態網站中，你如你可以透過 <code>pelican-themes -l</code> 來查詢你目前所有安裝的套件：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes -l
+simple
+notmyidea
+</code></pre></div>
+
+<p>你會發現原來 Pelican 有預設幫你安裝了兩個主題，並且設定使用其中一個，所以你再啟動網站時才會看到，而在指令中也有提到安裝主題，這也是我們剛剛下載主題的原因，因為 <strong>pelican-themes 是指定需要安裝的來源路徑，而非指直接從網路上下載安裝</strong>，所以我們才會需要如上述先手動 clone 抓下來，接著指定來源位置為 <code>git clone</code> 下來的位置。</p>
+<p>如下我們指令他的路徑，並安裝：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用 --verbose 查看細節過程資訊</span>
+$ <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes --install ~/Flex --verbose
+</code></pre></div>
+
+<p>透過 <code>--verbose</code> 參數來查看安裝的過程資訊，如果沒有這個參數的話，安裝時你會看不到安裝的過程與安裝到哪裡，除此之外你也可以透過縮寫指令來安裝：</p>
+<div class="highlight"><pre><span></span><code># --install 與 --verbose 的簡短輸入方式
+$ <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; pelican-themes -vi ~/Flex
+</code></pre></div>
+
+<p>然後安裝完，你可以透過 <code>pelican-themes -l</code> 查看是否有安裝，只不過如果你想知道他安裝在哪裡，你可以也加入 <code>--verbose</code> 或 <code>-v</code> 看到：</p>
+<p><img src="../images/20190314-install-pelican-theme/5-pelican-theme-install-command.png" alt="5-pelican-theme-install-command" /></p>
+<p>你會發現，不管是預設的主題，還是安裝的主題，都會被放置到<strong>虛擬環境目錄 .venv</strong> 下的 <code>pelican/themes/</code> 的位置。</p>
+<p>由於哪天我們可能會自己不小心砍掉 <code>.venv</code> 虛擬環境，所以比較建議的方式是 Copy 一份到自己的網站目錄下，例如 <code>themes</code> 下：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 此為範例，假設安裝在 Python 3.7 虛擬環境下...</span>
+$ <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; mkdir themes
+$ <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; cp -r .venv/lib/python3.7/site-packages/pelican/themes/Flex themes/Flex
+</code></pre></div>
+
+<h3>(3.) 移除安裝的 Theme</h3>
+<p>另外，如果你要移除主題，你可以使用 <code>--remove</code> 或是 <code>-r</code> 短指令來指定你要移除的主題名稱移除：</p>
+<p><img src="../images/20190314-install-pelican-theme/6-remove-pelican-theme-command.png" alt="6-remove-pelican-theme-command" /></p>
+<h2>3. 設定 Pelican 網站使用的主題</h2>
+<p>當你安裝好主題後，此時我們需要讓我們的 Pelican 網站採用此主題才行，打開 <code>pelicanconf.py</code>，並添加此行：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Flex 是你透過 pelican-themes 指令安裝的主題名稱, 因為安裝在 themes 目錄下，所以需指定 prefix 為 themes</span>
+<span class="n">Theme</span> <span class="o">=</span> <span class="s1">&#39;themes/Flex&#39;</span>
+</code></pre></div>
+
+<p>此參數的設定來自 <a href="https://docs.getpelican.com/en/stable/settings.html#themes">Pelican Setttings</a> 文件中的介紹，在 Pelican 的教學文件中有列出對於安裝的主題，有哪些參數可以使用。</p>
+<p>在 <code>pelicanconf.py</code> 加上 <code>Theme = 'Flex'</code> 後，再來我們就可以重新輸出一次 HTML 網頁並來預覽查看，透過 <code>make html</code> 指令來生出新的 HTML 檔案，並藉由 <code>make serve [PORT]</code> 開啟一個測試用的簡易伺服器協助測試與預覽：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 生成 HTML 並 啟動服務</span>
+$ <span class="o">(</span>kokokuo-note<span class="o">)</span>kokokuo-note/&gt; make html <span class="o">&amp;&amp;</span> make serve <span class="nv">PORT</span><span class="o">=</span><span class="m">5000</span>
+</code></pre></div>
+
+<p>如下圖，你會看到修改後的畫面，成功！</p>
+<p><img src="../images/20190314-install-pelican-theme/7-flex-theme-result.png" alt="7-flex-theme-result" /></p>
+<p>如果你對 Flex 這個主題有興趣，你可以去查看 Flex 主題提供的 <a href="https://github.com/alexandrevicenzi/Flex/wiki">文件 wiki</a>，在其中有 <a href="https://github.com/alexandrevicenzi/Flex/wiki/Custom-Settings">Custom Settings</a>) 的參數是 Flex 有提供可以設定的部分。</p>
+<p>例如以下是我的一些簡易設定：</p>
+<div class="highlight"><pre><span></span><code><span class="n">THEME</span> <span class="o">=</span> <span class="s2">&quot;themes/Flex&quot;</span>
+<span class="n">SITETITLE</span> <span class="o">=</span> <span class="s2">&quot;Hello Titile&quot;</span>
+<span class="n">SITESUBTITLE</span> <span class="o">=</span> <span class="s2">&quot;This is sample&quot;</span>
+<span class="n">SITELOGO</span> <span class="o">=</span> <span class="s2">&quot;https://avatars3.githubusercontent.com/u/5389253?s=460&amp;v=4&quot;</span>
+
+<span class="n">SOCIAL</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="s1">&#39;https://github.com/kokokuo&#39;</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;linkedin&#39;</span><span class="p">,</span> <span class="s1">&#39;www.linkedin.com/in/easonkuo&#39;</span><span class="p">),)</span>
+</code></pre></div>
+
+<p>這些參數有些是 Pelican Settings 中提到的，有些是 Flex 這個主題客製化提供的，然後讓我們再次透過 <code>make html</code> 與 <code>make serve [port]</code> 指令來生出新的 HTML 檔案並測試：</p>
+<p><img src="../images/20190314-install-pelican-theme/8-flex-add-custom-settings.png" alt="8-flex-add-custom-settings" /></p>
+<p>大功告成！</p>
+<p><br/></p>
+<h1>後記</h1>
+<hr>
+<p>除了這個範本教學的 Theme，在 Pelican 中還有許多其他的 Theme 有興趣的話可以都下載來體驗看看。</p>
+<p>另外在 Pelican 中除了主題以下，還有許多其他的插件可以使用，如果後續有機會，會在撰寫文章分享給大家，以及如何在 Github Page 上設定個人買的網域這件事。</p>
+<p><br/></p>
+<h1>參考連結</h1>
+<hr>
+<ol>
+<li><a href="https://docs.getpelican.com/en/stable/pelican-themes.html">Pelican Documents - pelican-themes</a></li>
+<li><a href="https://docs.getpelican.com/en/stable/settings.html#themes">Pelican Settings - Theme</a></li>
+<li><a href="http://www.pelicanthemes.com/">Pelican Theme Website</a></li>
+<li><a href="https://github.com/alexandrevicenzi/Flex/tree/master">Flex - Github Repository</a></li>
+<li><a href="https://github.com/alexandrevicenzi/Flex/wiki">Flex - Wiki</a></li>
+<li><a href="https://github.com/alexandrevicenzi/blog/blob/master/pelicanconf.py">Flex - pelicanconf.py</a></li>
+<li><a href="https://blog.liang2.tw/posts/2015/09/blog-internals/">設定部落格筆記</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/python">Python</a>
+      <a href="https://note.koko.guru/tag/mac">Mac</a>
+      <a href="https://note.koko.guru/tag/python3">Python3</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

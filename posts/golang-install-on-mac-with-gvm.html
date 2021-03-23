@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 hombrew 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。" />
+<meta name="keywords" content="Golang, Mac, GVM">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上"/>
+<meta property="og:description" content="最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 hombrew 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/golang-install-on-mac-with-gvm"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-07-13 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Golang"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="GVM"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/pages/archive.html">文章列表</a>
+      <a href="/pages/tags.html">標籤</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+      <a href="/pages/other-topics.html">其他主題</a>
+
+      <a href="https://note.koko.guru/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="golang-install-on-mac-with-gvm">Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上</h1>
+    <p>
+          Posted on Sat 13 July 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<hr>
+<p>最近開始摸 Golang，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 <code>hombrew</code> 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。</p>
+<p><br/></p>
+<h1>透過 GVM 安裝並管理 Go 版本</h1>
+<hr>
+<h2>1. 什麼是 GVM ( Go Version Management )</h2>
+<p>GVM 是一套由第三方的開源開發者們共同撰寫的 Go 語言版本管理器，能夠在系統上同時透過這套 GVM 的套件，為我們同時安裝多個不同版本的 Go ，並且可以切換要使用的版本。</p>
+<p>這樣的管理器，如果有寫過其他語言的人一定不陌生，例如 Ruby 的 <a href="https://github.com/rvm/rvm">RVM</a>，Python 的 <a href="https://github.com/pyenv/pyenv">pyenv</a>，Node.js 的 <a href="https://github.com/nvm-sh/nvm">nvm</a> ...等等。</p>
+<p>而在 Go 語言上也有這樣方便好用的版本管理器，安裝非常簡單，以下我們來看一下。</p>
+<h2>2. 安裝 GVM</h2>
+<h3>事前安裝 gcc</h3>
+<p>在安裝 GVM 前，須先確認是否有 gcc，若沒有則須先安裝，可以透過 Homebrew 安裝：</p>
+<div class="highlight"><pre><span></span><code>$ brew install gcc
+</code></pre></div>
+
+<h3>安裝到 Bash 中</h3>
+<p>Mac 要安裝 GVM 無法使用 Homebrew  的指令，需要輸入一串腳本指令才行：</p>
+<p>輸入以下指令安裝：</p>
+<div class="highlight"><pre><span></span><code>$ bash &lt; &lt;<span class="o">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span class="o">)</span>
+</code></pre></div>
+
+<p>透過上述的安裝指令，GVM 會被安裝到 <code>~/.gvm</code> 目錄下，並且自動為我們寫入以下這段指令到 bash 的用戶環境變數中：</p>
+<div class="highlight"><pre><span></span><code><span class="o">[[</span> -s <span class="s2">&quot;/Users/&lt;username&gt;/.gvm/scripts/gvm&quot;</span> <span class="o">]]</span> <span class="o">&amp;&amp;</span> <span class="nb">source</span> <span class="s2">&quot;/Users/&lt;username&gt;/.gvm/scripts/gvm&quot;</span>
+</code></pre></div>
+
+<p>如下圖是 <code>~/.bash_profile</code>：</p>
+<p><img src="../images/20190713-install-golang-on-mac/bash-profile-gvm-settings.png" alt="bash-profile-gvm-settings" width="480px"/></p>
+<p><br/></p>
+<h3>安裝到 Zsh 中</h3>
+<p>若是使用 <code>zsh</code>，則可以改成下載套件並設定到 <code>zsh</code> 中：</p>
+<div class="highlight"><pre><span></span><code>$ zsh &lt; &lt;<span class="o">(</span>curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer<span class="o">)</span>
+</code></pre></div>
+
+<p><img src="../images/20190713-install-golang-on-mac/install-gvm-to-zsh.png" alt="install-gvm-to-zsh" width="480px"/></p>
+<p>打開 <code>~/.zshrc</code> 可以看到 <code>[[ -s "/Users/&lt;username&gt;/.gvm/scripts/gvm" ]] &amp;&amp; source "/Users/&lt;username&gt;/.gvm/scripts/gvm"</code> ㄧ樣被寫入進去。</p>
+<p><img src="../images/20190713-install-golang-on-mac/zshrc-show-gmv-env-settings.png" alt="zshrc-show-gmv-env-setting" width="480px"/></p>
+<h2>3. 啟動 GVM 安裝 Golang</h2>
+<p>在上述安裝完並檢查環境變數有指向 GVM 後，接著可以透過重新啟動 Ternimal 或是手動以 <code>source</code> 指令來啟動 GVＭ：</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> /Users/&lt;username&gt;/.gvm/scripts/gvm
+</code></pre></div>
+
+<p>接著輸入 <code>gvm</code> 便會看到可以開始使用 GVM 版本管理器。</p>
+<p><img src="../images/20190713-install-golang-on-mac/installed-gvm.png" alt="installed-gvm" width="480px"/></p>
+<p>接著我們要來安裝需要的 Go 版本，在 GVM 有一些指令可以幫助我們檢查目前電腦上的 Go 版本、Go 釋出可以安裝的版本來讓我們選擇安裝：</p>
+<h3>(1.) 查看可以下載安裝的 Go 版本</h3>
+<p>透過 <code>listall</code> 可以查看遠端可以下載的 Go 版本：</p>
+<div class="highlight"><pre><span></span><code>$ gvm listall
+</code></pre></div>
+
+<p><img src="../images/20190713-install-golang-on-mac/gvm-listall.png" alt="gvm-listall" width="240px"/></p>
+<h3>(2.) 安裝想要的版本</h3>
+<div class="highlight"><pre><span></span><code>$ gvm install &lt;輸入你想要安裝的版本&gt;
+</code></pre></div>
+
+<p>其他額外的參數：</p>
+<div class="highlight"><pre><span></span><code>Usage: gvm install <span class="o">[</span>version<span class="o">]</span> <span class="o">[</span>options<span class="o">]</span>
+    -s,  --source<span class="o">=</span>SOURCE      Install Go from specified source.
+    -n,  --name<span class="o">=</span>NAME          Override the default name <span class="k">for</span> this version.
+    -pb, --with-protobuf      Install Go protocol buffers.
+    -b,  --with-build-tools   Install package build tools.
+    -B,  --binary             Only install from binary.
+         --prefer-binary      Attempt a binary install, falling back to source.
+    -h,  --help               Display this message.
+</code></pre></div>
+
+<p>例如在這邊我安裝 1.14.3 版本：</p>
+<p><img src="../images/20190713-install-golang-on-mac/go-gvm-install-1-14-3-compile-failed.png" alt="gvm-install-14-3-compiled-failed" width="480px"/></p>
+<p>結果卻看到錯誤的訊息，而這是因為 Go 1.4 版以後在工具鏈中移除了 C 的編譯器，並改為用 Go 寫的 C 編譯器放進去的原因。</p>
+<h4>Go 1.5+ 要做編譯</h4>
+<p>以下是官方套件的介紹：</p>
+<blockquote>
+<p>Go 1.5+ removed the C compilers from the toolchain and replaced them with one written in Go. Obviously, this creates a bootstrapping problem if you don't already have a working Go install. In order to compile Go 1.5+, make sure Go 1.4 is installed first.</p>
+</blockquote>
+<p>因此安裝 Go 1.4 版以後的版本要改用參數 -B ，來直接安裝 binary 的版本才行：</p>
+<div class="highlight"><pre><span></span><code>$ gvm install <span class="o">[</span>Go 版本<span class="o">]</span> -B
+</code></pre></div>
+
+<h3>(3.) 查看目前電腦所安裝的版本</h3>
+<p>要查看已經安裝的版本，可以透過 <code>list</code> 來得知所有已經安裝的版本號。</p>
+<div class="highlight"><pre><span></span><code>$ gvm list
+</code></pre></div>
+
+<p>如下我們便會看到了已經安裝的版本。</p>
+<p><img src="../images/20190713-install-golang-on-mac/gvm-list.png" alt="gvm-list" width="320px"/></p>
+<h3>(4.) 指定使用的 Go 語言版本</h3>
+<p>如果要指定使用的版本 (或切換版本)，可以透過 <code>use</code> 指令來指定。</p>
+<div class="highlight"><pre><span></span><code>$ gvm use &lt;已安裝要指定切換的 Go 版本&gt;
+$ gvm use go1.13.11
+</code></pre></div>
+
+<p>設定好後，我們可以透過 <code>go version</code> 來檢查是否找得到指定的版本：</p>
+<p><img src="../images/20190713-install-golang-on-mac/gvm-use-go-for-the-shell.png" alt="gvm-use-go-for-the-shell" width="320px"/></p>
+<p>此外透過 <code>gvm list</code> 也可以看到目前我們所使用的版本。</p>
+<p>但是透過 <code>gvm use</code> 只能針對目前這個 Shell，所以當我們開了一個 Shell 後，便會找不到剛剛設定的 Go，如下圖我開了一個新的 <code>tty</code>：</p>
+<p><img src="../images/20190713-install-golang-on-mac/new-shell-no-find-go.png" alt="new-shell-no-find-go" width="320px"/></p>
+<p>輸入 <code>go version</code> 或 <code>go env</code> (<code>env</code> 參數可以看到 Go 所使用的環境變數，例如 Go 被安裝到哪)，你會發現找不到該 Go 版本。</p>
+<p>那麼如果要讓指定的版本永久作用的話要如何是好？</p>
+<h3>(5.) 指定 Go 預設使用的版本</h3>
+<p>我們可以在 <code>gvm use</code> 後便加上選擇性參數 <code>--default</code> 來告訴 GVM 這個版本被設為永久性預設的版本，當新開一個 Shell 後也會預設使用這個版本號：</p>
+<div class="highlight"><pre><span></span><code>$ gvm use &lt;要指定切換的 Go 版本&gt; --default
+$ gvm use go1.14.3 --default
+</code></pre></div>
+
+<p><img src="../images/20190713-install-golang-on-mac/gvm-use-go-permanently.png" alt="gvm-use-go-permanently" width="320px"/></p>
+<p>我們再次開了一個新的 Shell ，你會看到他預設指定 1.14.3 版。</p>
+<p><img src="../images/20190713-install-golang-on-mac/new-shell-use-default-go-version.png" alt="new-shell-use-default-go-version" width="280px"/></p>
+<h3>(6.) GVM 下載安裝的 Go 被放到哪裡</h3>
+<p>另外這些透過 GVM 所安裝的各個 Go 版本，會安放到哪呢？這時我們可以透過先前提到的 <code>go env</code> 查看與 Go 有關的環境變數：</p>
+<p>如上圖你會看到被下載放置到 <code>~/.gvm/pkgsets</code> 目錄下。</p>
+<p><img src="../images/20190713-install-golang-on-mac/go-env-show-installed-path.png" alt="go-env-show-installed-path" width="360px"/></p>
+<p>進到目錄 <code>~/.gvm/pkgsets</code> 下後會看到剛剛所安裝的其他版本 Go:</p>
+<p><img src="../images/20190713-install-golang-on-mac/all-gvm-go-version-location.png" alt="all-gvm-go-version-location" width="240px"/></p>
+<h3>(7.) 移除指定的 Go 版本</h3>
+<p>要透過 GVM 移除 Go 很容易，只要透過以下指令：</p>
+<div class="highlight"><pre><span></span><code>$ gvm uninstall &lt;要移除的版本&gt;
+</code></pre></div>
+
+<h3>(8.) 移除 GVM</h3>
+<p>如果要把 GVM 整個移除可以透過 <code>implode</code> 指令移除：</p>
+<div class="highlight"><pre><span></span><code>$ gvm implode
+</code></pre></div>
+
+<p>當透過這個指令移除 GVM 後，所有透過 GVM 所安裝的 Go 版本也會移除，因為先前提到所有透過 GVM 所安裝的 Go 都會安放在 <code>~/.gvm/pkgsets</code> 目錄下。</p>
+<p>另外如果發現 <code>gvm implode</code> 無法移除 GVM ，可以手動刪除 <code>.gvm</code> 整個目錄，並把一開始安裝時寫入到 <code>zsh</code> 或 <code>bash</code> 環境變數中的指令移除即可。</p>
+<p><br/></p>
+<h3>(9.) 指定預設編譯器來編譯未來新安裝的 Go 版本</h3>
+<p>前半段有提到，Go 在 1.5+ 版以後都要做編譯，因此如果不希望 Go 1.4 版後的語言每次安裝都要帶入參數 -B 可以先安裝 1.4 版本，並設定 <code>GOROOT_BOOTSTRAP</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">GOROOT_BOOTSTRAP</span><span class="o">=</span><span class="nv">$GOROOT</span>
+</code></pre></div>
+
+<p>會需要做此動作，是因為 Go 1.4 以後實現了 Go 寫的 C 編譯器，並且為了讓後續的語言都通過該 1.4 版本的編譯器來編譯完新版本好的語言，因此需要設定，如此未來安裝 Go 時就需要再帶入 -B ，如下：</p>
+<div class="highlight"><pre><span></span><code>$ gvm install go1.4 -B
+$ gvm use go1.4
+$ <span class="nb">export</span> <span class="nv">GOROOT_BOOTSTRAP</span><span class="o">=</span><span class="nv">$GOROOT</span>
+$ gvm install go1.5
+</code></pre></div>
+
+<p>如下圖是安裝 1.14.3 版本的例子：</p>
+<p><img src="../images/20190713-install-golang-on-mac/go-using-previous-compiler-build-current-version.png" alt="go-using-previous-compiler-build-current-version" width="320px"/></p>
+<p>以上就是 GVM 的介紹囉。</p>
+<h1>參考資料</h1>
+<ol>
+<li><a href="https://github.com/moovweb/gvm">GVM Github Repository</a></li>
+<li><a href="https://dryyun.com/2018/11/28/how-to-use-gvm/">GVM - Go 的多版本管理工具，使用介绍</a></li>
+<li><a href="http://chen-tao.github.io/2017/09/14/Use-gvm-manage-golang-version/">使用 gvm 管理多版本 golang</a></li>
+<li><a href="https://golang.org/doc/devel/release.html">Go Release History</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/golang">Golang</a>
+      <a href="https://note.koko.guru/tag/mac">Mac</a>
+      <a href="https://note.koko.guru/tag/gvm">GVM</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

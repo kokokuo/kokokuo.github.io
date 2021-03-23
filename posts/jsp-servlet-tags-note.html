@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="前陣子在寫 Java Servlet 的範例，作為提供給客戶參考如何以 Java 程式呼寫的 WebService。但是到現場才發現客戶是使用 JSP，因為當時自己本身是寫 C# 與 .Net 於是不熟悉 JSP，為了解決客戶的需要仍硬著頭皮，在對方現有的程式碼大海中想辦法銜接，也因此遇到了這個問題。" />
+<meta name="keywords" content="JSP, Servlet">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="JSP 標籤與隱含物件注意"/>
+<meta property="og:description" content="前陣子在寫 Java Servlet 的範例，作為提供給客戶參考如何以 Java 程式呼寫的 WebService。但是到現場才發現客戶是使用 JSP，因為當時自己本身是寫 C# 與 .Net 於是不熟悉 JSP，為了解決客戶的需要仍硬著頭皮，在對方現有的程式碼大海中想辦法銜接，也因此遇到了這個問題。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/jsp-servlet-tags-note"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-02-11 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="JSP"/>
+<meta property="article:tag" content="Servlet"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; JSP 標籤與隱含物件注意</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/pages/archive.html">文章列表</a>
+      <a href="/pages/tags.html">標籤</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+      <a href="/pages/other-topics.html">其他主題</a>
+
+      <a href="https://note.koko.guru/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="jsp-servlet-tags-note">JSP 標籤與隱含物件注意</h1>
+    <p>
+          Posted on Wed 11 February 2015 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>原來在寫 JSP 時要依據使用的標籤，需要考慮到<strong>隱含物件</strong>的名稱，否則會發生衝突並產生 Duplicate Local Variable，以下紀錄筆記。</p>
+<h1>前言</h1>
+<p>前陣子在寫 Java Servlet 的範例，作為提供給客戶參考如何以 Java 程式呼寫的 WebService。但是到現場才發現客戶是使用 JSP，因為當時自己本身是寫 C# 與 .Net 於是不熟悉 JSP，為了解決客戶的需要仍硬著頭皮，在對方現有的程式碼大海中想辦法銜接，也因此遇到了這個問題。</p>
+<p>原來在寫 JSP 時要依據使用的標籤，需要考慮到<strong>隱含物件</strong>的名稱，否則會發生衝突並產生 Duplicate Local Variable，雖然現場當下解決，但也學到了一些知識所以紀錄筆記一下避免以後發生。</p>
+<p><br/></p>
+<h1>JSP 與 Servlet 關係 以及 JSP 的標籤</h1>
+<p>JSP 在被執行前，是被 JSP 編譯器編譯成 Java Servlets。而一個 JSP 編譯器可以把 JSP 編譯成 Java 程式寫的 <code>servlet</code> 然後再由 Java 編譯器來編譯成機器碼，也可以直接編譯成二進位碼。所以在撰寫 JSP 時，會跟 Servlet 有關係。</p>
+<p>而 JSP 的標籤主要分成三類(以下資料來自<a href="https://openhome.cc/Gossip/ServletJSP/DeclarationScriptletExpression.html">良葛格的文章</a>)：</p>
+<h2>1. 宣告（ Declaration ）標籤</h2>
+<ul>
+<li>標籤符號：<code>&lt;%! 類別成員宣告或方法宣告 %&gt;</code></li>
+<li>標籤功能：在之間宣告的程式碼，都將轉譯為 Servlet 中的類別成員或方法</li>
+<li>標籤範例：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;%!</span>
+    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;caterpillar&quot;</span><span class="p">;</span>
+    <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span>
+
+    <span class="kt">boolean</span> <span class="nf">checkUser</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">String</span> <span class="n">password</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&amp;&amp;</span> 
+                 <span class="k">this</span><span class="p">.</span><span class="na">password</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">password</span><span class="p">);</span>    
+    <span class="p">}</span>
+<span class="o">%&gt;</span>
+</code></pre></div>
+
+<p>轉換為 Servlet 後為：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nn">org.apache.jsp</span><span class="p">;</span>
+<span class="c1">// 略...</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">index_jsp</span>  <span class="kd">extends</span> <span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">jasper</span><span class="p">.</span><span class="na">runtime</span><span class="p">.</span><span class="na">HttpJspBase</span> <span class="kd">implements</span> <span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">jasper</span><span class="p">.</span><span class="na">runtime</span><span class="p">.</span><span class="na">JspSourceDependent</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;caterpillar&quot;</span><span class="p">;</span>
+    <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">&quot;123456&quot;</span><span class="p">;</span>
+    <span class="kt">boolean</span> <span class="nf">checkUser</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">String</span> <span class="n">password</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">&amp;&amp;</span> 
+                 <span class="k">this</span><span class="p">.</span><span class="na">password</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">password</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// 略...</span>
+</code></pre></div>
+
+<h2>2. Scriptlet 指令標籤</h2>
+<p>標籤符號：<code>&lt;% Java 陳述句 %&gt;</code>
+標籤功能：在標籤之間所包括的內容，將被轉譯為 Servlet 原始碼 <code>_jspService()</code> 方法中的內容
+標籤範例：</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;%</span>
+    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">);</span>
+    <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">checkUser</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span> <span class="p">{</span>
+<span class="o">%&gt;</span>
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">登入成功</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+<span class="o">&lt;%</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+<span class="o">%&gt;</span>
+    <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">登入失敗</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+<span class="o">&lt;%</span>
+    <span class="p">}</span>
+<span class="o">%&gt;</span>
+</code></pre></div>
+
+<p>這段 JSP 中的 Scriptlet，在轉譯為 Servlet 後，會有以下對應的原始碼：</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nn">org.apache.jsp</span><span class="p">;</span>
+<span class="c1">// 略...</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">login_jsp</span> 
+    <span class="kd">extends</span> <span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">jasper</span><span class="p">.</span><span class="na">runtime</span><span class="p">.</span><span class="na">HttpJspBase</span>
+    <span class="kd">implements</span> <span class="n">org</span><span class="p">.</span><span class="na">apache</span><span class="p">.</span><span class="na">jasper</span><span class="p">.</span><span class="na">runtime</span><span class="p">.</span><span class="na">JspSourceDependent</span> <span class="p">{</span>
+    <span class="c1">// 略...</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">_jspService</span><span class="p">(</span><span class="n">HttpServletRequest</span> <span class="n">request</span><span class="p">,</span> 
+                               <span class="n">HttpServletResponse</span> <span class="n">response</span><span class="p">)</span>
+        <span class="kd">throws</span> <span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">IOException</span><span class="p">,</span> <span class="n">ServletException</span> <span class="p">{</span>
+    <span class="c1">// 略…</span>
+    <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">);</span>
+    <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="na">getParameter</span><span class="p">(</span><span class="s">&quot;password&quot;</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">checkUser</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">&quot;    &lt;h1&gt;登入成功&lt;/h1&gt;\n&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">&quot;\n&quot;</span><span class="p">);</span>
+        <span class="n">out</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">&quot;    &lt;h1&gt;登入失敗&lt;/h1&gt;\n&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// 略...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2>3. 運算式（ Expression ）標籤</h2>
+<p>標籤符號：<code>&lt;%= Java運算式 %&gt;</code>
+標籤功能：運算式元素中撰寫 Java 運算式，運算式的運算結果將直接輸出為網頁的一部份。
+標籤範例：</p>
+<div class="highlight"><pre><span></span><code><span class="nl">現在時間:</span> <span class="o">&lt;%=</span> <span class="k">new</span> <span class="n">Date</span><span class="p">()</span> <span class="o">%&gt;</span>
+</code></pre></div>
+
+<p>這個運算式元素在轉譯為 Servlet 之後，會在 <code>_jspService()</code> 中產生以下的陳述句：</p>
+<div class="highlight"><pre><span></span><code><span class="n">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="k">new</span> <span class="n">Date</span><span class="p">());</span>
+</code></pre></div>
+
+<p><br/></p>
+<h1>解說</h1>
+<p>而上述在 JSP 轉換成 Servlet 的過程中，便會有些物件被自動產生，這些物件的名稱與生命週期使用都被定義，並且存在於 Servlet 中的方法 <code>_jspService()</code> 裡，這些物件被稱為隱含物件，如下表：</p>
+<p><img src="../images/20150211-jsp-servlet-tags-note/JSP-implict-object.png" alt="JSP-implict-object" width="640px"/></p>
+<p>因此當使用 JSP 標籤時要小心。</p>
+<p>如果是使用 <strong>Scriptlet 元素的標籤</strong>：<code>&lt;% Java 陳述句 %&gt;</code>，要注意使用的變數和物件名稱，因為其轉換時，JSP 撰寫的程式會轉換至 <code>_jspService()</code> 裡，因此上述的隱含物件名稱如：<code>request</code>、<code>response</code> ... 等名稱會存在。</p>
+<p>若是自己開發的 JSP 網頁中，使用 Scriptlet 元素的標籤也使用上述一樣的名稱，便會出現錯誤 <strong>Duplicate Local Variable</strong> 的錯誤，因此請記得避開這些名稱。</p>
+<p>而若是使用 <strong>宣告（Declaration）元素的標籤</strong>：<code>&lt;%! 類別成員宣告或方法宣告 %&gt;</code>，由於在轉換成 Servlet 時是 Servlet 得成員變數或方法，所以不會與 <code>_jspService()</code> 裡的隱含物件衝突到。</p>
+<p><br/></p>
+<h1>參考資料</h1>
+<ol>
+<li><a href="http://openhome.cc/Gossip/ServletJSP/DeclarationScriptletExpression.html">Servlet/JSP Gossip: 宣告、Scriptlet 與運算式元素</a></li>
+<li><a href="http://openhome.cc/Gossip/ServletJSP/JSPLifeCycle.html">Servlet/JSP Gossip: JSP 生命週期</a></li>
+<li><a href="http://www.w3cschool.cc/jsp/jsp-syntax.html">JSP 語法</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/jsp">JSP</a>
+      <a href="https://note.koko.guru/tag/servlet">Servlet</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

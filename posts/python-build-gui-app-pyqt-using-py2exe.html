@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="在前一篇 Python - 使用 py2exe 製作 Python exe 執行檔 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作" />
+<meta name="keywords" content="Python, py2exe, PyQt">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔"/>
+<meta property="og:description" content="在前一篇 Python - 使用 py2exe 製作 Python exe 執行檔 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/python-build-gui-app-pyqt-using-py2exe"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-01-04 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="py2exe"/>
+<meta property="article:tag" content="PyQt"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/pages/archive.html">文章列表</a>
+      <a href="/pages/tags.html">標籤</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+      <a href="/pages/other-topics.html">其他主題</a>
+
+      <a href="https://note.koko.guru/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="python-build-gui-app-pyqt-using-py2exe">Python - 使用 PyQt 與 py2exe 製作 GUI 視窗應用程式的 exe 執行檔</h1>
+    <p>
+          Posted on Sun 04 January 2015 in <a href="https://note.koko.guru/category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>在前一篇 <a href="https://note.koko.guru/posts/build-python-exe-using-py2exe Authors: kokokuo">Python - 使用 py2exe 製作 Python exe 執行檔</a> 介紹了製作 exe 與初步認識，但是今天如果要製作的檔案是 GUI 執行檔，可就需要再修改了，此篇介紹如何產生 GUI 視窗程式用的 exe 執行檔，透過 PyQt 開發的視窗應用程式做一個基本的 exe 製作</p>
+<p><br/></p>
+<h1>Python 環境</h1>
+<p>我所使用的環境如下：</p>
+<ol>
+<li>Windows 8.1 x64</li>
+<li>Python 2.7.9 32bit</li>
+<li><a href="http://sourceforge.net/projects/pyqt/files/PyQt4/PyQt-4.11.3/PyQt4-4.11.3-gpl-Py2.7-Qt4.8.6-x32.exe/download">PyQt4-4.11.3-gpl-Py2.7-Qt4.8.6-x32</a></li>
+<li><a href="http://sourceforge.net/projects/py2exe/files/py2exe/0.6.9/py2exe-0.6.9.win32-py2.7.exe/download?use_mirror=nchc&amp;download=">py2exe-0.6.9.win32-py2.7</a></li>
+</ol>
+<p><br/></p>
+<h1>使用 PyQt 製作 GUI 視窗的 <code>setup.py</code></h1>
+<p>以下我以這隻協助尋找 Windows 上連線並儲存過 WiFi 密碼的尋找程式 - <a href="https://github.com/kokokuo/PyQt-FMWPTools">PyQt-FMWPTools</a> 為例。</p>
+<p>我需要製作成可執行檔的檔案名稱叫做 <code>FWMPModel.py</code>，而我會另外 import 同在 <code>FWMPModel.py</code> 路徑資料夾下的 <code>fmwp_mainwindow.py</code>.
+<code>fmwp_mainwindow.py</code> 此檔案是 Qt 的 ui 檔，經過 PyQt 的轉換指令產生的 <code>.py</code> 檔案，檔案位在 <code>FWMPTools</code> 資料夾下，如下圖：</p>
+<p><img src="../images/20150104-python-build-gui-app-pyqt-using-py2exe/pyqt-code-files.png" alt="pyqt-code-files" width="200px"/></p>
+<p>需要改變的地方有：</p>
+<h2>1. 把 console 改成 windows 程式</h2>
+<p>把原本的 console 改成 windows 後則不會有命令提示字元出現，而是只剩下程式本身的視窗，否則視窗與命令提示字元都會出現</p>
+<h2>2. 使用 <code>PyQt</code> 製作的 GUI 程式需要 <code>sip</code> 這個模組</h2>
+<p>要製作 <code>PyQt</code> 開發的程式需要 <code>sip</code> 這個模組。 在 <a href="https://zh.wikipedia.org/wiki/PyQt">Wiki 的 PytQt</a> 中有提到 SIP 為是一個自動為 C 和 C++ 庫生成 Python 擴充功能模組的工具。 為了方便開發 PyQt，SIP 於 1998 被「Riverbank Computing」公司創造出來。不過，SIP 不專用於 PyQt，而是適用於所有的 C 和 C++庫 ( 其他介紹可以參考 <a href="https://riverbankcomputing.com/software/sip/intro">PyQt</a> 網站與 <a href="https://wiki.python.org/moin/SIP">PyPI</a> )。</p>
+<p>所以 SIP 可以說是 PyQt 的底層，沒有這隻檔案便無法製作 exe 執行檔。不過我們不需要另外下載，因為 SIP 已經包含在 PyQt 中，我們只需要在 <code>setup.py</code> 中把它放到 <code>includes</code> 參數。</p>
+<h2>3. 加入打包的其他引入 Python 檔案</h2>
+<p>因為我有在 <code>FMWPModel.py</code> 中透過 <code>import</code> 加入視窗的 UI 定義檔案  <code>fmwp_mainwindow.py</code>，因此也需要把此檔案加入至 <code>includes</code> 中。 <code>includes</code> 只需要加入所有打包檔需要的其他 <code>module</code> 檔案即可，並且只需標示名稱 - <strong>list of module names to include</strong> 。</p>
+<p>所以 <code>setup.py</code> 如下: </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">import</span> <span class="nn">py2exe</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;py2exe&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;bundle_files&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;compressed&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s2">&quot;includes&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sip&#39;</span><span class="p">,</span><span class="s1">&#39;fmwp_mainwindow&#39;</span><span class="p">]</span>
+    <span class="p">}},</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="s1">&#39;FMWPModel.py&#39;</span><span class="p">,</span><span class="s2">&quot;icon_resources&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;find.ico&quot;</span><span class="p">)]}],</span>
+    <span class="n">zipfile</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>結果畫面 :</p>
+<p><img src="../images/20150104-python-build-gui-app-pyqt-using-py2exe/result.png" alt="result" width="480px"/></p>
+<p><br/></p>
+<h1>參考資料</h1>
+<ol>
+<li><a href="http://www.py2exe.org/index.cgi/Py2exeAndPyQt">Py2exeAndPyQt</a></li>
+<li><a href="http://www.pythoner.com/111.html">使用 Py2exe 将 PyQt 程序打包为 exe 文件</a></li>
+<li><a href="https://pythontips.com/2014/03/03/using-py2exe-the-right-way/">Using py2exe the right way</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/python">Python</a>
+      <a href="https://note.koko.guru/tag/py2exe">py2exe</a>
+      <a href="https://note.koko.guru/tag/pyqt">PyQt</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

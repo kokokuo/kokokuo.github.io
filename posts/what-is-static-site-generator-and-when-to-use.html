@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="當我們要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。" />
+<meta name="keywords" content="Static Site Generator">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)"/>
+<meta property="og:description" content="當我們要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/what-is-static-site-generator-and-when-to-use"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-01-28 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Static Site Generator"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; 什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/pages/archive.html">文章列表</a>
+      <a href="/pages/tags.html">標籤</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+      <a href="/pages/other-topics.html">其他主題</a>
+
+      <a href="https://note.koko.guru/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="what-is-static-site-generator-and-when-to-use">什麼是靜態網站 (Static Site) 與 靜態網站產生器 (Static Site Generator)</h1>
+    <p>
+          Posted on Mon 28 January 2019 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>而如果你的網站只是要單純呈現內容與介紹資訊為主，那麼你的網站可能有單純的靜態內容，此時我們也稱這類型的網站為 <strong>靜態網站 (Static Site)</strong>，此時你可以考慮使用 <strong>靜態網站產生器 (Static Site Generator)</strong> 來製作。</p>
+<p>那麼什麼是 <strong>靜態網站 (Static Site)</strong>，什麼又是 <strong>靜態網站產生器 (Static Site Generator)</strong> 呢？</p>
+<p>以下我們就來談談與介紹。</p>
+<h1>前言</h1>
+<hr>
+<p>當我們要架設一個網站時，一定或多或少會去想一下，這個網站是什麼用途，要怎麼架設與架設在哪裡。</p>
+<p>而如果你的網站只是要單純呈現內容與介紹資訊為主，那麼你的網站可能有單純的靜態內容，此時我們也稱這類型的網站為 <strong>靜態網站 (Static Site)</strong>，此時你可以考慮使用 <strong>靜態網站產生器 (Static Site Generator)</strong> 來製作。</p>
+<p>那麼什麼是 <strong>靜態網站 (Static Site)</strong>，什麼又是 <strong>靜態網站產生器 (Static Site Generator)</strong> 呢？</p>
+<p>以下我們就來談談與介紹。</p>
+<h1>靜態網站產生器 (Static Site Generator)</h1>
+<hr>
+<p>要談到「靜態網站產生器」，需要先分別介紹何謂「靜態網站」、「內容管理系統 CMS」。</p>
+<h3>靜態網站 (Static Site)</h3>
+<p>雖然英文是寫 Static Site，但是其實這裡的 Site 是指 WebSite ，一般所謂的靜態網站通常是指該網站的網頁與資料組成都是以 HTML/CSS/JS 檔案組成。</p>
+<p>除此之外，像是能有資料庫儲存，或是其他複雜功能如會員功能、用戶登入、發布文章，或是如購物結帳刷卡等功能，由於都是透過後端語言（諸 PHP, Ruby, Python, Java, Node.js, C# ...等等）完成的，因此也不是靜態網站能做到的事情。 通常具備上述這些特色的都稱動態網站。</p>
+<p>所以像是一般耳熟能詳的 Wordpress 因為具備後台編寫、會員購物車等擴充功能、使用 PHP 語言，需要資料庫等條件，就不屬於靜態網站，而是所謂的動態網站。</p>
+<h3>內容管理系統 (CMS)</h3>
+<p>內容管理系統可以新增、編輯與發佈內容文章外，也能透過目錄與標籤等功能協助分類管理，並能選擇主題來呈現不同的外觀，如 Wordpress ，通常內容管理系統會透過後端程式語言與資料庫來建置與運作。</p>
+<p>然而上述的內容管理系統(CMS) 正需因要有資料庫與後端語言搭建的服務，因此在建置與使用上需要額外花些時間學習與維護，也有不好遷移或轉移到不同的 CMS 管理系統，因此才有了靜態網站產生器的出現。</p>
+<h3>靜態網站產生器 (Static Site Generator)</h3>
+<p>靜態網站產生器一樣擁有能做到新增，編輯與發佈文章，也能標籤與分類管理或更換主題樣式，但是這一切只要由 Markdown 格式的檔案編寫，再透過產生器產出只需要 HTML/CSS/JS 檔案組成靜態網站即可，因此所有的文章都只要以 Markdown 格式的檔案保存在目錄即可，也能直接編輯，在透過產生器自動建置產生即可。</p>
+<h1>使用靜態網站的優點</h1>
+<hr>
+<h2>優點</h2>
+<h3>操作簡單</h3>
+<p>你不需要學習後端程式語言，學習資料庫語法，或是複雜的架設伺服器等方式，你只需要 HTML / CSS 或是許多靜態網站的工具會使用 Markdown 語法撰寫，因此非常快上手。</p>
+<h3>快速</h3>
+<p>因為靜態網站的內容都是 HTML/CSS/JS 等檔案，所以不需要有資料庫，也不需要從資料庫查詢資料，也沒有伺服器做請求，頁面也不用樣板渲染，因此速度上會非常快速。</p>
+<h3>安全</h3>
+<p>你不用擔心伺服器與資料庫被攻擊，因為你只有前端的靜態檔案，而且這些檔案因為是 HTML 所以你再架設時的內容自然都是對外的資訊。</p>
+<h3>便宜</h3>
+<p>因為不用架設資料庫，也不用架設動態網站所需要的伺服器，所以擺設你的靜態網站檔案的主機費用可以很低，甚至有許多的服務提供免費的架設，如 Github Page。</p>
+<h2>缺點</h2>
+<h3>功能極度受限</h3>
+<p>因為是靜態網站，只有 HTML/CSS/JS，所以能做的事情非常受限，例如沒有辦法製作會員功能，提供註冊、登入與登出，沒有辦法輸入資料保存，也沒有辦法提供像是購物、刷卡等功能等等；靜態網站只能拿來以顯示內容為主，加上一些簡易的網頁前端的動態效果（如漸層、滑動...等等）。</p>
+<h3>沒有 real-time content</h3>
+<p>因為都是靜態的內容，所以也沒會有自動出現或產生的內容存在，不像一般的網站可以在網頁上新增、編輯或刪除內容。</p>
+<h1>何時選擇使用靜態網站</h1>
+<hr>
+<p>若你的網站只要呈現個人的基本資訊作為履歷，或是以呈現、寫文章 Blog 等內容為主，那麼可以選擇使用靜態網站來快速建置達成你的蜜標。</p>
+<h1>如何選擇靜態網站產生器</h1>
+<hr>
+<p>雖然靜態網站產生器都有 CMS 的功能，不過在預設的用途定義上還是有些區分，例如有些是用在專案的文件製作，而有些是以網誌為主自己選擇由熟悉，有些除了 Markdown 外還支援別的格式編寫，或是有其他的功能特色，如回覆留言，RSS 訂閱，Google Analytics ..等。</p>
+<p>並且產生器所使用的程式語言都不太相同 (e.g: Ruby, Node.js, Python, PHP ...)，因此會建議參考 <a href="https://www.staticgen.com/">StaticGen</a> 網站來選擇，並對每一個靜態網站研究。</p>
+<p><img alt="staticgen-site" src="../images/20190128-what-is-static-site-generator-and-when-to-use/staticgen-site.png"></p>
+<h1>參考文章</h1>
+<hr>
+<ol>
+<li><a href="https://www.staticgen.com/">StaticGen</a></li>
+<li><a href="https://learn.cloudcannon.com/jekyll/why-use-a-static-site-generator/">Why use a static site generator?</a></li>
+<li><a href="https://wsvincent.com/what-is-a-static-site-generator/">What is a Static Site Generator?</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/static-site-generator">Static Site Generator</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

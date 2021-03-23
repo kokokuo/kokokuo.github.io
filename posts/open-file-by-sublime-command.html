@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom.css" rel="stylesheet">
+
+    <link href="https://note.koko.guru/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="koko's Note Atom">
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。" />
+<meta name="keywords" content="Mac, Sublime">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Mac - 使用指令以 Sublime 開啟檔案"/>
+<meta property="og:description" content="最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/open-file-by-sublime-command"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-02-13 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="posts"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Sublime"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Mac - 使用指令以 Sublime 開啟檔案</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/pages/archive.html">文章列表</a>
+      <a href="/pages/tags.html">標籤</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+      <a href="/pages/other-topics.html">其他主題</a>
+
+      <a href="https://note.koko.guru/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="open-file-by-sublime-command">Mac - 使用指令以 Sublime 開啟檔案</h1>
+    <p>
+          Posted on Fri 13 February 2015 in <a href="https://note.koko.guru/category/posts.html">posts</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。</p>
+<p><br/></p>
+<h1>設定步驟</h1>
+<h3>1.把 Sublime 的指令放到 <code>usr/local/bin</code> 目錄下</h3>
+<p>一般預設而言，下載 Sublime 並安裝在 Mac 後，如果是 Text2 預設路徑會在：</p>
+<div class="highlight"><pre><span></span><code>/Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span><span class="m">2</span>.app/Contents/SharedSupport/bin/
+</code></pre></div>
+
+<p>如果是 Text3 則是：</p>
+<div class="highlight"><pre><span></span><code>/Applications/Sublime<span class="se">\ </span>Text.app/Contents/SharedSupport/bin/
+</code></pre></div>
+
+<p>而不管是 Text2 或 Text3 的 <code>bin</code> 目錄底下，都會有一個 <code>subl</code> 執行檔案。
+因此我們要把此執行檔加至環境變數，如果才能讓 Terminal 在輸入 <code>subl</code> 時找到該程式，並以此程式開啟檔案。</p>
+<p>而為了方便檔案的管理，接著採用 symlink 捷徑的方式放到 <code>/usr/local/bin</code> 目錄下管理（ 系統管理員在本機自行安裝自己下載的軟體( 非 distribution 預設提供者 )）。</p>
+<p>所以若是 Text2 請在 Terminal 中輸入此行執行：</p>
+<div class="highlight"><pre><span></span><code>ln -s /Applications/Sublime<span class="se">\ </span>Text<span class="se">\ </span><span class="m">2</span>.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+</code></pre></div>
+
+<p>若是版本是 Text3 則在 Terminal 中輸入此行執行：</p>
+<div class="highlight"><pre><span></span><code>ln -s /Applications/Sublime<span class="se">\ </span>Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+</code></pre></div>
+
+<h3>2. 把 <code>usr/local/bin</code> 路徑加入致環境變數</h3>
+<p>若是 <code>/usr/local/bin/</code> 不存在於環境變數 PATH 中，請把此路徑加入至用戶的環境變數設定檔中，如 <code>.bash_profile</code> ( 如果沒有請在 Home 目錄建置 )。</p>
+<p>完成後，重啟 Terminal 後 sublime 便會被系統環境偵測到，如果要查看指令，因為我們的 symlink 是改成 sublime，所以下 <code>sublime -h</code> 即可。</p>
+<p><br/></p>
+<h1>參考資料</h1>
+<ol>
+<li><a href="https://gist.github.com/artero/1236170">Launch Sublime Text 2 from the Mac OS X Terminal</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/mac">Mac</a>
+      <a href="https://note.koko.guru/tag/sublime">Sublime</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
