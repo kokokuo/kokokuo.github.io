@@ -1,6 +1,7 @@
 Title: Homebrew (1) - Mac 上安裝 Homebrew 套件管理工具
 Date: 2019-03-06
 Tags: Mac, Homebrew
+Category: Homebrew
 Slug: mac-install-homebrew
 Authors: kokokuo
 Summary: Homebrew 是 Mac 專用的套件管理工具，如同 Linux 中的 apt 或是 yum 工具，許多的套件工具都可以透過 Homebrew 安裝，並且管理（如列出安裝的套件、更新套件、修正套件、移除套件等等）上非常方便，即便要尋找也都會放在相同的目錄下。

@@ -1,6 +1,7 @@
 Title: Mac - 使用指令以 Sublime 開啟檔案
 Date: 2015-02-13
 Tags: Mac, Sublime
+Category: 編輯器
 Slug: open-file-by-sublime-command
 Authors: kokokuo
 Summary: 最近使用 Sublime 開發，但是因為本身習慣用 Command 做事情，所以懶得用 UI 點擊軟體開啟的方式，因此決定尋找 Sublime 是否有指令可以做，以下紀錄設定過程。

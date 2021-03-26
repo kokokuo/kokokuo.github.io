@@ -1,6 +1,7 @@
 Title: Mac - 使 Mac Terminal 有顏色 ( Prompt 與 ls )
 Date: 2015-01-06
 Tags: Mac, Terminal
+Category: 編輯器
 Slug: mac-terminal-bash-color
 Authors: kokokuo
 Summary: 開始學習使用終端機（ Terminal ），但是預設的 Terminal 只有兩種顏色，通常都是黑白配色，而 Mac 的終端機雖然可以有編輯配色，但是依然還是很單調，所以這邊要來筆記一下，如何更改配色。

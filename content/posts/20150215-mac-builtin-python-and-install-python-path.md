@@ -1,6 +1,7 @@
 Title: Mac - 內建 Python 與自行安裝 Python 所在路徑
 Date: 2015-02-15
 Tags: Mac, Python
+Category: Pelican
 Slug: mac-builtin-python-and-install-python-path
 Authors: kokokuo
 Summary: Mac 基本上內建了各程式語言，如 Ruby、C++，而 Python 也在其中，因此如果另外自行安裝 Python 則會有兩個不同的路徑。

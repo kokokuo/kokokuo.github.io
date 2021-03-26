@@ -1,6 +1,7 @@
 Title: Pelican - 出現 RuntimeError: File XXX.html is to be overwritten
 Date: 2019-07-22
 Tags: Pelican, Python
+Category: Pelican
 Slug: pelican-runtime-error-when-html-overwritten
 Authors: kokokuo
 Summary: 在使用 Pelican 撰寫 Markdown 文章並要透過 `make html && make serve` 輸出 HTML 並查看 Localhost 時，卻出現了 `RuntimeError: File XXX.html is to be overwritten` 的錯誤，由於這是沒有遇過的現象，且網路上沒有看到任何網友分享遇到相同的情況，也沒看到解決的方法，因此稍微紀錄一下，也為了之後可能遇到的人提供參考。

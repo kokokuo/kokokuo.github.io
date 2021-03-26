@@ -1,6 +1,7 @@
 Title: Python - 安裝 Pelican Theme 來改變你的靜態網站主題
 Date: 2019-03-14
 Tags: Python, Mac, Python3
+Category: Pelican
 Slug: install-pelican-theme
 Authors: kokokuo
 Summary: 由於使用 Pelican 靜態網站產生器架設好的網誌所提供的預設版面與外觀並不好看，因此想要更換，但是要怎麼更換呢？ Pelican 會不會有像 Wordpress 一樣能夠更換的功能了？ 還是...難不成要用程式寫一個？

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+import logging
 
 AUTHOR = "kokokuo"
 
@@ -41,7 +42,7 @@ THEME = "themes/Flex"
 
 """
 == Input Content Root ======
-- 讀取的輸入目錄，也就是你的寫作目錄
+- 讀取的輸入目錄，也就是你的工作目錄 (即便改掉或不填也沒影響，主要看你的專案目錄 Folder 是否為 content 名稱來影響是否可以產生內容)
 """
 PATH = "content"
 
@@ -71,10 +72,12 @@ TAGS_SAVE_AS = 'tags.html'
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
 
+# 文章列表與標籤沿用 Template 提供的 archives.html 與 tags.html
+# 但是下面會透過 THEME_TEMPLATES_OVERRIDES 修改這兩個 Template
 MENUITEMS = (
     ('關於我', '/pages/about.html'),
-    ('文章列表', '/pages/archives.html'),
-    ('標籤', '/pages/tags.html'),
+    ('文章列表', '/archives.html'),
+    ('標籤', '/tags.html'),
     ('軟體開發', '/pages/software-development.html'),
     ('理財投資', '/pages/financial-investment.html'),
 )
@@ -111,7 +114,8 @@ PAGINATION_PATTERNS = (
 """
 STATIC_PATHS = [
     "images",
-    "extra"
+    "static",
+    "resources",
 ]
 
 """
@@ -122,21 +126,23 @@ STATIC_PATHS = [
 - 另外因 README 與 CNAME 需要放在根目錄下，所以不指定在 static 之中
 """
 EXTRA_PATH_METADATA = {
-    "extra/custom.css": {"path": "static/custom.css"},
-    "extra/koko-logo.png": {"path": "static/koko-logo.png"},
-    "extra/favicon.ico": {"path": "static/favicon.ico"},
-    "extra/CNAME": {"path": "CNAME"},
-    "extra/README": {"path": "README.md"},
+    "static/custom-style.css": {"path": "static/custom-style.css"},
+    "static/koko-logo.png": {"path": "static/koko-logo.png"},
+    "static/favicon.ico": {"path": "static/favicon.ico"},
+    "resources/CNAME": {"path": "CNAME"},
+    "resources/README": {"path": "README.md"},
 }
+
 
 """
 == Flex Theme Custom Setting ========
 - MAIN_MENU is True will make MENUITEMS work in Flex theme.
 """
 MAIN_MENU = True
-
+# If True hide URL hash => 可以使點文章擊連結時，不會跳轉到文章標題的位置，連結的跳轉可以參考 Flex 下 templates/index.html 
+DISABLE_URL_HASH = True
 # CUSTOM_CSS 是輸出成 HTML 時的該客製化 CSS 檔案的位置
-CUSTOM_CSS = "static/custom.css"
+CUSTOM_CSS = "static/custom-style.css"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -155,3 +161,5 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
+
+LOG_FILTER = [(logging.DEBUG)]

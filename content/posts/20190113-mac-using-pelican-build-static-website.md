@@ -1,6 +1,7 @@
 Title: 在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌
 Date: 2019-01-13
 Tags: Python, Pelican
+Category: Pelican
 Slug: mac-using-pelican-build-static-website
 Authors: kokokuo
 Summary: 以前雖然使用 Wordpress 作為網誌，但是由於自己的網誌用途單純以寫作為主，加上先前遇到架設的 Wordpress 後來有轉移主機的情形，但轉移與重建過程繁瑣外，再次架設還需要還原資料庫，甚至新的 Wordpress 格式跑掉。

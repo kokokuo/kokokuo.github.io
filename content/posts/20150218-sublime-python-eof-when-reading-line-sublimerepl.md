@@ -1,6 +1,7 @@
 Title: 使用 SublimeREPL 解決 Python 在 Sublime 內操作 Termial 控制台時出現 EOF when reading a line
 Date: 2015-02-18
 Tags: Mac, Python, Sublime
+Category: 編輯器
 Slug: sublime-python-eof-when-reading-line-sublimerepl
 Authors: kokokuo
 Summary: 使用 Sublime 撰寫 Python 程式時，若使用 `raw_input` 函式，當操作 Sublime 內建的 Termial ( 透過 `Command + B` ) 啟用 Sublime 的 Python 控制台時，會出現以下錯誤 `EOF when reading a line`，而本篇會介紹如何解決此問題。

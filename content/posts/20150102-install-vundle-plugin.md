@@ -1,6 +1,7 @@
 Title: Vundle 安裝與安裝 Plugin 時的注意事項
 Date: 2015-01-02
 Tags: Vim
+Category: 編輯器
 Slug: install-vundle-and-notice
 Authors: kokokuo
 Summary: 剛開始學習使用 Vim，因為習慣了 GUI 的 IDE 特別是剛從號稱 Windows 的地表最強 IDE - Visual Studio 跳過來，整個好不容易，所以這裡記錄了一些剛使用 Vundle 時下載 Plugin 的小須知

@@ -1,6 +1,7 @@
 Title: 解決在 Mac 下使用 Sublime 無法處理 Ctrl + Space 的自動補齊與提示功能
 Date: 2015-02-28
 Tags: Mac, Sublime
+Category: 編輯器
 Slug: mac-sublime-ctrlspace-auto-completeion
 Authors: kokokuo
 Summary: Sublime 本身內建基本的 **Auto Complete** 功能，不過主要是的使用過的單字才會提示，而且如果現在打到一半，通常想要顯示提示時，Sublime 會有快捷鍵可以叫出，但是這個快捷鍵的指令是 **Ctrl + Space** 好巧不巧的與 Mac 的快捷鍵衝突到，會叫出 **Spotlight** 搜尋...

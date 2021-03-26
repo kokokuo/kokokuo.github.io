@@ -1,6 +1,7 @@
 Title: Golang - 使用 GVM 管理器安裝 Golang 在 Mac 上
 Date: 2019-07-13
 Tags: Golang, Mac, GVM
+Category: Golang
 Slug: golang-install-on-mac-with-gvm
 Authors: kokokuo
 Summary: 最近開始摸 Golang ( 簡稱 Go )，而正所謂預先善其事必先利其器，當然要先把環境安裝好。在 Mac 上安裝 Golang 非常容易，可以直接透過 `hombrew` 或是從 Golang 官方下載安裝即可。但是這麼做會使電腦的 Golang 的版本被限縮在某一版，如果今天從 Github 上或是與其他團隊共同開發 Golang 專案時，可能會需要同時存在不同版本，因此本篇介紹使用 Golang 版本管理器 - GVM，來俐落的安裝不同的 Golang 版本。

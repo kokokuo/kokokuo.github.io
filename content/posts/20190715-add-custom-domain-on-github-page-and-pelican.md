@@ -1,6 +1,7 @@
 Title: Pelican - 設定客製化網域並顯示在 Github Page 上
 Date: 2019-07-15
 Tags: Pelican, Github, Domain
+Category: Pelican
 Slug: add-custom-domain-on-github-page-and-pelican
 Authors: kokokuo
 Summary: 使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 `<username>.github.io` 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！

@@ -1,6 +1,7 @@
 Title: Pelican - 常用參數設定介紹與功能設定
 Date: 2019-03-15
 Tags: Pelican, Python
+Category: Pelican
 Slug: pelican-settings-parameter-introudction
 Authors: kokokuo
 Summary: 如果你的 Pelican 剛架好，並且正在苦思一些設定，例如 Favicon 、客製化頁面、設定分類與標籤頁面、如何安裝留言板與 Google Analystic 與 robot.txt 等等，那麼此篇非常歡迎你來瞧瞧，介紹一些常用的 Pelican 的設定參數用途。

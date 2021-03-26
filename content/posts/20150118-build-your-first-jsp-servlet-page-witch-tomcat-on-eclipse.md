@@ -1,6 +1,7 @@
 Title: Windows - 透過 Eclipse 建置 JSP 網頁在 Tomcat 上
 Date: 2015-01-18
 Tags: Windows, JSP, Servlet, Tomcat, Eclipse
+Category: Java
 Slug: build-your-first-jsp-servlet-page-witch-tomcat-on-eclipse
 Authors: kokokuo
 Summary: 因為專案的關係，第一次觸碰 JSP，所以筆記一下如何在 Windows 上建置環境，並且藉由 Eclipse 執行 Tomcat 啟動 JSP 網頁

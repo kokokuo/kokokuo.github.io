@@ -1,6 +1,7 @@
 Title: Python - 使用 py2exe 製作 Python exe 執行檔
 Date: 2015-01-03
 Tags: Python, py2exe 
+Category: Python
 Slug: build-python-exe-using-py2exe Authors: kokokuo 
 Summary: 用 Python 做開發程式，最後都會需要釋出來使用，但是一個可以給人使用的程式對使用者來說，特別是在 Windows 上，是需要可執行檔的。因此會需要把 Python 的 Script 檔案製作成 exe 執行檔。 並且最好的是，到了使用者的環境上不需要安裝任何 Python 的環境，也就是所有使用的套件包含 Python 環境都打包好了，而 Python 是一個有強大社群與 API 工具的語言，此文章這邊我先選擇 py2exe 做使用與測試。
 
