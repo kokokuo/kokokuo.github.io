@@ -8,17 +8,17 @@
   </header>
   <div>
     <dl>
-      {# foreach according categories. #}
+      {# 根據 categories 尋訪 #}
       {% for (category, articles) in categories %}
-        {# display category name. #}
+        {# 顯示每一個 category 名稱 #}
         <dt><h2>{{ category }}</h2></dt>
         <dl>
           <ul>
-          {# foreach according articles (ordered by date). #}
+          {# 尋訪根據 date 排序好的 articles #}
           {% for article in articles|sort(attribute="date") %}
-            {# format date object to ISO 8601 date. #}
+            {# 格式化日期為 ISO 8601 date #}
             {% set article_date = article.date.strftime('%Y-%m-%d') %}
-            {# display article url and title. #}
+            {# 顯示文章連結與標題 #}
             <li>{{ article_date  }} &nbsp; <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></li>
           {% endfor %}
           </ul>

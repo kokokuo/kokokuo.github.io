@@ -72,8 +72,7 @@ TAGS_SAVE_AS = 'tags.html'
 DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
 
-# 文章列表與標籤沿用 Template 提供的 archives.html 與 tags.html
-# 但是下面會透過 THEME_TEMPLATES_OVERRIDES 修改這兩個 Template
+# 文章列表與標籤沿用 Template 提供的 archives.html 與 tags.html (使用 Flex 的 MAIN_MENU 後會出現在上方)
 MENUITEMS = (
     ('關於我', '/pages/about.html'),
     ('文章列表', '/archives.html'),
@@ -81,6 +80,14 @@ MENUITEMS = (
     ('軟體開發', '/pages/software-development.html'),
     ('理財投資', '/pages/financial-investment.html'),
 )
+
+# 是否使用呈現在 Sidebar 側的標籤連結
+SIDEBAR_TAGS = True
+
+THEME_TEMPLATES_OVERRIDES = ['sidebar_tags']
+
+DIRECT_TEMPLATES = ['index', 'authors', 'categories', 'tags', 'archives', 'sidebar_tags']
+
 
 """
 == PAGE URL & SAVE_AS  ===============

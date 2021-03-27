@@ -1,0 +1,20 @@
+<section id=sidebar_tags>
+  <dl>
+    {# 紀錄計算過文章數量的標籤 metadata #}
+    {% set tags_metadata = [] %}
+    {% for tag, articles in tags %}
+      {% set _ = tags_metadata.append(dict({
+        "tag": tag,
+        "articles": articles,
+        "count": articles|count
+      })) %}
+    {% endfor %}
+    {# 限制只呈現 12 筆 #}
+    {% set display_limit = 9 %}
+    {# 根據最多文章數量的標籤排序顯示 #}
+    {% for tag_metadata in tags_metadata|sort(reverse=true, attribute="count") %}
+      <dt><a href='{{ SITEURL }}/{{ tag_metadata["tag"].url }}'>{{ tag_metadata["tag"] }} ({{ tag_metadata["count"] }})</a></dt>
+    {% endfor %}
+  </dl>
+</section>
+

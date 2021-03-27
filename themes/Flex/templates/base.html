@@ -104,6 +104,12 @@
 
       {% if SITESUBTITLE %}<p>{{ SITESUBTITLE }}</p>{% endif %}
 
+      {# 客製化標籤 Tags 為選單區塊 #}
+      {% if SIDEBAR_TAGS %}
+        {# {% block sidebar_tags %}{% endblock %} #}
+        {% include "sidebar_tags.html" %}
+      {% endif %}
+
       {% if pages or LINKS %}
       <nav>
         <ul class="list">

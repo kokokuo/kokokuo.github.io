@@ -1,6 +1,6 @@
 Title: 透過 Github Page 上傳靜態網站
 Date: 2019-02-08
-Tags: Static Site Generator, Github
+Tags: Static Site, Github
 Category: Github
 Slug: build-static-website-to-github-page
 Authors: kokokuo

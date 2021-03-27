@@ -1,6 +1,6 @@
 Title: Python - 透過 .venv 管理 Pipenv 虛擬環境的來源
 Date: 2019-03-11
-Tags: Python, Pipenv, Virtualenv
+Tags: Python, Pipenv
 Category: Python
 Slug: pipenv-use-dot-venv-folder
 Authors: kokokuo

@@ -38,6 +38,47 @@ h6 {
   font-size: 1.08em
 }
 
+/* 調整左半邊區塊的顏色 */
+aside {
+  background-color: #304054;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Menu Items 使用 */
+aside ul.list {
+    padding: 1em 0 1em 0;
+    font-size: 0.8em;
+}
+
+aside section#sidebar_tags {
+  /* 上下 左右 */
+  padding: 1em 0em;
+}
+aside section#sidebar_tags dl {
+  display: inline;
+
+  padding: 1em 0em 1em 0em;
+  font-size: 1.0em;
+}
+
+aside section#sidebar_tags dt {
+  display: inline;
+  
+}
+
+aside section#sidebar_tags a {
+  font-size: 0.8em;
+  background-color: #ff5555c7;
+  color: #ffffff;
+  border-radius: 6px;
+  display: inline-block;
+  white-space: pre-wrap;
+  margin: 0.2em 0.1em 0.1em 0.2em;
+  padding: 0em 0.4em 0em 0.4em;
+
+}
+
 /* 調整上面 Navbar 文字大小 */
 main nav {
   text-align: center;
@@ -57,23 +98,6 @@ main nav a {
   color: rgba(48, 47, 47, 0.8);
 }
 
-/* Menu Items 使用 */
-ul.list {
-    padding: 1em 0 1em 0;
-    font-size: 0.8em;
-}
-
-/* id = "tags" 且 class = "list, "標籤頁 */
-ul#tags.list {
-  padding: 1em 0 1em 0;
-  font-size: 1.0em;
-}
-
-ul#tags.list a {
-  background-color: #f5f5f5;
-  color: #363636;
-}
-
 
 /* 調整單行指令區塊的寬度、大小與換行處理 */
 main article *:not(pre)>code {
@@ -91,13 +115,6 @@ main article *:not(pre)>code {
   border-radius: 3px; */
 }
 
-
-/* 調整左半邊區塊的顏色 */
-aside {
-  background-color: #304054;
-  color: #ffffff;
-  text-align: center;
-}
 
 /* 調整引言的文字區塊 */
 main article blockquote {

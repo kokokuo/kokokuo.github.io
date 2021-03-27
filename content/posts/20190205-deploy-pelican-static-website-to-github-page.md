@@ -1,6 +1,6 @@
 Title: 使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例
 Date: 2019-02-05
-Tags: Python, Pelican, Github, Static Site Generator
+Tags: Python, Pelican, Github, Static Site
 Category: Github
 Slug: deploy-pelican-static-webiste-to-github-page
 Authors: kokokuo

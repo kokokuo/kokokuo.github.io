@@ -1,6 +1,6 @@
 Title: Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv
 Date: 2019-03-07
-Tags: Python, 虛擬環境
+Tags: Python
 Category: Python
 Slug: python-virtualenv-install-and-usage
 Authors: kokokuo
