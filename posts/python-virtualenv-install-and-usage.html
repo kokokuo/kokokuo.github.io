@@ -28,7 +28,7 @@
 
 <meta name="author" content="kokokuo" />
 <meta name="description" content="在開發 Python 的程式時，時不時就會透過 pip 從 PyPI 上安許多的套件來 import 使用，但是因為 Python 是裝在整個電腦的系統環境的，所以當我們之後寫的專案變多，每個不同的專案都因為有各自的需要 pip install 了不同的套件，最後整個 Python 的系統環境所安裝的套件就會非常多且雜亂！ 那麼要如何讓每個專案安裝的套件都只有自己的專案擁有，且不會弄亂系統的 Python 環境呢？ 這時候就需要虛擬環境了！" />
-<meta name="keywords" content="Python, 虛擬環境">
+<meta name="keywords" content="Python">
 
 <meta property="og:site_name" content="koko's Note"/>
 <meta property="og:title" content="Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv"/>
@@ -41,7 +41,6 @@
 <meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
 <meta property="article:section" content="Python"/>
 <meta property="article:tag" content="Python"/>
-<meta property="article:tag" content="虛擬環境"/>
 <meta property="og:image" content="/static/koko-logo.png">
 
   <title>koko's Note &ndash; Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv</title>
@@ -63,6 +62,33 @@ Code / Web / Architecture
 <br/>
 才能看起來毫不費力
 </p>
+<section id=sidebar_tags>
+  <dl>
+      <dt><a href='https://note.koko.guru/tag/python'>Python (19)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/mac'>Mac (13)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/github'>Github (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python2'>Python2 (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pipenv'>Pipenv (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/jsp'>JSP (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/servlet'>Servlet (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/windows'>Windows (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/py2exe'>py2exe (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/domain'>Domain (1)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/golang'>Golang (1)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/gvm'>GVM (1)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/homebrew'>Homebrew (1)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/tomcat'>Tomcat (1)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/eclipse'>Eclipse (1)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/terminal'>Terminal (1)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/vim'>Vim (1)</a></dt>
+  </dl>
+</section>
+
       <nav>
         <ul class="list">
 
@@ -234,7 +260,6 @@ parser/&gt; <span class="nb">source</span> venv/bin/activate
   <div class="tag-cloud">
     <p>
       <a href="https://note.koko.guru/tag/python">Python</a>
-      <a href="https://note.koko.guru/tag/xu-ni-huan-jing">虛擬環境</a>
     </p>
   </div>
 
