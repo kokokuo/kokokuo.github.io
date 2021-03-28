@@ -15,6 +15,7 @@
     {% for tag_metadata in tags_metadata|sort(reverse=true, attribute="count") %}
       <dt><a href='{{ SITEURL }}/{{ tag_metadata["tag"].url }}'>{{ tag_metadata["tag"] }} ({{ tag_metadata["count"] }})</a></dt>
     {% endfor %}
+    <dt><a id="tags_mores" href='{{ SITEURL }}/{{ TAGS_SAVE_AS }}'>...more</a></dt>
   </dl>
 </section>
 
