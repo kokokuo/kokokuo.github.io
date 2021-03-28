@@ -3,6 +3,7 @@
 from __future__ import unicode_literals
 import logging
 
+
 AUTHOR = "kokokuo"
 
 # Website Information  ===
@@ -76,7 +77,6 @@ DISPLAY_PAGES_ON_MENU = False
 MENUITEMS = (
     ('關於我', '/pages/about.html'),
     ('文章列表', '/archives.html'),
-    ('標籤', '/tags.html'),
     ('軟體開發', '/pages/software-development.html'),
     ('理財投資', '/pages/financial-investment.html'),
 )

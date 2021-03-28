@@ -1,18 +1,37 @@
 {% extends "base.html" %}
 
-{% block title %} &ndash; {{ _('標籤') }}{% endblock %}
+{% block title %} &ndash; {{ _('標籤分類') }}{% endblock %}
 
 {% block content %}
 <article class="single">
   <header>
-    <h1>{{ _('標籤') }}</h1>
+    <h1>{{ _('標籤分類') }}</h1>
   </header>
   <div>
-    <ul id="tags" class="list">
-      {%- for tag, articles in tags|sort %}
-          <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
-      {% endfor %}
-    </ul>
+    <dl id="tags">
+    {% set prefix_groups = dict({}) %}
+    {% for tag, articles in tags %}
+      {# 對目前所有標籤，以字母做分類存放 #}
+      {% set prefix = tag.name[0]|upper %}
+      {% if not prefix in prefix_groups %}
+        {# 不能用 Python 的 dict 寫法，要 assign key value 得用 update #}
+        {% set _ = prefix_groups.update({ prefix: [(tag, articles)] }) %}
+      {% else %}
+        {% set _ = prefix_groups[prefix].append((tag, articles)) %}
+      {% endif %}
+    {% endfor %}
+    {# 根據字母分類尋訪 #}
+    {% for prefix_key, group_tags in prefix_groups|dictsort() %}
+        <dt><h2>{{ prefix_key }}</h2></dt>
+        {# 顯示字母分群好的 tags 內的每一個 tag 與文章 #}
+        {% for tag, articles in group_tags|sort %}
+          <dt><a href='{{ SITEURL }}/{{ tag.url }}'>{{ tag }} ({{ articles|count }})</a></dt>
+        {% endfor %}
+    {% endfor %}
+    </dl>
   </div>
 </article>
 {% endblock %}
+
+
+
