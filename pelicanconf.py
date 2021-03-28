@@ -111,7 +111,7 @@ ARTICLE_SAVE_AS = 'posts/{slug}.html'
 PAGINATION_PATTERNS = (
     (1, "{url}", "{save_as}"),
     # (1, "{base_name}", "{base_name}/index.html"),
-    (2, "{base_name}/pagination/{number}/", "{base_name}/pagination/{number}/index.html"),
+    (2, "{base_name}/pages/{number}/", "{base_name}/pages/{number}/index.html"),
 )
 
 
