@@ -114,6 +114,7 @@ PAGINATION_PATTERNS = (
     (2, "{base_name}/pages/{number}/", "{base_name}/pages/{number}/index.html"),
 )
 
+DISQUS_SITENAME = "koko-note"
 
 """
 == Static Path ================
