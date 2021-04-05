@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom-style.css" rel="stylesheet">
+
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="在 Python 的專案開發環境上，不論如何的演進總有虛擬環境 (virtual environment) 陪伴的我們，使我們能在不同的專案上切割出獨立的套件安裝環境。然而管理 Python 版本的問題呢？ 公司可能許多專甚至仍維持在不同的 Python 版本上（如：有的 2.7 有的 3.4)，究竟是否有一套工具能夠解決我們管理多個 Python 版本的問題呢？那麼我一定會推薦你來瞧瞧現在知名的 pyenv 工具。" />
+<meta name="keywords" content="Python, pyenv">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Python - 使用 Pyenv 來管理多個 Python 版本的環境"/>
+<meta property="og:description" content="在 Python 的專案開發環境上，不論如何的演進總有虛擬環境 (virtual environment) 陪伴的我們，使我們能在不同的專案上切割出獨立的套件安裝環境。然而管理 Python 版本的問題呢？ 公司可能許多專甚至仍維持在不同的 Python 版本上（如：有的 2.7 有的 3.4)，究竟是否有一套工具能夠解決我們管理多個 Python 版本的問題呢？那麼我一定會推薦你來瞧瞧現在知名的 pyenv 工具。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/using-pyenv-to-manage-multiple-python-versions"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-03-06 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="pyenv"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Python - 使用 Pyenv 來管理多個 Python 版本的環境</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+<section id=sidebar_tags>
+  <dl>
+      <dt><a href='https://note.koko.guru/tag/python'>Python (20)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/mac'>Mac (13)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/github'>Github (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python2'>Python2 (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pipenv'>Pipenv (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/jsp'>JSP (2)</a></dt>
+    <dt><a id="tags_mores" href='https://note.koko.guru/tags.html'>...more</a></dt>
+  </dl>
+</section>
+
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/archives.html">文章列表</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="using-pyenv-to-manage-multiple-python-versions">Python - 使用 Pyenv 來管理多個 Python 版本的環境</h1>
+    <p>
+          Posted on Sat 06 March 2021 in <a href="https://note.koko.guru/category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>在 Python 的專案開發環境上，不論如何的演進總有虛擬環境 (virtual environment) 陪伴的我們，使我們能在不同的專案上切割出獨立的套件安裝環境。</p>
+<p>然而管理 Python 版本的問題呢？在這幾年 Python 的版本從早期最受歡迎的 2.7 到 Python 3 問世，甚至不知不覺已經快速迭代到 3.9 版，因此公司可能許多專甚至仍維持在不同的 Python 版本上，有 Python 2.7 的，有 Python 3.4 的，也可能有 3.7 的。</p>
+<p>那麼我們究竟是否有一套工具，能在一台電腦上簡單的安裝多個 Python 版本甚至方便的管理呢？那麼我一定會推薦你來瞧瞧現在知名的 pyenv 工具，因為他滿足了這些需要，甚至能跟你的專案環境綁在一起，連 Pipenv 甚至最近的 Portry 也原生支援。</p>
+<h1>在 Mac 上透過 Homebrew 安裝 pyenv</h1>
+<p>Mac 透過 Homebrew 安裝步驟：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew install pyenv
+</code></pre></div>
+
+<p>初始化 <code>Pyenv</code>：
+透過輸入以下指令，Pyenv 會提供要寫入到 <code>.bash_profile</code> 或 <code>.zshrc</code> 的設定參數：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pyenv init
+<span class="c1"># Load pyenv automatically by appending</span>
+<span class="c1"># the following to ~/.zshrc:</span>
+
+<span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>例如我使用 Zsh 環境，因此開啟 <code>~/.zshrc</code>，並放入此行：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+
+<p>接著在終端機啟動更新後的 <code>.zshrc</code>：</p>
+<div class="highlight"><pre><span></span><code>$&gt; <span class="nb">exec</span> <span class="nv">$SHELL</span>
+</code></pre></div>
+
+<p>透過 <code>eval "$(pyenv init -)"</code> 可以為你登入系統後就自動啟用 <code>pyenv</code> ，並且啟動 shims 和 autocompletion 功能。</p>
+<p>接著我們可以開始使用 pyenv</p>
+<p>顯示目前系統安裝的 Python 版本，預設是 system ( 內建的 Python )</p>
+<div class="highlight"><pre><span></span><code>$&gt; pyenv versions
+</code></pre></div>
+
+<p><img src="../images/20210306-using-pyenv-to-manage-multiple-python-versions/pyenv-versions.png" alt="pyenv-versions" width="320px"/></p>
+<p>列出可安裝的 Python 版本：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pyenv install --list
+</code></pre></div>
+
+<p><img src="../images/20210306-using-pyenv-to-manage-multiple-python-versions/list-available-install-python-versions.png" alt="list-available-install-python-versions" width="360px"/></p>
+<p>如果想要設定整個系統預設的 Python 版本的話，可以使用 <code>pyenv global &lt;版本號&gt;</code> 指令：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pyenv global <span class="m">3</span>.7.0
+</code></pre></div>
+
+<p>如果只是暫時切換 Python 版本的話，可以輸入 <code>pyenv local &lt;版本號&gt;</code> 指令做切換，如此就只會影響當前 Terminal Session 的 Python 版本，例如：</p>
+<p>如果想看到目前 Session 的 Python 版本，可以透過 <code>version</code> 這個指令查看：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pyenv version
+</code></pre></div>
+
+<h1>透過 pyenv 安裝的 Python 版本們去哪 ?</h1>
+<p>藉由 pyenv 安裝的各個版本 Python 都會統一放到 <code>PYENV_ROOT</code> 目錄下的 <code>versions</code> 目錄中，在 peynv 中預設的 <code>PYENV_ROOT</code> 版本會在 <code>~/.pyenv</code> 下：</p>
+<p><img src="../images/20210306-using-pyenv-to-manage-multiple-python-versions/pyenv-installed-python-locations.png" alt="pyenv-installed-python-locations" width="360px"/></p>
+<p>而如果你想要修改，可以到進到你的 Bash 或是 zsh 設定檔中指定 <code>PYENV_ROOT</code>，並啟動更新後的設定檔：</p>
+<div class="highlight"><pre><span></span><code>PYENV_ROOT  ~/workspace/.pyenv
+</code></pre></div>
+
+<p>此外你，也可以透過 pyenv root 這個指令了解目前的 <code>PYENV_ROOT</code> 指向哪裡：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pyenv root
+</code></pre></div>
+
+<h1>指定開發專案的 Python 版本</h1>
+<p>可以在專案目錄中，建立 <code>.python-version</code> 檔案，並在內部輸入 Python 的版本號 （類似 <code>nvm</code> 的 <code>.nvmrc</code> 檔案：</p>
+<div class="highlight"><pre><span></span><code>$&gt; <span class="nb">echo</span> <span class="o">[</span>版本號<span class="o">]</span> &gt; .python-version
+</code></pre></div>
+
+<p>或者你也可以先建立 ，再透過 <code>pyenv local</code> 指令指定：</p>
+<div class="highlight"><pre><span></span><code>$&gt; touch . python-version
+$&gt; pyenv <span class="nb">local</span> <span class="o">[</span>Python 版本<span class="o">]</span>
+</code></pre></div>
+
+<p><img src="../images/20210306-using-pyenv-to-manage-multiple-python-versions/touch-python-version-file.png" alt="touch-python-version-file" width="360px"/></p>
+<h1>如何在 Pipenv 中指定已安裝在 Pyenv 的 Python 版本 ?</h1>
+<p>首先你需要透過 pyenv 切換到你想要使用的 Python 版本，接著在該環境中，比如說 <code>3.9.0</code>，先用 <code>pip install pipenv</code> 把 Pipenv 安裝好，如此你才能在你想要的 Python 版本中使用 Pipenv。</p>
+<p>接著可以使用以下 Pipenv 指令來指定你目前所在的 Python 環境：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pipenv --python <span class="o">[</span>目前 Python 版本的環境<span class="o">]</span>
+</code></pre></div>
+
+<p>然而如果你真的輸入了以下指令直接指定版本 (如 <code>3.9.0</code>)，你會發現 Pipenv 告訴你他找不到這個版本，並詢問你是否要安裝該 Python ：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pyenv global <span class="m">3</span>.9.0
+$&gt; pyenv versions
+  system
+  <span class="m">3</span>.7.8
+  <span class="m">3</span>.8.5
+* <span class="m">3</span>.9.0 <span class="o">(</span><span class="nb">set</span> by /Users/<span class="o">[</span>username<span class="o">]</span>/.pyenv/version<span class="o">)</span>
+
+$&gt; pipenv --python <span class="m">3</span>.9.0
+Warning: Python <span class="m">3</span>.9.0 was not found on your system...
+Would you like us to install CPython <span class="m">3</span>.9.0 with Pyenv? <span class="o">[</span>Y/n<span class="o">]</span>: 
+</code></pre></div>
+
+<p><img src="../images/20210306-using-pyenv-to-manage-multiple-python-versions/pipenv-install-python-from-pyenv.png" alt="pipenv-install-python-from-pyenv" width="640px"/></p>
+<p>這是因為 Pipenv 無法識別 pyenv 所使用的 Python 版本的路徑位置 <code>shims</code>，因此我們不能這麼簡單的輸入版本號。</p>
+<p>正確的方式要如下輸入這串執行變數 <code>$(pyenv which python)</code>  才能成功。</p>
+<div class="highlight"><pre><span></span><code>$&gt; pipenv --python <span class="k">$(</span>pyenv which python<span class="k">)</span>
+
+<span class="c1"># 或是你也可以直接指定 python 執行檔在 pyenv 下的位置</span>
+$&gt; pipenv install --python ~/.pyenv/versions/<span class="o">[</span><span class="sb">`</span>the version you installed<span class="sb">`</span><span class="o">]</span>/bin/python
+</code></pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/python">Python</a>
+      <a href="https://note.koko.guru/tag/pyenv">pyenv</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'koko-note';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
