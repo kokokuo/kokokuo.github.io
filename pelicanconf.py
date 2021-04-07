@@ -32,7 +32,8 @@ SITELOGO = "/static/koko-logo.png"
 
 # Social Widget ==========
 SOCIAL = (('github', 'https://github.com/kokokuo'),
-          ('linkedin', 'https://www.linkedin.com/in/easonkuo'),)
+          ('linkedin', 'https://www.linkedin.com/in/easonkuo'))
+          # ('cakeresume', 'https://www.cakeresume.com/easonkuo')
 
 
 """
@@ -113,8 +114,6 @@ PAGINATION_PATTERNS = (
     # (1, "{base_name}", "{base_name}/index.html"),
     (2, "{base_name}/pages/{number}/", "{base_name}/pages/{number}/index.html"),
 )
-
-DISQUS_SITENAME = "koko-note"
 
 """
 == Static Path ================
