@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom-style.css" rel="stylesheet">
+
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="" />
+<meta name="keywords" content="Python, pyenv, poetry">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Python - 取代 Pipenv 的新套件管理器 Poetry"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/using-poetry-manage-python-package-environments"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-03-07 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="pyenv"/>
+<meta property="article:tag" content="poetry"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Python - 取代 Pipenv 的新套件管理器 Poetry</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+<section id=sidebar_tags>
+  <dl>
+      <dt><a href='https://note.koko.guru/tag/python'>Python (21)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/mac'>Mac (13)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/github'>Github (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyenv'>pyenv (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python2'>Python2 (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pipenv'>Pipenv (2)</a></dt>
+    <dt><a id="tags_mores" href='https://note.koko.guru/tags.html'>...more</a></dt>
+  </dl>
+</section>
+
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/archives.html">文章列表</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="using-poetry-manage-python-package-environments">Python - 取代 Pipenv 的新套件管理器 Poetry</h1>
+    <p>
+          Posted on Sun 07 March 2021 in <a href="https://note.koko.guru/category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>說到 Python 近幾年著名的套件管理器時，肯定許多人的腦中都會想到 Pipenv，一問世便提供了許多的功能並結合了其他語言的套件件管理器優點。</p>
+<p>Pipenv 雖然強大，卻也暴露出了一些問題如 Lock 過慢、Windows 支援性差、對 PyPI 套件打包的友善度差...等更多其他問題，甚至有越來越多人表明 <a href="http://greyli.com/do-not-use-pipenv/">不要使用 Pipenv</a> 或 <a href="https://blog.gslin.org/archives/2019/12/21/9347/pipenv-%E7%9A%84%E5%87%8B%E9%9B%B6%E8%88%87%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88-poetry/">pipenv 的凋零與替代方案 poetry</a> 等。</p>
+<p>同時 Pipenv 的社群維護狀況也越來越差，有許多的 PR 都沒有被 Release，導致許多貢獻者抱怨，甚至有人發出了該篇 <a href="https://github.com/pypa/pipenv/issues/4058">If this project is dead, just tell us</a> issue 想知道是否專案已經不在維護。</p>
+<p>恰好在這個時間點，名為<a href="https://python-poetry.org/">Poetry</a> 的另一套虛擬環境與套件依賴管理器誕生。</p>
+<p>雖然發展尚短，然而功能的完善程度甚至超越 Pipenv，不僅原生支援 <code>pyenv</code> 的 Python 版本路徑，也支援 PyPI 的 <code>setup.py</code> 打包功能，宛如 <code>Pipenv</code> + <code>Flit</code> 的合體，甚至能提供你處理依賴套件或 Python 版本的向下相容！</p>
+<p>這麼優秀的套件管理器，我們怎麼能錯過忽視呢？</p>
+<h1>Poetry 是什麼</h1>
+<p>Poetry 是一套套件依賴管理與虛擬環境隔離的工具，採用 <code>pyproject.toml</code> 來替代 <code>Pipfile</code>、<code>requirements.txt</code>、<code>setup.py</code>、<code>setup.cfg</code>、<code>MANIFEST.ini</code> 等設置文件。</p>
+<p>支援 Mac / Linux / Windows 環境使用，透過 <code>poetry show --tree</code> 更清楚的看見套件的各個依賴關係，移除套件時能自動移除相依套件。</p>
+<p>在套件管理上能夠對相同的套件指定不同的支援 Python 版本（如: <code>pytest</code> 可以指定 <code>python 2.7</code> 時安裝特定版號；<code>python 3.6</code> 時安裝特定版本)。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.poetry.dependencies]</span>
+<span class="n">pytest</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;&lt;=6.0.0&quot;</span><span class="p">,</span> <span class="n">python</span> <span class="o">=</span> <span class="s">&quot;^2.7&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;^6.2.3&quot;</span><span class="p">,</span> <span class="n">python</span> <span class="o">=</span> <span class="s">&quot;^3.6&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>此外若有使用 <code>pyenv</code> 時，<code>poetry</code> 的隔離虛擬環境的版本會自動採用目前 <code>pyenv</code> 所指定的 Python 版本。也支援程式的打包與發佈的功能，方便製作程式為套件本身，也可取代 <code>setup.py</code> 發布至 PyPI 上。</p>
+<h1>安裝 Poetry</h1>
+<p>在你目前的 Python 環境中透過 <code>pip</code> 安裝即可：</p>
+<div class="highlight"><pre><span></span><code>$&gt; pip install poetry
+$&gt; poetry about
+
+Poetry - Package Management <span class="k">for</span> Python
+
+Poetry is a dependency manager tracking <span class="nb">local</span> dependencies of your projects and libraries.
+See https://github.com/python-poetry/poetry <span class="k">for</span> more information.
+</code></pre></div>
+
+<h1>使用 Poetry 管理套件</h1>
+<h2>初始化 <code>pyproject.toml</code></h2>
+<p>在 Poetry 中 <code>pyproject.toml</code> 如同 Pipenv 的 <code>Pipfile</code> ㄧ樣，是套件安裝與依賴的設置文件，因此如果你的專案沒有 <code>pyproject.toml</code> ，可以透過以下指令初始化建立，並詢問你一些問題 (類似 <code>yarn</code> 或 <code>npm</code>)：</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry init
+
+This <span class="nb">command</span> will guide you through creating your pyproject.toml config.
+
+Package name <span class="o">[</span>poetry-sample<span class="o">]]</span>:
+Version <span class="o">[</span><span class="m">0</span>.1.0<span class="o">]</span>:
+Description <span class="o">[]</span>:  Poetry sample projecy
+Author <span class="o">[</span>kokokuo &lt;v6610688@gmail.com&gt;, n to skip<span class="o">]</span>:
+License <span class="o">[]</span>:  MIT
+Compatible Python versions <span class="o">[</span>^3.9<span class="o">]</span>:  ^3.7
+....
+</code></pre></div>
+
+<p>接著完成之後，你會看到你的專案中出現了 <code>pyproject.toml</code> 檔案，這就是 Poetry 使用的套件依賴管理設定文件，格式如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.poetry]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;sample-project&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.1.0&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="k">[&quot;kokokuo &lt;v6610688@gmail.com&gt;&quot;]</span>
+
+<span class="k">[tool.poetry.dependencies]</span>
+<span class="n">python</span> <span class="o">=</span> <span class="s">&quot;^3.8&quot;</span>
+
+<span class="k">[tool.poetry.dev-dependencies]</span>
+<span class="n">pytest</span> <span class="o">=</span> <span class="s">&quot;^5.2&quot;</span>
+
+<span class="k">[build-system]</span>
+<span class="n">requires</span> <span class="o">=</span> <span class="k">[&quot;poetry-core&gt;=1.0.0&quot;]</span>
+<span class="n">build-backend</span> <span class="o">=</span> <span class="s">&quot;poetry.core.masonry.api&quot;</span>
+</code></pre></div>
+
+<h2>從頭建立帶有 <code>pyproject.toml</code> 的專案</h2>
+<p>如果你連專案都還沒有，那麼 <code>poetry</code> 也很貼心的如同 django 或是 rails ㄧ樣，提供你完整的專案目錄與 <code>pyproject.toml</code> 的建置：</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry new <span class="o">[</span>your project name<span class="o">]</span>
+</code></pre></div>
+
+<p>如下例子參考：</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry new sample-project
+Created package sample_project in sample-project
+</code></pre></div>
+
+<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-new-project.png" alt="poetry-new-project" width="320px"/></p>
+<h2>安裝套件</h2>
+<p>如果要安裝或移除套件，在 Poetry 分別透過 <code>poetry add [套件]</code> 與 <code>poetry remove [套件]</code> 兩個指令執行： </p>
+<p>其中如果安裝套件時，只想要在開發環境下，發布生產環境時不打算被裝進去用，則可以透過 <code>poetry add --dev [套件]</code> 指令。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># install package</span>
+$&gt; poetry add flask
+$&gt; poetry add --dev poetry <span class="c1"># only install in development used</span>
+</code></pre></div>
+
+<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-add.png" alt="poetry-add" width="320px"/></p>
+<p>當你安裝完後，你會發現專案的目錄中多了 <code>poetry.lock</code>，該檔案會檢查並驗證下載的來源，同時還會記錄每個被 lock 的套件支持哪一版 Python 或其他的依賴套件：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[[package]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;atomicwrites&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&quot;1.4.0&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Atomic file writes.&quot;</span>
+<span class="n">category</span> <span class="o">=</span> <span class="s">&quot;dev&quot;</span>
+<span class="n">optional</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">python-versions</span> <span class="o">=</span> <span class="s">&quot;&gt;=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*&quot;</span>
+
+<span class="k">[[package]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&quot;attrs&quot;</span>
+<span class="n">version</span> <span class="o">=</span> <span class="s">&quot;20.3.0&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Classes Without Boilerplate&quot;</span>
+<span class="n">category</span> <span class="o">=</span> <span class="s">&quot;dev&quot;</span>
+<span class="n">optional</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="n">python-versions</span> <span class="o">=</span> <span class="s">&quot;&gt;=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*&quot;</span>
+
+<span class="k">[package.extras]</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="k">[&quot;coverage[toml] (&gt;=5.0.2)&quot;, &quot;hypothesis&quot;, &quot;pympler&quot;, &quot;pytest (&gt;=4.3.0)&quot;, &quot;six&quot;, &quot;zope.interface&quot;, &quot;furo&quot;, &quot;sphinx&quot;, &quot;pre-commit&quot;]</span>
+<span class="n">docs</span> <span class="o">=</span> <span class="k">[&quot;furo&quot;, &quot;sphinx&quot;, &quot;zope.interface&quot;]</span>
+<span class="n">tests</span> <span class="o">=</span> <span class="k">[&quot;coverage[toml] (&gt;=5.0.2)&quot;, &quot;hypothesis&quot;, &quot;pympler&quot;, &quot;pytest (&gt;=4.3.0)&quot;, &quot;six&quot;, &quot;zope.interface&quot;]</span>
+<span class="n">tests_no_zope</span> <span class="o">=</span> <span class="k">[&quot;coverage[toml] (&gt;=5.0.2)&quot;, &quot;hypothesis&quot;, &quot;pympler&quot;, &quot;pytest (&gt;=4.3.0)&quot;, &quot;six&quot;]</span>
+
+<span class="p">,,,,</span>
+</code></pre></div>
+
+<h2>移除套件</h2>
+<p>同樣的，如果想要移除開還環境使用的套件，則是 <code>poetry remove --dev [套件]</code>：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># uninstall package</span>
+$&gt; poetry remove flask
+$&gt; poetry remove --dev poetry  <span class="c1"># uninstall development used package</span>
+</code></pre></div>
+
+<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-remove.png" alt="poetry-remove" width="320px"/></p>
+<p>你會發現在 Poetry 中，當你移除套件時，該套件所需要的依賴套件也會被ㄧ同移除。</p>
+<h2>顯示已安裝的套件與依賴版本</h2>
+<p>Poetry 中提供友善的查看套件安裝清單指令，你只需要透過 <code>poetry show</code> 即可快速了解已安裝的套件與描述，如下面的例子：</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry show
+attrs          <span class="m">20</span>.3.0 Classes Without Boilerplate
+click          <span class="m">7</span>.1.2  Composable <span class="nb">command</span> line interface toolkit
+flask          <span class="m">1</span>.1.2  A simple framework <span class="k">for</span> building complex web applications.
+itsdangerous   <span class="m">1</span>.1.0  Various helpers to pass data to untrusted environments and back.
+jinja2         <span class="m">2</span>.11.3 A very fast and expressive template engine.
+markupsafe     <span class="m">1</span>.1.1  Safely add untrusted strings to HTML/XML markup.
+more-itertools <span class="m">8</span>.7.0  More routines <span class="k">for</span> operating on iterables, beyond itertools
+packaging      <span class="m">20</span>.9   Core utilities <span class="k">for</span> Python packages
+pluggy         <span class="m">0</span>.13.1 plugin and hook calling mechanisms <span class="k">for</span> python
+py             <span class="m">1</span>.10.0 library with cross-python path, ini-parsing, io, code, log facilities
+pyparsing      <span class="m">2</span>.4.7  Python parsing module
+pytest         <span class="m">5</span>.4.3  pytest: simple powerful testing with Python
+wcwidth        <span class="m">0</span>.2.5  Measures the displayed width of unicode strings in a terminal
+werkzeug       <span class="m">1</span>.0.1  The comprehensive WSGI web application library.
+</code></pre></div>
+
+<p>另外，如果你也想要知道依賴的套件與版本，則可以透過 <code>poetry show --tree</code> 了解：</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry show --tree
+flask <span class="m">1</span>.1.2 A simple framework <span class="k">for</span> building complex web applications.
+├── click &gt;<span class="o">=</span><span class="m">5</span>.1
+├── itsdangerous &gt;<span class="o">=</span><span class="m">0</span>.24
+├── jinja2 &gt;<span class="o">=</span><span class="m">2</span>.10.1
+│   └── markupsafe &gt;<span class="o">=</span><span class="m">0</span>.23
+└── werkzeug &gt;<span class="o">=</span><span class="m">0</span>.15
+pytest <span class="m">5</span>.4.3 pytest: simple powerful testing with Python
+├── atomicwrites &gt;<span class="o">=</span><span class="m">1</span>.0
+├── attrs &gt;<span class="o">=</span><span class="m">17</span>.4.0
+├── colorama *
+├── more-itertools &gt;<span class="o">=</span><span class="m">4</span>.0.0
+├── packaging *
+│   └── pyparsing &gt;<span class="o">=</span><span class="m">2</span>.0.2
+├── pluggy &gt;<span class="o">=</span><span class="m">0</span>.12,&lt;<span class="m">1</span>.0
+├── py &gt;<span class="o">=</span><span class="m">1</span>.5.0
+└── wcwidth *
+</code></pre></div>
+
+<h2>進入 Poetry 套件管理的虛擬環境</h2>
+<p>雖然在上述中，我們安裝了許多套件，但如果 <code>Pipenv</code> ㄧ樣，這些套件都被放在虛擬環境中，因此如果沒有進入到虛擬環境，你的目前專案的開發環境不會找得到你已經安裝的這些套件，而要進入虛擬環境可以透過 <code>poetry shell</code>:</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry shell
+</code></pre></div>
+
+<p>透過上述，你會發現對於 Poetry 來說，這些虛擬環境都會在第一次執行 <code>poetry shell</code> 指令時，建置一個虛擬環境到統一的 <code>/Users/koko/Library/Caches/pypoetry/virtualenvs</code> 目錄下，並各自以專案名稱為起頭建立一個虛擬環境目錄。</p>
+<p>例如下圖，以 <code>sample-project</code> 這個專案來說，虛擬環境的目錄名稱會是 <code>sample-project-2JvB_VOP-py3.8</code>，每第一次建立虛擬環境時名稱都會是隨機:</p>
+<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-shell-default-random-virtualenv-name.png" alt="poetry-shell-default-random-virtualenv-name" width="640px"/></p>
+<p>那麼，如果我想要指定虛擬環境在我目前這個專案中要怎麼做呢？</p>
+<h3>指定虛擬環境路徑在專案中</h3>
+<p>如果你不希望 Poetry 統一在他指定的路徑中管理虛擬環境的話，根據 Poetry 的文件 <a href="https://python-poetry.org/docs/configuration/">Configuration</a> 提到，在 poetry config --list 可以查看對於 poetry 的設定：</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry config --list
+cache-dir <span class="o">=</span> <span class="s2">&quot;/Users/koko/Library/Caches/pypoetry&quot;</span>
+experimental.new-installer <span class="o">=</span> <span class="nb">true</span>
+installer.parallel <span class="o">=</span> <span class="nb">true</span>
+virtualenvs.create <span class="o">=</span> <span class="nb">true</span>
+virtualenvs.in-project <span class="o">=</span> null
+virtualenvs.path <span class="o">=</span> <span class="s2">&quot;{cache-dir}/virtualenvs&quot;</span>  <span class="c1"># /Users/koko/Library/Caches/pypoetry/virtualenvs</span>
+</code></pre></div>
+
+<p>其中 <code>virtualenvs.in-project</code> 這個參數便是可以指定虛擬環境是否要建置在專中的選項，而預設都會是 <code>null</code>，如果想要更改他，可以直接修改該參數，如下：</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry config virtualenvs.in-project <span class="o">=</span> <span class="nb">true</span> <span class="c1"># globally update</span>
+</code></pre></div>
+
+<p>此外 <code>virtualenvs.path</code> 是你預設的虛擬環境建立位置（當 <code>in-project = null</code> 時）。</p>
+<p>不過上述的行為都會<strong>全域</strong>影響 poetry 是否要在專案中建立虛擬環境。</p>
+<p>若你需要 By 各個專案設定的話，那你可以在你的專案內建立一個名為 <code>poetry.toml</code> 的 poetry 設定檔，並在檔案中建立 <code>[virtualenvs]</code> 區塊並指定 <code>in-project = true</code> 即可：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[virtualenvs]</span>
+<span class="c1"># This config will let poetry auto build virtualenv in project and create a .venv folder to install required package from proetry.toml.</span>
+<span class="n">in-project</span> <span class="o">=</span> <span class="kc">true</span>
+</code></pre></div>
+
+<p>更改完後，刪除目前的虛擬環境，並再次進入 shell :</p>
+<div class="highlight"><pre><span></span><code>$ sample-project&gt; <span class="nb">cd</span> /Users/koko/Library/Caches/pypoetry/virtualenvs
+$ /Users/koko/Library/Caches/pypoetry/virtualenvs&gt; rm -rf sample-project-2JvB_VOP-py3.8
+
+<span class="c1"># Enter shell again to build virtual env in the project</span>
+$ sample-project&gt; poetry shell
+Creating virtualenv sample-project in /Users/koko/Code/Practice/sample-project/.venv
+Spawning shell within /Users/koko/Code/Practice/sample-project/.venv
+$ sample-project&gt; . /Users/koko/Code/Practice/sample-project/.venv/bin/activate
+
+$ <span class="o">(</span>.venv<span class="o">)</span> sample-project&gt;
+</code></pre></div>
+
+<p>完成後，你會發現如果建立在專案中，虛擬環境的目錄預設就不會在這麼長，而是單純名為 <code>.venv</code>。</p>
+<h2>安裝所有配置在 pyproject.toml 的套件</h2>
+<p>由於虛擬環境只會建置在你本機上，因此當今天當你任何一個遠端的 Repository 做了 <code>git clone</code> 後，這些虛擬環境並不存在，而在 Poetry 中，如果要還原這個環境，便會需要 <code>pyproject.toml</code> 這樣的配置檔。</p>
+<p>因此若當們需要在其系統上還原這個安裝的環境，我們可以透過 <code>poetry install</code> 來幫我們達成:</p>
+<div class="highlight"><pre><span></span><code>$&gt; poetry install
+</code></pre></div>
+
+<p>如下圖參考：</p>
+<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-install.png" alt="poetry-install" width="360px"/></p>
+<h2>總結</h2>
+<p>經過走一遍 Poetry 之後，不管你喜不喜歡他的風格，總之我是喜歡上了。不僅 lock 的速度快，也支援更多細緻的設定，<code>pyproject.toml</code> 也能指定各個套件所依賴的 Python 版本到多少，也原生支持 pyenv 目前指定的 Python 版本，<code>poetry show</code> 也很一目瞭然，幫助我在開發上加快比 Pipenv 的速度！</p>
+<p>如果你還在使用 Pipenv 的話，那我會真心建議你，是時候該來好好認識 Poetry 這個套件依賴管理器了。</p>
+<h1>參考來源</h1>
+<ul>
+<li><a href="http://greyli.com/do-not-use-pipenv/">不要使用 Pipenv</a></li>
+<li><a href="https://blog.gslin.org/archives/2019/12/21/9347/pipenv-%E7%9A%84%E5%87%8B%E9%9B%B6%E8%88%87%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88-poetry/">pipenv 的凋零與替代方案 poetry</a> </li>
+<li><a href="https://github.com/pypa/pipenv/issues/4058">If this project is dead, just tell us</a></li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/python">Python</a>
+      <a href="https://note.koko.guru/tag/pyenv">pyenv</a>
+      <a href="https://note.koko.guru/tag/poetry">poetry</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

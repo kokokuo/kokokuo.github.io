@@ -65,7 +65,7 @@ Code / Web / Architecture
 </p>
 <section id=sidebar_tags>
   <dl>
-      <dt><a href='https://note.koko.guru/tag/python'>Python (20)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python'>Python (21)</a></dt>
       <dt><a href='https://note.koko.guru/tag/mac'>Mac (13)</a></dt>
       <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
       <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
@@ -73,9 +73,9 @@ Code / Web / Architecture
       <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
       <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
       <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyenv'>pyenv (2)</a></dt>
       <dt><a href='https://note.koko.guru/tag/python2'>Python2 (2)</a></dt>
       <dt><a href='https://note.koko.guru/tag/pipenv'>Pipenv (2)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/jsp'>JSP (2)</a></dt>
     <dt><a id="tags_mores" href='https://note.koko.guru/tags.html'>...more</a></dt>
   </dl>
 </section>
@@ -176,7 +176,7 @@ Code / Web / Architecture
 <div class="highlight"><pre><span></span><code>$&gt; pyenv version
 </code></pre></div>
 
-<h1>透過 pyenv 安裝的 Python 版本們去哪 ?</h1>
+<h1>透過 pyenv 安裝的 Python 版本們去哪</h1>
 <p>藉由 pyenv 安裝的各個版本 Python 都會統一放到 <code>PYENV_ROOT</code> 目錄下的 <code>versions</code> 目錄中，在 peynv 中預設的 <code>PYENV_ROOT</code> 版本會在 <code>~/.pyenv</code> 下：</p>
 <p><img src="../images/20210306-using-pyenv-to-manage-multiple-python-versions/pyenv-installed-python-locations.png" alt="pyenv-installed-python-locations" width="360px"/></p>
 <p>而如果你想要修改，可以到進到你的 Bash 或是 zsh 設定檔中指定 <code>PYENV_ROOT</code>，並啟動更新後的設定檔：</p>
@@ -198,7 +198,7 @@ $&gt; pyenv <span class="nb">local</span> <span class="o">[</span>Python 版本<
 </code></pre></div>
 
 <p><img src="../images/20210306-using-pyenv-to-manage-multiple-python-versions/touch-python-version-file.png" alt="touch-python-version-file" width="360px"/></p>
-<h1>如何在 Pipenv 中指定已安裝在 Pyenv 的 Python 版本 ?</h1>
+<h1>如何在 Pipenv 中指定已安裝在 Pyenv 的 Python 版本</h1>
 <p>首先你需要透過 pyenv 切換到你想要使用的 Python 版本，接著在該環境中，比如說 <code>3.9.0</code>，先用 <code>pip install pipenv</code> 把 Pipenv 安裝好，如此你才能在你想要的 Python 版本中使用 Pipenv。</p>
 <p>接著可以使用以下 Pipenv 指令來指定你目前所在的 Python 環境：</p>
 <div class="highlight"><pre><span></span><code>$&gt; pipenv --python <span class="o">[</span>目前 Python 版本的環境<span class="o">]</span>
