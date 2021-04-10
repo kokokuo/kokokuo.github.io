@@ -4,8 +4,7 @@ Tags: Python, pyenv, poetry
 Category: Python
 Slug: using-poetry-manage-python-package-environments
 Authors: kokokuo
-Summary: 
-
+Summary: 說到 Python 近幾年著名的套件管理器時，肯定許多人的腦中都會想到 Pipenv，然而 Pipenv 雖然強大，卻也暴露出了一些問題，同時 Pipenv 的社群維護狀況也越來越差，有許多的 PR 都沒有被 Release，導致許多貢獻者抱怨。<br/><br/>恰好在這個時間點，名為[Poetry](https://python-poetry.org/) 的另一套套件依賴管理器誕生。雖然發展尚短，但功能的完善程度甚至超越 Pipenv，不僅原生支援 `pyenv` 的 Python 版本路徑，也支援 PyPI 的 `setup.py` 打包功能，宛如 `Pipenv` + `Flit` 的合體，甚至能提供你處理依賴套件或 Python 版本的向下相容！這麼優秀的套件管理器，我們怎麼能錯過忽視呢？
 
 # 前言
 說到 Python 近幾年著名的套件管理器時，肯定許多人的腦中都會想到 Pipenv，一問世便提供了許多的功能並結合了其他語言的套件件管理器優點。
@@ -103,7 +102,7 @@ $> poetry new sample-project
 Created package sample_project in sample-project
 ```
 
-<img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-new-project.png" alt="poetry-new-project" width="320px"/>
+<img src="../images/20210307-using-poetry-manage-python-package-environments/poetry-new-project.png" alt="poetry-new-project" width="320px"/>
 
 ## 安裝套件
 
@@ -117,7 +116,7 @@ $> poetry add flask
 $> poetry add --dev poetry # only install in development used
 ```
 
-<img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-add.png" alt="poetry-add" width="320px"/>
+<img src="../images/20210307-using-poetry-manage-python-package-environments/poetry-add.png" alt="poetry-add" width="320px"/>
 
 當你安裝完後，你會發現專案的目錄中多了 `poetry.lock`，該檔案會檢查並驗證下載的來源，同時還會記錄每個被 lock 的套件支持哪一版 Python 或其他的依賴套件：
 
@@ -157,7 +156,7 @@ $> poetry remove flask
 $> poetry remove --dev poetry  # uninstall development used package
 ```
 
-<img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-remove.png" alt="poetry-remove" width="320px"/>
+<img src="../images/20210307-using-poetry-manage-python-package-environments/poetry-remove.png" alt="poetry-remove" width="320px"/>
 
 
 你會發現在 Poetry 中，當你移除套件時，該套件所需要的依賴套件也會被ㄧ同移除。
