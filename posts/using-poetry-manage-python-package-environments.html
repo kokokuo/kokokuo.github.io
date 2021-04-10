@@ -27,12 +27,12 @@
 
 
 <meta name="author" content="kokokuo" />
-<meta name="description" content="" />
+<meta name="description" content="說到 Python 近幾年著名的套件管理器時，肯定許多人的腦中都會想到 Pipenv，然而 Pipenv 雖然強大，卻也暴露出了一些問題，同時 Pipenv 的社群維護狀況也越來越差，有許多的 PR 都沒有被 Release，導致許多貢獻者抱怨。恰好在這個時間點，名為Poetry 的另一套套件依賴管理器誕生。雖然發展尚短，但功能的完善程度甚至超越 Pipenv，不僅原生支援 pyenv 的 Python 版本路徑，也支援 PyPI 的 setup.py 打包功能，宛如 Pipenv + Flit 的合體，甚至能提供你處理依賴套件或 Python 版本的向下相容！這麼優秀的套件管理器，我們怎麼能錯過忽視呢？" />
 <meta name="keywords" content="Python, pyenv, poetry">
 
 <meta property="og:site_name" content="koko's Note"/>
 <meta property="og:title" content="Python - 取代 Pipenv 的新套件管理器 Poetry"/>
-<meta property="og:description" content=""/>
+<meta property="og:description" content="說到 Python 近幾年著名的套件管理器時，肯定許多人的腦中都會想到 Pipenv，然而 Pipenv 雖然強大，卻也暴露出了一些問題，同時 Pipenv 的社群維護狀況也越來越差，有許多的 PR 都沒有被 Release，導致許多貢獻者抱怨。恰好在這個時間點，名為Poetry 的另一套套件依賴管理器誕生。雖然發展尚短，但功能的完善程度甚至超越 Pipenv，不僅原生支援 pyenv 的 Python 版本路徑，也支援 PyPI 的 setup.py 打包功能，宛如 Pipenv + Flit 的合體，甚至能提供你處理依賴套件或 Python 版本的向下相容！這麼優秀的套件管理器，我們怎麼能錯過忽視呢？"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="https://note.koko.guru/posts/using-poetry-manage-python-package-environments"/>
 <meta property="og:type" content="article"/>
@@ -204,7 +204,7 @@ Compatible Python versions <span class="o">[</span>^3.9<span class="o">]</span>:
 Created package sample_project in sample-project
 </code></pre></div>
 
-<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-new-project.png" alt="poetry-new-project" width="320px"/></p>
+<p><img src="../images/20210307-using-poetry-manage-python-package-environments/poetry-new-project.png" alt="poetry-new-project" width="320px"/></p>
 <h2>安裝套件</h2>
 <p>如果要安裝或移除套件，在 Poetry 分別透過 <code>poetry add [套件]</code> 與 <code>poetry remove [套件]</code> 兩個指令執行： </p>
 <p>其中如果安裝套件時，只想要在開發環境下，發布生產環境時不打算被裝進去用，則可以透過 <code>poetry add --dev [套件]</code> 指令。</p>
@@ -213,7 +213,7 @@ $&gt; poetry add flask
 $&gt; poetry add --dev poetry <span class="c1"># only install in development used</span>
 </code></pre></div>
 
-<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-add.png" alt="poetry-add" width="320px"/></p>
+<p><img src="../images/20210307-using-poetry-manage-python-package-environments/poetry-add.png" alt="poetry-add" width="320px"/></p>
 <p>當你安裝完後，你會發現專案的目錄中多了 <code>poetry.lock</code>，該檔案會檢查並驗證下載的來源，同時還會記錄每個被 lock 的套件支持哪一版 Python 或其他的依賴套件：</p>
 <div class="highlight"><pre><span></span><code><span class="k">[[package]]</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;atomicwrites&quot;</span>
@@ -247,7 +247,7 @@ $&gt; poetry remove flask
 $&gt; poetry remove --dev poetry  <span class="c1"># uninstall development used package</span>
 </code></pre></div>
 
-<p><img src="../images/../../images/20210307-using-poetry-manage-python-package-environments/poetry-remove.png" alt="poetry-remove" width="320px"/></p>
+<p><img src="../images/20210307-using-poetry-manage-python-package-environments/poetry-remove.png" alt="poetry-remove" width="320px"/></p>
 <p>你會發現在 Poetry 中，當你移除套件時，該套件所需要的依賴套件也會被ㄧ同移除。</p>
 <h2>顯示已安裝的套件與依賴版本</h2>
 <p>Poetry 中提供友善的查看套件安裝清單指令，你只需要透過 <code>poetry show</code> 即可快速了解已安裝的套件與描述，如下面的例子：</p>
