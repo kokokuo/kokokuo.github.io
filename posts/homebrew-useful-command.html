@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom-style.css" rel="stylesheet">
+
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="本篇繼上一篇 Mac 上安裝 Homebrew 套件管理工具 介紹 Homebrew 的常用指令。" />
+<meta name="keywords" content="Mac, Homebrew">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Homebrew (2) - Homebrew 常用與隱藏指令"/>
+<meta property="og:description" content="本篇繼上一篇 Mac 上安裝 Homebrew 套件管理工具 介紹 Homebrew 的常用指令。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/homebrew-useful-command"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-04-18 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="Homebrew"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Homebrew"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Homebrew (2) - Homebrew 常用與隱藏指令</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+<section id=sidebar_tags>
+  <dl>
+      <dt><a href='https://note.koko.guru/tag/python'>Python (22)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/mac'>Mac (14)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/github'>Github (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/homebrew'>Homebrew (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/poetry'>poetry (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyenv'>pyenv (2)</a></dt>
+    <dt><a id="tags_mores" href='https://note.koko.guru/tags.html'>...more</a></dt>
+  </dl>
+</section>
+
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/archives.html">文章列表</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="homebrew-useful-command">Homebrew (2) - Homebrew 常用與隱藏指令</h1>
+    <p>
+          Posted on Sun 18 April 2021 in <a href="https://note.koko.guru/category/homebrew.html">Homebrew</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>在上一篇 <a href="https://note.koko.guru/posts/mac-install-homebrew">Mac 上安裝 Homebrew 套件管理工具</a> 我們介紹了如何在 Mac 上安裝 Homebrew 後，本篇繼續介紹一些常用指令。</p>
+<h1>常用與隱藏指令介紹</h1>
+<h2>列出已安裝套件與安裝位置</h2>
+<p>如果想要得知目前已經安裝的套件可以使用以下指令：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew list
+</code></pre></div>
+
+<p>另外 Homebrew 實際的安裝位置，會放在 <code>/usr/local/Cellar</code> 這個目錄以下：</p>
+<p><img src="../images/20210418-homebrew-useful-command/brew-list.png" width="640px"/></p>
+<p>如果想要觀看已安裝套件的版本號，可以在後面加上 <code>--version</code>：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew list —-versions
+</code></pre></div>
+
+<p><img src="../images/20210418-homebrew-useful-command/brew-list-version.png" width="480px"/></p>
+<p>如果要查詢其中一個已經安裝的套件資訊，可以透過 <code>list</code> 指定套件：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew list <span class="o">[</span>套件名稱<span class="o">]</span>
+</code></pre></div>
+
+<p>例如 <code>wget</code> 如下可以看見所有安裝的位置：</p>
+<p><img src="../images/20210418-homebrew-useful-command/brew-list-wget.png" width="480px"/></p>
+<h2>列出 Homebrew 中指定的套件資訊</h2>
+<p>此功能可以查詢 Homebrew 中所存在可以下載的套件資訊，包含需要的依賴套件、或是安裝後的位置、版本號與其他安裝好後的資訊等等。因此該指令不管是有安裝或未安裝的套件都可以查出相關資訊，指令如下：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew info <span class="o">[</span>套件名稱<span class="o">]</span>
+</code></pre></div>
+
+<p>例如查詢 <code>wget</code> 套件的資訊：</p>
+<p><img src="../images/20210418-homebrew-useful-command/brew-info-wget.png" width="640px"/></p>
+<h2>安裝第三方 ( Third-party ）的擴充套件</h2>
+<p>Homebrew 的 <code>brew</code> 指令預設所下載的套件來源都是來自於官方的 Github Homebrew Repository，也就是 <a href="https://github.com/Homebrew/homebrew-core"><code>homebrew/homebrew-core</code></a> 這個 Repository 。 </p>
+<p>不過 Homebrew 為了讓更多人參與 Homebrew ，因此開放讓其他人（也就是第三方）加入製作套件，與下載第三方製作的套件，而這些套件下載的來源自來不是 Homebrew ，而是由第三方自己維護的 Repository。</p>
+<p><a href="https://github.com/Homebrew">Hombrew 自己官方有的 Repository 在此</a>，其中常見的有：</p>
+<div class="highlight"><pre><span></span><code>hombrew/hombrew-cask               <span class="c1"># Cask 應用程式軟體</span>
+hombrew/ hombrew-cask-versions     <span class="c1"># 其他 version 的 Cask 應用程式軟體</span>
+hombrew/hombrew-cask-fonts         <span class="c1"># 文字</span>
+</code></pre></div>
+
+<p><img src="../images/20210418-homebrew-useful-command/homebrew-github.png" width="640px"/></p>
+<h3>(1.) 下載 Github 來源的第三方 Repository 擴充套件</h3>
+<p>而指令如下，如果是下載來自 Github Repository 中的 Homebrew 套件，需要提供該第三方製作者 Github 的 User 名與 Repository 位置：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew tap <span class="o">[</span>github user/repo<span class="o">]</span>
+</code></pre></div>
+
+<h3>(2.) 下載其他位置的 Repository 擴充套件</h3>
+<p>如果是要下載來自其他位置的 Repo ，如下需要再帶入 URL</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew tap <span class="o">[</span>user/repo<span class="o">]</span> &lt;URL&gt;
+</code></pre></div>
+
+<h3>(3.) 直接列出已經 Tapped 的套件</h3>
+<p>如果直接輸入 <code>brew tap</code>，會自動更新與列出已經 Tapped 套件，如下：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew tap
+</code></pre></div>
+
+<p><img src="../images/20210418-homebrew-useful-command/brew-tap.png" width="640px"/></p>
+<h3>(4.) 移除已經 tap 下載的 Repository 擴充套件</h3>
+<p>使用 <code>untap</code> 這個指令來移除下載的 Repository 擴充套件：</p>
+<div class="highlight"><pre><span></span><code>$ brew untap <span class="o">[</span>已經 tap 安裝的repository<span class="o">]</span>
+</code></pre></div>
+
+<h2>4.擴充套件指令 brew services</h2>
+<p>上述的套件雖然也在 Homebrew 官方 Github 中，但卻不是 <code>homebrew/core</code> （也就是不是我們用 brew 下載的來源位置），此套件是一個擴充功能，協助在 Mac 上有統一的指令管理 services。</p>
+<p><img src="../images/20210418-homebrew-useful-command/brew-tap-homebrew-services.png" width="640px"/></p>
+<p>如下是該指令介紹，可以透過 brew 來管理 Mac 所有的 services 程序，重啟或是停止等等。</p>
+<p>因為 Mac 並沒有類似的簡易指令，只有透過 <code>launchctl</code> 指令，並且還要找到來源位置才能使用，因此不好管理。</p>
+<div class="highlight"><pre><span></span><code>$&gt; launchctl load/unload &lt;path&gt;
+</code></pre></div>
+
+<p>而 Homebrew 的 services 能夠非常輕鬆的管理：</p>
+<p><img src="../images/20210418-homebrew-useful-command/brew-services.png" width="640px"/></p>
+<p>例如啟動與關閉 PostgreSQL 的背景程序，可以輸入：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew services start postgresql <span class="c1"># 請動</span>
+$&gt; brew services stop postgresql <span class="c1"># 關閉</span>
+</code></pre></div>
+
+<p>如果要查看所有的 homebrew 支援的 services 狀態，可以透過以下指令：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew services list
+</code></pre></div>
+
+<p><img src="../images/20210418-homebrew-useful-command/brew-services-list.png" width="640px"/></p>
+<p>其中狀態的部分，會有 stopped, 綠色的 started 與 黃色的 started，還有 error。而黃色的 started 該顏色在 Homebrew 的代碼中表示 unknown ，而根據 stackoverflow 還有 <a href="https://github.com/Homebrew/brew/issues/3227">Github issue #3227</a> 的官方解說，表示啟動戴式過程中有狀況因此啟動失敗重新啟動的意思。</p>
+<h2>5.列出已安裝的套件（但是沒有被其它套件相依）</h2>
+<p>可以查出哪些已經安裝的套件沒有被相依，屬於隱藏指令，如下：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew leaves
+</code></pre></div>
+
+<p><img src="../images/20210418-homebrew-useful-command/brew-leaves.png" width="640px"/></p>
+<h2>6.查詢所有 Homebrew 中的指令</h2>
+<p>透過此指令可以查詢出 brew 所有的指令用途，並且許多是隱藏指令，如下輸入：</p>
+<div class="highlight"><pre><span></span><code><span class="err">$&gt; brew commands</span>
+</code></pre></div>
+
+<p><img src="../images/20210418-homebrew-useful-command/brew-commands.png" width="640px"/></p>
+<h1>參考文件</h1>
+<ol>
+<li><a href="https://docs.brew.sh/Taps">Homebrew 官方 Tap 介紹</a></li>
+<li><a href="http://icyleaf.com/2014/01/homebrew-hidden-commands/">Homebrew 隐藏命令</a></li>
+<li><a href="https://www.jianshu.com/p/8ad7056b243f">Homebrew 总结</a></li>
+<li><a href="https://stackoverflow.com/questions/41873704/what-is-the-meaning-yellow-service-started-status-on-homebrew">What is the meaning yellow service “started” status on Homebrew?</a></li>
+<li><a href="https://stackoverflow.com/questions/46437670/brew-services-not-completely-started-mongodb">brew services not completely started - mongodb</a></li>
+<li><a href="https://github.com/Homebrew/brew/issues/3227">The word "started" should be "starting", if it's in yellow, and process hasn't full started #3227</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/mac">Mac</a>
+      <a href="https://note.koko.guru/tag/homebrew">Homebrew</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

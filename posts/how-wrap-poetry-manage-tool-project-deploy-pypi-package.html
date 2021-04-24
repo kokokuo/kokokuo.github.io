@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom-style.css" rel="stylesheet">
+
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="本文介紹當你開發一個使用 steuptools 打包的 Python 套件時，如果你專案的套件依賴環境是使用 Poetry 管理的話，該如何藉由 Poetry 讓你安裝的依賴套件，能被 setuptools 順利打包進去。" />
+<meta name="keywords" content="Python, poetry, PyPI">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Python - 使用 setup.py 打包含有 Poetry 套件管理工具的專案來製作與發布套件的紀錄"/>
+<meta property="og:description" content="本文介紹當你開發一個使用 steuptools 打包的 Python 套件時，如果你專案的套件依賴環境是使用 Poetry 管理的話，該如何藉由 Poetry 讓你安裝的依賴套件，能被 setuptools 順利打包進去。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/how-wrap-poetry-manage-tool-project-deploy-pypi-package"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-04-15 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="Python"/>
+<meta property="article:tag" content="poetry"/>
+<meta property="article:tag" content="PyPI"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Python - 使用 setup.py 打包含有 Poetry 套件管理工具的專案來製作與發布套件的紀錄</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+<section id=sidebar_tags>
+  <dl>
+      <dt><a href='https://note.koko.guru/tag/python'>Python (22)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/mac'>Mac (14)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/github'>Github (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/homebrew'>Homebrew (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/poetry'>poetry (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyenv'>pyenv (2)</a></dt>
+    <dt><a id="tags_mores" href='https://note.koko.guru/tags.html'>...more</a></dt>
+  </dl>
+</section>
+
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/archives.html">文章列表</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="how-wrap-poetry-manage-tool-project-deploy-pypi-package">Python - 使用 setup.py 打包含有 Poetry 套件管理工具的專案來製作與發布套件的紀錄</h1>
+    <p>
+          Posted on Thu 15 April 2021 in <a href="https://note.koko.guru/category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>由於公司開發的 Python 套件專案，所安裝的依賴套件環境已經年久失修難以還原，加上早期使用傳統的 <code>requirements.txt</code>，因此虛擬環境隔離或是依賴套件管理的功能都相對不便，於是打算改換成 Poetry 來管理。</p>
+<p>畢竟 Poetry 在開發時就有考慮套件打包的需求進去，所依賴的套件也能夠做到比較複雜的條件設定（例如使用者安裝 Python 3 時，哪些依賴套件要安裝在哪幾版）。</p>
+<p>不過公司的 Python 套件專案是使用 <code>steuptools</code> 打包並發布到 PyPI 的，因此若你專案的套件依賴環境是使用 Poetry 管理的話，需要做一些設定才能被 <code>setuptools</code> 順利打包進去。</p>
+<h1>設定專案包含的目錄與模組</h1>
+<p>在透過 Poetry 管理依賴套件環境時，如果使用 <code>setuptools</code> 打包，要記得在 <code>[tool.poetry]</code> 區段中，設定 <code>packages</code> 參數，把需要包含的模組包含目錄都添加進去，如此在使用者透過 <code>pip</code> 或 <code>poetry</code> 等工具安裝時，才能找得到套件中的模組檔案。若未設定這部分可能會顯示 <code>ModuleOrPackageNotFound</code> 或 <code>No file/folder found for package ***</code> 的錯誤訊息，如下：</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.poetry]</span>
+
+<span class="n">packages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="n">include</span> <span class="o">=</span> <span class="s">&quot;my-package&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">include</span> <span class="o">=</span> <span class="s">&quot;my-package/**/*.py&quot;</span> <span class="p">},</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<p>上述的 <code>my-package</code> 是可以替換成你專案的名稱。</p>
+<h3>參考來源</h3>
+<ol>
+<li><a href="https://github.com/python-poetry/poetry/issues/1110">ModuleOrPackageNotFound with poetry 0.12.15 and pip &gt;= 19</a></li>
+<li><a href="https://qiita.com/ijufumi/items/71df89e00ffc2779e165">「No file/folder found for package ***」のエラー解消方法</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/python">Python</a>
+      <a href="https://note.koko.guru/tag/poetry">poetry</a>
+      <a href="https://note.koko.guru/tag/pypi">PyPI</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
