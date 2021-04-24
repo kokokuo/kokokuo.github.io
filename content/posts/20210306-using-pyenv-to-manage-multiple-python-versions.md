@@ -4,7 +4,7 @@ Tags: Python, pyenv
 Category: Python
 Slug: using-pyenv-to-manage-multiple-python-versions
 Authors: kokokuo
-Summary: 在 Python 的專案開發環境上，不論如何的演進總有虛擬環境 (virtual environment) 陪伴的我們，使我們能在不同的專案上切割出獨立的套件安裝環境。然而管理 Python 版本的問題呢？ 公司可能許多專甚至仍維持在不同的 Python 版本上（如：有的 2.7 有的 3.4)，究竟是否有一套工具能夠解決我們管理多個 Python 版本的問題呢？那麼我一定會推薦你來瞧瞧現在知名的 `pyenv` 工具。
+Summary: 在 Python 的專案開發環境上，不論如何的演進總有虛擬環境 (virtual environment) 陪伴的我們，使我們能在不同的專案上切割出獨立的套件安裝環境。<br/><br/>然而管理 Python 版本的問題呢？ 公司可能許多專甚至仍維持在不同的 Python 版本上（如：有的 2.7 有的 3.4)，究竟是否有一套工具能夠解決我們管理多個 Python 版本的問題呢？那麼我一定會推薦你來瞧瞧現在知名的 `pyenv` 工具。
 --- 
 # 前言
 在 Python 的專案開發環境上，不論如何的演進總有虛擬環境 (virtual environment) 陪伴的我們，使我們能在不同的專案上切割出獨立的套件安裝環境。
