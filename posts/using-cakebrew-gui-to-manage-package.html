@@ -26,18 +26,26 @@
 
 
 
-    <meta name="author" content="kokokuo" />
-    <meta name="description" content="" />
+<meta name="author" content="kokokuo" />
+<meta name="description" content="Homebrew 是 Mac 上非常便利與強大的安裝套件與軟體，不過會需要使用終端機 Terminal 操作，因此有網友製作出一款方便以 GUI 介紹操作 Homebrew 的美麗 GUI 軟體，也就是 Cakebrew ，以下來介紹與安裝 Cakebrew。" />
+<meta name="keywords" content="Mac, Homebrew, Cakebrew">
+
 <meta property="og:site_name" content="koko's Note"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="koko's Note"/>
-<meta property="og:description" content=""/>
+<meta property="og:title" content="Homebrew (4) - 使用 GUI 介面 Cakebrew 來操作 Homebrew 管理套件"/>
+<meta property="og:description" content="Homebrew 是 Mac 上非常便利與強大的安裝套件與軟體，不過會需要使用終端機 Terminal 操作，因此有網友製作出一款方便以 GUI 介紹操作 Homebrew 的美麗 GUI 軟體，也就是 Cakebrew ，以下來介紹與安裝 Cakebrew。"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://note.koko.guru"/>
+<meta property="og:url" content="https://note.koko.guru/posts/using-cakebrew-gui-to-manage-package"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-04-29 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="Homebrew"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="Homebrew"/>
+<meta property="article:tag" content="Cakebrew"/>
 <meta property="og:image" content="/static/koko-logo.png">
 
-  <title>koko's Note &ndash;     Category Github
-</title>
+  <title>koko's Note &ndash; Homebrew (4) - 使用 GUI 介面 Cakebrew 來操作 Homebrew 管理套件</title>
 
 </head>
 <body>
@@ -109,53 +117,57 @@ Code / Web / Architecture
 
     </nav>
 
-
-
-<article>
+<article class="single">
   <header>
-    <h2><a href="https://note.koko.guru/posts/build-static-website-to-github-page">透過 Github Page 上傳靜態網站</a></h2>
+      
+    <h1 id="using-cakebrew-gui-to-manage-package">Homebrew (4) - 使用 GUI 介面 Cakebrew 來操作 Homebrew 管理套件</h1>
     <p>
-          Posted on Fri 08 February 2019 in <a href="https://note.koko.guru/category/github.html">Github</a>
+          Posted on Thu 29 April 2021 in <a href="https://note.koko.guru/category/homebrew.html">Homebrew</a>
 
 
-          &#8226;     Tagged with
-
-              <a href="https://note.koko.guru/tag/static-site">Static Site</a>,              <a href="https://note.koko.guru/tag/github">Github</a>
     </p>
   </header>
+
+
   <div>
-      <p><strong>靜態網站 (Static Site)</strong> 因為檔案結構單純，架設的伺服器空間選擇比較多，因為不需要建置資料庫，也沒有後端的語言，只需要一個空間與簡單的伺服器軟體即可。</p>
-        <br>
-        <a class="btn" href="https://note.koko.guru/posts/build-static-website-to-github-page">    Continue reading
-</a>
+    <h1>前言</h1>
+<p>Homebrew 是 Mac 上非常便利與強大的安裝套件與軟體，不過會需要使用終端機 Terminal 操作，因此有網友製作出一款方便以 GUI 介紹操作 Homebrew 的美麗 GUI 軟體，也就是 Cakebrew，以下來介紹與安裝 <a href="https://www.cakebrew.com/">Cakebrew</a>。</p>
+<h1>安裝 Cakebrew</h1>
+<p>如果已經有 Homebrew Cask ，可以透過 cask 的方式安裝：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew cask install cakebrew
+</code></pre></div>
+
+<p>如果沒有 Homebrew Cask ，也可以透過<a href="https://www.cakebrew.com/">官網連結</a>下載 <code>.dmg</code> 檔案並手動安裝。</p>
+<p><img src="../images/20210429-using-cakebrew-gui-to-manage-package/brew-install-cakebrew.png" width="640px"/></p>
+<p>另外，Cakebrew 主要是 GUI 的 Homebrew 管理介面，換句話說，並無法透過 Cakebrew 來安裝或管理 Homebrew Cask 安裝的軟體。</p>
+<h2>Cakebrew 介面</h2>
+<p>以下列出已經安裝的套件，可以點選套件直接觀看套件的安裝資訊：</p>
+<p><img src="../images/20210429-using-cakebrew-gui-to-manage-package/cakebrew-gui.png" width="480px"/></p>
+<h3>列出 Tapped 的擴充 Repository</h3>
+<p>列出 Homebrew 中所有可安裝的套件（如果有 Tapped 新的 Repository，也會顯 Tapped 的 Repo 中的套件）</p>
+<p><img src="../images/20210429-using-cakebrew-gui-to-manage-package/cakebrew-tap-repository.png" width="480px"/></p>
+<h3>顯示 Leaves</h3>
+<p>Leaves 也就是沒有被其它套件相依的已安裝套件：</p>
+<p><img src="../images/20210429-using-cakebrew-gui-to-manage-package/cakebrew-list-leaves.png" width="480px"/></p>
+<h1>參考文件</h1>
+<ol>
+<li><a href="https://www.cakebrew.com/">官方 Cakebrew</a></li>
+<li><a href="http://www.howtoip.com/how-to-use-cakebrew-the-beautiful-homebrew-gui-for-your-mac/">如何使用 Cakebrew，美丽的 Homebrew GUI 为您的 Mac</a></li>
+</ol>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="https://note.koko.guru/posts/deploy-pelican-static-webiste-to-github-page">使用 Github Page 作為靜態網誌的空間 - 以 Pelican 為例</a></h2>
+  <div class="tag-cloud">
     <p>
-          Posted on Tue 05 February 2019 in <a href="https://note.koko.guru/category/github.html">Github</a>
-
-
-          &#8226;     Tagged with
-
-              <a href="https://note.koko.guru/tag/python">Python</a>,              <a href="https://note.koko.guru/tag/pelican">Pelican</a>,              <a href="https://note.koko.guru/tag/github">Github</a>,              <a href="https://note.koko.guru/tag/static-site">Static Site</a>
+      <a href="https://note.koko.guru/tag/mac">Mac</a>
+      <a href="https://note.koko.guru/tag/homebrew">Homebrew</a>
+      <a href="https://note.koko.guru/tag/cakebrew">Cakebrew</a>
     </p>
-  </header>
-  <div>
-      <p>在前一篇 <a href="https://note.koko.guru/posts/mac-using-pelican-build-static-website">在 Mac 上使用 Python 的 Pelican 建立靜態個人網誌</a> 中介紹了如何在本機端，安裝 Pelican 並建立自己的個人網誌，但是這個網誌卻只能在自己的電腦中呈現，並沒有放到網路上，因為我們缺少了可以存放 Pelican 網誌的伺服器。</p>
-        <br>
-        <a class="btn" href="https://note.koko.guru/posts/deploy-pelican-static-webiste-to-github-page">    Continue reading
-</a>
   </div>
+
+
+
+
+
 </article>
-
-  <div class="pagination">
-  </div>
-
-
-
 
     <footer>
 <p>&copy; kokokuo 2019</p>
