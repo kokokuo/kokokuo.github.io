@@ -1,10 +1,10 @@
 Title: Homebrew (3) - 透過 Homebrew Cask 安裝應用程式或圖形化工具
-Date: 2021-04-18
+Date: 2021-04-20
 Tags: Mac, Homebrew
 Category: Homebrew
 Slug: using-homebrew-cask-install-app
 Authors: kokokuo
-Summary: 前一篇 [Homebrew (2) - Homebrew 常用與隱藏指令]({filename}/posts/../../20210418-homebrew-useful-command.md) 我們介紹了 Homebrew 的常用指令，使你更加認識這套在 Mac 上方便管理套件指令的工具，而雖然 Homebrew 很方便，但是你會發現 Homebrew 著重在一些套件程式，比較屬於開發者在使用，而不是一般用戶想安裝在 Mac 上的應用軟體，如：Chrome、Skype 等，那有沒有可以幫忙安裝的工具呢？這時就要向你介紹 Homebrew Cask 囉，讓我來認識認識。
+Summary: 前一篇 [Homebrew (2) - Homebrew 常用與隱藏指令]({filename}/posts/20210418-homebrew-useful-command.md) 我們介紹了 Homebrew 的常用指令，使你更加認識這套在 Mac 上方便管理套件指令的工具，而雖然 Homebrew 很方便，但是你會發現 Homebrew 著重在一些套件程式，比較屬於開發者在使用，而不是一般用戶想安裝在 Mac 上的應用軟體，如：Chrome、Skype 等，那有沒有可以幫忙安裝的工具呢？這時就要向你介紹 Homebrew Cask 囉，讓我來認識認識。
 
 # Homebrew Cask 介紹
 第一次看到 Homebrew Cask 時或許會覺得已經有 Homebrew 與他的 Tap 擴展指令了，那麼還需要 Homebrew Cask 的差別是什麼？
