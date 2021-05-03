@@ -17,7 +17,7 @@ Summary: 前一篇 [Homebrew (2) - Homebrew 常用與隱藏指令]({filename}/po
 
 Homebrew Cask 主要是方便下載已經編譯好的 Mac OSX 應用程式、一些圖形化軟體 （`.dmg`/`.pkg`），並且存放 Homebrew Cask 管理的目錄中，因此省去平常的下載、解壓縮、拖移與安裝等步驟。例如安裝 Chrome 或是 Atom 等軟體，並且 Homebrew Cask 中還可以安裝許多不在 App Store 的軟體工具，如下圖（來自官方 Github)：
 
-<img src="../images/20210418-using-homebrew-cask-install-app/homebrew-cask.gif" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/homebrew-cask.gif" width="480px"/>
 
 
 特別是對於 Mac 而言，常常有許多應用程式軟體下載後，在移除時無法完全移除乾淨，而對於使用 Homebrew Cask 而言這將不在麻煩了。
@@ -35,7 +35,7 @@ $> brew cask install atom
 $> brew cask
 ```
 
-<img src="../images/20210418-using-homebrew-cask-install-app/brew-cask.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/brew-cask.png" width="480px"/>
 
 
 # Cask 下載的應用程式管理位置
@@ -45,11 +45,11 @@ $> brew cask
 
 例如安裝 firefox 瀏覽器，如下安裝完後會出現在 `~/Applications` ：
 
-<img src="../images/20210418-using-homebrew-cask-install-app/brew-cask-firefox.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/brew-cask-firefox.png" width="480px"/>
 
 同時 `/usr/local/Caskroom` 會有保存 firefox 的設定或資料的目錄產生：
 
-<img src="../images/20210418-using-homebrew-cask-install-app/caskroom-location.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/caskroom-location.png" width="480px"/>
 
 # Homebrew Cask 常用指令
 
@@ -60,7 +60,7 @@ $> brew cask
 $> brew cask install [應用程式]
 ```
 
-<img src="../images/20210418-using-homebrew-cask-install-app/brew-cask-install.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/brew-cask-install.png" width="480px"/>
 
 ## (2.)搜尋欲安裝的軟體
 透過 `search` 指令，與 Homebrew 的 search 指令一樣可以使用正規表達式去搜尋，以下以 firefox 為例：
@@ -69,7 +69,7 @@ $> brew cask install [應用程式]
 $> brew cask search [搜尋的應用程式，可用正規表達式]
 ```
 
-<img src="../images/20210418-using-homebrew-cask-install-app/brew-cask-search.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/brew-cask-search.png" width="480px"/>
 
 ## (3.)顯示 Homebrew Cask 中指定要查詢的可安裝軟體資訊
 此指令可以查看 Cask 中可以安裝的軟體資訊：
@@ -80,7 +80,7 @@ $> brew cask info [應用程式]
 
 例如查看 Chrome 瀏覽器的安裝資訊：
 
-<img src="../images/20210418-using-homebrew-cask-install-app/brew-cask-info.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/brew-cask-info.png" width="480px"/>
 
 ## (4.) 移除應用程式
 透過 Homebrew Cask 的移除指令可以乾淨移除軟體，包含存放在 `/usr/local/Caskroom` 中的該軟體相關保存資訊
@@ -91,11 +91,11 @@ $> brew cask uninstall [已安裝應用程式]
 
 如下已移除 firefox 為例子：
 
-<img src="../images/20210418-using-homebrew-cask-install-app/brew-cask-uninstall.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/brew-cask-uninstall.png" width="480px"/>
 
 移除後 `/usr/local/Caskroom` 中的 firefox 目錄也移除。
 
-<img src="../images/20210418-using-homebrew-cask-install-app/brew-cask-uninstall-result.png" width="480px"/>
+<img src="../images/20210420-using-homebrew-cask-install-app/brew-cask-uninstall-result.png" width="480px"/>
 
 # 參考文件
 1. [brew 和 brew cask 有什么区别？](https://www.zhihu.com/question/22624898)
