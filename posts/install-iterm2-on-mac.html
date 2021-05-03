@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+
+    <link href="https://note.koko.guru/static/custom-style.css" rel="stylesheet">
+
+
+
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+
+
+<meta name="author" content="kokokuo" />
+<meta name="description" content="Mac 中內建的 Terminal 本身並沒有太多的功能，並且能夠客製化的如配色也非常少，因此此篇文章介紹如何透過 iTerm2 與 zsh 製作出好用的 Terminal 與 Bash。" />
+<meta name="keywords" content="Mac, iterm2">
+
+<meta property="og:site_name" content="koko's Note"/>
+<meta property="og:title" content="Mac - 終端機改造 (1) 安裝 iTerm2"/>
+<meta property="og:description" content="Mac 中內建的 Terminal 本身並沒有太多的功能，並且能夠客製化的如配色也非常少，因此此篇文章介紹如何透過 iTerm2 與 zsh 製作出好用的 Terminal 與 Bash。"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://note.koko.guru/posts/install-iterm2-on-mac"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2021-04-30 00:00:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:section" content="iterm2"/>
+<meta property="article:tag" content="Mac"/>
+<meta property="article:tag" content="iterm2"/>
+<meta property="og:image" content="/static/koko-logo.png">
+
+  <title>koko's Note &ndash; Mac - 終端機改造 (1) 安裝 iTerm2</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="https://note.koko.guru">
+        <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
+      </a>
+      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+
+<p>
+Code / Web / Architecture
+<br/>
+<br/>
+你需要非常多的努力
+<br/>
+才能看起來毫不費力
+</p>
+<section id=sidebar_tags>
+  <dl>
+      <dt><a href='https://note.koko.guru/tag/python'>Python (22)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/mac'>Mac (17)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/homebrew'>Homebrew (4)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/github'>Github (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/poetry'>poetry (2)</a></dt>
+      <dt><a href='https://note.koko.guru/tag/pyenv'>pyenv (2)</a></dt>
+    <dt><a id="tags_mores" href='https://note.koko.guru/tags.html'>...more</a></dt>
+  </dl>
+</section>
+
+      <nav>
+        <ul class="list">
+
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-github" href="https://github.com/kokokuo" target="_blank">
+            <i class="fab fa-github">
+            </i>
+          </a></li>
+          <li>
+            <a  class="sc-linkedin" href="https://www.linkedin.com/in/easonkuo" target="_blank">
+            <i class="fab fa-linkedin">
+            </i>
+          </a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://note.koko.guru">    Home
+</a>
+
+      <a href="/pages/about.html">關於我</a>
+      <a href="/archives.html">文章列表</a>
+      <a href="/pages/software-development.html">軟體開發</a>
+      <a href="/pages/financial-investment.html">理財投資</a>
+
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="install-iterm2-on-mac">Mac -  終端機改造 (1) 安裝 iTerm2</h1>
+    <p>
+          Posted on Fri 30 April 2021 in <a href="https://note.koko.guru/category/iterm2.html">iterm2</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>前言</h1>
+<p>Mac 中內建的 Terminal 本身並沒有太多的功能，並且能夠客製化的如配色也非常少，因此此篇文章介紹如何透過 <strong>iTerm2</strong> 與 <strong>zsh</strong> 製作出好用的 Terminal 與 Bash。</p>
+<h1>步驟一：安裝 iTerm2</h1>
+<p>iTerm2 是一款 Mac 上強大的 Terminal 軟體，有著許多 Mac 內建 Terminal 沒有的特色功能或是強化功能，例如個人化的顏色設定可調性比內建的多，也可以直接透過 Tab 去選擇目錄進入，不需要都使用指令；多分頁與多視窗；也具備強大的搜尋功能，甚至 AutoComplete 也能做到下拉選單去選擇；建立不同的個人化設定並可以切換；錄製播放...等等。</p>
+<p>因此 iTerm2 已經成為 Mac 最具指標的 Terminal ，而安裝 iTerm2 可以直接透過 Homebrew Cask 安裝來方便管理軟體，如下：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew cask install iterm2
+</code></pre></div>
+
+<p>或是直接去官網下載：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/download-install-iterm2.png" width="480px"/></p>
+<p>安裝完後會在應用程式中出現，打開如下：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/hello-iterm2.png" width="360px"/></p>
+<h2>(1.) 基本功能介紹：分頁使用</h2>
+<p><strong>開啟分頁</strong>：透過 <code>Cmd + t</code> 兩個按鍵即可開啟分頁多畫面
+<strong>分頁切換</strong>：可透過 <code>Cmd ＋ 方向鍵</code> 移動 Tab 頁
+<strong>直接分頁跳轉</strong>：直接 <code>Cmd + 數字</code> 鍵跳到其他 Tab 頁</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-tab.png" width="480px"/></p>
+<h3>(2.) 基本功能介紹：全域搜尋</h3>
+<p><code>Cmd + f</code> 兩個按鍵搜尋的關鍵字會直接全部標示。</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-global-search.png" width="480px"/></p>
+<h3>(3.) 基本功能介紹：直接點選目錄開啟</h3>
+<p>透過 <code>Cmd + 滑鼠</code> 去按 Terminal 中指令的目錄，會直接開啟視窗。</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-open-directory.png" width="640px"/></p>
+<h3>(4.) 基本功能介紹：Auto Complete 下拉提示</h3>
+<p>透過按壓 <code>Cmd + ;</code> 兩個按鍵，會顯示 Auto Complete 的下拉選擇。</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-autocomplete.png" width="640px"/></p>
+<h3>(5.)新分頁路徑重複</h3>
+<p>當透過 <code>Cmd + Tab</code> 兩個按鍵開啟新分頁時，會顯示路徑在前一個分頁的位置，而不是 Home 目錄，如下圖：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-new-tab-keep-path.png" width="480px"/></p>
+<h3>(6.)搜尋歷史指令</h3>
+<p>透過 <code>Cmd + Shift + ;</code> 三個按鍵可以顯示歷史指令：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-show-command-history.png" width="640px"/></p>
+<h3>(7.)水平與垂直切割螢幕(多 Panel)</h3>
+<p>iTerm2 也支援水平與垂直的畫面切割，每一過新的話面就是新的互動 Shell Panel，透過此方式可以多操作。
+<strong>水平切割</strong>：<code>Cmd + D</code> 兩個按鍵
+<strong>垂直切割</strong>： <code>Cmd + Shift + D</code> 三個按鍵
+<strong>切換顯示的 Panel</strong>： <code>Cmd + Option + 方向鍵</code></p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-split-panel.png" width="640px"/></p>
+<h3>(8.)顯示目前游標位置</h3>
+<p>有時候因為畫面資訊太多，會無法容易找到游標位置，可以透過 <code>Cmd + /</code> 兩個按鍵找出。</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-show-cursor.png" width="640px"/></p>
+<h3>(9.)直接往下轉到新的畫面</h3>
+<p>透過輸入 <code>Cmd + r</code> 會如同輸入 Clear 顯示新的乾淨畫面，但是與 Clear 不同的是，並不會真的清掉，只是往下滾動到新的畫面出來，如下：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-clear-view.png" width="480px"/></p>
+<h3>(10.)清空當前輸入的行內容</h3>
+<p>當在輸入指令到一半時，要全部清空輸入的內容，可以透過 <code>Ctrl + u</code> 清空</p>
+<h3>(11.)選擇便是複製</h3>
+<p>透過滑鼠拖拉想要複製的內容後，直接按著 <code>Cmd + 滑鼠點擊</code> 拖拉內容，便會複製，之後只要  <code>Cmd + v</code> 貼上即可</p>
+<h3>(12.) 自動補齊</h3>
+<p>透過輸入 <code>Cmd + ;</code> 便會根據指令的歷史提示顯示可以自動補齊的內容</p>
+<h3>(13.) 顯示最近的目錄</h3>
+<p>透過輸入 <code>Option + Cmd + /</code> 便會根據指令的歷史提示顯示可以自動補齊的內容</p>
+<h2>步驟二：設定 iTerm2</h2>
+<p>以下來客製化自己的 iTerm2 ，以下主要會設定的有 1. 建立自己的 Profile，設定 Color 、Terminal 與 Text。</p>
+<h3>1.建立自己的 iTerm2 Profile</h3>
+<p>點選左上角 iTerm2 選單 &gt; Preferences &gt; Profiles ，點選視窗左下方的 + 並建立一個自己的 Profile 如下：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-user-profile.png" width="480px"/></p>
+<p>並且點選 Other Actions &gt; Set as Default Profile 使得以後開啟 iTerm2 都以此設定檔為主：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-set-default-profile.png" width="640px"/></p>
+<h3>2.確認 Report Terminal Type 為 xterm-256color 與設定捲軸可以捲動的 Buffer 長度</h3>
+<p>設定 Report Terminal Type 為 <code>xterm-256color</code> 是為了使 iTerm2 可以使呈現的顏色較飽滿，再來設定 捲軸 Buffer 長度可以使為了要捲動回去查詢時可以直接看到紀錄 （此處不一定要設為 Unlimited scrollback)</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-xterm-256color.png" width="640px"/></p>
+<h3>3.設定開啟新分頁路徑重複</h3>
+<p>點選左上角 iTerm2 選單 &gt; Preferences &gt; Profiles &gt; General 的 Wording Directory 勾選 Reuse previous tab’s directory，如下圖：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-path-reuse.png" width="640px"/></p>
+<h3>4.設定 Color Scheme</h3>
+<p>點選 Colors 設定想要 Terminal 配色，此處除了內建色盤外，也提供了以個常見的知名配色，例如 Solarized Dark 等，不過如果想要有可多的配色選擇可以從 Github 上的 <a href="https://github.com/mbadolato/iTerm2-Color-Schemes">iTerm2-Color-Schemes</a> 下載並 import 進去。</p>
+<p>此處如果為了方便一同管理，可以從 git clone 此 iTerm2 Color Schemes 的檔案到 Caskroom 下 iTerm2 的資料目錄中：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-clone-color-scheme.png" width="640px"/></p>
+<p>選擇目錄下的 scheme 目錄，並 import 想要的色彩方案：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-import-color-scheme.png" width="640px"/></p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-import-color-scheme-2.png" width="640px"/></p>
+<p>另外，Import 完後還要記得選擇新的 Scheme 才會生效。</p>
+<p>如下，此為 匯入 <strong>Dracula</strong> 的 theme 後的樣貌，會發現顏色有直接變化：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-use-darcula-theme.png" width="640px"/></p>
+<h3>5.安裝與設定 Text Font 字型</h3>
+<p>後續安裝 zsh 提供的主題時，有許多的主題會應用到特殊的字體或圖示 icon，但是 iTerm2 內建中卻沒有提供，因此可能會出現亂碼或問號。</p>
+<p>為了要解決這個問題，我們再來會需要先安裝擴充字型圖示。至於擴充字型的部分，可以到 Homebrew Cask 中尋找，在 <a href="https://github.com/Homebrew/homebrew-cask-fonts">Homebrew Cask Fonts</a> 這個 Repository 可以 Tap 去下載，例如下載 <code>font-hack-nerd-font</code> 這套字體：</p>
+<div class="highlight"><pre><span></span><code>$&gt; brew tap homebrew/cask-fonts
+$&gt; brew cask install font-hack-nerd-font
+</code></pre></div>
+
+<p><img src="../images/20210430-install-iterm2-on-mac/brew-tap-cask-fonts.png" width="640px"/></p>
+<p>執行安裝字體：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/brew-install-font-hack-nerd-font.png" width="640px"/></p>
+<p>透過 Homebrew Cask 下載好字體，就會直接安裝在 Mac 內建了，因此要使用此字體只需如下點選 Change Font 尋找即可：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-change-font.png" width="640px"/></p>
+<p>以下是使用預設與 <strong>hack nerd font</strong> 字體後的效果，預設的 <strong>Monaco</strong> 字體，更換後的 <strong>hack nerd font</strong> 字體：</p>
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-use-new-font.png" width="640px"/></p>
+<p>至此已經完成 iTerm2 的安裝與簡單的個性化設定，如果有需要瞭解更多的 iTerm2 功能，可以查閱<a href="https://www.iterm2.com/features.html">官網</a>。</p>
+<h3>6. 設定鍵盤快捷鍵可以透過 <code>Ctrl + 左右箭頭</code> 文字間移動</h3>
+<p>打開 Preference &gt; 點選 Profile 下的 Key ，選擇要編輯的，Profile Name，然後點選 Presets &gt; <strong>選擇 Natural Text Editing</strong>。</p>
+<p>完成後關掉再重開即可以在輸入的指令字串間，透過<code>Ctrl + 鍵盤的左右鍵</code>，移動到前一個文字或後一個文字；透過 Cmd + 左右鍵，則可以移動到尾端或開頭。</p>
+<div class="highlight"><pre><span></span><code>word backwards using Option ⌥ + ← and a word forwards using Option ⌥ + →, move to the start of the line using fn + ← and to the end of the line with fn + →. Also you can delete a word backwards using Option ⌥ + ⌫, delete the whole line using Command ⌘ + ⌫.
+</code></pre></div>
+
+<p><img src="../images/20210430-install-iterm2-on-mac/iterm2-natural-text-editing.png" width="480px"/></p>
+<h2>參考文章</h2>
+<ol>
+<li><a href="https://www.yangzhiping.com/tech/iterm2.html">iTerm2 新手应知特色功能</a></li>
+<li><a href="http://wulfric.me/2015/08/iterm2/">你应该知道的 iTerm2 使用方法--MAC 终端工具</a></li>
+<li><a href="https://andy6804tw.github.io/2018/01/01/iterm2-zsh-intro/#1-%E4%BF%AE%E6%94%B9-report-terminal-type">macOS 好用的終端機(iterm2+zsh+oh-my-zsh)</a></li>
+<li><a href="http://huli.logdown.com/posts/402147-iterm2-zsh-better-environment">[心得] iTerm2 + zsh，打造更好的工作環境</a></li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://note.koko.guru/tag/mac">Mac</a>
+      <a href="https://note.koko.guru/tag/iterm2">iterm2</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy; kokokuo 2019</p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " koko's Note ",
+  "url" : "https://note.koko.guru",
+  "image": "/static/koko-logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
