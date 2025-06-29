@@ -1,10 +1,10 @@
-Title: 關於我: &nbsp; koko
+Title: 關於我: &nbsp; kokokuo
 Slug: about
 Authors: kokokuo
 
-# 簡介
+<!-- # 簡介 -->
 
-Hello，我是 Eason，目前約有五年左右的後端開發與軟體架構經驗，主要使用 Python, Node.js ( TypeScript ) 兩種語言，早期則是 .Net C# 為主。
+<!-- Hello，我是 Eason，目前約有五年左右的後端開發與軟體架構經驗，主要使用 Python, Node.js ( TypeScript ) 兩種語言，早期則是 .Net C# 為主。
 
 現在於 [Canner 易開科技](https://cannerdata.com/) 擔任資深後端工程師。
 
@@ -14,6 +14,6 @@ Hello，我是 Eason，目前約有五年左右的後端開發與軟體架構經
 
 期許自己能成為一個軟體架構師 / Team Leader 的角色。
 
-目前是一位價值投資信奉者，目標是能早日達到財務自由。
+目前是一位價值投資信奉者，目標是能早日達到財務自由。 -->
 
-# 個人經歷
+<!-- # 個人經歷 -->

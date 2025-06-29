@@ -10,6 +10,8 @@ Summary: 使用 Github Page 架設個人的靜態網誌並寫了一些教學文�
 ---
 使用 Github Page 架設個人的靜態網誌並寫了一些教學文有一些時間了，但是 Github Page 所架設的網誌，所使用的網域都是 `<username>.github.io` 格式，難道不能設定自己的買的網域嗎？ 那接著我們就來看看這篇吧！
 
+更新：現已更改為 `note.kokokuo.cc` 網域
+
 <br/>
 
 # 一、設置化網域設定
@@ -89,7 +91,7 @@ EXTRA_PATH_METADATA = {
 
 按下儲存後，未來每當我輸入 `http://note.koko.guru` 便會指向我在 `https://kokokuo.github.io`。
 
-另外因為我在 Github Page 中有設定 **Custom Domain** 為 `http://note.koko.guru`，因此當我輸入 `https://kokokuo.github.io` 網址時跳轉到 `http://note.koko.guru`。
+另外因為我在 Github Page 中有設定 **Custom Domain** 為 `http://note.koko.guru`，因此當我輸入 `https://kokokuo.github.io` 網址時跳轉到 `http://note.koko.guru`。 (備註：現已改為 [note.kokokuo.cc](https://note.kokokuo.cc))
 
 接著再藉由 GoDaddy 設定 CNAME 的關係Ｍ所以指向我在 Github Page 架構的 Pelican 靜態網誌，同時網址也會顯示 `http://note.koko.guru`，如下圖：
 
@@ -113,7 +115,7 @@ EXTRA_PATH_METADATA = {
 
 再次點擊自己的 Github Page 的 Repository，並點右上角的 **Settings** ，移動到 **Github Pages** 區塊並勾選 **Enforce HTTPS** ，看到打勾的符號後稍微等一下後，再次輸入網址便可以看到 HTTPS 哦！
 
-例如我的 [https://note.koko.guru](https://note.koko.guru)，你會看到鎖頭，以及 Let's Encrypt 頒發的憑證。
+例如我的 ~~[https://note.koko.guru](https://note.koko.guru)~~ (現已改為 [note.kokokuo.cc](https://note.kokokuo.cc))，你會看到鎖頭，以及 Let's Encrypt 頒發的憑證。 
 
 <img src="../images/20190715-add-custom-domain-on-github-page-and-pelican/setup-https-let-encrypt.png" alt="setup-https-let-encrypt" width="480px"/>
 

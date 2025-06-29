@@ -31,11 +31,11 @@ CRITICAL: RuntimeError: File /Users/koko/Code/SideProj/EasonBlogs/kokokuo-note/o
 但是很奇怪的，這篇文章在當時使用的 Tag 是 `Python` 與 `py2exe`，那怎麼會被歸類在 `python2.html` 這個 `Python2` 的 Tag 呢？
 
 
-為了查證與對照，所以我們先來確認一下目前在 Github 上執行正常的 [note.koko.guru](https:///note.koko.guru) 的 `Python2` Tag :
+為了查證與對照，所以我們先來確認一下目前在 Github 上執行正常的 ~~[note.koko.guru](https:///note.koko.guru)~~ (已改為 [note.kokokuo.cc](https://note.kokokuo.cc)) 的 `Python2` Tag :
 
 <img src="../images/20190722-pelican-runtime-error-when-html-overwritten/correct-site-python2-tag.png" alt="correct-site-python2-tag" width="480px"/>
 
-在上述用了深綠色匡起來的 Tag 標籤與網頁所看到的是正確使用 `Python2` Tag 的文章，所以換句話說，問題是出在標籤產生的錯誤，而且原本在 [note.koko.guru](https:///note.koko.guru) 網站上該 **Python - 使用 py2exe 製作 Python exe 執行檔** 文章是運作正常的，如下圖 :
+在上述用了深綠色匡起來的 Tag 標籤與網頁所看到的是正確使用 `Python2` Tag 的文章，所以換句話說，問題是出在標籤產生的錯誤，而且原本在 ~~[note.koko.guru](https:///note.koko.guru)~~ (已改為[note.kokokuo.cc](https://note.kokokuo.cc)) 網站上該 **Python - 使用 py2exe 製作 Python exe 執行檔** 文章是運作正常的，如下圖 :
 
 <img src="../images/20190722-pelican-runtime-error-when-html-overwritten/correct-post-build-python-exe-using-py2exe.png" alt="correct-post-build-python-exe-using-py2exe" width="480px"/>
 
@@ -49,7 +49,7 @@ CRITICAL: RuntimeError: File /Users/koko/Code/SideProj/EasonBlogs/kokokuo-note/o
 
 這是因為文章的量變多，因此導致文章**可能**產生「分頁」， 並且這個分頁被不正確的命名為 `python2.html` 並把原本 `python2.html` 標籤中文章給覆蓋掉了，所以才會出現 `output/tag/python2.html is to be overwritten`。
 
-換句話來看，也就是原本的 `/tag/python.html` 下的文章量**超過一個分頁所限制呈現的文章數量**，因此自己生成了 `python2.html` 這個分頁，而我們也可以對照一下原本 [note.koko.guru](https:///note.koko.guru) 網站上的 `/tag/python.html` 最後幾篇:
+換句話來看，也就是原本的 `/tag/python.html` 下的文章量**超過一個分頁所限制呈現的文章數量**，因此自己生成了 `python2.html` 這個分頁，而我們也可以對照一下原本 ~~[note.koko.guru](https:///note.koko.guru)~~ (已改為 [note.kokokuo.cc](https://note.kokokuo.cc)) 網站上的 `/tag/python.html` 最後幾篇:
 
 <img src="../images/20190722-pelican-runtime-error-when-html-overwritten/original-site-python-tag-post-list.png" alt="original-site-python-tag-post-list" width="480px"/>
 

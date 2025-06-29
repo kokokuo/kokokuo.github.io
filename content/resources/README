@@ -1,7 +1,7 @@
 # koko's Note
 Hello, This is my technical blog powered by `Pelican` static site generator. Th `master` branch is HTML output content, and `editor` branch is my editor for write using markdown.
 
-If you would like to check my site, please type https://note.koko.guru or https://kokokuo.github.io URL.
+If you would like to check my site, please type https://note.kokokuo.cc or https://kokokuo.github.io URL.
 
 <img src="../master/images/README/index.png" alt="index.png" />
 
