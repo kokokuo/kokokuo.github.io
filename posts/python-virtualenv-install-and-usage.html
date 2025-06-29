@@ -10,14 +10,14 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/stylesheet/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://note.kokokuo.cc/theme/stylesheet/style.min.css">
 
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/pygments/github.min.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/fontawesome.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/brands.css">
-  <link rel="stylesheet" type="text/css" href="https://note.koko.guru/theme/font-awesome/css/solid.css">
+  <link rel="stylesheet" type="text/css" href="https://note.kokokuo.cc/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="https://note.kokokuo.cc/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://note.kokokuo.cc/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://note.kokokuo.cc/theme/font-awesome/css/solid.css">
 
-    <link href="https://note.koko.guru/static/custom-style.css" rel="stylesheet">
+    <link href="https://note.kokokuo.cc/static/custom-style.css" rel="stylesheet">
 
 
 
@@ -34,11 +34,11 @@
 <meta property="og:title" content="Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv"/>
 <meta property="og:description" content="在開發 Python 的程式時，時不時就會透過 pip 從 PyPI 上安許多的套件來 import 使用，但是因為 Python 是裝在整個電腦的系統環境的，所以當我們之後寫的專案變多，每個不同的專案都因為有各自的需要 pip install 了不同的套件，最後整個 Python 的系統環境所安裝的套件就會非常多且雜亂！ 那麼要如何讓每個專案安裝的套件都只有自己的專案擁有，且不會弄亂系統的 Python 環境呢？ 這時候就需要虛擬環境了！"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="https://note.koko.guru/posts/python-virtualenv-install-and-usage"/>
+<meta property="og:url" content="https://note.kokokuo.cc/posts/python-virtualenv-install-and-usage"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="2019-03-07 00:00:00+08:00"/>
 <meta property="article:modified_time" content=""/>
-<meta property="article:author" content="https://note.koko.guru/author/kokokuo.html">
+<meta property="article:author" content="https://note.kokokuo.cc/author/kokokuo.html">
 <meta property="article:section" content="Python"/>
 <meta property="article:tag" content="Python"/>
 <meta property="og:image" content="/static/koko-logo.png">
@@ -49,10 +49,10 @@
 <body>
   <aside>
     <div>
-      <a href="https://note.koko.guru">
+      <a href="https://note.kokokuo.cc">
         <img src="/static/koko-logo.png" alt="koko's Note" title="koko's Note">
       </a>
-      <h1><a href="https://note.koko.guru">koko's Note</a></h1>
+      <h1><a href="https://note.kokokuo.cc">koko's Note</a></h1>
 
 <p>
 Code / Web / Architecture
@@ -64,18 +64,18 @@ Code / Web / Architecture
 </p>
 <section id=sidebar_tags>
   <dl>
-      <dt><a href='https://note.koko.guru/tag/python'>Python (22)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/mac'>Mac (17)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/pelican'>Pelican (6)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/homebrew'>Homebrew (4)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/sublime'>Sublime (4)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/github'>Github (3)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/python3'>Python3 (3)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/static-site'>Static Site (3)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/pyqt'>PyQt (3)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/poetry'>poetry (2)</a></dt>
-      <dt><a href='https://note.koko.guru/tag/pyenv'>pyenv (2)</a></dt>
-    <dt><a id="tags_mores" href='https://note.koko.guru/tags.html'>...more</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/python'>Python (22)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/mac'>Mac (17)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/pelican'>Pelican (6)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/homebrew'>Homebrew (4)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/sublime'>Sublime (4)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/github'>Github (3)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/python3'>Python3 (3)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/static-site'>Static Site (3)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/pyqt'>PyQt (3)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/poetry'>poetry (2)</a></dt>
+      <dt><a href='https://note.kokokuo.cc/tag/pyenv'>pyenv (2)</a></dt>
+    <dt><a id="tags_mores" href='https://note.kokokuo.cc/tags.html'>...more</a></dt>
   </dl>
 </section>
 
@@ -104,7 +104,7 @@ Code / Web / Architecture
   <main>
 
     <nav>
-      <a href="https://note.koko.guru">    Home
+      <a href="https://note.kokokuo.cc">    Home
 </a>
 
       <a href="/pages/about.html">關於我</a>
@@ -120,7 +120,7 @@ Code / Web / Architecture
       
     <h1 id="python-virtualenv-install-and-usage">Python - 隔離開發環境的利器，安裝虛擬環境工具 virtualenv</h1>
     <p>
-          Posted on Thu 07 March 2019 in <a href="https://note.koko.guru/category/python.html">Python</a>
+          Posted on 四 07 3月 2019 in <a href="https://note.kokokuo.cc/category/python.html">Python</a>
 
 
     </p>
@@ -248,7 +248,7 @@ parser/&gt; <span class="nb">source</span> venv/bin/activate
   </div>
   <div class="tag-cloud">
     <p>
-      <a href="https://note.koko.guru/tag/python">Python</a>
+      <a href="https://note.kokokuo.cc/tag/python">Python</a>
     </p>
   </div>
 
@@ -272,7 +272,7 @@ parser/&gt; <span class="nb">source</span> venv/bin/activate
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " koko's Note ",
-  "url" : "https://note.koko.guru",
+  "url" : "https://note.kokokuo.cc",
   "image": "/static/koko-logo.png",
   "description": ""
 }
